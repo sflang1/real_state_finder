@@ -1,0 +1,10111 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.1
+-- Dumped by pg_dump version 10.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: properties; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE properties (
+    id integer NOT NULL,
+    offer_type character varying,
+    property_type character varying,
+    zip_code character varying NOT NULL,
+    city character varying NOT NULL,
+    street character varying,
+    house_number character varying,
+    lng numeric(11,8),
+    lat numeric(11,8),
+    construction_year integer,
+    number_of_rooms numeric(15,2),
+    currency character varying,
+    price numeric(15,2)
+);
+
+
+--
+-- Name: properties_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE properties_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: properties_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE properties_id_seq OWNED BY properties.id;
+
+
+--
+-- Name: properties id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY properties ALTER COLUMN id SET DEFAULT nextval('properties_id_seq'::regclass);
+
+
+--
+-- Data for Name: properties; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY properties (id, offer_type, property_type, zip_code, city, street, house_number, lng, lat, construction_year, number_of_rooms, currency, price) FROM stdin;
+5387088	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1876	3.00	eur	269700.00
+5387077	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	622500.00
+5387015	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	624300.00
+5387061	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	124000.00
+5387080	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.50	eur	1267500.00
+5387054	sell	apartment_roof_storey	10115	Berlin	Boyenstraße	\N	13.36882400	52.53595360	\N	3.00	eur	124000.00
+5387057	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	450000.00
+5387067	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	2.00	eur	259300.00
+5443294	sell	apartment	10781	Berlin	\N	\N	13.34923220	52.49152830	1903	3.00	eur	425000.00
+5386999	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	1051000.00
+5387060	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	1.00	eur	165000.00
+307894	sell	apartment	10119	Berlin	Fehrbelliner Straße	52	13.40152534	52.53398565	1910	2.00	eur	138000.00
+5387009	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	960000.00
+5387055	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1985	1.00	eur	159000.00
+308992	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	2.00	eur	395000.00
+5386993	sell	apartment	10119	Berlin	Auguststraße	\N	13.40262440	52.52807630	1998	4.00	eur	541000.00
+5386941	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2009	3.00	eur	600000.00
+5386944	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	395000.00
+5386994	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1910	1.00	eur	160000.00
+5386987	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1998	3.00	eur	300000.00
+5386992	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	395000.00
+5387017	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1901	2.50	eur	298000.00
+5440617	sell	apartment	10719	Berlin	\N	\N	13.33115500	52.50311450	\N	3.00	eur	209000.00
+5387059	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	193900.00
+5412565	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	138000.00
+5387001	sell	apartment_maisonette	10179	Berlin	Michaelkirchstraße	12	13.42169260	52.51012090	\N	3.00	eur	555000.00
+5387099	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	288500.00
+5387032	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	410000.00
+5387013	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	283500.00
+5387028	sell	apartment	10179	Berlin	Neue Grünstraße	\N	13.40458370	52.50892910	\N	4.00	eur	679701.00
+5387111	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	4.00	eur	338100.00
+5387094	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	296600.00
+5387049	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	199200.00
+5387096	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	294100.00
+5387066	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	223300.00
+5387008	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	216700.00
+5449101	sell	apartment	10777	Berlin	\N	\N	13.34348307	52.49775390	\N	3.00	eur	425000.00
+5443338	sell	apartment	10781	Berlin	\N	\N	13.34923220	52.49152830	\N	1.00	eur	65000.00
+5387122	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1890	5.00	eur	1776000.00
+5387076	sell	apartment	10119	Berlin	Angermünder Straße	12	13.40841170	52.52957350	1900	3.00	eur	329000.00
+5387164	sell	apartment	10119	Berlin	Alte Schönhauser Straße	4	13.40852352	52.52794875	1885	1.00	eur	158990.00
+310862	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1887	1.00	eur	159000.00
+5386850	sell	apartment	10119	Berlin	Almstadtstraße	44	13.41012300	52.52673460	1987	1.00	eur	138000.00
+5387144	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1889	5.00	eur	1779000.00
+5387125	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1918	2.00	eur	858000.00
+5387100	sell	apartment	10119	Berlin	Angermünder Straße	12	13.40841170	52.52957350	1900	2.00	eur	271000.00
+328283	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1901	2.50	eur	298000.00
+5387167	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	2.00	eur	182000.00
+5387109	sell	apartment	10119	Berlin	Alte Schönhauser Straße	33-34	13.40703690	52.52552680	1912	1.00	eur	124800.00
+5387114	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1985	1.00	eur	159000.00
+5387118	sell	apartment	10119	Berlin	Fehrbelliner Straße	35	13.40120819	52.53481660	1900	2.00	eur	245000.00
+5387268	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2010	3.00	eur	750000.00
+5387172	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	4.00	eur	650000.00
+5387090	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1997	2.00	eur	110000.00
+5387147	sell	apartment	10115	Berlin	Schönholzer Straße	15	13.39843730	52.53825540	\N	5.00	eur	835000.00
+5387131	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	0.00
+5387168	sell	apartment	10115	Berlin	Kieler Straße	1	13.36942520	52.53346640	1997	2.00	eur	169000.00
+5387120	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	455000.00
+5387140	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	6.00	eur	539000.00
+309583	sell	apartment_maisonette	10115	Berlin	Schönholzer Straße	15	13.39843730	52.53825540	2012	3.00	eur	375000.00
+5486167	sell	villa	12305	Berlin	\N	\N	13.39502060	52.41438070	\N	5.00	eur	609000.00
+5485799	sell	apartment	12437	Berlin	\N	\N	13.48582900	52.47127230	1960	2.00	eur	45000.00
+5387305	sell	apartment	10179	Berlin	Alte Jakobstraße	92	13.40607670	52.50895790	\N	1.00	eur	139000.00
+5387276	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	5.00	eur	514800.00
+5387202	sell	apartment_maisonette	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	4.00	eur	456000.00
+5387238	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	197800.00
+5387280	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.41941990	52.50616400	\N	0.00	eur	493800.00
+5387234	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	199200.00
+5387228	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	5.00	eur	514800.00
+5387290	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	1910	5.00	eur	650000.00
+5387161	sell	penthouse	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	442900.00
+5387190	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	166400.00
+5387141	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	4.00	eur	453500.00
+5387242	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	271900.00
+5387221	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	269400.00
+5387258	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	269400.00
+5387284	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	301600.00
+5387262	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	4.00	eur	363000.00
+5387197	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	442900.00
+399205	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	2.00	eur	513918.00
+5387365	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	550000.00
+5387345	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	425000.00
+5387187	sell	apartment	10117	Berlin	Leipziger Straße	47	13.39763660	52.51020540	1973	2.00	eur	224900.00
+5387189	sell	apartment	10117	Berlin	Kommandantenstraße	70	13.40364050	52.50840120	\N	5.00	eur	630000.00
+5387229	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	998000.00
+5387278	sell	apartment	10117	Berlin	Kommandantenstraße	\N	13.40261680	52.50866790	\N	3.00	eur	365000.00
+5387326	sell	apartment	10117	Berlin	Leipziger Straße	44	13.39593080	52.51010570	1973	2.00	eur	116000.00
+5387357	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	450000.00
+5387403	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	3.00	eur	694971.00
+5387271	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	2.00	eur	507362.00
+5387361	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	527000.00
+5387176	sell	apartment	10117	Berlin	Dorotheenstraße	\N	13.37697080	52.51778190	\N	3.00	eur	656880.00
+5387250	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1911	1.00	eur	108000.00
+5387230	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	539000.00
+5387188	sell	apartment	10119	Berlin	Fehrbelliner Straße	47	13.40034890	52.53457310	\N	4.00	eur	350000.00
+5387235	sell	apartment_maisonette	10119	Berlin	\N	\N	13.40550818	52.53012550	2010	3.00	eur	659000.00
+5387185	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	280000.00
+5387255	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	795000.00
+5387273	sell	apartment	10119	Berlin	Weinbergsweg	23	13.40195520	52.53088190	\N	0.00	eur	152000.00
+5387210	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	450000.00
+5387279	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	145000.00
+5387222	sell	apartment	10119	Berlin	Torstraße	72	13.40717760	52.52896880	1900	1.00	eur	60000.00
+5387256	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1900	3.00	eur	380000.00
+5387275	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	745000.00
+5419138	sell	apartment	10405	Berlin	\N	\N	13.42256590	52.53279640	1905	1.00	eur	142900.00
+5419235	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	6.00	eur	1350000.00
+12338340	rent	apartment	13599	Berlin	Romy-Schneider-Straße	10	13.22574670	52.54645000	1997	3.00	eur	463.00
+5449045	sell	apartment	10777	Berlin	Regensburger Straße	31	13.33828690	52.49572810	1898	3.00	eur	313000.00
+5387334	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	2005	2.00	eur	268000.00
+312721	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1889	5.00	eur	589000.00
+5387218	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1910	2.00	eur	107000.00
+5387352	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	4.00	eur	510200.00
+5387224	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	2.00	eur	107000.00
+5387347	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	431900.00
+5384359	sell	apartment	10115	Berlin	Brunnenstraße	\N	13.39639100	52.53790380	1893	3.00	eur	289000.00
+5387226	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	4.00	eur	207000.00
+5443354	sell	apartment	10781	Berlin	Winterfeldtstraße	25	13.35701120	52.49656710	1886	1.50	eur	68500.00
+5387597	sell	multi_family_house	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	30.00	eur	0.00
+5387298	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	730000.00
+5387323	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	3000000.00
+329564	sell	apartment	10119	Berlin	Angermünder Straße	12	13.40841170	52.52957350	1900	2.00	eur	280000.00
+5387315	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	8.00	eur	1665000.00
+5387329	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1930	1.00	eur	99000.00
+5387328	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1889	5.00	eur	1789000.00
+5387301	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1911	1.00	eur	108000.00
+5387341	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1875	3.00	eur	359000.00
+5387343	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1887	2.00	eur	380000.00
+5387371	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	1918	3.00	eur	765000.00
+5387377	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1998	1.50	eur	95000.00
+5387321	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	369000.00
+5387402	sell	apartment	10119	Berlin	Zehdenicker Straße	12	13.40393990	52.53149610	\N	4.00	eur	2995000.00
+5387413	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	795000.00
+5387424	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.41941990	52.50616400	\N	0.00	eur	145800.00
+5387430	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	474834.00
+5387395	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	422000.00
+5387400	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	490000.00
+5387496	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	410000.00
+5387440	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	383000.00
+5387406	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	230200.00
+5387336	sell	apartment	10179	Berlin	Neue Grünstraße	\N	13.40458370	52.50892910	\N	3.00	eur	511270.00
+5387479	sell	apartment	10179	Berlin	Neue Grünstraße	15-16	13.40568460	52.50979010	\N	3.00	eur	511270.00
+5387426	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	221800.00
+5387524	sell	apartment	10179	Berlin	Ohmstraße	\N	13.41744900	52.51074650	1905	1.50	eur	75000.00
+5387514	sell	apartment	10179	Berlin	Neue Grünstraße	\N	13.40458370	52.50892910	\N	3.00	eur	410435.00
+5387444	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	221800.00
+5387325	sell	apartment_roof_storey	10179	Berlin	Neue Grünstraße	\N	13.40458370	52.50892910	\N	4.00	eur	680000.00
+5387449	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	383000.00
+5387460	sell	apartment	10179	Berlin	Engeldamm	\N	13.42810010	52.50780540	1997	2.00	eur	176500.00
+5387508	sell	apartment	10179	Berlin	Neue Grünstraße	15-16	13.40568460	52.50979010	\N	4.00	eur	466746.00
+5387378	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	448700.00
+5387362	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2005	2.00	eur	268000.00
+341643	sell	apartment	10115	Berlin	Boyenstraße	39	13.37175240	52.53718250	2013	4.00	eur	757102.00
+5387461	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	1900	3.00	eur	545000.00
+5387441	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	1997	1.50	eur	150000.00
+5387467	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	1900	2.00	eur	239000.00
+5387380	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	448600.00
+5387463	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	1900	2.00	eur	375000.00
+5387375	sell	apartment	10117	Berlin	Luisenstrae	15	13.37928580	52.52324510	\N	5.00	eur	999000.00
+5387359	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2008	2.00	eur	229000.00
+5387391	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	511812.00
+5387448	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	1900	2.00	eur	299000.00
+5387471	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	385000.00
+5387477	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	5.00	eur	849000.00
+5387636	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	550000.00
+5387598	sell	apartment	10117	Berlin	Marienstraße	25	13.38211020	52.52209510	\N	3.00	eur	470000.00
+334104	sell	apartment	10117	Berlin	Seydelstraße	19	13.40516906	52.50871105	1997	1.00	eur	165000.00
+5387588	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	1871	5.00	eur	3600000.00
+5387592	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	1872	5.00	eur	3800000.00
+333215	sell	apartment	10117	Berlin	Kommandantenstraße	76-79	13.40133830	52.50925790	2012	4.00	eur	447800.00
+5387639	sell	villa	10117	Berlin	\N	\N	13.38532280	52.52362850	1902	14.00	eur	2500000.00
+5387581	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1872	3.00	eur	865000.00
+5387646	sell	apartment	10117	Berlin	Leipziger Straße	44	13.39593080	52.51010570	1973	3.00	eur	295000.00
+5381147	sell	apartment	10117	Berlin	Kommandantenstraße	\N	13.40261680	52.50866790	\N	3.00	eur	421000.00
+5387521	sell	apartment	10117	Berlin	Hausvogteiplatz	14	13.39742230	52.51329610	2010	4.00	eur	1550000.00
+5387493	sell	apartment	10117	Berlin	Hausvogteiplatz	14	13.39742230	52.51329610	\N	3.00	eur	880000.00
+5387499	sell	apartment	10117	Berlin	Hausvogteiplatz	14	13.39742230	52.51329610	\N	3.00	eur	1850000.00
+339410	sell	apartment	10117	Berlin	Mittelstraße	53	13.38811340	52.51768060	1997	4.00	eur	294000.00
+5387465	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	499000.00
+5414237	sell	apartment	10437	Berlin	\N	\N	13.42135040	52.54498720	\N	2.00	eur	129000.00
+5387428	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	6.00	eur	2900000.00
+5387419	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	795000.00
+5387516	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	1.00	eur	149900.00
+5387468	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1900	2.50	eur	239000.00
+5387452	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1910	2.00	eur	150000.00
+5387498	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	1.00	eur	190000.00
+5387472	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	499000.00
+5387432	sell	apartment	10119	Berlin	Rückerstraße	5	13.40752950	52.52827570	\N	3.00	eur	170000.00
+5387497	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1950	1.00	eur	165000.00
+5515664	sell	single_family_house	13086	Berlin	\N	\N	13.46317160	52.55724170	\N	4.00	eur	395000.00
+347468	sell	apartment	10709	Berlin	Eisenzahnstraße	37	13.30476000	52.48958000	2013	3.50	eur	365000.00
+5387533	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	2.00	eur	230723.00
+5387507	sell	apartment	10115	Berlin	Schwartzkopffstraße	15	13.37991817	52.53505670	1905	1.00	eur	115000.00
+5387572	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	4.00	eur	388703.00
+5387489	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	553723.00
+5387573	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	387356.00
+5387552	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	309247.00
+5387529	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	498400.00
+310061	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	2014	2.00	eur	284100.00
+5387560	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	351074.00
+5387527	sell	apartment	10115	Berlin	Strelitzer Straße	63	13.39502749	52.53519690	2005	3.00	eur	525000.00
+5387483	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	351556.00
+5387517	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1903	7.00	eur	680000.00
+5387633	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	2700000.00
+5387522	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1861	2.00	eur	254000.00
+5387672	sell	apartment_maisonette	10119	Berlin	Fehrbelliner Straße	52	13.40152534	52.53398565	\N	4.00	eur	360000.00
+5387525	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1861	2.00	eur	254000.00
+5387692	sell	penthouse	10119	Berlin	\N	\N	13.41228620	52.53165650	1999	4.00	eur	1700000.00
+5387554	sell	apartment	10119	Berlin	\N	\N	13.40581140	52.53074100	\N	3.00	eur	270000.00
+5387519	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	2.00	eur	165000.00
+5387602	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	2013	4.00	eur	879500.00
+5387681	sell	apartment_maisonette	10119	Berlin	\N	\N	13.40550818	52.53012550	1950	2.00	eur	442000.00
+5387644	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1996	3.00	eur	545000.00
+5387654	sell	apartment	10119	Berlin	Torstraße	149	13.39801620	52.52960800	2010	5.00	eur	284000.00
+5403719	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	424469.00
+5387651	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1950	2.00	eur	442000.00
+321270	sell	apartment	10365	Berlin	Wotanstraße	26	13.49636010	52.51576930	1935	2.00	eur	74800.00
+5387689	sell	apartment	10119	Berlin	Zionskirchstraße	7	13.40136226	52.53572680	1905	1.00	eur	119000.00
+5387631	sell	single_family_house	10119	Berlin	\N	\N	13.41228620	52.53165650	1950	2.00	eur	442000.00
+5387621	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	211500.00
+5387570	sell	apartment	10179	Berlin	Neue Grünstraße	\N	13.40458370	52.50892910	\N	3.00	eur	466746.00
+5387647	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	422000.00
+5387673	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	647000.00
+5387638	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	5.00	eur	525000.00
+5387550	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.41941990	52.50616400	\N	0.00	eur	199200.00
+5387599	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	590000.00
+5387668	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	530000.00
+5387643	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	422000.00
+5387632	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	10.00	eur	3612500.00
+5387576	sell	apartment	10179	Berlin	Köpenicker Straße	39	13.42567120	52.50860770	1910	5.00	eur	585000.00
+5387630	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	139000.00
+5387664	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	492000.00
+5387652	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	450000.00
+5468472	sell	apartment	12169	Berlin	Elisenstraße	\N	13.33433210	52.45456130	1957	2.00	eur	79000.00
+5387608	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	2.00	eur	170000.00
+5468975	sell	apartment	12163	Berlin	\N	\N	13.31849683	52.46256712	1900	6.00	eur	449000.00
+5387582	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	258000.00
+5387615	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	365000.00
+5387569	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	3.00	eur	229000.00
+5387562	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	123039.00
+5387587	sell	apartment	10243	Berlin	Karl-Marx-Allee	55-57	13.43027500	52.51865090	1952	3.00	eur	114000.00
+5387591	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	3.00	eur	278000.00
+5387600	sell	apartment_maisonette	10243	Berlin	Graudenzer Straße	17	13.44840330	52.51509510	1905	2.00	eur	199000.00
+5387665	sell	apartment	10243	Berlin	Warschauer Straße	78	13.45334190	52.51328910	1900	3.00	eur	249999.00
+5387574	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	2.00	eur	205000.00
+309916	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	2014	4.00	eur	490448.00
+5387614	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	491236.00
+370077	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	2.00	eur	190000.00
+364390	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1995	2.00	eur	230000.00
+5397052	sell	penthouse	10117	Berlin	Seydelstraße	24	13.40401250	52.50958580	\N	4.00	eur	1100000.00
+5387641	sell	penthouse	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	2.00	eur	729845.00
+5387649	sell	penthouse	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	531067.00
+5387718	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	398700.00
+5385580	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1910	2.00	eur	316000.00
+5385588	sell	apartment	10119	Berlin	Almstadtstraße	5	13.40892780	52.52461370	1880	3.00	eur	439000.00
+607919	sell	apartment	13595	Berlin	\N	\N	13.19402490	52.52047090	1906	2.00	eur	79900.00
+5387721	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1900	3.00	eur	292500.00
+5550877	sell	apartment	13595	Berlin	\N	\N	13.19402490	52.52047090	1926	3.00	eur	110000.00
+340732	sell	apartment	10587	Berlin	\N	\N	13.30688680	52.51741170	1910	2.00	eur	168256.00
+5387656	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	2.00	eur	224774.00
+5387677	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	2.00	eur	450840.00
+5387733	sell	mid_terrace_house	10117	Berlin	\N	\N	13.38532280	52.52362850	2009	10.00	eur	2890000.00
+5387802	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	447800.00
+5387758	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	691700.00
+5387810	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	691600.00
+5387752	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	550000.00
+5387697	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	450000.00
+5387777	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	2000000.00
+5387824	sell	apartment_maisonette	10117	Berlin	Behrenstraße	29	13.39033390	52.51562130	1996	3.00	eur	676000.00
+5387740	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	2.00	eur	234290.00
+5387693	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	1.00	eur	98000.00
+5387684	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	680000.00
+5387682	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	688000.00
+5387837	sell	apartment	10179	Berlin	Alte Jakobstraße	92	13.40607670	52.50895790	\N	4.00	eur	339000.00
+5387847	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2010	5.00	eur	585000.00
+321631	sell	apartment	10179	Berlin	Alte Jakobstraße	92	13.40607670	52.50895790	2012	3.00	eur	639000.00
+5387818	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	680000.00
+5387728	sell	apartment	10179	Berlin	Dresdener Straße	113	13.41338530	52.50513945	\N	5.00	eur	455469.00
+5387795	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	440000.00
+5387842	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	440000.00
+5387769	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	717000.00
+5387833	sell	apartment	10179	Berlin	Alte Jakobstraße	92	13.40607670	52.50895790	\N	2.00	eur	214000.00
+5387851	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	493900.00
+5387741	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	2.00	eur	201000.00
+5387722	sell	apartment	10243	Berlin	Gubener Straße	0	13.44485680	52.51533600	1904	4.00	eur	378000.00
+5387783	sell	apartment	10243	Berlin	Kadiner Straße	\N	13.45035620	52.51391710	1900	3.00	eur	220000.00
+5387816	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1996	2.00	eur	139000.00
+11680406	sell	apartment	10585	Berlin	\N	\N	13.30410540	52.51660230	\N	6.00	eur	395000.00
+5387764	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	3.00	eur	198000.00
+5387759	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	121700.00
+5387739	sell	apartment	10243	Berlin	Karl-Marx-Allee	60	13.43101470	52.51779140	1953	4.00	eur	200000.00
+5387695	sell	apartment	10243	Berlin	Torellstraße	4	13.44795620	52.51117670	1996	3.00	eur	230000.00
+5387761	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	220000.00
+5387927	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1880	4.00	eur	595000.00
+5387893	sell	apartment_maisonette	10119	Berlin	Brunnenstraße	182	13.39941640	52.53159110	2010	2.00	eur	159000.00
+5387785	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	2.00	eur	299900.00
+5387952	sell	apartment_maisonette	10119	Berlin	\N	\N	13.41228620	52.53165650	1890	3.00	eur	280000.00
+5387780	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	579900.00
+5387859	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1995	1.50	eur	175000.00
+5387809	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	2000	3.00	eur	450000.00
+5387977	sell	apartment	10119	Berlin	Brunnenstraße	178	13.39900850	52.53200830	2005	2.00	eur	195000.00
+5387861	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1987	1.00	eur	138000.00
+5387711	sell	apartment	10119	Berlin	Gipsstraße	17	13.40286130	52.52619040	1996	3.00	eur	545000.00
+5387962	sell	apartment	10119	Berlin	Fehrbelliner Straße	35	13.40120819	52.53481660	1900	4.00	eur	525000.00
+5443606	sell	apartment	10781	Berlin	Winterfeldtstraße	11	13.35922690	52.49609160	1966	1.00	eur	85000.00
+12324081	rent	apartment	12524	Berlin	Porzer Straße	19	13.54563200	52.40631820	1997	4.00	eur	590.00
+11100055	rent	apartment	12524	Berlin	Semmelweisstraße	57	13.53227990	52.42320090	\N	2.00	eur	650.00
+5387857	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	384800.00
+5387871	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	398600.00
+5387868	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	397800.00
+5387814	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	544300.00
+5387864	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	424700.00
+5387852	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	130000.00
+5387860	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1908	1.00	eur	89000.00
+5387840	sell	apartment	10243	Berlin	Kopernikusstraße	5	13.45086210	52.51076820	\N	2.00	eur	205000.00
+5387920	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	72000.00
+5387909	sell	penthouse	10243	Berlin	Marchlewskistraße	\N	13.44916410	52.50820800	1960	4.00	eur	548000.00
+5387848	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	150000.00
+5387899	sell	apartment	10243	Berlin	Frankfurter Tor	\N	13.45375120	52.51589520	2004	2.00	eur	385000.00
+5388011	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	493900.00
+5458523	sell	apartment	12051	Berlin	\N	\N	13.43387110	52.46336490	1914	2.00	eur	67900.00
+5387972	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	420000.00
+5387898	sell	apartment	10117	Berlin	\N	\N	13.38475390	52.51550980	\N	4.00	eur	1330000.00
+337083	sell	apartment	10117	Berlin	Schützenstraße	70	13.39139790	52.50872800	1997	1.50	eur	175000.00
+5387843	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	259000.00
+5387881	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1860	2.00	eur	595000.00
+5387945	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	279000.00
+5387941	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	451000.00
+5387877	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	526600.00
+5387953	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	723000.00
+5387835	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	700000.00
+5387887	sell	apartment	10117	Berlin	\N	\N	13.38475390	52.51550980	\N	3.00	eur	526600.00
+5387849	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	448000.00
+5387923	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1900	3.00	eur	598000.00
+5435046	sell	apartment	10585	Berlin	\N	\N	13.30591980	52.51753440	1960	2.00	eur	214000.00
+5387885	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	286100.00
+5387894	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	317300.00
+5387896	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	365100.00
+5387886	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	170500.00
+5387883	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	286100.00
+5387996	sell	apartment	10179	Berlin	Michaelkirchstraße	15	13.42202686	52.51056835	1890	4.00	eur	369000.00
+5387875	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	338100.00
+5387870	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	170500.00
+5388009	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	575000.00
+5387999	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	722000.00
+5387980	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	341200.00
+5388018	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	384000.00
+5414255	sell	apartment	10437	Berlin	\N	\N	13.41995060	52.54600630	1996	3.00	eur	209000.00
+5388039	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	595000.00
+5414334	sell	apartment_maisonette	10409	Berlin	\N	\N	13.45519750	52.54342460	\N	5.00	eur	445000.00
+5388007	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	425000.00
+5388050	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	624300.00
+5388036	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	235000.00
+5387979	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	448600.00
+5388053	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	645000.00
+5388028	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	698000.00
+5388058	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	494000.00
+5387973	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	848600.00
+5387919	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	497800.00
+5387911	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	597300.00
+5388034	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	1.00	eur	67000.00
+5388087	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	2005	4.00	eur	497000.00
+5388076	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	253000.00
+5388004	sell	apartment	10117	Berlin	\N	\N	13.38885990	52.51703650	\N	2.00	eur	111000.00
+5388073	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	165000.00
+5388091	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	253000.00
+5388081	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	150000.00
+5388093	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1904	3.00	eur	235000.00
+5388059	sell	apartment	10245	Berlin	Holteistraße	\N	13.46581130	52.50811090	\N	1.00	eur	39000.00
+5388043	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	298000.00
+5388096	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1914	1.00	eur	70000.00
+5388070	sell	apartment	10245	Berlin	Grünberger Straße	\N	13.45705530	52.51170970	\N	3.00	eur	61800.00
+5388055	sell	apartment	10245	Berlin	Gärtnerstraße	\N	13.45997730	52.50898340	\N	3.00	eur	150000.00
+5388350	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	5.00	eur	950000.00
+329059	sell	apartment	10587	Berlin	Wintersteinstraße	18	13.30670039	52.51918430	1920	2.00	eur	138580.00
+5388113	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	275000.00
+5388082	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	2.00	eur	219427.00
+577585	sell	single_family_house	13469	Berlin	Benekendorffstraße	202	13.34875137	52.61688360	\N	3.00	eur	169000.00
+5388104	sell	apartment	10243	Berlin	Karl-Marx-Allee	\N	13.42955100	52.51821320	1954	2.00	eur	145000.00
+5388041	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	\N	4.00	eur	375000.00
+5387903	sell	apartment	10243	Berlin	Karl-Marx-Allee	\N	13.42955100	52.51821320	1951	3.00	eur	141000.00
+5388030	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	\N	4.00	eur	375000.00
+5388026	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	64000.00
+5387925	sell	apartment	10243	Berlin	Gubener Straße	\N	13.44800100	52.51260640	1904	1.00	eur	64000.00
+5388013	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	115000.00
+5388115	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	270000.00
+302643	sell	apartment_maisonette	10119	Berlin	Zionskirchstraße	4	13.40090560	52.53542240	1918	2.00	eur	198000.00
+5388121	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1859	2.00	eur	217000.00
+5387985	sell	apartment_maisonette	10119	Berlin	\N	\N	13.41228620	52.53165650	1999	4.00	eur	1350000.00
+5388180	sell	apartment	10119	Berlin	Rückerstraße	8	13.40693070	52.52796740	2003	3.00	eur	492500.00
+5388067	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1887	2.00	eur	330000.00
+5388135	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	995000.00
+5388020	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	165000.00
+5388147	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	1100000.00
+5387993	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1910	2.00	eur	250000.00
+5387988	sell	apartment	10119	Berlin	Steinstraße	38	13.40710090	52.52630290	2004	3.00	eur	395000.00
+5388185	sell	apartment	10179	Berlin	Michaelkirchplatz	4-6	13.42020780	52.50671060	\N	0.00	eur	317300.00
+5388116	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1908	1.50	eur	136000.00
+5388099	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	449000.00
+5388170	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2009	2.00	eur	350000.00
+5388140	sell	apartment_maisonette	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	5.00	eur	525000.00
+5388144	sell	apartment	10179	Berlin	Dresdener Straße	\N	13.41474100	52.50463330	\N	3.00	eur	581700.00
+5388088	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	344900.00
+5388133	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	5.00	eur	525000.00
+5388105	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	341200.00
+5388167	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.41941990	52.50616400	\N	0.00	eur	166400.00
+5388062	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	465000.00
+5388173	sell	apartment	10179	Berlin	Dresdener Straße	110/111	13.41439220	52.50554530	\N	4.00	eur	659200.00
+5388107	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	5.00	eur	512500.00
+5388253	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	12.00	eur	2000000.00
+337941	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2012	3.00	eur	518000.00
+5388146	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1997	1.50	eur	175000.00
+5388040	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	557000.00
+313684	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1992	4.00	eur	429000.00
+5388179	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	695000.00
+5388235	sell	apartment	10117	Berlin	Mohrenstraße	3	13.38491130	52.51165870	2001	2.00	eur	120000.00
+5388249	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	12.00	eur	2500000.00
+5388208	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1355000.00
+5506033	sell	apartment	12587	Berlin	\N	\N	13.60090800	52.45226790	\N	2.00	eur	117000.00
+5388206	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	279000.00
+5388159	sell	apartment	10117	Berlin	Leipziger Straße	47	13.39763660	52.51020540	1973	2.00	eur	87000.00
+5388141	sell	apartment	10117	Berlin	\N	\N	13.38475390	52.51550980	\N	4.00	eur	1330000.00
+5388209	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	315000.00
+5427458	sell	apartment	10587	Berlin	\N	\N	13.30688680	52.51741170	\N	3.00	eur	332000.00
+5388218	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	227800.00
+5383549	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	449000.00
+309645	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	4.00	eur	295000.00
+5396124	sell	apartment_maisonette	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	4.00	eur	569000.00
+5388237	sell	apartment	10245	Berlin	Bödikerstraße	\N	13.46305710	52.49931490	1932	2.00	eur	75000.00
+5458727	sell	apartment	12055	Berlin	Braunschweiger Straße	\N	13.45099680	52.47174200	\N	4.00	eur	169000.00
+5388101	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1998	3.00	eur	160000.00
+5388192	sell	apartment	10245	Berlin	Boxhagener Straße	117	13.45554420	52.51403630	1903	4.00	eur	299000.00
+5388153	sell	apartment	10245	Berlin	Danneckerstraße	16	13.45390190	52.50216350	1904	3.00	eur	139000.00
+5458538	sell	apartment	12047	Berlin	\N	\N	13.42824920	52.49049396	1990	5.00	eur	675000.00
+5388243	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	76000.00
+5388247	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	465000.00
+5458726	sell	apartment	12057	Berlin	Aronsstraße	65	13.46447650	52.47308550	1930	2.00	eur	75000.00
+5388172	sell	apartment	10245	Berlin	Boxhagener Straße	117	13.45531010	52.51375600	1904	4.00	eur	204300.00
+5388160	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	3.00	eur	163000.00
+5388201	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	183000.00
+5388158	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1902	3.00	eur	144900.00
+5388234	sell	apartment	10245	Berlin	Gärtnerstraße	\N	13.45997730	52.50898340	\N	2.00	eur	133000.00
+5388193	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	\N	3.00	eur	282000.00
+460585	sell	single_family_house	12249	Berlin	\N	\N	13.35875110	52.42436570	1968	5.00	eur	359000.00
+5388161	sell	apartment	10243	Berlin	An der Schillingbrücke	\N	13.42990950	52.50992370	2001	3.00	eur	348000.00
+5388129	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	201476.00
+5388250	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2004	3.00	eur	189000.00
+5388157	sell	apartment	10243	Berlin	Koppenstraße	\N	13.43608000	52.51531780	1957	2.00	eur	83000.00
+5388297	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	0.00
+5388188	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	\N	2.00	eur	136000.00
+5388199	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	1903	3.00	eur	239000.00
+5388299	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	\N	2.00	eur	207500.00
+5388149	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	174930.00
+5388177	sell	apartment	10243	Berlin	Lasdehner Straße	26	13.44811376	52.51416150	\N	3.00	eur	274500.00
+5388262	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	180957.00
+5440811	sell	apartment	10781	Berlin	\N	\N	13.34923220	52.49152830	1884	5.00	eur	560000.00
+5440833	sell	apartment	10781	Berlin	\N	\N	13.34923220	52.49152830	1900	3.00	eur	211500.00
+5388171	sell	mid_terrace_house	10115	Berlin	Gartenstraße	99	13.39060310	52.53085440	\N	4.00	eur	642550.00
+5388282	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	445000.00
+5388277	sell	apartment	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	2.00	eur	325000.00
+5388213	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1957	1.00	eur	65000.00
+5388284	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	234600.00
+5388275	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	399000.00
+343411	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	2012	3.00	eur	617500.00
+5388152	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	272200.00
+5387095	sell	apartment	10115	Berlin	Scharnhorststraße	15	13.36903430	52.53562530	\N	4.00	eur	379900.00
+342664	sell	penthouse	10115	Berlin	Boyenstraße	39	13.37175240	52.53718250	2013	3.00	eur	924462.00
+5388156	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	299300.00
+5387546	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	2.00	eur	269378.00
+330624	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	2013	5.00	eur	2700000.00
+5435095	sell	apartment	10585	Berlin	Otto-Suhr-Allee	114	13.30568490	52.51798680	1956	3.00	eur	198000.00
+5388334	sell	apartment_maisonette	10119	Berlin	Zionskirchstraße	4	13.40090560	52.53542240	1900	2.00	eur	259500.00
+330176	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2009	3.00	eur	500000.00
+333536	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	2.00	eur	299000.00
+334032	sell	multi_family_house	10119	Berlin	Almstadtstraße	43	13.40971220	52.52677800	\N	28.00	eur	2950000.00
+303223	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	3.00	eur	230000.00
+5388194	sell	penthouse	10119	Berlin	Kastanienallee	64	13.40600910	52.53463310	\N	5.00	eur	1450000.00
+5388421	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2004	3.00	eur	189000.00
+5388320	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1900	2.00	eur	299000.00
+5388369	sell	apartment	10119	Berlin	Christinenstraße	23	13.41079140	52.53283720	1900	2.00	eur	175000.00
+332911	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1915	2.00	eur	185000.00
+5440878	sell	apartment	10781	Berlin	Karl-Schrader-Straße	2	13.35108130	52.49171390	1900	2.00	eur	165000.00
+5440853	sell	apartment	10711	Berlin	Heilbronner Straße	10	13.29412000	52.50131000	\N	4.00	eur	697000.00
+5388314	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	218800.00
+5440569	sell	apartment	10717	Berlin	\N	\N	13.32725859	52.49059557	\N	2.00	eur	336088.00
+5388292	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2004	6.00	eur	515000.00
+5388229	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	299500.00
+5388343	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	5.00	eur	512900.00
+5388214	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	4.00	eur	499999.00
+5388338	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	218800.00
+5388210	sell	apartment	10179	Berlin	Köpenicker Straße	\N	13.42775170	52.50754990	1910	3.00	eur	537200.00
+5388223	sell	apartment_maisonette	10179	Berlin	Michaelkirchstraße	12	13.42169260	52.51012090	\N	5.00	eur	1192000.00
+5388219	sell	single_family_house	10179	Berlin	Michaelkirchstraße	12	13.42169260	52.51012090	\N	5.00	eur	1192000.00
+5388212	sell	apartment	10179	Berlin	Neue Grünstraße	\N	13.40458370	52.50892910	\N	3.00	eur	269000.00
+5388281	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	80000.00
+5388252	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	299500.00
+5388293	sell	apartment	10179	Berlin	Adalbertstraße	33	13.42325520	52.50663980	\N	2.00	eur	85000.00
+5388331	sell	apartment	10179	Berlin	Singerstraße	111	13.42534220	52.51645060	1966	2.00	eur	84180.00
+5427527	sell	apartment	10587	Berlin	\N	\N	13.30688680	52.51741170	\N	3.00	eur	139000.00
+5469218	sell	apartment_maisonette	12163	Berlin	\N	\N	13.31849683	52.46256712	1908	5.00	eur	475000.00
+5388255	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	59500.00
+5388273	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	149000.00
+5388336	sell	apartment	10245	Berlin	Alt-Stralau	32	13.47857760	52.49314180	\N	3.00	eur	373500.00
+5388264	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1999	2.00	eur	258000.00
+5388266	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1998	3.00	eur	176000.00
+5388280	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1998	0.00	eur	199500.00
+5388322	sell	apartment	10245	Berlin	Helmerdingstraße	5	13.46351560	52.50526810	\N	2.00	eur	131606.00
+5388288	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1891	3.00	eur	140000.00
+5388269	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	6.00	eur	512000.00
+5388349	sell	apartment	10245	Berlin	Alt-Stralau	32	13.47857760	52.49314180	\N	4.00	eur	639900.00
+5388344	sell	apartment	10245	Berlin	Alt-Stralau	32	13.47857760	52.49314180	\N	3.00	eur	383500.00
+5388500	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	7.00	eur	4650000.00
+5388459	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2004	2.00	eur	360000.00
+5388260	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	560000.00
+5388304	sell	apartment	10117	Berlin	Reinhardtstraße	\N	13.37775180	52.52226700	2000	2.00	eur	278418.00
+343985	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	1.50	eur	110000.00
+5388454	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	560000.00
+5388312	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	723000.00
+5388495	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	2009	9.50	eur	2490000.00
+5388491	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2001	3.50	eur	494390.00
+5388276	sell	apartment	10117	Berlin	Luisenstraße	\N	13.38017680	52.51961630	1870	1.50	eur	110000.00
+5388376	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	723000.00
+5388519	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	230300.00
+5388448	sell	apartment	10117	Berlin	Hausvogteiplatz	13	13.39733940	52.51298630	\N	4.00	eur	7725000.00
+5388291	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	795000.00
+5388300	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1903	9.50	eur	998000.00
+5388303	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	450000.00
+5388436	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	3.00	eur	320000.00
+5388333	sell	mid_terrace_house	10115	Berlin	Novalisstraße	14	13.38860070	52.52816370	\N	5.00	eur	458000.00
+5388408	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	754000.00
+5388413	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	454320.00
+5388295	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1903	14.00	eur	998000.00
+5388353	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	294500.00
+5388385	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	794000.00
+5388439	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1993	1.00	eur	83000.00
+5388308	sell	penthouse	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	6.00	eur	1895000.00
+5388302	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	\N	2.00	eur	212000.00
+11096076	sell	penthouse	12207	Berlin	\N	\N	13.30770160	52.42936960	\N	5.00	eur	652000.00
+5388365	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	320000.00
+5388316	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	\N	2.00	eur	207500.00
+5388400	sell	apartment	10243	Berlin	Singerstraße	38	13.43404150	52.51474750	1965	3.00	eur	106328.00
+5388403	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	2.00	eur	449000.00
+5388409	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	152000.00
+5388392	sell	apartment	10243	Berlin	Kopernikusstraße	\N	13.45043340	52.51096910	\N	4.00	eur	355000.00
+5388424	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	623000.00
+5388378	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	1200000.00
+5388370	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	189000.00
+5388337	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	269000.00
+5388373	sell	apartment	10243	Berlin	Karl-Marx-Allee	56	13.43001690	52.51793340	1955	2.00	eur	169000.00
+5388358	sell	apartment_maisonette	10179	Berlin	Alte Jakobstraße	76	13.40887020	52.51044490	1999	3.00	eur	299000.00
+5496262	sell	villa	12559	Berlin	\N	\N	13.69519420	52.42883780	\N	3.00	eur	151700.00
+5496062	sell	penthouse	12555	Berlin	Egersfelder Allee	26	13.57292000	52.47215000	1997	2.00	eur	199000.00
+5388447	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	500600.00
+5388490	sell	apartment	10179	Berlin	Annenstraße	\N	13.41513580	52.50746720	\N	3.50	eur	342500.00
+5388345	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	5.00	eur	512900.00
+5388458	sell	apartment	10179	Berlin	Annenstraße	\N	13.41513580	52.50746720	\N	3.00	eur	705000.00
+5388493	sell	apartment	10179	Berlin	Inselstraße	\N	13.41318280	52.51172340	2011	3.00	eur	495000.00
+5388486	sell	apartment	10179	Berlin	Sebastianstraße	14-15	13.41127810	52.50567810	\N	4.00	eur	388557.00
+5388462	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	575000.00
+5388504	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1997	2.00	eur	220000.00
+5388407	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	288100.00
+5388502	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1998	2.00	eur	160000.00
+5388410	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	410500.00
+5388429	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	241500.00
+5388475	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	494000.00
+5388483	sell	apartment	10179	Berlin	Sebastianstraße	14-15	13.41127810	52.50567810	\N	2.00	eur	190998.00
+5388395	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	452900.00
+5388449	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	2.00	eur	120000.00
+5388451	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	3.00	eur	219000.00
+5388422	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1904	1.00	eur	49000.00
+5388433	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	253000.00
+5475123	sell	apartment	12249	Berlin	Gallwitzallee	73	13.34806930	52.42953830	1956	2.00	eur	68600.00
+5388487	sell	apartment	10245	Berlin	Simplonstraße	48	13.46315590	52.50598220	\N	4.00	eur	390000.00
+5388354	sell	apartment	10245	Berlin	Alt-Stralau	32	13.47857760	52.49314180	\N	4.00	eur	519500.00
+5388455	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1897	3.00	eur	220000.00
+5388428	sell	apartment	10245	Berlin	Sonntagstraße	\N	13.46384180	52.50774110	1904	2.00	eur	136000.00
+5388384	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	120000.00
+5388480	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1920	4.00	eur	485000.00
+5388437	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	61800.00
+5388359	sell	apartment	10245	Berlin	Alt-Stralau	34	13.47595450	52.49293085	\N	4.00	eur	499500.00
+337510	sell	apartment	10119	Berlin	Fehrbelliner Straße	35	13.40120819	52.53481660	1900	4.00	eur	635000.00
+11750016	sell	single_family_house	10117	Berlin	\N	\N	13.38885990	52.51703650	\N	4.00	eur	188500.00
+5388507	sell	apartment	10119	Berlin	Kastanienallee	38	13.40628820	52.53554940	\N	3.00	eur	1195000.00
+5388419	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	2.00	eur	650000.00
+338080	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	2015	9.00	eur	2450000.00
+5388494	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1998	1.00	eur	269000.00
+343922	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	2013	3.00	eur	230000.00
+302234	sell	apartment	10119	Berlin	Choriner Straße	11	13.40702100	52.53290140	1997	3.00	eur	350000.00
+5388510	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	1349000.00
+5388435	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1850	5.00	eur	995000.00
+5388426	sell	apartment	10119	Berlin	Max-Beer-Straße	29	13.40850040	52.52633650	1825	5.00	eur	1355000.00
+5388549	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1925	2.00	eur	238000.00
+5388583	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	383135.00
+434887	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2014	4.00	eur	782000.00
+5388589	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	4.00	eur	1587600.00
+5388457	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	165000.00
+5388538	sell	apartment	10243	Berlin	Gubener Straße	\N	13.44800100	52.51260640	1904	1.00	eur	65000.00
+5388574	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	910260.00
+5388473	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	125000.00
+5388467	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	239000.00
+5388463	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	1.00	eur	120000.00
+5388489	sell	apartment	10243	Berlin	Karl-Marx-Allee	127	13.44852850	52.51691170	\N	4.00	eur	228822.00
+5388579	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	206080.00
+5387846	sell	apartment	10243	Berlin	Karl-Marx-Allee	\N	13.42955100	52.51821320	1954	2.00	eur	86200.00
+5443510	sell	apartment	10779	Berlin	\N	\N	13.34583010	52.49402810	\N	3.00	eur	219000.00
+5388498	sell	apartment	10245	Berlin	Simon-Dach-Straße	20	13.45541500	52.50873570	1900	2.00	eur	187500.00
+5388633	sell	apartment	10245	Berlin	Alt-Stralau	4	13.46730000	52.49566000	\N	2.00	eur	245242.00
+5525152	sell	single_family_house	13127	Berlin	\N	\N	13.45062430	52.61022710	1996	6.50	eur	420000.00
+5388501	sell	apartment	10245	Berlin	Sonntagstraße	\N	13.46384180	52.50774110	1904	2.00	eur	180000.00
+5388668	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	230652.00
+5388662	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	299438.00
+5388652	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	168470.00
+5388658	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	240480.00
+5388666	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	173230.00
+5388623	sell	apartment_maisonette	10245	Berlin	Alt-Stralau	4	13.46730000	52.49566000	\N	4.00	eur	558675.00
+5388671	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	307564.00
+5388550	sell	apartment	10245	Berlin	Alt-Stralau	4	13.46730000	52.49566000	\N	2.00	eur	267424.00
+5388665	sell	apartment_maisonette	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	558675.00
+5389316	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	3.00	eur	180000.00
+5388536	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	724300.00
+5388523	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	298600.00
+5388611	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	549000.00
+5388590	sell	apartment	10115	Berlin	Linienstraße	\N	13.39289560	52.52748160	\N	1.00	eur	145000.00
+594470	sell	multi_family_house	13597	Berlin	\N	\N	13.20837590	52.53912440	1890	6.00	eur	350000.00
+5388525	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	233000.00
+5388604	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	399000.00
+5388518	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	186000.00
+5388581	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	482600.00
+5388566	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	230723.00
+5388607	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	397800.00
+5388584	sell	apartment_maisonette	10115	Berlin	Brunnenstraße	\N	13.39639100	52.53790380	1900	2.50	eur	139900.00
+5388497	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	384800.00
+5388514	sell	apartment	10115	Berlin	Anklamer Straße	14	13.39846280	52.53485300	1994	3.00	eur	360000.00
+5388561	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	388368.00
+5388569	sell	apartment_maisonette	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	525000.00
+315770	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	980000.00
+5388780	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	2.00	eur	518072.00
+5388616	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	8.00	eur	6000000.00
+5388644	sell	apartment	10117	Berlin	\N	\N	13.38475390	52.51550980	\N	3.00	eur	362500.00
+332154	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	5.00	eur	800000.00
+5388508	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	6.00	eur	3650000.00
+403325	sell	apartment	10117	Berlin	Mohrenstraße	2	13.38563050	52.51085950	2001	2.00	eur	155000.00
+5388749	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2000	3.00	eur	420000.00
+5388769	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	2.00	eur	193182.00
+5388742	sell	apartment	10117	Berlin	Mittelstraße	\N	13.38463710	52.51778320	\N	4.00	eur	1984500.00
+310783	sell	apartment	10117	Berlin	Mittelstraße	\N	13.38463710	52.51778320	2013	4.00	eur	2424157.00
+5388537	sell	apartment	10117	Berlin	Kommandantenstraße	76-79	13.40133830	52.50925790	\N	4.00	eur	1270000.00
+5388599	sell	semi_detached_house	10117	Berlin	\N	\N	13.38532280	52.52362850	1995	4.00	eur	280000.00
+5388756	sell	apartment	10117	Berlin	Marienstraße	\N	13.38267770	52.52205430	\N	2.00	eur	260000.00
+308127	sell	apartment	10179	Berlin	Neue Roßstraße	17	13.40910460	52.51143890	2012	3.00	eur	380000.00
+5388630	sell	apartment	10179	Berlin	Wallstraße	26	13.40836930	52.51174550	\N	2.00	eur	274000.00
+5414522	sell	apartment	10409	Berlin	Hosemannstraße	9	13.43695900	52.54430010	\N	6.00	eur	820000.00
+5388562	sell	multi_family_house	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	1.00	eur	3025000.00
+5388641	sell	apartment	10179	Berlin	Annenstraße	\N	13.41513580	52.50746720	\N	4.00	eur	412500.00
+5388639	sell	apartment	10179	Berlin	Neue Roßstraße	16	13.40901970	52.51154520	\N	3.00	eur	357000.00
+5388673	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	306396.00
+5388624	sell	apartment	10179	Berlin	Neue Roßstraße	16	13.40901970	52.51154520	\N	4.00	eur	486000.00
+5427524	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	1900	2.00	eur	101000.00
+5388634	sell	apartment	10179	Berlin	Wallstraße	25	13.40851590	52.51120380	\N	3.00	eur	353000.00
+5388660	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	722000.00
+5388572	sell	multi_family_house	10179	Berlin	Wallstraße	88	13.40723230	52.51164380	1875	1.00	eur	3025000.00
+5388539	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	362100.00
+5388534	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	302800.00
+5388646	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	422000.00
+5388567	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	2.00	eur	105000.00
+5388627	sell	apartment	10179	Berlin	Wallstraße	26	13.40836930	52.51174550	\N	4.00	eur	629000.00
+5388698	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	3.00	eur	174930.00
+5388719	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	4.00	eur	1974480.00
+5388656	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	478800.00
+5388663	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	4.00	eur	557400.00
+5388638	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1974480.00
+5388621	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	190720.00
+5388715	sell	penthouse	10243	Berlin	Kopernikusstraße	32	13.45071330	52.51102110	2010	4.00	eur	798000.00
+5388613	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	910260.00
+5388676	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	383135.00
+5388667	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	645010.00
+5388593	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	64000.00
+5388732	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	1.00	eur	260550.00
+5388675	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	557400.00
+5388678	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	3.00	eur	210000.00
+5435084	sell	apartment	10711	Berlin	Damaschkestraße	8	13.30135280	52.50010870	1908	3.00	eur	240000.00
+5388720	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	1.00	eur	63000.00
+5388712	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	320000.00
+5388704	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	56000.00
+5388733	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	149000.00
+5388761	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	235000.00
+5388728	sell	apartment	10247	Berlin	Oderstraße	\N	13.46970250	52.51065550	1900	2.00	eur	53500.00
+5388699	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	168000.00
+5388709	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	203000.00
+5388748	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	165000.00
+5388717	sell	apartment	10247	Berlin	Eldenaer Straße	\N	13.47053170	52.52046710	1900	3.00	eur	70000.00
+343728	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1831	3.00	eur	395000.00
+5388637	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	275000.00
+451989	sell	apartment	10999	Berlin	Paul-Lincke-Ufer	4	13.43541460	52.49192600	1890	2.00	eur	686400.00
+5388691	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	355000.00
+5458567	sell	apartment	10999	Berlin	\N	\N	13.41970650	52.49668640	1906	3.00	eur	749000.00
+5388686	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2005	3.00	eur	499000.00
+5388629	sell	apartment	10119	Berlin	Zehdenicker Straße	12	13.40353140	52.53141990	\N	3.00	eur	399000.00
+5388714	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	4.00	eur	1100000.00
+5388654	sell	apartment	10119	Berlin	Linienstraße	217	13.40686790	52.52843840	2010	3.00	eur	650000.00
+5388739	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	2000	2.00	eur	255000.00
+5388710	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2000	2.00	eur	255000.00
+5388746	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	2005	3.00	eur	499000.00
+345570	sell	apartment	10119	Berlin	Gipsstraße	16	13.40194830	52.52580870	1998	1.50	eur	219000.00
+5388738	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1918	1.00	eur	165000.00
+5388679	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1900	3.00	eur	399000.00
+5388758	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1831	3.00	eur	1195000.00
+5388744	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	2002	3.00	eur	420000.00
+5388625	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	624300.00
+5388636	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	645000.00
+5389064	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	592384.00
+5388132	sell	apartment	10115	Berlin	Invalidenstraße	\N	13.37409180	52.52783820	1900	4.00	eur	710000.00
+5389080	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	724950.00
+5389076	sell	apartment	10115	Berlin	Torstraße	\N	13.38744370	52.52720210	2010	2.00	eur	255000.00
+5389010	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	435000.00
+5389060	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	579324.00
+5388835	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	422000.00
+5388741	sell	apartment	10179	Berlin	Dresdener Straße	34	13.41580820	52.50539265	\N	2.00	eur	331485.00
+5388799	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	71	13.41269000	52.50629000	\N	3.00	eur	290000.00
+5388832	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	657000.00
+5388706	sell	apartment	10179	Berlin	Annenstraße	\N	13.41513580	52.50746720	\N	3.00	eur	412000.00
+5388683	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	73	13.41224670	52.50558090	\N	2.00	eur	243400.00
+5388822	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	651900.00
+5388725	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	496500.00
+5388753	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	722000.00
+5388826	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	494000.00
+5388664	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	1335000.00
+5388718	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	333400.00
+5388721	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	312200.00
+5388806	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	71	13.41269000	52.50629000	\N	4.00	eur	350000.00
+5388837	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	610000.00
+5388680	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	332028.00
+5388688	sell	apartment_maisonette	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	595725.00
+465925	sell	apartment	12249	Berlin	Gallwitzallee	63	13.34732500	52.43003100	1956	3.00	eur	96800.00
+5388677	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	344692.00
+5388355	sell	apartment	10245	Berlin	Alt-Stralau	32	13.47857760	52.49314180	\N	4.00	eur	623900.00
+5388708	sell	apartment	10245	Berlin	Grünberger Straße	\N	13.45705530	52.51170970	1900	2.00	eur	61800.00
+5388690	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	169668.00
+5388692	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	159000.00
+5388750	sell	apartment	10245	Berlin	Grünberger Straße	30	13.45172320	52.51246410	1900	3.00	eur	69000.00
+5388747	sell	apartment	10245	Berlin	Sonntagstraße	\N	13.46384180	52.50774110	1910	3.00	eur	253000.00
+5388694	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	3.00	eur	179000.00
+5388734	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	302667.00
+5388727	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	676163.00
+5388786	sell	apartment	10243	Berlin	Hildegard-Jadamowitz-Straße	\N	13.44623160	52.51599700	1910	1.00	eur	73000.00
+5388821	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	0.00
+5388771	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	478800.00
+5388763	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	1118340.00
+5388770	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	383135.00
+5388777	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	645010.00
+5388760	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	4.00	eur	1587600.00
+5388775	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	710100.00
+5388820	sell	apartment	10243	Berlin	Grünberger Straße	\N	13.45122130	52.51268110	1900	1.50	eur	125000.00
+5388809	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	2.00	eur	90000.00
+5388841	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	722000.00
+5388828	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	575000.00
+5388824	sell	apartment	10243	Berlin	Strausberger Platz	\N	13.42757110	52.51868730	1952	2.00	eur	107000.00
+5388803	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	230652.00
+5388861	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	0.00	eur	593500.00
+5388812	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	595725.00
+5388774	sell	apartment	10245	Berlin	Döringstraße	1	13.46263640	52.50608650	\N	4.00	eur	410000.00
+5388874	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	501727.00
+5388936	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	91000.00
+5388791	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	168470.00
+5388916	sell	apartment	10245	Berlin	Am Speicher	\N	13.47460470	52.49609180	\N	5.00	eur	530000.00
+5388840	sell	single_family_house	10247	Berlin	Frankfurter Allee	10	13.45640070	52.51526630	\N	6.00	eur	100000.00
+5388788	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1899	1.00	eur	59500.00
+5388876	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	5.00	eur	515000.00
+5388811	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	203000.00
+5388855	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1996	2.00	eur	112000.00
+5388923	sell	apartment	10247	Berlin	Samariterstraße	\N	13.46558440	52.51731180	1905	1.00	eur	79000.00
+5388789	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45075910	52.52019930	1900	3.00	eur	273000.00
+5388920	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	188795.00
+5388804	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	75000.00
+5388868	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	200000.00
+5388915	sell	apartment	10247	Berlin	Gürtelstraße	26	13.47297430	52.50885090	1900	3.00	eur	199000.00
+5388912	sell	apartment_maisonette	10247	Berlin	Samariterstraße	\N	13.46558440	52.51731180	1910	4.00	eur	450000.00
+5388846	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	219000.00
+5388858	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	63000.00
+5412554	sell	apartment	10115	Berlin	Habersaathstraße	\N	13.37781060	52.53193500	1900	2.00	eur	290000.00
+5388793	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	2.00	eur	193182.00
+5412715	sell	apartment	10405	Berlin	\N	\N	13.42256590	52.53279640	\N	1.00	eur	89000.00
+5388836	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	805000.00
+314770	sell	apartment	10117	Berlin	Leipziger Straße	46-47	13.39733610	52.51057060	\N	2.00	eur	147000.00
+316981	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	7.00	eur	4928000.00
+343269	sell	apartment	10117	Berlin	Auguststraße	61	13.39753440	52.52721620	1880	2.00	eur	280000.00
+5388839	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1024000.00
+5388603	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	2.00	eur	328185.00
+5388904	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	7.00	eur	2500000.00
+5388891	sell	apartment_roof_storey	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.50	eur	790000.00
+5388816	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	2.00	eur	224774.00
+5388922	sell	apartment	10117	Berlin	Kommandantenstraße	\N	13.40261680	52.50866790	\N	4.00	eur	435000.00
+5388796	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	495000.00
+5388895	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1986	3.00	eur	99999.00
+347679	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1998	1.50	eur	219000.00
+5449092	sell	apartment	10825	Berlin	\N	\N	13.34341390	52.48078630	1959	2.00	eur	149000.00
+5389462	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	2.00	eur	291000.00
+11093287	sell	apartment	12205	Berlin	Glarner Straße	4	13.30260204	52.42869150	2010	2.00	eur	161000.00
+5389481	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1987	2.00	eur	228000.00
+5389428	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1998	3.00	eur	350000.00
+5419039	sell	apartment	10557	Berlin	\N	\N	13.37677160	52.51939520	1962	1.50	eur	73800.00
+344685	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	2008	5.00	eur	2700000.00
+5388972	sell	apartment	10119	Berlin	Choriner Straße	14	13.40748650	52.53363300	1925	2.00	eur	220000.00
+5389411	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	4.00	eur	0.00
+5389488	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1998	3.00	eur	350000.00
+5388852	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	995000.00
+5388867	sell	apartment_roof_storey	10119	Berlin	Fehrbelliner Straße	45	13.39995963	52.53467015	\N	3.00	eur	599500.00
+5388842	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	0.00
+5419298	sell	apartment	10245	Berlin	Kopernikusstraße	\N	13.45179520	52.51072670	2001	1.00	eur	95000.00
+538201	sell	apartment	13055	Berlin	Konrad-Wolf-Straße	75	13.48680420	52.54113840	2015	3.00	eur	333750.00
+5388925	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	910260.00
+5388843	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	0.00	eur	575000.00
+5388935	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	383135.00
+5388845	sell	apartment	10243	Berlin	Karl-Marx-Allee	58	13.43056160	52.51787220	\N	2.00	eur	168000.00
+5388870	sell	apartment	10243	Berlin	Helsingforser Straße	19	13.44653480	52.50940000	1900	14.00	eur	499000.00
+5388950	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	4.00	eur	1587600.00
+5388965	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	251400.00
+5388944	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1974480.00
+5388883	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	172256.00
+5388898	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	699000.00
+5388953	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	645010.00
+5388896	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	0.00	eur	699000.00
+5388873	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1892	5.50	eur	1318428.00
+5388973	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	1.00	eur	260550.00
+5388881	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	172256.00
+5388913	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	383135.00
+5388940	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	1118340.00
+5427571	sell	apartment	10627	Berlin	Kaiser-Friedrich-Straße	\N	13.30253420	52.50606290	\N	5.00	eur	998000.00
+5389007	sell	apartment_maisonette	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	3.00	eur	210000.00
+5388974	sell	apartment_maisonette	10179	Berlin	Alte Jakobstraße	92	13.40607670	52.50895790	\N	6.00	eur	639000.00
+5388875	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	657000.00
+5388924	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2012	3.00	eur	325600.00
+5388945	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	73	13.41224670	52.50558090	\N	3.00	eur	358873.00
+5388910	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	230300.00
+321186	sell	apartment	10179	Berlin	Heinrich-Heine-Platz	3	13.41735690	52.50688250	1984	2.00	eur	110000.00
+5388959	sell	apartment	10179	Berlin	Neue Grünstraße	1	13.40409530	52.50830370	\N	3.00	eur	346000.00
+5388914	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	302900.00
+5389000	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	657000.00
+5388888	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	302900.00
+5388884	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	220100.00
+5388932	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	484230.00
+5389082	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	3.00	eur	244300.00
+5389052	sell	penthouse	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.00	eur	878500.00
+5389058	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	84000.00
+5389095	sell	multi_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	2100000.00
+5385606	sell	apartment	10119	Berlin	Torstraße	\N	13.40999030	52.52875360	1918	2.00	eur	239000.00
+5389087	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	247000.00
+5389065	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1900	3.00	eur	255000.00
+5388968	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	3.00	eur	276606.00
+5388929	sell	apartment	10247	Berlin	Rigaer Straße	63	13.46957260	52.51568830	1906	2.00	eur	89900.00
+5388981	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	4.00	eur	379547.00
+5388995	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	3.00	eur	362526.00
+5389013	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	3.00	eur	269595.00
+5388998	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	188064.00
+5389062	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	500000.00
+5389018	sell	single_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	360000.00
+5431676	sell	apartment	10625	Berlin	Goethestraße	50	13.30924960	52.50874040	1995	1.00	eur	151700.00
+5389129	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	700000.00
+5389145	sell	apartment	10117	Berlin	Behrenstraße	64-65	13.38455250	52.51545200	2002	4.00	eur	250000.00
+5389137	sell	apartment	10117	Berlin	Schiffbauerdamm	\N	13.37684740	52.52153850	\N	3.00	eur	230000.00
+5389132	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1800000.00
+5389001	sell	apartment	10179	Berlin	Neue Grünstraße	1	13.40409530	52.50830370	\N	3.00	eur	599000.00
+5388934	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	10.00	eur	2950000.00
+378088	sell	apartment	10779	Berlin	Aschaffenburger Straße	23	13.33510830	52.49234350	\N	3.00	eur	441537.00
+5389173	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1832	2.00	eur	137000.00
+5389097	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2003	4.00	eur	990000.00
+5389110	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1832	3.00	eur	145000.00
+332575	sell	apartment_maisonette	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	2013	3.00	eur	1490000.00
+5388951	sell	apartment	10245	Berlin	Simon-Dach-Straße	20	13.45541500	52.50873570	1900	1.00	eur	87500.00
+5388966	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	418542.00
+5388982	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	264688.00
+5388980	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	256594.00
+5388955	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	558000.00
+5388970	sell	penthouse	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	0.00	eur	526823.00
+5388997	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	332062.00
+5389014	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	385486.00
+5388979	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	245000.00
+5389008	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	375667.00
+5388975	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	5.00	eur	718597.00
+5388993	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	743050.00
+5389002	sell	single_family_house	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	0.00	eur	2786500.00
+5388987	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	139710.00
+5389043	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	228000.00
+5389053	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	136000.00
+5389032	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1998	3.00	eur	299000.00
+5389012	sell	apartment_maisonette	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	1900	2.00	eur	122642.00
+5389009	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	1900	2.00	eur	106727.00
+5389056	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	0.00	eur	64000.00
+5385708	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2013	4.00	eur	1025000.00
+5389047	sell	apartment	10249	Berlin	Friedenstraße	\N	13.42494540	52.52816520	1957	2.00	eur	64000.00
+5388992	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	446550.00
+5550834	sell	apartment	13591	Berlin	\N	\N	13.13034000	52.54170010	\N	4.00	eur	197440.00
+5389103	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1125800.00
+5389128	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1125800.00
+5389040	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	219520.00
+5388985	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	251400.00
+5389055	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	478800.00
+5550939	sell	semi_detached_house	13591	Berlin	\N	\N	13.13034000	52.54170010	1930	5.50	eur	205000.00
+5389099	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	639600.00
+5389063	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	557400.00
+5389133	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	2041200.00
+5389035	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	910260.00
+5389074	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	710100.00
+5389045	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	288400.00
+5389030	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	1118340.00
+5389109	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	1159830.00
+5389026	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	5.00	eur	565084.00
+5389091	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	69000.00
+5389054	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	397444.00
+5389037	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	260912.00
+5389046	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	313635.00
+5389021	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	493403.00
+5389031	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	631604.00
+5388814	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	676163.00
+5389125	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	558000.00
+5389078	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1880	2.00	eur	278800.00
+5389237	sell	apartment_maisonette	10249	Berlin	Matthiasstraße	6	13.44126315	52.52212300	\N	3.00	eur	299000.00
+592568	sell	multi_family_house	13437	Berlin	Roedernallee	156	13.34328100	52.58324070	1932	12.00	eur	760000.00
+5389094	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	1.00	eur	73000.00
+5389083	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	221500.00
+5389130	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	448500.00
+5389196	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	188000.00
+5389240	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45075910	52.52019930	1900	3.00	eur	295000.00
+5389208	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	1905	2.00	eur	149000.00
+5389259	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	247500.00
+5389105	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	324000.00
+321857	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	494000.00
+12333499	rent	apartment	12437	Berlin	Güldenhofer Ufer	2-4	13.49438660	52.46648110	1954	3.00	eur	588.00
+5389285	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	232600.00
+5389280	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	3.00	eur	314900.00
+5389262	sell	apartment	10179	Berlin	Michaelkirchstraße	15	13.42202686	52.51056835	1890	5.00	eur	538000.00
+5440625	sell	apartment	10777	Berlin	\N	\N	13.34348307	52.49775390	1910	7.00	eur	780000.00
+5389079	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	2.00	eur	65000.00
+5389289	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	147800.00
+5389264	sell	apartment	10179	Berlin	Michaelkirchplatz	4-6	13.42020780	52.50671060	\N	0.00	eur	302800.00
+5389277	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	219100.00
+5389305	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	73	13.41224670	52.50558090	\N	4.00	eur	218300.00
+5389256	sell	apartment	10179	Berlin	Michaelkirchplatz	4-6	13.42020780	52.50671060	\N	2.00	eur	230200.00
+5389269	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	396900.00
+5389177	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	477400.00
+5389119	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	494000.00
+5389172	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	230200.00
+5389273	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	368400.00
+5389311	sell	apartment	10179	Berlin	Michaelkirchstraße	15	13.42202686	52.51056835	1890	3.00	eur	380600.00
+5389101	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	490000.00
+5389149	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45075910	52.52019930	1900	6.00	eur	549000.00
+5389116	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	5.00	eur	322800.00
+5389136	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	5.00	eur	502000.00
+5389151	sell	apartment_maisonette	10249	Berlin	Mühsamstraße	\N	13.45075910	52.52019930	1900	7.00	eur	515000.00
+5389199	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	420000.00
+5389104	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	200577.00
+5389161	sell	penthouse	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	434000.00
+5389120	sell	penthouse	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	270900.00
+5389092	sell	mid_terrace_house	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	5.00	eur	502000.00
+5389165	sell	apartment_maisonette	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	434000.00
+5389169	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45075910	52.52019930	1900	3.00	eur	276000.00
+5389124	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1928	2.00	eur	135000.00
+5389176	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	6.00	eur	700000.00
+5389218	sell	apartment	10115	Berlin	Wöhlertstraße	10	13.37924160	52.53673630	1908	3.00	eur	0.00
+11721437	sell	apartment	10117	Berlin	\N	\N	13.38885990	52.51703650	1923	3.00	eur	109000.00
+5389183	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	384600.00
+5389213	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	444300.00
+5389146	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	398700.00
+5389170	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	555300.00
+5389192	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1889	4.00	eur	429000.00
+5389156	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	494600.00
+5389160	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	848600.00
+5389144	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	995000.00
+5389141	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1889	4.00	eur	419000.00
+5389168	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	597300.00
+5389190	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	374700.00
+5389200	sell	apartment	10245	Berlin	Simon-Dach-Straße	20	13.45541500	52.50873570	1900	2.00	eur	210280.00
+5389185	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	593537.00
+5389115	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	119000.00
+328217	sell	apartment	10435	Berlin	\N	\N	13.41387600	52.54026110	1890	1.00	eur	141000.00
+5389121	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	171000.00
+5389123	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1909	2.00	eur	153872.00
+5389205	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1998	3.00	eur	199500.00
+5389118	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	138500.00
+5389182	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	705644.00
+5389157	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	159000.00
+5389217	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	478608.00
+5389189	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	129000.00
+5389140	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	718597.00
+5389106	sell	single_family_house	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	55.00	eur	2000000.00
+5389222	sell	apartment_maisonette	10245	Berlin	Gärtnerstraße	\N	13.45997730	52.50898340	\N	3.00	eur	276000.00
+5389225	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	86200.00
+5389227	sell	apartment	10243	Berlin	Grünberger Straße	16	13.44972890	52.51279310	1903	2.00	eur	135000.00
+5389147	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	115000.00
+5389252	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	86200.00
+5389246	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	59500.00
+336906	sell	apartment	10249	Berlin	Friedenstraße	50	13.43715020	52.52041490	1957	2.00	eur	103000.00
+5389266	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	499000.00
+5389287	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	160000.00
+5389152	sell	apartment	10243	Berlin	Warschauer Straße	\N	13.45014800	52.50739100	1900	6.00	eur	580000.00
+5389159	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	6.00	eur	1174000.00
+5389291	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	174000.00
+317871	sell	apartment	10245	Berlin	Grünberger Straße	54	13.45555778	52.51161650	1900	2.00	eur	172256.00
+5389235	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1904	3.00	eur	439000.00
+312740	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1920	1.00	eur	48000.00
+5389231	sell	penthouse	10117	Berlin	Mittelstraße	\N	13.38463710	52.51778320	\N	5.00	eur	3264625.00
+5389191	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	4.00	eur	1646500.00
+5389278	sell	multi_family_house	10117	Berlin	Kleine Jägerstraße	\N	13.39850300	52.51300320	2008	12.00	eur	2565000.00
+5389293	sell	mid_terrace_house	10117	Berlin	\N	\N	13.38532280	52.52362850	2009	6.00	eur	4500000.00
+5389241	sell	penthouse	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	4.00	eur	1214238.00
+5389295	sell	apartment	10117	Berlin	Hausvogteiplatz	14	13.39742230	52.51329610	\N	4.00	eur	7725000.00
+5389327	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1956	2.00	eur	158900.00
+5389244	sell	penthouse	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	3.50	eur	1267586.00
+5389329	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	240000.00
+5389307	sell	apartment	10117	Berlin	Leipziger Straße	43-44	13.39560750	52.51046420	1973	3.00	eur	250000.00
+5389187	sell	apartment	10117	Berlin	Mittelstraße	\N	13.38463710	52.51778320	\N	4.00	eur	2353550.00
+5389226	sell	apartment	10117	Berlin	Dorotheenstraße	\N	13.37697080	52.51778190	\N	3.00	eur	2235100.00
+5389224	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	2.00	eur	165005.00
+5389206	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	270900.00
+5389261	sell	apartment	10245	Berlin	Simon-Dach-Straße	20	13.45541500	52.50873570	1900	1.00	eur	56100.00
+5389288	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	12.00	eur	1750000.00
+5389275	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	395000.00
+5389297	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	375000.00
+5389251	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	\N	4.00	eur	665000.00
+5389292	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	12.00	eur	1750000.00
+5389270	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	375000.00
+5385330	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	495000.00
+5385341	sell	apartment	10179	Berlin	Inselstraße	9	13.41177430	52.51224370	\N	2.00	eur	265000.00
+5389243	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1890	3.00	eur	261500.00
+5389255	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1890	3.00	eur	283000.00
+5389223	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	1913	2.00	eur	70000.00
+5389265	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	299000.00
+5389294	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	299000.00
+5389249	sell	apartment	10245	Berlin	Simon-Dach-Straße	20	13.45541500	52.50873570	1900	2.00	eur	132000.00
+5389358	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	500482.00
+5389238	sell	penthouse	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	494010.00
+5389357	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	631604.00
+5389377	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	494010.00
+5389353	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	245000.00
+5389354	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	347569.00
+5389392	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	718597.00
+5389382	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	347832.00
+5389371	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	5.00	eur	565084.00
+5389400	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	375667.00
+5389254	sell	apartment	10245	Berlin	Bödikerstraße	9	13.46376795	52.49992795	1900	3.00	eur	98000.00
+5389365	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	169668.00
+5389386	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	543813.00
+5440696	sell	apartment	10777	Berlin	\N	\N	13.34348307	52.49775390	1905	4.00	eur	520000.00
+5389633	sell	apartment	10115	Berlin	Rheinsberger Straße	\N	13.40000960	52.53779620	1900	2.00	eur	192400.00
+5389702	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	3.00	eur	408000.00
+5389706	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	261100.00
+5389668	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	4.00	eur	444000.00
+5389630	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	355000.00
+5389621	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	4.00	eur	442500.00
+5389626	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	4.00	eur	442500.00
+5389683	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	424700.00
+5389618	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	445000.00
+5389651	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	4.00	eur	374350.00
+5389605	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	478900.00
+5389570	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	398600.00
+5389679	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	398600.00
+5389318	sell	apartment_maisonette	10249	Berlin	Mühsamstraße	64	13.45315650	52.52072730	1900	3.50	eur	272900.00
+5389268	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1906	4.00	eur	235000.00
+5389290	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	90000.00
+5389341	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1955	2.00	eur	79000.00
+5389108	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	309000.00
+5389315	sell	apartment	10249	Berlin	Richard-Sorge-Straße	65	13.44588160	52.52194290	\N	3.00	eur	197000.00
+5389363	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	1877	5.00	eur	696850.00
+5389350	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	213077.00
+5389333	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	720000.00
+5389339	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	324000.00
+5389263	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	195000.00
+5389306	sell	penthouse	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	\N	4.00	eur	399500.00
+5389309	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	149000.00
+5389346	sell	apartment	10243	Berlin	Strausberger Platz	14	13.42833590	52.51780770	1955	3.00	eur	198000.00
+5389362	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	210000.00
+5389404	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	3.00	eur	175000.00
+5389418	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	349000.00
+5389314	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	288400.00
+5389355	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	4.00	eur	254444.00
+5389359	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	170000.00
+5389317	sell	apartment	10243	Berlin	Pillauer Straße	5	13.44690490	52.50962190	1900	3.00	eur	202000.00
+318186	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	2015	2.00	eur	307840.00
+5389332	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	4.00	eur	256000.00
+5389308	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	395000.00
+5389344	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	2006	2.50	eur	220000.00
+5389406	sell	apartment_maisonette	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	1885	7.00	eur	525600.00
+5389351	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45075910	52.52019930	1900	2.00	eur	125360.00
+5389356	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	279000.00
+5389412	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	56000.00
+5389335	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	4.00	eur	353860.00
+5389360	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	1900	3.00	eur	273000.00
+5389368	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	1900	2.00	eur	152703.00
+5389429	sell	apartment	10247	Berlin	Schreinerstraße	11	13.46488190	52.51729970	2002	2.00	eur	180000.00
+321839	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47104690	52.51798580	2014	3.00	eur	362560.00
+308645	sell	apartment	10179	Berlin	Alte Jakobstraße	\N	13.40528480	52.50831560	1996	1.50	eur	160000.00
+552743	sell	single_family_house	12623	Berlin	\N	\N	13.62216950	52.49517310	2000	6.00	eur	550000.00
+324532	sell	apartment	10179	Berlin	Neue Jakobstraße	1-3	13.41344320	52.51138740	1900	4.00	eur	248000.00
+5389398	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	511700.00
+5389422	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1905	2.50	eur	469000.00
+323880	sell	penthouse	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	2014	2.00	eur	371000.00
+5389395	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	71	13.41269000	52.50629000	\N	4.00	eur	286000.00
+5389487	sell	apartment_roof_storey	10179	Berlin	Heinrich-Heine-Straße	71	13.41269000	52.50629000	\N	2.00	eur	198000.00
+5389769	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	475200.00
+323526	sell	apartment_maisonette	10179	Berlin	Alte Jakobstraße	92	13.40607670	52.50895790	2012	6.00	eur	649000.00
+5389465	sell	penthouse	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	371000.00
+5389401	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2003	5.00	eur	649000.00
+5389408	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	550000.00
+5427633	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	\N	2.00	eur	195000.00
+5389390	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	540000.00
+461286	sell	apartment	12277	Berlin	\N	\N	13.37565230	52.41073520	1973	4.50	eur	135630.00
+5389484	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2003	4.00	eur	950000.00
+5389444	sell	apartment	10117	Berlin	Mohrenstraße	1	13.38555270	52.51079120	2002	4.00	eur	520000.00
+5389424	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1905	2.50	eur	469000.00
+5389376	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1900	1.00	eur	166500.00
+5389490	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	5.00	eur	890430.00
+5385335	sell	apartment	10117	Berlin	Leipziger Straße	\N	13.38950460	52.51032540	1974	4.00	eur	290000.00
+5389416	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2001	2.00	eur	970000.00
+5389556	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	70000.00
+5389385	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	2.00	eur	105000.00
+5389471	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1880	4.00	eur	710550.00
+5389441	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	248888.00
+5389437	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1925	3.00	eur	119000.00
+5389502	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1880	3.00	eur	471220.00
+5389467	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	1877	7.00	eur	1166800.00
+5389373	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	230000.00
+5389455	sell	apartment	10249	Berlin	Pintschstraße	13	13.44774990	52.52355350	\N	4.00	eur	309500.00
+5389423	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	168000.00
+5389459	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	215000.00
+5389504	sell	apartment	10249	Berlin	Otto-Ostrowski-Straße	30	13.45544760	52.52424130	\N	3.00	eur	537075.00
+5389564	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	391000.00
+5389449	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	546000.00
+5389446	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	289902.00
+5389403	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	281847.00
+5389415	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	558675.00
+5388649	sell	apartment	10245	Berlin	Grünberger Straße	\N	13.45705530	52.51170970	\N	3.00	eur	349209.00
+5389468	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1999	3.00	eur	199000.00
+5389477	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	240480.00
+5389421	sell	apartment	10245	Berlin	Am Speicher	\N	13.47460470	52.49609180	\N	5.00	eur	512000.00
+5389473	sell	apartment	10245	Berlin	Am Speicher	\N	13.47460470	52.49609180	\N	4.00	eur	1080000.00
+5389478	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	168400.00
+5389427	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	198431.00
+5389443	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	200000.00
+5389475	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	558600.00
+5389453	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	3.50	eur	245000.00
+5389430	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1890	3.00	eur	215000.00
+5389330	sell	single_family_house	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	5.00	eur	644100.00
+473835	sell	apartment	12203	Berlin	Brahmsstraße	\N	13.32068750	52.44513570	\N	2.00	eur	98000.00
+5470091	sell	apartment	12169	Berlin	Heesestraße	18	13.32596783	52.45606475	1910	3.00	eur	569000.00
+5389529	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	188795.00
+5470253	sell	mid_terrace_house	12205	Berlin	\N	\N	13.29410051	52.43376045	1973	4.00	eur	275000.00
+5389516	sell	apartment	10247	Berlin	Colbestraße	31	13.46354350	52.51180730	1910	1.00	eur	94000.00
+5389535	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	56000.00
+5389550	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1908	3.00	eur	56000.00
+5389461	sell	mid_terrace_house	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	5.00	eur	485000.00
+5389440	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	\N	3.00	eur	382000.00
+5440706	sell	apartment	10777	Berlin	\N	\N	13.34348307	52.49775390	1960	3.00	eur	160000.00
+5389525	sell	apartment	10243	Berlin	Warschauer Straße	\N	13.45014800	52.50739100	1900	6.00	eur	750000.00
+5389619	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	899000.00
+5389499	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	5.00	eur	699000.00
+5440825	sell	apartment	10777	Berlin	Spichernstraße	\N	13.33066570	52.49616580	1960	3.00	eur	123000.00
+5389472	sell	apartment	10243	Berlin	Hildegard-Jadamowitz-Straße	\N	13.44623160	52.51599700	1910	2.00	eur	148000.00
+5389451	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	0.00	eur	525530.00
+5389457	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	599000.00
+5389476	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1957	2.00	eur	114000.00
+5389442	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	6.00	eur	1174000.00
+5389463	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1975	3.00	eur	140000.00
+5389496	sell	apartment	10243	Berlin	Andreasstraße	46	13.43248040	52.51763080	1954	2.00	eur	165620.00
+5389657	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	56000.00
+5389438	sell	penthouse	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	849000.00
+5389568	sell	apartment	10243	Berlin	Warschauer Straße	\N	13.45014800	52.50739100	1900	6.00	eur	580000.00
+5389511	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	1171425.00
+5389518	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	370000.00
+5389495	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	676162.00
+5389524	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	332000.00
+5389506	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	344692.00
+5389509	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	478608.00
+5389492	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	656100.00
+5468765	sell	apartment	12157	Berlin	\N	\N	13.34639810	52.47176010	1900	6.00	eur	482000.00
+5389759	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1887	1.50	eur	185000.00
+353843	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2011	4.00	eur	499000.00
+5389585	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1987	4.00	eur	420000.00
+5389707	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	2.00	eur	420000.00
+5389656	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	2.00	eur	420000.00
+5389721	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1987	2.00	eur	248000.00
+457178	sell	apartment	12157	Berlin	Beckerstraße	15	13.33893340	52.46670340	1973	2.00	eur	162400.00
+5389635	sell	single_family_house	12045	Berlin	Weichselstraße	34	13.43861310	52.48899480	\N	0.00	eur	265000.00
+352018	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	1.00	eur	132000.00
+372835	sell	apartment	10779	Berlin	\N	\N	13.34583010	52.49402810	1903	6.00	eur	690000.00
+350515	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2011	3.00	eur	499000.00
+12333937	rent	apartment	12437	Berlin	Königsheideweg	110	13.48726390	52.45152290	\N	4.00	eur	900.00
+313332	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	3.00	eur	403744.00
+5389577	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	5.00	eur	890430.00
+5389513	sell	apartment	10117	Berlin	Kronenstraße	4	13.38782670	52.51096890	1996	1.00	eur	250000.00
+5389549	sell	apartment	10117	Berlin	Dorotheenstraße	83	13.38390560	52.51829640	\N	3.00	eur	861300.00
+5389543	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1937	2.00	eur	90000.00
+5389520	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	630000.00
+5389560	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1973	2.00	eur	119500.00
+5389533	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	795000.00
+5392547	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	340000.00
+5389609	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1165000.00
+5389537	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1885	3.00	eur	440000.00
+5389624	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	183500.00
+5389553	sell	apartment	10117	Berlin	Hausvogteiplatz	14	13.39742230	52.51329610	\N	2.00	eur	880000.00
+5389675	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	595000.00
+5389572	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	327484.00
+5389575	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	395897.00
+5389583	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	3.00	eur	239000.00
+5389590	sell	apartment	10249	Berlin	Friedenstraße	93	13.43558780	52.52205340	1997	1.00	eur	61600.00
+5389596	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	2.00	eur	215959.00
+5389563	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	0.00
+5389665	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	3.00	eur	316410.00
+5389614	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	4.00	eur	383208.00
+5427378	sell	apartment	10625	Berlin	Leibnizstraße	\N	13.31461730	52.51066980	\N	3.00	eur	119000.00
+5427493	sell	apartment	10625	Berlin	Leibnizstraße	\N	13.31461730	52.51066980	\N	3.00	eur	220000.00
+5389700	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1900	1.00	eur	88290.00
+5389722	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	2.00	eur	245000.00
+11100112	sell	apartment	12559	Berlin	\N	\N	13.60577610	52.43830620	\N	4.00	eur	300000.00
+5389654	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	2.00	eur	268950.00
+5389466	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1899	1.00	eur	62400.00
+5389674	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	2.00	eur	153964.00
+5389632	sell	apartment	10245	Berlin	Simon-Dach-Straße	2	13.45712780	52.51253490	1928	3.00	eur	270000.00
+5389581	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1904	1.00	eur	59500.00
+5389647	sell	apartment	10245	Berlin	Markgrafendamm	\N	13.46657740	52.50117430	1965	2.00	eur	58700.00
+5389636	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1920	2.00	eur	139000.00
+5389695	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1900	1.00	eur	94461.00
+5389670	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	153964.00
+5389730	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	76100.00
+5389615	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	356656.00
+5389648	sell	single_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	360000.00
+5389629	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	3.00	eur	309986.00
+5389600	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	1.00	eur	43500.00
+5389579	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1908	2.00	eur	139000.00
+5389576	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.50	eur	259000.00
+5389569	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1890	3.00	eur	299000.00
+5389622	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	1.00	eur	115430.00
+5389574	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.50	eur	259000.00
+5389653	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	149000.00
+5389597	sell	apartment	10247	Berlin	Schreinerstraße	\N	13.46660000	52.51711880	1900	3.00	eur	174900.00
+5389567	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	4.00	eur	148000.00
+5389641	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	3.00	eur	199000.00
+5389602	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	43500.00
+5389645	sell	apartment	10247	Berlin	Mainzer Straße	13	13.46155418	52.51252400	1999	2.00	eur	104000.00
+5389631	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45075910	52.52019930	1900	7.00	eur	489000.00
+5389587	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	2.00	eur	119400.00
+5389634	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	319326.00
+11721224	sell	single_family_house	10117	Berlin	\N	\N	13.38885990	52.51703650	1913	0.00	eur	1850000.00
+5389646	sell	apartment	10115	Berlin	Strelitzer Straße	2	13.39689280	52.53385880	1890	2.00	eur	279000.00
+5389627	sell	apartment_maisonette	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	2.00	eur	490000.00
+5389770	sell	penthouse	10117	Berlin	\N	\N	13.39067250	52.52272780	2004	4.00	eur	950000.00
+5389650	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	490000.00
+5389851	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	1860	14.00	eur	1400000.00
+5389811	sell	penthouse	10117	Berlin	Schumannstraße	9-10	13.38310330	52.52419860	2004	3.00	eur	280000.00
+5389815	sell	semi_detached_house	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	5.00	eur	150000.00
+333187	sell	apartment	10117	Berlin	Johannisstraße	3	13.39030370	52.52430310	2013	3.00	eur	695000.00
+5389801	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	8.00	eur	1140874.00
+5389858	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1071000.00
+5550964	sell	single_family_house	13591	Berlin	Fahrlander Weg	\N	13.12763320	52.52261660	\N	5.00	eur	203000.00
+5389760	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	174000.00
+5550992	sell	apartment	13599	Berlin	\N	\N	13.23422035	52.54722987	1968	3.00	eur	88153.00
+5389751	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	37000.00
+5389734	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	5.00	eur	720704.00
+5389789	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	525000.00
+5389754	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	0.00
+308496	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	3.00	eur	198500.00
+5389623	sell	apartment_maisonette	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	399000.00
+5389767	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	589000.00
+5389713	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	4.00	eur	393500.00
+5389667	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1954	4.00	eur	365000.00
+5389813	sell	apartment	10247	Berlin	Proskauer Straße	3	13.46078190	52.51580910	1910	2.00	eur	152693.00
+5393389	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	250000.00
+5389717	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	403000.00
+5389732	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	1.00	eur	59500.00
+5389728	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	274000.00
+5389662	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	3.00	eur	259000.00
+5389737	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	2.00	eur	124900.00
+5389806	sell	apartment	10247	Berlin	Proskauer Straße	3	13.46078190	52.51580910	1910	5.00	eur	328179.00
+5389764	sell	apartment	10247	Berlin	Rigaer Straße	74	13.46590190	52.51649230	1908	5.00	eur	338000.00
+5389798	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1906	1.00	eur	54000.00
+5389810	sell	apartment	10247	Berlin	Proskauer Straße	3	13.46078190	52.51580910	1910	3.00	eur	187129.00
+5389788	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	5.00	eur	599900.00
+5389638	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2006	2.50	eur	275000.00
+5389691	sell	apartment	10247	Berlin	Bänschstraße	29	13.46297430	52.51881530	1900	5.00	eur	253650.00
+12339218	rent	apartment	13469	Berlin	Titiseestraße	10	13.33496720	52.60875840	1968	4.00	eur	464.00
+5389709	sell	apartment	10249	Berlin	Thaerstraße	36	13.45494520	52.52155390	\N	3.00	eur	139000.00
+5389786	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	432000.00
+5389741	sell	apartment	10249	Berlin	Mühsamstraße	44	13.44969410	52.51984550	\N	5.00	eur	698610.00
+5389761	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	309000.00
+5389768	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	720000.00
+5389720	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	195000.00
+5389791	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	432000.00
+5389724	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	80000.00
+5389731	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	268780.00
+5389701	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	\N	6.00	eur	463240.00
+5389712	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	\N	2.00	eur	115000.00
+5389735	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	355040.00
+5389698	sell	apartment	10249	Berlin	Heidenfeldstraße	17	13.44996490	52.52583440	1910	1.50	eur	60500.00
+11097967	sell	apartment_roof_storey	12207	Berlin	\N	\N	13.30770160	52.42936960	2009	4.00	eur	825000.00
+5389710	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	261100.00
+11096898	sell	apartment	12099	Berlin	\N	\N	13.39110320	52.45755260	\N	2.00	eur	78500.00
+11097690	sell	apartment	12305	Berlin	Bernauer Straße	\N	13.41064430	52.40855110	\N	1.00	eur	89000.00
+11096478	sell	apartment_roof_storey	12559	Berlin	\N	\N	13.60577610	52.43830620	2014	7.00	eur	839000.00
+5389745	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	648600.00
+5389740	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	395000.00
+5389762	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	375000.00
+5390151	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	494600.00
+5390172	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	544300.00
+5389766	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	349000.00
+5389773	sell	apartment	10245	Berlin	Grünberger Straße	\N	13.45705530	52.51170970	1908	3.00	eur	499000.00
+5389758	sell	villa	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	7.00	eur	160000.00
+5389787	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1899	1.00	eur	55000.00
+5389782	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1957	2.00	eur	220000.00
+5389800	sell	apartment	10245	Berlin	Boxhagener Straße	117	13.45531010	52.51375600	\N	1.00	eur	94461.00
+5389848	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	275000.00
+5389807	sell	apartment	10245	Berlin	Boxhagener Straße	117	13.45531010	52.51375600	\N	3.00	eur	286692.00
+5389797	sell	apartment	10245	Berlin	Boxhagener Straße	117	13.45531010	52.51375600	\N	2.00	eur	125112.00
+5389852	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1915	1.00	eur	75000.00
+5388963	sell	apartment	10245	Berlin	Boxhagener Straße	117	13.45531010	52.51375600	\N	2.00	eur	133025.00
+5389850	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	275000.00
+5389853	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1915	1.00	eur	75000.00
+5389856	sell	penthouse	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	5.00	eur	729000.00
+5389965	sell	apartment_roof_storey	10119	Berlin	\N	\N	13.40550818	52.53012550	2002	5.00	eur	942000.00
+5389843	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	2008	4.00	eur	339000.00
+303615	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	2014	6.00	eur	2300000.00
+361090	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1997	1.00	eur	240000.00
+342708	sell	apartment_maisonette	10119	Berlin	\N	\N	13.40550818	52.53012550	1825	4.00	eur	1195000.00
+5389931	sell	apartment	10119	Berlin	Kastanienallee	64	13.40600910	52.53463310	\N	5.00	eur	1450000.00
+367317	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1895	3.00	eur	499000.00
+5389772	sell	apartment	10119	Berlin	Veteranenstraße	11-13	13.40187620	52.53315050	1890	1.50	eur	161680.00
+5390012	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1910	2.00	eur	151999.00
+5389943	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	2005	3.00	eur	410000.00
+5389859	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1990	2.00	eur	220000.00
+5390021	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1900	2.00	eur	390000.00
+366692	sell	apartment	10119	Berlin	Zionskirchstraße	57	13.40696630	52.53347480	1998	2.00	eur	189000.00
+308225	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	73	13.41224670	52.50558090	2013	4.00	eur	235400.00
+5389790	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	71	13.41269000	52.50629000	\N	5.00	eur	339000.00
+5389805	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	396900.00
+5389842	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	588300.00
+5389833	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	3.00	eur	334800.00
+5389829	sell	penthouse	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	5.00	eur	672400.00
+5389868	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	218500.00
+5389802	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	3.00	eur	314900.00
+5389862	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	169000.00
+5389831	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	180000.00
+5389784	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1972	4.00	eur	180000.00
+5389892	sell	apartment	10179	Berlin	Michaelkirchstraße	15	13.42202686	52.51056835	1890	3.00	eur	433550.00
+5389900	sell	apartment	10179	Berlin	Michaelkirchstraße	15	13.42202686	52.51056835	1890	5.00	eur	819000.00
+5389799	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	232600.00
+325090	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	2014	2.00	eur	169000.00
+5385537	sell	apartment	10179	Berlin	Inselstraße	10	13.41243730	52.51202430	\N	3.00	eur	295000.00
+5389855	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	501750.00
+5389870	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	318908.00
+5389895	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	330591.00
+5389822	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	316410.00
+5389832	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	340910.00
+5389899	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	339820.00
+5389809	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	299886.00
+5389910	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	348612.00
+5389804	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	286524.00
+5389818	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	308452.00
+5389932	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	3.00	eur	180000.00
+5389935	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1997	4.00	eur	210000.00
+5389826	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	316920.00
+5389889	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	329364.00
+5389881	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	383208.00
+5389921	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	421275.00
+450363	sell	penthouse	10999	Berlin	\N	\N	13.41970650	52.49668640	2016	2.00	eur	359000.00
+5389869	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	599000.00
+5389860	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	3.00	eur	167500.00
+5458760	sell	apartment	10999	Berlin	\N	\N	13.41970650	52.49668640	1964	4.00	eur	447500.00
+5458800	sell	apartment	10999	Berlin	\N	\N	13.41970650	52.49668640	\N	4.00	eur	509034.00
+5389878	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	2.00	eur	399000.00
+5389890	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1904	3.00	eur	459000.00
+5389857	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	0.00	eur	825000.00
+5389874	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	399000.00
+5389864	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	5.00	eur	720704.00
+5389905	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	399000.00
+5389925	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	138000.00
+5389920	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	789000.00
+5389849	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1950	2.00	eur	168000.00
+5389893	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	2.00	eur	249000.00
+5389901	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	549000.00
+5389812	sell	apartment	10243	Berlin	Torellstraße	1-5	13.44693290	52.51126300	1996	2.00	eur	129000.00
+5389896	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	899000.00
+5389922	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	699000.00
+5389817	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	429000.00
+5389847	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	393500.00
+5389883	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	5.00	eur	365000.00
+5389836	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	315000.00
+5389828	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	169000.00
+5389953	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	159000.00
+5389934	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1890	3.00	eur	438500.00
+5389912	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1908	0.00	eur	60000.00
+5389820	sell	apartment	10247	Berlin	Bänschstraße	29	13.46297430	52.51881530	1900	2.00	eur	89095.00
+5389854	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	4.00	eur	332320.00
+5389950	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1890	2.00	eur	275000.00
+5389940	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2010	3.00	eur	219000.00
+5389844	sell	semi_detached_house	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	360000.00
+5389867	sell	apartment	10247	Berlin	Pettenkoferstraße	29	13.46989850	52.52009300	1900	2.00	eur	159000.00
+5389973	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	150800.00
+5389863	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1274000.00
+5389927	sell	apartment	10117	Berlin	Charlottenstraße	76	13.39187170	52.50898120	1996	1.00	eur	215000.00
+5389978	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	183500.00
+5389936	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1981	4.00	eur	294090.00
+5389997	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	3.00	eur	287100.00
+5389995	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	190500.00
+5389891	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	5.00	eur	390000.00
+5389969	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1990	4.00	eur	700000.00
+5389984	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	197800.00
+333992	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	2013	3.00	eur	890000.00
+5389929	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	2.00	eur	154896.00
+5389933	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	155627.00
+5389875	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	365000.00
+5389871	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	395000.00
+5389990	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	456270.00
+5389975	sell	apartment	10245	Berlin	Holteistraße	\N	13.46581130	52.50811090	2001	2.00	eur	91000.00
+5389939	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1900	4.50	eur	288652.00
+5389915	sell	apartment	10245	Berlin	Tunnelstraße	\N	13.48069530	52.49035260	1999	3.00	eur	340000.00
+5389926	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	249000.00
+5389994	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	277020.00
+5390004	sell	apartment	10245	Berlin	Simon-Dach-Straße	\N	13.45663320	52.51083890	1905	1.00	eur	85000.00
+5389987	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	257140.00
+5389880	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	205000.00
+5533879	sell	apartment	13158	Berlin	\N	\N	13.36880340	52.59274540	1995	3.00	eur	179000.00
+5389907	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	530000.00
+309458	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1998	3.00	eur	284000.00
+5390015	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1890	4.00	eur	495000.00
+5389911	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1890	4.00	eur	601920.00
+5390001	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	438500.00
+5390028	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	1.50	eur	99000.00
+5390053	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	149750.00
+5389991	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2001	5.00	eur	549000.00
+5390030	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	455100.00
+5389951	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	4.00	eur	498600.00
+5389916	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	1903	3.00	eur	350000.00
+5389946	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	240600.00
+5389981	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	207500.00
+5390011	sell	apartment	10179	Berlin	Holzmarktstraße	75	13.41890322	52.51598250	\N	3.00	eur	249500.00
+5390041	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	3.00	eur	289100.00
+5389957	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	498600.00
+5419058	sell	apartment	10553	Berlin	\N	\N	13.31535370	52.52904250	\N	1.00	eur	489500.00
+5389968	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1950	2.00	eur	168000.00
+319543	sell	apartment	10243	Berlin	Singerstraße	38	13.43404150	52.51474750	1965	2.00	eur	86089.00
+320652	sell	apartment	10243	Berlin	Marchlewskistraße	75	13.44727460	52.51079260	\N	2.00	eur	108450.00
+5389963	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	3.00	eur	485000.00
+5389980	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	172256.00
+5390057	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	2.00	eur	169000.00
+317590	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	3.00	eur	255000.00
+5390003	sell	apartment_maisonette	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	2.00	eur	145000.00
+5390063	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	549000.00
+5390080	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	4.00	eur	485000.00
+5389956	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	3.00	eur	385000.00
+5390059	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	5.00	eur	720704.00
+5390077	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	5.00	eur	445000.00
+5390040	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	143000.00
+5390002	sell	end_terrace_house	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	565000.00
+5389938	sell	apartment	10249	Berlin	Ebertystraße	21	13.45395470	52.52234240	1900	0.00	eur	127777.00
+5390023	sell	apartment	10249	Berlin	Barnimstraße	12	13.42399000	52.52544270	1968	4.00	eur	93126.00
+5389966	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	3.00	eur	318908.00
+5389982	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	245375.00
+5389977	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	2331200.00
+5389998	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	5.00	eur	522120.00
+5390016	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	215000.00
+5390045	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	167700.00
+5390006	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	565000.00
+5390048	sell	apartment	10249	Berlin	Straßmannstraße	\N	13.45086230	52.52243900	1900	3.00	eur	174900.00
+5389970	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	376625.00
+5389962	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	417819.00
+5390051	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	203000.00
+5389967	sell	apartment	10247	Berlin	Proskauer Straße	3	13.46078190	52.51580910	1910	5.00	eur	328179.00
+5389985	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	3.00	eur	145000.00
+5390101	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	321965.00
+5389972	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	150000.00
+5390102	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	280490.00
+5390049	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	10.00	eur	500000.00
+5390036	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1995	2.00	eur	142900.00
+5390019	sell	apartment	10247	Berlin	Silvio-Meier-Straße	2	13.46356407	52.51539810	1910	1.00	eur	110000.00
+5390046	sell	apartment	10247	Berlin	Proskauer Straße	25	13.46128720	52.51805320	1901	2.00	eur	120000.00
+5390096	sell	mid_terrace_house	10247	Berlin	Zur Börse	14	13.45747580	52.52258230	2010	6.00	eur	512000.00
+5390105	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	68000.00
+11721583	sell	apartment	10117	Berlin	\N	\N	13.38885990	52.51703650	1962	2.00	eur	56900.00
+5390287	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1270000.00
+5390291	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	8.00	eur	600000.00
+5390396	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	3.00	eur	859000.00
+5390344	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	636000.00
+5390326	sell	apartment_maisonette	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	399000.00
+5390341	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	636000.00
+5390376	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1830	2.50	eur	595000.00
+5390320	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	151000.00
+5390407	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	294500.00
+5390033	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	3.00	eur	291500.00
+5390008	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	276000.00
+5390017	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	151000.00
+5390038	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	910000.00
+5389999	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	195500.00
+5390346	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	735000.00
+5435440	sell	apartment	10711	Berlin	Karlsruher Straße	23	13.29418510	52.49984600	1900	4.00	eur	218460.00
+5390115	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	230652.00
+5390014	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	8.00	eur	2267500.00
+5390018	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	980000.00
+5390153	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	76100.00
+5390029	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	298000.00
+5390109	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	173230.00
+5390009	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	183770.00
+361992	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	167375.00
+5389485	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	173200.00
+5390133	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	15.00	eur	1374516.00
+5390064	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	151500.00
+5390054	sell	apartment	10119	Berlin	Fehrbelliner Straße	52	13.40152534	52.53398565	2000	4.00	eur	415000.00
+369240	sell	apartment	10119	Berlin	\N	\N	13.40581140	52.53074100	1998	2.00	eur	245000.00
+348545	sell	apartment_maisonette	10119	Berlin	\N	\N	13.40550818	52.53012550	2002	5.00	eur	942000.00
+371853	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1997	1.50	eur	185000.00
+5390186	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1910	8.00	eur	452000.00
+5390088	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1909	1.00	eur	169000.00
+5390191	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1910	3.00	eur	490000.00
+5390124	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1909	1.00	eur	169000.00
+5390160	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	2.00	eur	390000.00
+371620	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1910	4.00	eur	452000.00
+5390166	sell	apartment	10119	Berlin	Alte Schönhauser Straße	2	13.40899810	52.52846970	\N	2.00	eur	295000.00
+5390190	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	499000.00
+5390136	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1890	3.00	eur	450000.00
+5390155	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	593200.00
+5390061	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	1.00	eur	60000.00
+5390058	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	3.00	eur	315250.00
+309985	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1962	4.00	eur	309000.00
+5390256	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.41941990	52.50616400	\N	0.00	eur	154100.00
+5390217	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	308000.00
+5390095	sell	apartment_maisonette	10179	Berlin	Michaelkirchstraße	12	13.42169260	52.51012090	\N	4.00	eur	616826.00
+5390131	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2002	3.00	eur	284000.00
+5390228	sell	apartment	10179	Berlin	Annenstraße	\N	13.41513580	52.50746720	\N	4.00	eur	411500.00
+349080	sell	apartment_roof_storey	10585	Berlin	\N	\N	13.30591980	52.51753440	\N	4.00	eur	569500.00
+5431653	sell	apartment	10707	Berlin	\N	\N	13.31064550	52.49316400	1930	2.00	eur	130000.00
+5390093	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	319000.00
+5390091	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	186200.00
+5390130	sell	apartment	10249	Berlin	Richard-Sorge-Straße	\N	13.44386680	52.52516490	\N	4.00	eur	209000.00
+5390143	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	209475.00
+5390128	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	4.00	eur	274000.00
+5390116	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	73500.00
+5390089	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	189000.00
+5390100	sell	apartment	10249	Berlin	Pintschstraße	\N	13.44904370	52.52197980	1996	3.00	eur	137000.00
+5390148	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	332025.00
+5390072	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	259350.00
+5390112	sell	apartment	10249	Berlin	Büschingstraße	1	13.42891040	52.52564360	1900	3.00	eur	230000.00
+5390085	sell	apartment	10249	Berlin	Heidenfeldstraße	17	13.44996490	52.52583440	1904	1.50	eur	49000.00
+5390154	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	3.00	eur	320587.00
+5390173	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	540600.00
+5390113	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	168000.00
+5390082	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	3.00	eur	350000.00
+5390086	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	4.00	eur	385000.00
+318689	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1954	2.00	eur	105000.00
+5390236	sell	apartment	10243	Berlin	Karl-Marx-Allee	58	13.43056160	52.51787220	\N	3.00	eur	330000.00
+5390099	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	266400.00
+5412800	sell	apartment	10437	Berlin	\N	\N	13.42135040	52.54498720	1904	6.00	eur	554340.00
+5390092	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	3.00	eur	450000.00
+5412910	sell	apartment	10437	Berlin	Ahlbecker Straße	7	13.42451674	52.54489950	\N	3.00	eur	205000.00
+5390094	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	4.00	eur	495000.00
+5390146	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2001	4.00	eur	650000.00
+5390237	sell	apartment	10243	Berlin	Karl-Marx-Allee	\N	13.42955100	52.51821320	\N	2.00	eur	110000.00
+5390161	sell	apartment	10243	Berlin	Strausberger Platz	7	13.42932050	52.51910800	1952	2.00	eur	129000.00
+5390210	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	2.00	eur	169000.00
+5390139	sell	apartment	10247	Berlin	Kinzigstraße	40	13.46447290	52.51178420	1987	3.00	eur	125000.00
+5390117	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1906	1.00	eur	69500.00
+5414459	sell	apartment	10435	Berlin	\N	\N	13.41387600	52.54026110	1909	2.00	eur	175000.00
+5390219	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1954	4.00	eur	299000.00
+5390216	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1910	1.00	eur	69800.00
+5414512	sell	apartment	10435	Berlin	\N	\N	13.41387600	52.54026110	1905	5.00	eur	655000.00
+5390201	sell	apartment	10247	Berlin	Schreinerstraße	10	13.46457000	52.51720000	\N	3.00	eur	398000.00
+5390230	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1905	1.00	eur	65000.00
+5390114	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	129000.00
+5390171	sell	apartment_maisonette	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	5.00	eur	465400.00
+5390120	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	194500.00
+5390129	sell	penthouse	10247	Berlin	Bänschstraße	62	13.46682170	52.51760260	1910	3.00	eur	382666.00
+5390213	sell	apartment_maisonette	10247	Berlin	Rigaer Straße	59	13.47059310	52.51550150	1905	2.00	eur	196074.00
+5390232	sell	penthouse	10247	Berlin	Samariterstraße	\N	13.46558440	52.51731180	1890	3.00	eur	357981.00
+5390234	sell	apartment	10247	Berlin	Proskauer Straße	17	13.46243840	52.51898690	1904	3.00	eur	275000.00
+5390126	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	158112.00
+5390195	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	179550.00
+5390164	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	2.00	eur	153844.00
+5390197	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	271625.00
+5390183	sell	apartment	10249	Berlin	Otto-Ostrowski-Straße	30	13.45544760	52.52424130	\N	2.00	eur	469950.00
+5390194	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1960	2.00	eur	77500.00
+5390176	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	2.00	eur	144576.00
+5390167	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	4.00	eur	444347.00
+5389435	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	1885	3.00	eur	208000.00
+5390192	sell	apartment	10249	Berlin	Otto-Ostrowski-Straße	30	13.45544760	52.52424130	\N	3.00	eur	743050.00
+5390170	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	5.00	eur	458350.00
+5390233	sell	apartment	10249	Berlin	Otto-Ostrowski-Straße	30	13.45544760	52.52424130	\N	4.00	eur	696850.00
+5390215	sell	apartment	10249	Berlin	Thaerstraße	16	13.45400720	52.51951530	1900	2.00	eur	99800.00
+5390189	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	2.00	eur	152442.00
+5390253	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	676163.00
+5390163	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1999	3.00	eur	352000.00
+5390165	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	130000.00
+5390174	sell	semi_detached_house	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	6.00	eur	627500.00
+329823	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	125860.00
+5390241	sell	apartment	10245	Berlin	Döringstraße	1	13.46263640	52.50608650	\N	3.00	eur	252000.00
+5390250	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	87000.00
+5390262	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	180000.00
+5390227	sell	apartment	10245	Berlin	Gärtnerstraße	\N	13.45997730	52.50898340	\N	2.00	eur	130000.00
+5390258	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	65000.00
+5390188	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1999	2.00	eur	125860.00
+5390238	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1900	2.00	eur	370000.00
+581244	sell	apartment	13158	Berlin	\N	\N	13.38871050	52.59141270	1999	2.00	eur	128000.00
+5390200	sell	penthouse	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	5.00	eur	3000000.00
+5390274	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	205000.00
+375441	sell	single_family_house	10119	Berlin	\N	\N	13.40581140	52.53074100	1890	1.00	eur	400000.00
+5390204	sell	apartment_roof_storey	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	3000000.00
+5390324	sell	penthouse	10719	Berlin	Kurfürstendamm	28	13.32686160	52.50314320	\N	5.00	eur	374000.00
+5390402	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2010	1.00	eur	249100.00
+5390264	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	325000.00
+5390255	sell	apartment_roof_storey	10119	Berlin	Kastanienallee	\N	13.40625000	52.53519630	\N	3.00	eur	235000.00
+5390384	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	2009	5.00	eur	2500000.00
+379615	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1910	2.00	eur	384121.00
+5390280	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1912	3.00	eur	250000.00
+5390293	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1918	5.00	eur	230000.00
+5390354	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	2.00	eur	114900.00
+5390290	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1913	2.00	eur	25200.00
+5390296	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1913	2.00	eur	25200.00
+5390425	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	219000.00
+5390321	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	219000.00
+5390418	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1905	4.00	eur	235400.00
+5390285	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	145000.00
+5390371	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1912	3.00	eur	250000.00
+5390239	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	129000.00
+5390306	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	520800.00
+5390423	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1912	3.00	eur	250000.00
+5390366	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	435000.00
+5390348	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	424300.00
+5390297	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	300000.00
+5390301	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	886000.00
+5390342	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	497600.00
+5390330	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	744200.00
+5390335	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	238700.00
+5390312	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	234400.00
+5390372	sell	apartment	10115	Berlin	Gartenstraße	100	13.39079694	52.53066865	\N	0.00	eur	299500.00
+5390304	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	14.00	eur	919000.00
+5390323	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	743050.00
+5390251	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	3.00	eur	199000.00
+5390305	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	1877	4.00	eur	696850.00
+5390295	sell	apartment	10249	Berlin	Richard-Sorge-Straße	\N	13.44386680	52.52516490	1900	3.00	eur	259000.00
+5390211	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1997	3.00	eur	199000.00
+5390345	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	248586.00
+5390302	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	1900	3.00	eur	175000.00
+5390278	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	176800.00
+5390299	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	103250.00
+5390252	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	1.50	eur	120000.00
+5390260	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	1877	4.00	eur	696850.00
+5390281	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	369075.00
+5390350	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	248586.00
+5390288	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	282800.00
+5390286	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	190638.00
+5390356	sell	apartment	10243	Berlin	Krautstraße	38	13.42832910	52.51413080	2001	4.00	eur	650000.00
+5390408	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	399000.00
+5390380	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	399000.00
+5389837	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1996	3.00	eur	169000.00
+5390414	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	759000.00
+5390416	sell	single_family_house	10243	Berlin	\N	\N	13.43293380	52.51072750	1999	4.00	eur	350000.00
+5390294	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	525000.00
+5390399	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	599000.00
+5390403	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	475100.00
+5390263	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.41941990	52.50616400	\N	0.00	eur	524700.00
+435009	sell	apartment	10179	Berlin	Rungestraße	\N	13.41788350	52.51241950	\N	5.00	eur	598000.00
+5390499	sell	apartment	10179	Berlin	Michaelkirchstraße	15	13.42202686	52.51056835	1890	6.00	eur	750750.00
+5390502	sell	multi_family_house	10179	Berlin	\N	\N	13.40743300	52.51442610	1990	10.00	eur	6300000.00
+5390266	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.41941990	52.50616400	\N	0.00	eur	271800.00
+5390553	sell	apartment_maisonette	10179	Berlin	Michaelkirchstraße	12	13.42169260	52.51012090	\N	2.00	eur	281880.00
+327275	sell	apartment	10179	Berlin	Alte Jakobstraße	93	13.40587210	52.50888610	2013	1.00	eur	117500.00
+5390385	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	462100.00
+310057	sell	apartment_maisonette	10179	Berlin	Michaelkirchstraße	12	13.42169260	52.51012090	2014	5.00	eur	606923.00
+5390513	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	260000.00
+5390329	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	3.00	eur	312200.00
+5390370	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	217900.00
+5390548	sell	apartment_maisonette	10179	Berlin	Michaelkirchstraße	12	13.42169260	52.51012090	\N	4.00	eur	606923.00
+5390333	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	220100.00
+5390352	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	3.00	eur	245000.00
+14085145	sell	apartment	10585	Berlin	\N	\N	13.30410540	52.51660230	1908	3.00	eur	548000.00
+5390437	sell	penthouse	10247	Berlin	Dolziger Straße	19	13.46770650	52.51876850	\N	4.00	eur	895100.00
+5390349	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1900	4.00	eur	288652.00
+5390383	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	214900.00
+5390395	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	10.00	eur	424320.00
+5390308	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	344692.00
+5390410	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	150000.00
+5390336	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	3.00	eur	144375.00
+5390319	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1930	1.00	eur	60000.00
+5390315	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	80000.00
+5390347	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	120000.00
+5390406	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	479516.00
+5390340	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	174000.00
+5390267	sell	apartment	10245	Berlin	Dirschauer Straße	\N	13.45686000	52.50825700	1900	2.00	eur	160000.00
+5458483	sell	apartment	12049	Berlin	\N	\N	13.42222170	52.47783650	1900	2.00	eur	169500.00
+5390435	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	4.00	eur	259000.00
+5458694	sell	apartment	12049	Berlin	\N	\N	13.42222170	52.47783650	1957	2.00	eur	165000.00
+5390362	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	248586.00
+5390452	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	198188.00
+5390386	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	3.00	eur	444347.00
+5390446	sell	apartment	10249	Berlin	Hermann-Blankenstein-Straße	\N	13.46952640	52.52092990	2002	2.00	eur	149000.00
+5390368	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	350000.00
+5390357	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1880	4.00	eur	699900.00
+5390394	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	423400.00
+5390121	sell	apartment	10249	Berlin	Hermann-Blankenstein-Straße	\N	13.46952640	52.52092990	2002	1.50	eur	111000.00
+5390353	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1880	4.00	eur	748500.00
+5390443	sell	apartment	10249	Berlin	Hermann-Blankenstein-Straße	\N	13.46952640	52.52092990	2002	3.00	eur	199000.00
+5390421	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	179900.00
+5390438	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	159000.00
+5390409	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	268780.00
+5390424	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	463240.00
+5390393	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	375000.00
+5390544	sell	multi_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	12.00	eur	4500000.00
+5390387	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	425000.00
+5390436	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	639799.00
+5390440	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	350746.00
+5390524	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	235000.00
+5390508	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	2.00	eur	299000.00
+5390397	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	355000.00
+5390583	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	385000.00
+5390598	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	445000.00
+5390470	sell	apartment	10115	Berlin	Borsigstraße	\N	13.38955870	52.52974650	1900	2.00	eur	190000.00
+5390503	sell	penthouse	10115	Berlin	Brunnenstraße	145	13.39639590	52.53718600	2000	3.00	eur	350000.00
+5390571	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	179000.00
+330639	sell	apartment	10245	Berlin	Corinthstraße	\N	13.46050830	52.50029210	1906	2.00	eur	85000.00
+5390608	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1980	3.00	eur	240000.00
+5386705	sell	apartment	10178	Berlin	\N	\N	13.41752660	52.52647680	\N	3.00	eur	1350000.00
+5390463	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	2.00	eur	185000.00
+5390568	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	178000.00
+5390619	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1980	3.00	eur	480000.00
+5390574	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1998	3.00	eur	330000.00
+5395660	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1986	3.00	eur	225325.00
+5390492	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	329040.00
+5390525	sell	apartment	10245	Berlin	Alt-Stralau	52-53	13.47063520	52.49475670	\N	3.00	eur	629492.00
+5390477	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	88500.00
+5390625	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1980	3.00	eur	510000.00
+5390530	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	180900.00
+5390578	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	120000.00
+5390554	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1884	5.00	eur	709592.00
+5468464	sell	apartment	12167	Berlin	Kurze Straße	1	13.32268200	52.45067870	\N	2.00	eur	106790.00
+5468689	sell	apartment	10407	Berlin	Cotheniusstraße	17	13.44736000	52.52838000	1900	1.00	eur	98900.00
+5390580	sell	apartment	10117	Berlin	Seydelstraße	10	13.40349230	52.50963210	\N	5.00	eur	1190000.00
+5390542	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	190500.00
+5390607	sell	apartment_maisonette	10117	Berlin	Marienstraße	25	13.38211020	52.52209510	1994	3.50	eur	470000.00
+5390562	sell	apartment	10117	Berlin	Behrenstraße	\N	13.38171100	52.51516770	1889	3.00	eur	310000.00
+13841748	sell	apartment	13593	Berlin	\N	\N	13.16944846	52.51370535	1962	3.00	eur	157000.00
+5390614	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1998	2.00	eur	289500.00
+5390454	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	900000.00
+346142	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1973	2.00	eur	244000.00
+5390620	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1973	2.00	eur	350000.00
+5390486	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	3.00	eur	314500.00
+5390632	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	3.00	eur	291040.00
+5390496	sell	apartment_maisonette	10117	Berlin	Tucholskystraße	26	13.39343630	52.52575810	2003	3.00	eur	464000.00
+5390557	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	295000.00
+5390587	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	295000.00
+5390549	sell	villa	10117	Berlin	\N	\N	13.38475390	52.51550980	\N	25.00	eur	98500.00
+5390442	sell	single_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	360000.00
+5390493	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	4.00	eur	311000.00
+5390487	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	3.00	eur	262000.00
+5390519	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	5.00	eur	491000.00
+5390484	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	3.00	eur	242000.00
+5390465	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	72000.00
+5390481	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	2.00	eur	242000.00
+5390510	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	4.00	eur	367500.00
+5390494	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	3.00	eur	308000.00
+5390471	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	2.00	eur	171000.00
+5390512	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	5.00	eur	427000.00
+5390505	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	3.00	eur	332500.00
+5390478	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	2.00	eur	209000.00
+5390474	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	3.00	eur	209000.00
+376863	sell	apartment	10119	Berlin	Kastanienallee	61	13.40562560	52.53421520	1904	3.00	eur	248000.00
+378219	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	4.00	eur	450000.00
+380809	sell	penthouse	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	1720000.00
+382257	sell	apartment	10119	Berlin	Kastanienallee	38	13.40628820	52.53554940	1918	2.00	eur	210000.00
+377255	sell	apartment_maisonette	10119	Berlin	\N	\N	13.40550818	52.53012550	2016	3.00	eur	695000.00
+5390657	sell	apartment	10247	Berlin	Kinzigstraße	\N	13.46563890	52.51283010	\N	5.00	eur	415500.00
+5390556	sell	apartment	10119	Berlin	Fehrbelliner Straße	52	13.40152534	52.53398565	\N	2.00	eur	135000.00
+5390464	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	350175.00
+5390468	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	246675.00
+5390522	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	125000.00
+5390460	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	103200.00
+5390461	sell	penthouse	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	429400.00
+5390473	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	149000.00
+5390488	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	298000.00
+5390559	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	262450.00
+5390490	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	120000.00
+5390480	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	5.00	eur	352000.00
+5390498	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	199000.00
+5390541	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	3.00	eur	199000.00
+5390564	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2009	3.00	eur	549000.00
+5390754	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	3.00	eur	240000.00
+5390615	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	2.00	eur	169000.00
+5390509	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	1.00	eur	99500.00
+321040	sell	apartment	10243	Berlin	Karl-Marx-Allee	58	13.43056160	52.51787220	1954	3.00	eur	299000.00
+5390722	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	625000.00
+5390896	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	0.00	eur	152000.00
+5390589	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	5.00	eur	720000.00
+5390627	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	899000.00
+5390507	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	1.00	eur	99500.00
+320849	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2015	2.00	eur	687050.00
+325979	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	24	13.44789430	52.52209120	1997	1.50	eur	99000.00
+5390514	sell	apartment	10243	Berlin	Kadiner Straße	20	13.45130400	52.51420790	1905	2.00	eur	345000.00
+5390631	sell	apartment	10243	Berlin	Gubener Straße	\N	13.44800100	52.51260640	1904	2.00	eur	210000.00
+5414469	sell	apartment	10435	Berlin	\N	\N	13.41387600	52.54026110	1890	4.00	eur	550000.00
+5390635	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1905	2.00	eur	72000.00
+5414536	sell	apartment	10435	Berlin	\N	\N	13.41387600	52.54026110	1910	3.00	eur	720000.00
+5390629	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	280000.00
+5390626	sell	apartment	10247	Berlin	Kinzigstraße	\N	13.46563890	52.51283010	1987	3.00	eur	125000.00
+5390618	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	389000.00
+5390622	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	599000.00
+491615	sell	apartment	10247	Berlin	Bänschstraße	22	13.46115930	52.51876630	1900	3.00	eur	435000.00
+5390539	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	139000.00
+5390642	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	275000.00
+5390591	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	267000.00
+5390674	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	463240.00
+5390526	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1912	3.00	eur	250000.00
+5390576	sell	apartment	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	1910	3.00	eur	181300.00
+5390584	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	147600.00
+5390579	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	248000.00
+5390596	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1903	2.00	eur	130000.00
+5390600	sell	apartment	10247	Berlin	Schreinerstraße	38-39	13.47003270	52.51662760	\N	3.00	eur	257448.00
+507448	rent	apartment	12437	Berlin	Schraderstraße	1	13.48234090	52.46219460	1920	2.00	eur	337.00
+5440250	sell	apartment	10777	Berlin	Ansbacher Straße	\N	13.33902130	52.49585410	1918	3.00	eur	309000.00
+5390601	sell	apartment	10249	Berlin	Pintschstraße	13	13.44774990	52.52355350	\N	1.00	eur	155259.00
+5390617	sell	apartment	10249	Berlin	Heidenfeldstraße	17	13.44996490	52.52583440	1910	2.00	eur	56500.00
+5390666	sell	apartment	10249	Berlin	Pintschstraße	\N	13.44904370	52.52197980	1995	2.00	eur	149250.00
+5390637	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	250184.00
+5390582	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	155000.00
+5390592	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	208800.00
+5390577	sell	penthouse	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	3.00	eur	460000.00
+5390586	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	385000.00
+5390599	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	225000.00
+5390630	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	222012.00
+5390636	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	237402.00
+5390658	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	286650.00
+5390623	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1989	4.00	eur	317500.00
+5550959	sell	apartment	13597	Berlin	Stresowstraße	15	13.20635980	52.53392560	1961	1.00	eur	57650.00
+5390729	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	100000.00
+5390748	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	178500.00
+5393820	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	250000.00
+5390805	sell	apartment	10115	Berlin	Torstraße	175	13.39459320	52.52888760	\N	5.00	eur	0.00
+5390767	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	348847.00
+5390706	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1997	1.50	eur	110000.00
+5390727	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	0.00
+5390798	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	1125000.00
+5390717	sell	apartment	10115	Berlin	Wöhlertstraße	\N	13.37919560	52.53682480	1906	1.00	eur	69000.00
+5390778	sell	apartment	10115	Berlin	Schlegelstraße	\N	13.38617630	52.52991350	1900	2.00	eur	229000.00
+5390761	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	385000.00
+5390714	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	135000.00
+5390771	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	435000.00
+5390521	sell	penthouse	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	7.00	eur	1125000.00
+5390708	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	1.50	eur	110000.00
+5390787	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	1125000.00
+310492	sell	apartment	10179	Berlin	Holzmarktstraße	75	13.41890322	52.51598250	1978	3.00	eur	237777.00
+5458806	sell	apartment	12053	Berlin	\N	\N	13.43212851	52.47732059	1900	2.00	eur	80000.00
+310932	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1996	4.00	eur	313000.00
+5390793	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	650000.00
+5390826	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	469000.00
+5390359	sell	apartment	10179	Berlin	Michaelkirchplatz	4-6	13.42020780	52.50671060	\N	4.00	eur	445200.00
+5390763	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	230200.00
+5390841	sell	apartment	10179	Berlin	Köpenicker Straße	48	13.42361210	52.50925180	\N	2.00	eur	269000.00
+5390849	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	725000.00
+5390800	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	575000.00
+5390846	sell	apartment_maisonette	10179	Berlin	Michaelkirchstraße	12	13.42169260	52.51012090	\N	3.00	eur	612201.00
+5506080	sell	single_family_house	12587	Berlin	\N	\N	13.64060560	52.46137400	\N	4.00	eur	214000.00
+5390685	sell	apartment	10245	Berlin	Neue Bahnhofstraße	\N	13.47071760	52.50662940	1900	3.00	eur	189000.00
+5506451	sell	apartment	12627	Berlin	\N	\N	13.62364230	52.53038830	1990	1.00	eur	34000.00
+5390772	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	168470.00
+5390649	sell	apartment	10245	Berlin	Kopernikusstraße	20	13.45511864	52.51026785	1999	2.00	eur	139435.00
+5390679	sell	penthouse	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	595700.00
+5390815	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	169900.00
+5390664	sell	apartment	10245	Berlin	Grünberger Straße	\N	13.45705530	52.51170970	\N	5.00	eur	678165.00
+5390633	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	184716.00
+5390640	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	332028.00
+5390675	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	115000.00
+5390806	sell	apartment_maisonette	10245	Berlin	Simplonstraße	\N	13.45845610	52.50863980	\N	3.00	eur	245000.00
+5390755	sell	apartment	10245	Berlin	Simplonstraße	\N	13.45845610	52.50863980	\N	4.00	eur	178000.00
+5390693	sell	apartment	10245	Berlin	Alt-Stralau	32	13.47857760	52.49314180	\N	3.00	eur	383500.00
+5390770	sell	apartment	10245	Berlin	Alt-Stralau	32	13.47857760	52.49314180	\N	4.00	eur	514500.00
+5390647	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1973	3.00	eur	389000.00
+5390716	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37147300	52.53322810	\N	3.00	eur	563265.00
+5390768	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	3.00	eur	486912.00
+5390638	sell	apartment	10117	Berlin	Leipziger Straße	44	13.39593080	52.51010570	1973	2.00	eur	115000.00
+5390779	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	3.00	eur	400667.00
+5390802	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	3.00	eur	463388.00
+348591	sell	apartment_maisonette	10117	Berlin	Leipziger Platz	12	13.37952760	52.51013720	\N	5.00	eur	347000.00
+5390819	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	3.00	eur	431272.00
+5390643	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1960	2.00	eur	128000.00
+5390676	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1973	3.00	eur	269000.00
+5390850	sell	apartment	10785	Berlin	Schöneberger Ufer	53	13.36696000	52.50562000	\N	2.00	eur	513918.00
+5390809	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	3.00	eur	519248.00
+5390887	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	3.00	eur	363044.00
+5390744	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	2.00	eur	655526.00
+5390655	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	900000.00
+5390738	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	2.00	eur	512120.00
+384152	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1831	3.00	eur	445000.00
+562968	sell	apartment	13156	Berlin	Kuckhoffstraße	55	13.39525220	52.58260130	1994	2.00	eur	89000.00
+5390698	sell	apartment	10119	Berlin	Max-Beer-Straße	5	13.40794280	52.52503680	1900	2.00	eur	200000.00
+386225	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	2.00	eur	365000.00
+5390656	sell	apartment_maisonette	10119	Berlin	Fehrbelliner Straße	38	13.40072483	52.53495320	\N	2.00	eur	205000.00
+5390847	sell	apartment	10119	Berlin	Brunnenstraße	178	13.39900850	52.53200830	2005	3.50	eur	489000.00
+5390725	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	2008	3.00	eur	1730000.00
+5390660	sell	apartment	10119	Berlin	Rosenthaler Straße	23	13.40337380	52.52637340	\N	2.00	eur	245000.00
+5389841	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	219000.00
+5390680	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	4.00	eur	342500.00
+5390686	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46543476	52.51637250	1920	2.00	eur	124000.00
+5390704	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.50	eur	195000.00
+5390672	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	146400.00
+5390703	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	130000.00
+5390663	sell	penthouse	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	394000.00
+5390737	sell	apartment	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	\N	3.00	eur	200000.00
+5390730	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	275500.00
+5390669	sell	apartment	10247	Berlin	Rigaer Straße	106	13.45451590	52.51838060	\N	3.00	eur	129000.00
+5390735	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	274000.00
+5390707	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	86000.00
+5390677	sell	penthouse	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	326190.00
+5390740	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	2009	3.00	eur	519000.00
+5390692	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	271575.00
+5390736	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	330600.00
+5390687	sell	mid_terrace_house	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	355040.00
+5390690	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	290000.00
+5390701	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	263625.00
+5390694	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	165000.00
+5390749	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	175000.00
+5390753	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	222012.00
+5390723	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	343675.00
+5390756	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	195000.00
+5390759	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	1.00	eur	64900.00
+5390835	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	4.00	eur	407056.00
+5390783	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	1.00	eur	61000.00
+5390851	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	\N	4.00	eur	665000.00
+5390804	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	3.00	eur	442650.00
+5390791	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.50	eur	225000.00
+5390856	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1890	3.00	eur	261500.00
+5390801	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	3.00	eur	436800.00
+5390825	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	147600.00
+5390428	sell	apartment	10247	Berlin	Schreinerstraße	37	13.47033350	52.51657270	2003	2.00	eur	199000.00
+5390813	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	188500.00
+5390837	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	188500.00
+5390840	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	280500.00
+5390842	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	1908	3.00	eur	338000.00
+5390857	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1890	3.00	eur	295000.00
+5390845	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1908	3.00	eur	338000.00
+322888	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1974	3.00	eur	140000.00
+321637	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	3.00	eur	198000.00
+5390879	sell	apartment	10243	Berlin	Frankfurter Tor	7	13.45429450	52.51519730	1953	2.00	eur	173400.00
+5390965	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	1250000.00
+5412916	sell	apartment	10437	Berlin	Stubbenkammerstraße	4	13.42431460	52.54195090	1900	2.00	eur	98700.00
+310695	sell	apartment	10243	Berlin	Am Comeniusplatz	2	13.44739028	52.51232275	\N	3.00	eur	306000.00
+310945	sell	apartment	10243	Berlin	Singerstraße	38	13.43404150	52.51474750	1965	2.00	eur	83441.00
+5390776	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1954	2.00	eur	154900.00
+5390941	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	120000.00
+5390789	sell	apartment	10243	Berlin	Koppenstraße	25	13.43629910	52.51582580	1918	2.00	eur	79500.00
+5390781	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1954	2.00	eur	196020.00
+5390980	sell	apartment	10243	Berlin	Kadiner Straße	20	13.45073700	52.51425800	1905	2.00	eur	339000.00
+5390766	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	140000.00
+5390961	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	110000.00
+5391003	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	167560.00
+5435450	sell	apartment	10711	Berlin	Lützenstraße	11	13.28934620	52.49912870	1900	2.00	eur	99000.00
+5390829	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	3.00	eur	278100.00
+5390780	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1980	2.00	eur	85000.00
+5390860	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	128250.00
+5390833	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	1900	4.00	eur	333000.00
+5435277	sell	apartment	10715	Berlin	Mainzer Straße	\N	13.32529200	52.47988890	1907	4.50	eur	193500.00
+5390822	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	2.00	eur	185000.00
+5390803	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	296000.00
+5390844	sell	apartment_maisonette	10249	Berlin	Pintschstraße	13	13.44774990	52.52355350	\N	4.00	eur	399500.00
+5390774	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	213077.00
+5390765	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	1900	3.00	eur	262675.00
+5390807	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	466200.00
+5390799	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	237825.00
+5390555	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	1998	2.00	eur	249995.00
+5390785	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	182000.00
+5390876	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	1900	3.50	eur	319000.00
+5390812	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	2.00	eur	144576.00
+5390817	sell	apartment	10115	Berlin	Gartenstraße	99	13.39060310	52.53085440	\N	4.00	eur	642550.00
+5390810	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	475000.00
+5390933	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2000	3.00	eur	350000.00
+5390931	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	495000.00
+5390948	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	2010	4.00	eur	949000.00
+5390983	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5390966	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	2.00	eur	230657.00
+5390985	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+309161	sell	apartment	10115	Berlin	Scharnhorststraße	32	13.37185200	52.53265000	2014	3.00	eur	353199.00
+5390940	sell	penthouse	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	370000.00
+5390958	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	2.00	eur	245000.00
+5390834	sell	semi_detached_house	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	8.00	eur	619900.00
+5390971	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	3.00	eur	385000.00
+5390916	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1900	3.00	eur	286692.00
+5390925	sell	apartment	10245	Berlin	Corinthstraße	\N	13.46050830	52.50029210	1894	3.00	eur	275520.00
+5390963	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	3.00	eur	365000.00
+5390899	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	2.00	eur	177175.00
+5443760	sell	apartment	10779	Berlin	\N	\N	13.34583010	52.49402810	1905	5.00	eur	580000.00
+418591	sell	apartment	10715	Berlin	Babelsberger Straße	1	13.33490140	52.48762420	2016	5.00	eur	968500.00
+5390976	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	4.00	eur	404000.00
+5390992	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	155000.00
+5390953	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	167550.00
+5390888	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	4.00	eur	238350.00
+5390861	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	312200.00
+328291	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	2013	3.00	eur	439000.00
+5390870	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	199000.00
+328668	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	712000.00
+5390918	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	1.00	eur	130000.00
+5390877	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	395000.00
+5390972	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1890	4.00	eur	435000.00
+5390993	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	899000.00
+5390947	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	339000.00
+5427521	sell	apartment_maisonette	10625	Berlin	\N	\N	13.31513700	52.50635700	1994	4.00	eur	513500.00
+5391050	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	650000.00
+5390883	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1997	1.00	eur	79500.00
+5390952	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	650000.00
+5390942	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	575000.00
+5391059	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	449000.00
+389668	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1910	4.00	eur	450000.00
+627174	sell	apartment	13593	Berlin	Weinmeisterhornweg	128	13.16531240	52.51365440	1964	2.00	eur	79000.00
+5390858	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1999	4.00	eur	345000.00
+390728	sell	apartment	10119	Berlin	Max-Beer-Straße	6	13.40833890	52.52502270	1893	2.00	eur	324000.00
+391291	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	1.00	eur	199950.00
+5550999	sell	apartment	13587	Berlin	\N	\N	13.21741330	52.55718140	1956	2.00	eur	64800.00
+392977	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1888	3.00	eur	501999.00
+5391016	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	\N
+5391020	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	5.00	eur	\N
+5390962	sell	apartment	10119	Berlin	Brunnenstraße	183	13.39947340	52.53150500	1900	4.00	eur	424800.00
+5391055	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	4.00	eur	1020000.00
+5390890	sell	multi_family_house	10119	Berlin	\N	\N	13.40550818	52.53012550	1895	8.00	eur	8900000.00
+5390904	sell	apartment	10119	Berlin	Choriner Straße	\N	13.40584370	52.53068640	1900	3.00	eur	280000.00
+393439	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1845	4.00	eur	450000.00
+5391012	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	365000.00
+5413034	sell	apartment	10437	Berlin	\N	\N	13.42135040	52.54498720	1927	2.50	eur	660000.00
+5390997	sell	apartment	10249	Berlin	Friedenstraße	\N	13.42494540	52.52816520	1890	3.00	eur	272000.00
+5390866	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1890	3.00	eur	374500.00
+5390882	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	60000.00
+5390871	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1890	3.00	eur	190000.00
+5390930	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	265500.00
+5390889	sell	apartment	10247	Berlin	Scharnweberstraße	51	13.46907050	52.51236280	1914	1.00	eur	95000.00
+5390917	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1906	2.00	eur	162000.00
+5390859	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1890	3.00	eur	304500.00
+5390989	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	2005	2.00	eur	650000.00
+5390928	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	2.00	eur	171200.00
+5390913	sell	penthouse	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	1900	3.00	eur	393900.00
+5390915	sell	apartment	10249	Berlin	Pufendorfstraße	6	13.43914010	52.52297930	\N	2.00	eur	174200.00
+5390886	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	355040.00
+5390964	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	3.00	eur	431083.00
+5390881	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	300000.00
+5390908	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	3.00	eur	238500.00
+5390898	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	355040.00
+5390970	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	259000.00
+5390984	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	352860.00
+5390977	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	331345.00
+5390900	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	3.00	eur	200000.00
+5390974	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	314621.00
+5391005	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	444347.00
+5391002	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	431083.00
+5390911	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	266800.00
+5390987	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	506178.00
+347066	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	4652000.00
+5390893	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	3.00	eur	400667.00
+5390921	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	3.00	eur	558756.00
+5458881	sell	apartment	12053	Berlin	\N	\N	13.43212851	52.47732059	\N	2.00	eur	234430.00
+5458763	sell	apartment	12051	Berlin	Ringbahnstraße	\N	13.43800080	52.46780410	1964	2.00	eur	144000.00
+351778	sell	apartment	10117	Berlin	Friedrichstraße	120	13.38700030	52.52659230	1900	5.00	eur	280000.00
+5458782	sell	apartment	12055	Berlin	\N	\N	13.44744400	52.47185975	1954	2.00	eur	108650.00
+5390927	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	3.00	eur	501509.00
+5390934	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	2.00	eur	518072.00
+5390978	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1640000.00
+349280	sell	apartment	10117	Berlin	Am Kupfergraben	6	13.39527030	52.52018550	1997	3.00	eur	240000.00
+5391048	sell	apartment	10117	Berlin	Auguststraße	83	13.39214041	52.52638575	1900	4.00	eur	1499000.00
+5390943	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	4.00	eur	698190.00
+5390951	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	2.00	eur	657076.00
+5390959	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	895000.00
+5391040	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1994	1.00	eur	54600.00
+5391084	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	2.00	eur	172000.00
+5391004	sell	apartment	10115	Berlin	Brunnenstraße	42	13.39777170	52.53670470	2006	3.00	eur	0.00
+5391096	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	545000.00
+5391082	sell	apartment	10115	Berlin	Boyenstraße	45	13.37287832	52.53761865	1997	1.00	eur	77500.00
+5391001	sell	apartment	10115	Berlin	Chausseestraße	8	13.38626480	52.52818590	\N	1.00	eur	0.00
+5390990	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	2.00	eur	260000.00
+5391099	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	655000.00
+5391018	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	1870	5.00	eur	1700000.00
+5391052	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	3.00	eur	175000.00
+5391023	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	399000.00
+5391090	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	355000.00
+5391085	sell	apartment	10115	Berlin	Boyenstraße	45	13.37287832	52.53761865	1997	4.00	eur	310000.00
+5391029	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	425000.00
+5391074	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	375000.00
+323510	sell	apartment	10243	Berlin	Lichtenberger Straße	40	13.42539936	52.51343880	1986	2.00	eur	150000.00
+5391080	sell	apartment	10243	Berlin	Andreasstraße	20	13.43184000	52.51325000	1974	3.00	eur	120000.00
+5391151	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	489000.00
+5391224	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	840000.00
+5391243	sell	apartment_maisonette	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	449500.00
+5391028	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1954	2.00	eur	185000.00
+5391154	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	2.00	eur	399000.00
+5391227	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	340000.00
+5391126	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	439000.00
+5391241	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	389500.00
+5391140	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	479000.00
+5390611	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	5.00	eur	770000.00
+5391178	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	1.00	eur	197400.00
+5391034	sell	apartment	10247	Berlin	Niederbarnimstraße	\N	13.45924040	52.51419530	1900	2.00	eur	154000.00
+5391190	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	62729.00
+5391025	sell	apartment	10245	Berlin	Simplonstraße	32	13.46097440	52.50714950	1900	3.00	eur	359000.00
+5391064	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	149000.00
+5391031	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	60000.00
+5391183	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	2.00	eur	144375.00
+5391006	sell	apartment	10245	Berlin	Dirschauer Straße	8	13.45655400	52.50794450	\N	1.00	eur	55000.00
+5391077	sell	apartment	10245	Berlin	Grünberger Straße	\N	13.45705530	52.51170970	\N	5.00	eur	659130.00
+5391072	sell	apartment	10245	Berlin	Grünberger Straße	\N	13.45705530	52.51170970	\N	2.00	eur	92000.00
+5391160	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	99500.00
+5391165	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1900	2.00	eur	99500.00
+5386707	sell	apartment	10178	Berlin	\N	\N	13.41752660	52.52647680	\N	1.50	eur	133000.00
+5391053	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1996	1.50	eur	84900.00
+5391093	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	111400.00
+5391022	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	3.00	eur	175000.00
+5391068	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	2.00	eur	155000.00
+5391062	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1910	4.00	eur	198000.00
+5391065	sell	penthouse	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	3.00	eur	354200.00
+5391107	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	240500.00
+5391033	sell	apartment	10247	Berlin	Proskauer Straße	\N	13.46012620	52.51510130	1900	2.00	eur	44200.00
+5391030	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	60000.00
+5391156	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	2.00	eur	152000.00
+5391097	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	240500.00
+5391078	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1902	3.50	eur	213500.00
+5391115	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1907	3.00	eur	165000.00
+5391017	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	6.00	eur	379000.00
+5391056	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1996	1.50	eur	84900.00
+5391041	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1902	3.00	eur	219000.00
+5391103	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	0.00
+5391044	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	4.00	eur	430000.00
+12339272	rent	apartment	13469	Berlin	Tegernauer Zeile	7	13.33046810	52.60844870	1968	3.00	eur	395.00
+5391021	sell	apartment	10249	Berlin	Pintschstraße	\N	13.44904370	52.52197980	\N	4.00	eur	365000.00
+5391027	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	417819.00
+5391015	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	455100.00
+5391032	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	129000.00
+5391081	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	1.50	eur	99000.00
+5391153	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	0.00
+5391134	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	249575.00
+5391142	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	340025.00
+5391024	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	6.00	eur	555000.00
+5391035	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	2.00	eur	185000.00
+5390827	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	2.00	eur	270000.00
+5391054	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	2.00	eur	198000.00
+5391200	sell	apartment	10179	Berlin	Wallstraße	67	13.41095170	52.51270540	1986	2.00	eur	150000.00
+5391094	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	5.00	eur	575000.00
+5391105	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	459000.00
+5391141	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	445200.00
+5391136	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	230300.00
+5391145	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	217900.00
+5390905	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	73	13.41224670	52.50558090	\N	4.00	eur	257900.00
+5391071	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	385000.00
+5391191	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	488750.00
+5391128	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	459000.00
+5391162	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	369000.00
+5391161	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1900	1.00	eur	195000.00
+5391132	sell	apartment	10117	Berlin	Glinkastraße	42	13.38630260	52.51511980	\N	2.00	eur	370000.00
+5391163	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1886	2.00	eur	280000.00
+5391214	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1880	1.00	eur	190000.00
+349633	sell	apartment	10117	Berlin	Leipziger Straße	43	13.39560750	52.51046420	1973	3.00	eur	269000.00
+349700	sell	apartment_maisonette	10117	Berlin	Jägerstraße	48	13.39582810	52.51438310	\N	5.00	eur	1995000.00
+5427601	sell	apartment	10625	Berlin	\N	\N	13.31513700	52.50635700	1905	3.00	eur	330000.00
+347256	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2010	5.00	eur	1640000.00
+5391091	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1640000.00
+5391127	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	998000.00
+5391143	sell	apartment	10117	Berlin	Mohrenstraße	1-2	13.38555270	52.51079120	2001	3.50	eur	575000.00
+5391236	sell	apartment	10117	Berlin	Leipziger Straße	46	13.39733610	52.51057060	1973	1.00	eur	135000.00
+5391201	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	228000.00
+5391210	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	4.00	eur	212000.00
+5391217	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	212000.00
+5391118	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	0.00
+5391226	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1900	4.00	eur	212000.00
+5391164	sell	apartment	10247	Berlin	\N	\N	13.47253360	52.51540340	1910	1.00	eur	59500.00
+5391180	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	1904	2.00	eur	89000.00
+5391228	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	75000.00
+5391138	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1925	2.00	eur	169000.00
+5391207	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1902	4.00	eur	212000.00
+5391213	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1902	4.00	eur	213000.00
+5391130	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	0.00
+5391192	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1950	3.00	eur	69000.00
+5391194	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1906	2.00	eur	135000.00
+5391221	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	212000.00
+5391233	sell	apartment	10247	Berlin	Jungstraße	\N	13.46695280	52.51260380	1900	2.00	eur	132000.00
+5391149	sell	penthouse	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	795000.00
+5391334	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	1.50	eur	204700.00
+5391193	sell	apartment	10115	Berlin	\N	\N	13.37770350	52.53261400	\N	2.00	eur	245000.00
+5391155	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391157	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391364	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	529000.00
+5391330	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	2.00	eur	223000.00
+5391188	sell	apartment	10115	Berlin	\N	\N	13.37770350	52.53261400	\N	2.00	eur	257000.00
+5391289	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	245000.00
+5391232	sell	apartment	10435	Berlin	Swinemünder Straße	112	13.40068000	52.53847000	\N	5.00	eur	673000.00
+5391346	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	618000.00
+5391350	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	196000.00
+5391242	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	557336.00
+5391360	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	419000.00
+5391234	sell	apartment	10249	Berlin	Heidenfeldstraße	17	13.45009980	52.52577130	1904	3.00	eur	142500.00
+5391265	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	5.00	eur	506178.00
+5391275	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	2.00	eur	139943.00
+5391159	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	0.00	eur	0.00
+5391249	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	210250.00
+5391061	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	4.00	eur	390000.00
+5391319	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	3.00	eur	460000.00
+5391196	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	313200.00
+5391158	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	3.00	eur	193000.00
+5391172	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	84000.00
+5391167	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	549000.00
+5391174	sell	apartment	10247	Berlin	Eldenaer Straße	\N	13.47053170	52.52046710	1904	3.00	eur	84000.00
+5391206	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	499000.00
+5391198	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	84000.00
+5391284	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	4.00	eur	347728.00
+5468726	sell	apartment	12167	Berlin	\N	\N	13.33008290	52.45199040	1995	3.00	eur	265000.00
+5391259	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	5.00	eur	\N
+5391431	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	2.00	eur	207000.00
+396925	sell	apartment_maisonette	10119	Berlin	Torstraße	23	13.41312410	52.52811380	1900	4.00	eur	1600000.00
+5391271	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1990	5.00	eur	0.00
+397573	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2004	4.00	eur	750000.00
+5391493	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2002	5.00	eur	1130000.00
+5391266	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	2.00	eur	0.00
+399024	sell	apartment	10119	Berlin	Linienstraße	72	13.40246550	52.52912130	2018	3.00	eur	1150000.00
+399623	sell	villa	10119	Berlin	\N	\N	13.40581140	52.53074100	1890	1.00	eur	420000.00
+5391212	sell	penthouse	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	5.00	eur	790000.00
+5391454	sell	apartment	10119	Berlin	Fehrbelliner Straße	\N	13.40369790	52.53338820	1888	3.00	eur	115000.00
+5391272	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	3.00	eur	147075.00
+5391203	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	99500.00
+5391311	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1908	4.00	eur	449000.00
+5391235	sell	apartment	10245	Berlin	Niemannstraße 6;	32	13.46050030	52.50704910	1900	3.00	eur	319000.00
+5391306	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	3.00	eur	245000.00
+5391294	sell	apartment	10245	Berlin	Simon-Dach-Straße	\N	13.45663320	52.51083890	1900	2.00	eur	98000.00
+5391315	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	5.00	eur	1017253.00
+5391223	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	3.00	eur	274700.00
+5391211	sell	apartment	10245	Berlin	Gabriel-Max-Straße	\N	13.45784080	52.50943830	1900	1.00	eur	95000.00
+5391231	sell	apartment	10245	Berlin	Döringstraße	7	13.46232780	52.50544080	\N	4.00	eur	345000.00
+5391348	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	274278.00
+5391327	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	168470.00
+5391267	sell	penthouse	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	1171425.00
+5391168	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	3.00	eur	65000.00
+5391216	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	92000.00
+5391333	sell	apartment	10245	Berlin	Bödikerstraße	32	13.46273520	52.49910340	1969	3.00	eur	65000.00
+325371	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	1.00	eur	130000.00
+5391293	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1972	1.00	eur	99000.00
+5391251	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1998	3.00	eur	279000.00
+5391283	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	299000.00
+5391356	sell	apartment	10179	Berlin	Rungestraße	\N	13.41788350	52.51241950	\N	3.00	eur	312000.00
+5391324	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	365000.00
+5391370	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	4.00	eur	498000.00
+5391351	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	400000.00
+5391359	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	387000.00
+5391307	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	298500.00
+5412875	sell	apartment_maisonette	10407	Berlin	Danziger Straße	165	13.43989930	52.53319170	1910	2.00	eur	259000.00
+350872	sell	apartment	10117	Berlin	Kurstraße	15	13.39944910	52.51301830	\N	4.00	eur	270000.00
+5391323	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	528000.00
+5391460	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	721000.00
+5391339	sell	apartment	10115	Berlin	Scharnhorststraße	6/7	13.37164560	52.53357640	1900	2.00	eur	330000.00
+5391448	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	650100.00
+5391458	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	650100.00
+5391455	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	635100.00
+5391596	sell	apartment	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	1.00	eur	198000.00
+5391312	sell	apartment	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	3.00	eur	959000.00
+5391393	sell	apartment	10117	Berlin	Kommandantenstraße	67	13.40329950	52.50860440	\N	4.00	eur	1190000.00
+5391400	sell	apartment_maisonette	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	315000.00
+5391411	sell	penthouse	10117	Berlin	Charlottenstraße	16	13.39251250	52.50816270	\N	2.00	eur	286330.00
+5391443	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	721000.00
+5391482	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	3.00	eur	895000.00
+5391515	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	5.00	eur	1490000.00
+5391378	sell	penthouse	10179	Berlin	Köpenicker Straße	48/49	13.42361210	52.50925180	2000	2.00	eur	315000.00
+631893	sell	semi_detached_house	13591	Berlin	\N	\N	13.13034000	52.54170010	1981	5.00	eur	549000.00
+5391297	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	337356.00
+5412781	sell	apartment_maisonette	10407	Berlin	Danziger Straße	128	13.43414083	52.53521515	1905	2.00	eur	186000.00
+5391285	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1904	2.00	eur	124800.00
+5391252	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	4.00	eur	298000.00
+5391335	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	5.00	eur	261800.00
+5391316	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	305360.00
+5391353	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	3.00	eur	365700.00
+5391381	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	5.00	eur	569900.00
+5391345	sell	apartment	10247	Berlin	Rigaer Straße	106	13.45451590	52.51838060	1900	3.00	eur	152000.00
+5391268	sell	apartment_maisonette	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	198997.00
+5391336	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	6.00	eur	1100000.00
+5391489	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	80000.00
+5391486	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	0.00
+5391379	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	530100.00
+5391328	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	520000.00
+5391349	sell	apartment	10243	Berlin	Am Comeniusplatz	1	13.44787312	52.51241640	\N	2.00	eur	228000.00
+5391290	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1103400.00
+5391305	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	172256.00
+5391317	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	389500.00
+5391380	sell	apartment	10243	Berlin	Strausberger Platz	13	13.42873240	52.51776170	1955	2.00	eur	130000.00
+5391421	sell	apartment	10245	Berlin	Neue Bahnhofstraße	\N	13.47009620	52.50602690	\N	4.00	eur	359206.00
+5391475	sell	apartment	10249	Berlin	Straßmannstraße	\N	13.45086230	52.52243900	1908	3.00	eur	164221.00
+5391340	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	462000.00
+5391343	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	340000.00
+5391467	sell	apartment	10249	Berlin	Straßmannstraße	\N	13.45086230	52.52243900	1908	2.00	eur	108987.00
+5391352	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	99500.00
+5391445	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	\N	3.00	eur	117000.00
+5391376	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	\N	2.00	eur	80000.00
+5391439	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	300000.00
+5391383	sell	apartment	10249	Berlin	Pintschstraße	\N	13.44904370	52.52197980	\N	4.00	eur	385000.00
+5391332	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	465000.00
+5391433	sell	apartment	10249	Berlin	Mühsamstraße	64	13.45315650	52.52072730	1900	2.00	eur	158500.00
+5391471	sell	apartment	10249	Berlin	Straßmannstraße	\N	13.45086230	52.52243900	1908	2.00	eur	116432.00
+5391478	sell	apartment	10249	Berlin	Straßmannstraße	\N	13.45086230	52.52243900	1908	9.00	eur	498000.00
+5391329	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	465000.00
+5391372	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	306396.00
+5391406	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	212500.00
+5391409	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	276345.00
+5391440	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	447030.00
+5391435	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	267424.00
+5541676	sell	single_family_house	13437	Berlin	\N	\N	13.32433090	52.59112350	1950	4.00	eur	349000.00
+5391424	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	465480.00
+5391429	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	658000.00
+5391463	sell	apartment	10245	Berlin	Lehmbruckstraße	\N	13.45312390	52.50324820	1920	2.00	eur	171500.00
+5391427	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	478608.00
+5391483	sell	apartment	10245	Berlin	Danneckerstraße	\N	13.45409180	52.50219540	\N	3.00	eur	280000.00
+5486162	sell	apartment	12437	Berlin	Kiefholzstraße	\N	13.49434210	52.46044920	1910	2.00	eur	79800.00
+5391369	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1995	1.00	eur	85000.00
+5391384	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	3.00	eur	254900.00
+5391547	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1904	3.00	eur	160000.00
+5390546	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	474771.00
+5391388	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	364400.00
+5391472	sell	apartment	10247	Berlin	Schreinerstraße	38-39	13.47003270	52.51662760	\N	2.00	eur	172650.00
+5391418	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	227360.00
+5391374	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1995	2.00	eur	258880.00
+5391430	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	4.00	eur	470000.00
+5391394	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	2.00	eur	189912.00
+5391437	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	2.00	eur	287000.00
+5391413	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	217650.00
+5391464	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1906	1.00	eur	64000.00
+5391392	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	139000.00
+5391468	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	280500.00
+5391469	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	550000.00
+5391526	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	235000.00
+5391601	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	220100.00
+5391585	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	299000.00
+5394901	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5391422	sell	apartment	10179	Berlin	Waldemarstraße	15	13.41633750	52.50460510	2009	2.00	eur	244250.00
+5391386	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	2.00	eur	194000.00
+5391461	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	2.00	eur	259000.00
+5391530	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	445200.00
+5391474	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	320000.00
+5391509	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	230300.00
+5391561	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	4.00	eur	525000.00
+5391594	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	530000.00
+5391545	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1997	2.00	eur	170000.00
+5414550	sell	apartment	10435	Berlin	\N	\N	13.40562500	52.53790510	\N	2.00	eur	215000.00
+5427486	sell	apartment	10623	Berlin	Grolmanstraße	15	13.32007838	52.50839165	1902	2.50	eur	269000.00
+5391407	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	2.00	eur	223000.00
+5427758	sell	apartment	10623	Berlin	Savignyplatz	\N	13.32307480	52.50583620	1900	2.00	eur	120000.00
+5391473	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	420000.00
+5391477	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391580	sell	apartment	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	4.00	eur	599000.00
+5391432	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	2.00	eur	223000.00
+5391450	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	2.00	eur	669500.00
+5391484	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391436	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	3.00	eur	281500.00
+5391465	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391562	sell	apartment	10115	Berlin	Scharnhorststraße	26/27	13.37081210	52.53379770	\N	2.00	eur	252350.00
+5391425	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	2.00	eur	215000.00
+5391527	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	235000.00
+570969	rent	apartment	13469	Berlin	Am Dianaplatz	1	13.31431950	52.60560050	1912	3.00	eur	1360.00
+5391441	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	298000.00
+5391502	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1950	2.00	eur	139000.00
+5391631	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	595725.00
+5391521	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	140000.00
+5391412	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	973800.00
+5391571	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1880	3.00	eur	434000.00
+5391637	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1030575.00
+5391538	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	549000.00
+5391497	sell	apartment_maisonette	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	399000.00
+5391508	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	547800.00
+5391438	sell	apartment	10243	Berlin	Frankfurter Tor	4	13.45490800	52.51668850	\N	3.00	eur	250000.00
+5391543	sell	apartment	10243	Berlin	Marchlewskistraße	93	13.44826300	52.50957260	1906	2.00	eur	235000.00
+5391556	sell	apartment	10243	Berlin	Kadiner Straße	20	13.45073700	52.51425800	1905	3.00	eur	296000.00
+5391567	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1993	5.00	eur	389000.00
+5391630	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	1.00	eur	85600.00
+5391576	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	2.00	eur	145626.00
+5391513	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	120000.00
+5391640	sell	apartment	10247	Berlin	Colbestraße	\N	13.46392600	52.51300350	1910	3.00	eur	209000.00
+5391531	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1954	1.00	eur	388041.00
+5391618	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	3.00	eur	219000.00
+5391485	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.00	eur	331333.00
+5391607	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	389000.00
+5391537	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	2.00	eur	156170.00
+5391584	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	3.00	eur	302503.00
+5391611	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	3.00	eur	212000.00
+5391569	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	2.00	eur	130067.00
+5391579	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	3.00	eur	260533.00
+5391577	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	269000.00
+5391492	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	3.00	eur	306000.00
+5391536	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1907	2.00	eur	98400.00
+5391563	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1896	4.00	eur	299000.00
+5391544	sell	apartment	10249	Berlin	Pintschstraße	\N	13.44904370	52.52197980	\N	4.00	eur	694500.00
+5391551	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	89000.00
+5391591	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	2.00	eur	149210.00
+5391600	sell	apartment	10249	Berlin	Straßmannstraße	\N	13.45086230	52.52243900	\N	5.00	eur	360000.00
+5391560	sell	apartment	10249	Berlin	Pintschstraße	\N	13.44904370	52.52197980	\N	6.00	eur	990000.00
+5391559	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	117000.00
+5391595	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	3.00	eur	363618.00
+5391533	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	152703.00
+5391570	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	3.00	eur	141000.00
+5391541	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	189000.00
+5391586	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	286750.00
+5391582	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	1899	3.00	eur	117000.00
+5391719	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	294000.00
+5391501	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	294000.00
+5391550	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	1.00	eur	84600.00
+5391511	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	199000.00
+5391800	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	705600.00
+5391726	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1953	3.00	eur	216900.00
+5391789	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	360900.00
+5391554	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	1.00	eur	98700.00
+5391546	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1953	3.00	eur	216900.00
+5391794	sell	apartment_maisonette	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	595700.00
+5391729	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	294000.00
+5391784	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	267400.00
+313569	sell	apartment	10245	Berlin	Simon-Dach-Straße	33	13.45612910	52.50938020	1906	1.00	eur	74500.00
+5391765	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	370000.00
+5391821	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1936	4.00	eur	269000.00
+5391696	sell	single_family_house	10117	Berlin	\N	\N	13.39067250	52.52272780	1860	14.00	eur	1400000.00
+5391732	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	256700.00
+5391553	sell	apartment	10119	Berlin	Torstraße	83	13.40652550	52.52956700	1900	3.00	eur	663800.00
+5391628	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1910	2.00	eur	210000.00
+5391708	sell	apartment	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	3.00	eur	559000.00
+5391654	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1831	3.00	eur	\N
+5391602	sell	apartment	10119	Berlin	Torstraße	\N	13.40999030	52.52875360	2000	3.00	eur	690000.00
+5391686	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	735000.00
+401196	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1897	1.00	eur	200000.00
+5391736	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	480000.00
+5391731	sell	penthouse	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	7.00	eur	5400000.00
+5391716	sell	apartment	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	2.00	eur	609000.00
+12339416	rent	apartment	13469	Berlin	Zabel-Krüger-Damm	30	13.33071020	52.60930270	1967	4.00	eur	466.00
+5477034	sell	apartment	12279	Berlin	\N	\N	13.35405080	52.41514150	1969	2.00	eur	139500.00
+5391636	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	2.00	eur	444389.00
+5391542	sell	apartment_maisonette	10117	Berlin	\N	\N	13.39067250	52.52272780	1920	2.00	eur	185000.00
+5391528	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1900	3.00	eur	449000.00
+5391574	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1903	5.00	eur	690000.00
+5391578	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1860	3.00	eur	545000.00
+5391539	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1870	2.00	eur	499000.00
+5391647	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	2.00	eur	599236.00
+5391656	sell	apartment	10117	Berlin	Leipziger Straße	49	13.40022210	52.51027210	\N	5.00	eur	375000.00
+5391661	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	1969	4.00	eur	646325.00
+5391535	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1884	3.00	eur	696000.00
+5391608	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1884	4.00	eur	526250.00
+5391581	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	1.00	eur	190000.00
+5391620	sell	apartment	10117	Berlin	Tucholskystraße	26	13.39343630	52.52575810	1910	4.00	eur	464000.00
+5391681	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	2.00	eur	286330.00
+5391666	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	520000.00
+5391632	sell	apartment	10117	Berlin	Mittelstraße	\N	13.38463710	52.51778320	\N	3.00	eur	805600.00
+5391604	sell	apartment_maisonette	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	4.00	eur	643900.00
+5391657	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391705	sell	apartment_roof_storey	10115	Berlin	Gartenstraße	100	13.39079694	52.53066865	\N	0.00	eur	299500.00
+5391665	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2004	2.00	eur	210000.00
+5391642	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	849000.00
+5391677	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	399000.00
+5391834	sell	apartment	10115	Berlin	Wöhlertstraße	\N	13.37919560	52.53682480	1907	3.00	eur	288000.00
+5391669	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	499000.00
+5391704	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	425000.00
+5391822	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	257500.00
+5391678	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	4.00	eur	640000.00
+5391638	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	2.00	eur	198000.00
+5391610	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	424000.00
+5391730	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	377000.00
+5391740	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	4.00	eur	298000.00
+5391627	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	545000.00
+5391737	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1960	2.00	eur	120000.00
+5391707	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	2.00	eur	139000.00
+5391725	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	1910	3.00	eur	198000.00
+577351	sell	apartment	13055	Berlin	\N	\N	13.48748120	52.53690390	1930	2.00	eur	112000.00
+5391849	sell	apartment	10115	Berlin	Scharnhorststraße	32	13.37185200	52.53265000	\N	2.00	eur	230657.00
+5391680	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	5.00	eur	475000.00
+5391675	sell	apartment	10249	Berlin	Petersburger Straße	72	13.45166000	52.51965000	\N	4.00	eur	230000.00
+5391753	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	171000.00
+5391633	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	545000.00
+5391720	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1998	2.00	eur	110000.00
+5391649	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	249000.00
+5391679	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	535000.00
+5391687	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	327000.00
+5391690	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	389000.00
+5391619	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	0.00	eur	0.00
+5391709	sell	apartment	10179	Berlin	Michaelkirchplatz	4-6	13.42020780	52.50671060	\N	4.00	eur	445200.00
+5391695	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1961	4.00	eur	259000.00
+5391682	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	265000.00
+5391667	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	252000.00
+583119	sell	apartment	13158	Berlin	\N	\N	13.36880340	52.59274540	1956	3.00	eur	179900.00
+5533770	sell	apartment	13156	Berlin	\N	\N	13.40278550	52.58466620	\N	2.00	eur	167958.00
+5391651	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	295500.00
+5391635	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	227000.00
+5391728	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1972	1.00	eur	99000.00
+5391609	sell	apartment	10179	Berlin	Michaelkirchplatz	4-6	13.42020780	52.50671060	\N	4.00	eur	498600.00
+5391644	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1908	2.00	eur	95000.00
+5391739	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	174900.00
+5391660	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	3.00	eur	232000.00
+5391735	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	204900.00
+5391751	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	139900.00
+5419301	sell	apartment	10551	Berlin	\N	\N	13.33693222	52.52988438	\N	3.00	eur	700000.00
+5391742	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	229900.00
+5391714	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	4.00	eur	265000.00
+5391710	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1915	1.00	eur	99000.00
+5391643	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1938	1.00	eur	67800.00
+5391694	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.00	eur	346000.00
+5391655	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	2.00	eur	176000.00
+489446	sell	apartment	10439	Berlin	Gudvanger Straße	57	13.42660420	52.55195800	1930	3.00	eur	197336.00
+5391746	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	169900.00
+5391738	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	752680.00
+5391697	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	492480.00
+5391676	sell	apartment	10243	Berlin	Karl-Marx-Allee	107	13.44537760	52.51720440	1952	3.00	eur	240000.00
+5391711	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	595725.00
+5391850	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	397800.00
+5391820	sell	apartment	10243	Berlin	Gubener Straße	50	13.44817480	52.51261620	1900	3.00	eur	220000.00
+5391805	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	267750.00
+5391668	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	4.00	eur	205852.00
+5391845	sell	apartment	10243	Berlin	Lichtenberger Straße	40	13.42539936	52.51343880	1986	2.00	eur	180500.00
+5391703	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	549900.00
+5391855	sell	apartment	10243	Berlin	Karl-Marx-Allee	107	13.44537760	52.51720440	1952	2.00	eur	148000.00
+404697	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1998	1.50	eur	230000.00
+405488	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1900	4.00	eur	788000.00
+406007	sell	apartment_maisonette	10119	Berlin	Templiner Straße	12	13.40828870	52.53225260	\N	3.00	eur	1549900.00
+5391825	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1900	2.50	eur	314600.00
+5391722	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	1911	2.00	eur	289000.00
+5391685	sell	apartment	10119	Berlin	Fehrbelliner Straße	81	13.40546340	52.53245430	1900	4.00	eur	400000.00
+5391818	sell	apartment	10119	Berlin	Zehdenicker Straße	5	13.40673200	52.53020270	1900	2.00	eur	210000.00
+411317	sell	apartment	10119	Berlin	Linienstraße	41	13.40952260	52.52831200	1999	3.00	eur	325000.00
+5391865	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	3.00	eur	\N
+5391932	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	643000.00
+5391847	sell	apartment	10119	Berlin	Fehrbelliner Straße	39	13.40043669	52.53503750	\N	1.00	eur	65450.00
+5391792	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1999	2.00	eur	168000.00
+5391843	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	2006	2.00	eur	168000.00
+5391781	sell	penthouse	10117	Berlin	\N	\N	13.39067250	52.52272780	1988	4.00	eur	395000.00
+5391814	sell	penthouse	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	6.00	eur	5500000.00
+5391795	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1973	3.00	eur	283600.00
+322627	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1660000.00
+5391828	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1745000.00
+5391757	sell	apartment	10117	Berlin	Albrechtstraße	12	13.38500620	52.52112990	1905	6.00	eur	780000.00
+5391864	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	2.00	eur	595000.00
+5391797	sell	penthouse	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1660000.00
+5391787	sell	apartment	10117	Berlin	Leipziger Straße	46	13.39733610	52.51057060	\N	5.00	eur	295000.00
+5391802	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1190000.00
+5391856	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	3390000.00
+5391764	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	315200.00
+5391810	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	6.00	eur	3195000.00
+5391824	sell	apartment	10117	Berlin	Dorotheenstraße	\N	13.37697080	52.51778190	\N	4.00	eur	1340240.00
+5391933	sell	penthouse	10117	Berlin	Behrenstraße	14-15	13.38644570	52.51537970	1889	4.00	eur	450000.00
+5391756	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	204900.00
+5391790	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	4.00	eur	599000.00
+5391773	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2000	2.00	eur	168000.00
+5391758	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	1.00	eur	74900.00
+5391498	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1902	2.00	eur	139000.00
+5391771	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	377000.00
+5391830	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	226296.00
+5391817	sell	penthouse	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	2.00	eur	294525.00
+5391902	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	305360.00
+5391919	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	337060.00
+5391936	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	338998.00
+5391768	sell	apartment_maisonette	10249	Berlin	Pintschstraße	\N	13.44904370	52.52197980	\N	2.00	eur	285000.00
+5391783	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	3.00	eur	295000.00
+5391761	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	474292.00
+5391916	sell	apartment	10249	Berlin	Hausburgstraße	\N	13.45365280	52.52552260	1920	1.50	eur	88500.00
+5391801	sell	apartment	10249	Berlin	Heidenfeldstraße	\N	13.45113560	52.52604040	1900	2.00	eur	188000.00
+5391755	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	1900	4.00	eur	319000.00
+5391920	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	174200.00
+5391808	sell	apartment	10249	Berlin	Pintschstraße	3	13.44882830	52.52258130	1995	1.00	eur	73500.00
+5391870	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	463240.00
+5391867	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	269000.00
+5391873	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	1900	2.00	eur	269000.00
+5391893	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	758000.00
+5476890	sell	single_family_house	12209	Berlin	\N	\N	13.32695823	52.41883855	1984	4.00	eur	395000.00
+5391786	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	479000.00
+5391896	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	515000.00
+5391888	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	221400.00
+5391903	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	345000.00
+5391886	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	279000.00
+5391907	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	298000.00
+5391881	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	938000.00
+5391791	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	425000.00
+5391829	sell	apartment	10179	Berlin	Michaelkirchplatz	4-6	13.42020780	52.50671060	\N	3.00	eur	302800.00
+5391899	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	605000.00
+5391836	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	290000.00
+5391883	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	590000.00
+5391891	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	141000.00
+5391860	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	10.00	eur	410000.00
+5391935	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	110000.00
+5391840	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	434000.00
+5391967	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	525000.00
+5391938	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	289000.00
+5391985	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	700000.00
+5391898	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	289800.00
+5391934	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1890	3.00	eur	456000.00
+5391939	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391857	sell	apartment	10115	Berlin	Scharnhorststraße	32	13.37185200	52.53265000	\N	3.00	eur	267200.00
+5391884	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	1.00	eur	138100.00
+5391853	sell	apartment_maisonette	10115	Berlin	Scharnhorststraße	32	13.37185200	52.53265000	\N	3.00	eur	217120.00
+5391879	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2000	1.00	eur	100000.00
+5391876	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	2.00	eur	235000.00
+5391960	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	419900.00
+5391908	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	4.00	eur	545895.00
+5391913	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	2.00	eur	195200.00
+5391900	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	2.00	eur	224250.00
+5391925	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391923	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5391905	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	3.00	eur	251250.00
+5391863	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	217120.00
+5391951	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	359000.00
+502946	sell	single_family_house	12527	Berlin	\N	\N	13.56175298	52.42545500	2012	4.00	eur	189500.00
+5395881	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	4.00	eur	394625.00
+5391901	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	715000.00
+5392066	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	187000.00
+5391964	sell	apartment	10178	Berlin	Karl-Marx-Allee	11	13.42008340	52.52162280	\N	3.00	eur	170000.00
+5391909	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1986	4.00	eur	195000.00
+5391887	sell	apartment	10243	Berlin	Karl-Marx-Allee	119	13.44726020	52.51706840	1954	2.00	eur	160000.00
+5391922	sell	apartment	10243	Berlin	Hildegard-Jadamowitz-Straße	\N	13.44623160	52.51599700	1996	3.00	eur	225000.00
+5392103	sell	apartment	10245	Berlin	Dirschauer Straße	3	13.45690190	52.50881240	1953	2.00	eur	139900.00
+5391882	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	120000.00
+5391914	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1986	2.00	eur	150000.00
+5391906	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1986	3.00	eur	165000.00
+5392058	sell	penthouse	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	899000.00
+5391892	sell	apartment	10119	Berlin	\N	\N	13.41228620	52.53165650	\N	3.00	eur	\N
+412590	sell	apartment	10119	Berlin	Templiner Straße	12	13.40828870	52.53225260	\N	3.00	eur	479900.00
+5392200	sell	apartment	10245	Berlin	Stralauer Allee	19	13.46182510	52.49850190	\N	2.00	eur	299000.00
+5392238	sell	apartment	10245	Berlin	Alt-Stralau	52-53	13.47063520	52.49475670	\N	2.00	eur	270339.00
+5392133	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1831	3.00	eur	495000.00
+5392028	sell	villa	10119	Berlin	Linienstraße	41	13.40952260	52.52831200	\N	3.00	eur	258000.00
+5392142	sell	apartment	10119	Berlin	Kastanienallee	38	13.40628820	52.53554940	1900	3.00	eur	375000.00
+5392146	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	\N	2.00	eur	0.00
+5392136	sell	multi_family_house	10119	Berlin	\N	\N	13.41228620	52.53165650	1900	0.00	eur	5500000.00
+5392042	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1996	2.00	eur	470000.00
+5392069	sell	apartment	10119	Berlin	\N	\N	13.40550818	52.53012550	1996	2.00	eur	470000.00
+5391912	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	549000.00
+5391948	sell	apartment	10117	Berlin	Kommandantenstraße	\N	13.40261680	52.50866790	\N	3.00	eur	492000.00
+5391945	sell	apartment	10117	Berlin	Kommandantenstraße	\N	13.40261680	52.50866790	\N	4.00	eur	492000.00
+5391927	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	279000.00
+5392043	sell	apartment	10117	Berlin	Seydelstraße	9	13.40338410	52.50972210	\N	4.00	eur	747000.00
+5392032	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	4.00	eur	500600.00
+5391915	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	389000.00
+5391972	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	285500.00
+5391917	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	295000.00
+5391940	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1886	3.00	eur	389800.00
+5392001	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	492297.00
+5392204	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	2.00	eur	700225.00
+5392045	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	1900	3.00	eur	182000.00
+5391991	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	363441.00
+5391984	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	292706.00
+5392023	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	368101.00
+5392018	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.50	eur	430209.00
+5391996	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.50	eur	413829.00
+5392056	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1986	3.00	eur	212000.00
+5391981	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	359874.00
+5392011	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	304044.00
+5391969	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	284080.00
+5391956	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	485000.00
+5391986	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	284080.00
+5392024	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	140000.00
+5392034	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	63000.00
+5391992	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	198000.00
+5391953	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	159000.00
+5391978	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	1885	5.00	eur	512500.00
+5391946	sell	apartment	10247	Berlin	Proskauer Straße	\N	13.46012620	52.51510130	1901	2.00	eur	113850.00
+5391989	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1908	11.00	eur	499000.00
+5392008	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1900	3.00	eur	98000.00
+5392031	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	0.00
+5391950	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	4.00	eur	382000.00
+5392049	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	5.00	eur	435200.00
+5392054	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	242000.00
+5391949	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	3.00	eur	205590.00
+5391968	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	1885	2.00	eur	279800.00
+5392002	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	5.00	eur	299000.00
+5391997	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	209500.00
+5392182	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	3.00	eur	795000.00
+5391971	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1832	2.00	eur	155000.00
+5391976	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	1430000.00
+353918	sell	apartment	10117	Berlin	Jägerstraße	35	13.39751030	52.51441490	2007	6.00	eur	510000.00
+5392195	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	4.00	eur	1695895.00
+5392000	sell	apartment	10117	Berlin	Oberwallstraße	17	13.39717970	52.51387910	\N	3.00	eur	1004800.00
+5392198	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	2.00	eur	599236.00
+317927	sell	apartment_maisonette	10117	Berlin	\N	\N	13.38532280	52.52362850	1880	2.00	eur	275000.00
+5443711	sell	apartment	10715	Berlin	Durlacher Straße	5	13.33649840	52.47986090	\N	3.00	eur	629000.00
+5392026	sell	apartment_maisonette	10117	Berlin	\N	\N	13.39067250	52.52272780	1880	1.00	eur	190000.00
+5392101	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1999	1.00	eur	169500.00
+5392037	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	480000.00
+350749	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	1.00	eur	450000.00
+5392059	sell	apartment	10117	Berlin	Georgenstraße	46	13.39387820	52.52023450	\N	3.00	eur	250000.00
+5392308	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	3.00	eur	197400.00
+5392016	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	345000.00
+12324935	rent	apartment	12524	Berlin	Dorothea-Viehmann-Straße	3	13.53115850	52.42168940	1997	2.00	eur	442.00
+5391994	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	690846.00
+317223	sell	apartment_maisonette	10117	Berlin	Dorotheenstraße	83	13.38390560	52.51829640	\N	10.00	eur	3995500.00
+5405564	sell	apartment	10367	Berlin	\N	\N	13.48255518	52.52385290	\N	4.00	eur	329800.00
+5392432	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1190000.00
+5392005	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1920	5.00	eur	275000.00
+5405650	sell	apartment	10367	Berlin	Bleckmannweg	5	13.48301230	52.51465080	\N	2.00	eur	121000.00
+5392292	sell	penthouse	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	759046.00
+5392337	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	332028.00
+5392317	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	127470.00
+5392035	sell	apartment_roof_storey	10245	Berlin	Böcklinstraße	\N	13.46565110	52.50625590	1910	2.00	eur	149000.00
+5392322	sell	apartment	10245	Berlin	Alt-Stralau	52-53	13.47063520	52.49475670	\N	2.00	eur	227514.00
+5392020	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	495000.00
+5392029	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	1981	4.00	eur	473000.00
+5392082	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	6.00	eur	125000.00
+5392110	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	495500.00
+5392108	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	399500.00
+5392077	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5392010	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	294900.00
+5392115	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	617500.00
+5392017	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	209500.00
+5391998	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	5.00	eur	399000.00
+5392096	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	319000.00
+5392051	sell	apartment	10115	Berlin	Scharnhorststraße	32	13.37185200	52.53265000	\N	2.00	eur	196180.00
+5392099	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	339500.00
+5392052	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	2.00	eur	196180.00
+5392104	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	339500.00
+5392107	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	379500.00
+5392112	sell	penthouse	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	511500.00
+5392067	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	2010	3.00	eur	999000.00
+5392091	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	2.00	eur	225000.00
+5476993	sell	apartment_roof_storey	12209	Berlin	\N	\N	13.32695823	52.41883855	1979	3.00	eur	275000.00
+5392061	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2010	3.00	eur	790000.00
+5392050	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	1996	4.00	eur	328000.00
+5392098	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	323000.00
+5392188	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	999000.00
+5392239	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	309000.00
+5392106	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	899000.00
+5392179	sell	villa	10179	Berlin	\N	\N	13.40743300	52.51442610	2010	9.00	eur	890000.00
+5392184	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	319000.00
+5392236	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	289000.00
+5392057	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2010	3.00	eur	790000.00
+5392094	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	239400.00
+5392095	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	1910	3.00	eur	198000.00
+5392065	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	4.00	eur	650000.00
+5392155	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	355040.00
+5392075	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1890	1.00	eur	100000.00
+5392153	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	355040.00
+5392145	sell	apartment	10249	Berlin	Mühsamstraße	44	13.44969410	52.51984550	\N	5.00	eur	490235.00
+5392134	sell	apartment	10249	Berlin	Matternstraße	11	13.45377910	52.52215200	1899	3.00	eur	198700.00
+5392083	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	394875.00
+5392100	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	2.00	eur	235000.00
+5392125	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	440000.00
+5392148	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	2002	2.00	eur	188000.00
+5392151	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	355040.00
+5392149	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	4.00	eur	274000.00
+5392160	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	276624.00
+5392140	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	156000.00
+5392164	sell	apartment	10247	Berlin	Schreinerstraße	\N	13.46660000	52.51711880	1900	2.00	eur	79000.00
+5392162	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	324394.00
+5392102	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	115000.00
+5392111	sell	apartment	10247	Berlin	Schreinerstraße	\N	13.46660000	52.51711880	1998	2.00	eur	260000.00
+5392150	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	2.00	eur	124900.00
+342065	sell	apartment	10247	Berlin	Finowstraße	26	13.46737170	52.51122000	\N	7.00	eur	430000.00
+5392156	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	129000.00
+5392147	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1910	3.00	eur	149900.00
+5392080	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1995	2.00	eur	115000.00
+5392120	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.50	eur	168000.00
+5392137	sell	apartment	10247	Berlin	Bänschstraße	29	13.46297430	52.51881530	1900	3.00	eur	183350.00
+5392109	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	170800.00
+5392119	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	139900.00
+5468426	sell	apartment	12159	Berlin	\N	\N	13.33664821	52.47322216	1972	4.00	eur	300000.00
+5392564	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	340000.00
+5392551	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	6.00	eur	759400.00
+5392557	sell	apartment	10243	Berlin	Gubener Straße	44	13.44886850	52.51169610	1911	2.00	eur	119000.00
+5392567	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1985	1.00	eur	65000.00
+5392574	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1996	2.00	eur	99000.00
+5392585	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	198000.00
+5392645	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1996	2.00	eur	99000.00
+5391270	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	544200.00
+5392731	sell	apartment	10245	Berlin	Simplonstraße	48	13.46315590	52.50598220	\N	5.00	eur	510000.00
+5392734	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	80000.00
+5392201	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	284100.00
+5392124	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.50	eur	125000.00
+5392294	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	3.00	eur	243500.00
+5392197	sell	apartment	10115	Berlin	Schlegelstraße	\N	13.38617630	52.52991350	1920	2.00	eur	195000.00
+5392129	sell	mid_terrace_house	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	3.00	eur	365000.00
+5392135	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5392280	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	4.00	eur	495000.00
+343544	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	2013	2.00	eur	264500.00
+5392214	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	262075.00
+342245	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	2013	2.00	eur	289500.00
+5392186	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	478700.00
+5392216	sell	apartment	10115	Berlin	Scharnhorststraße	26/27	13.37081210	52.53379770	1910	4.00	eur	418897.00
+5431769	sell	apartment	10707	Berlin	\N	\N	13.31064550	52.49316400	1984	3.00	eur	220000.00
+5392132	sell	apartment_maisonette	10115	Berlin	Gartenstraße	\N	13.38744950	52.53347610	2009	3.00	eur	299000.00
+5392180	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1905	4.00	eur	346000.00
+5392170	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	237402.00
+5392158	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	171000.00
+5392163	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	186000.00
+5392167	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	237402.00
+5392217	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	250184.00
+5392196	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	269000.00
+5392206	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	222012.00
+5392209	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	262075.00
+5392193	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	289275.00
+5392203	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	269000.00
+5392183	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2008	1.00	eur	315000.00
+5392199	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	269000.00
+5392212	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	250184.00
+5392253	sell	apartment	10247	Berlin	Schreinerstraße	11	13.46488190	52.51729970	1902	2.00	eur	78500.00
+5392210	sell	apartment	10247	Berlin	Kinzigstraße	\N	13.46563890	52.51283010	\N	4.00	eur	421400.00
+5392261	sell	penthouse	10247	Berlin	Dolziger Straße	19	13.46770650	52.51876850	\N	2.00	eur	549200.00
+5392234	sell	mid_terrace_house	10247	Berlin	Zur Innung	38	13.45949076	52.52395300	\N	6.00	eur	597000.00
+5392207	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1902	2.00	eur	94300.00
+5392232	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	2.00	eur	172000.00
+5392296	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	459000.00
+5392181	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	264000.00
+5392250	sell	penthouse	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	402135.00
+5392220	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1917	1.00	eur	49900.00
+5392223	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	139500.00
+5392255	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	599000.00
+5392202	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1902	2.00	eur	94300.00
+5392230	sell	penthouse	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	494000.00
+5392325	sell	apartment	10117	Berlin	Beuthstraße	5	13.40226410	52.50949780	\N	3.00	eur	175000.00
+5392281	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	3758000.00
+5392224	sell	apartment	10117	Berlin	Dorotheenstraße	\N	13.37697080	52.51778190	\N	4.00	eur	1184832.00
+350112	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1163000.00
+5392343	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	3.00	eur	998000.00
+5392227	sell	apartment	10117	Berlin	Dorotheenstraße	\N	13.37697080	52.51778190	\N	3.00	eur	911921.00
+354191	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1960000.00
+5392377	sell	apartment	10117	Berlin	Schadowstraße	3	13.38383800	52.51819710	\N	2.00	eur	507362.00
+5392269	sell	apartment	10117	Berlin	Dorotheenstraße	\N	13.37697080	52.51778190	\N	3.00	eur	678000.00
+5392218	sell	penthouse	10117	Berlin	Dorotheenstraße	\N	13.37697080	52.51778190	\N	4.00	eur	2302153.00
+5392213	sell	apartment	10117	Berlin	Schadowstraße	\N	13.38379460	52.51772930	\N	2.00	eur	457721.00
+5392259	sell	apartment	10785	Berlin	Schöneberger Ufer	51-55	13.36723000	52.50564000	\N	4.00	eur	1214238.00
+353947	sell	apartment	10117	Berlin	Friedrichstraße	129	13.38507730	52.52541730	\N	2.00	eur	155000.00
+5392389	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1886	2.00	eur	280000.00
+5392221	sell	apartment	10117	Berlin	Dorotheenstraße	\N	13.37697080	52.51778190	\N	3.00	eur	2060275.00
+350212	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1063000.00
+5392422	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2000	3.00	eur	450000.00
+5392290	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	139943.00
+5551009	sell	apartment	13587	Berlin	\N	\N	13.21741330	52.55718140	\N	4.00	eur	90000.00
+5392279	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1885	2.00	eur	364000.00
+5392233	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	85000.00
+5392246	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	2.00	eur	153844.00
+5392260	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	125000.00
+5392231	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	85000.00
+5392237	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	512500.00
+5392244	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	125000.00
+5392305	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	3.00	eur	331345.00
+5392284	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	215175.00
+5392297	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	391290.00
+5392295	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	325286.00
+5392273	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	1885	2.00	eur	350000.00
+5392229	sell	apartment	10249	Berlin	Agnes-Wabnitz-Straße	3	13.45491710	52.52585980	2002	4.00	eur	285000.00
+5392293	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	300438.00
+5392417	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	509000.00
+5392391	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	315000.00
+5392258	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	3.00	eur	430700.00
+5392300	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	513230.00
+5392390	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	173000.00
+5392387	sell	apartment	10179	Berlin	Neue Grünstraße	\N	13.40458370	52.50892910	\N	2.00	eur	320000.00
+5392285	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	474730.00
+5392291	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	487730.00
+5392289	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	509130.00
+5392393	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1898	5.00	eur	420000.00
+5392256	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	293000.00
+5392408	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	339000.00
+5392303	sell	apartment	10179	Berlin	Brückenstraße	4	13.41726410	52.51227660	2000	3.00	eur	290000.00
+5392347	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	365000.00
+5392274	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	474730.00
+5392468	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1997	2.00	eur	169999.00
+5392771	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1953	3.00	eur	47770.00
+5392386	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44741430	52.52420250	1900	2.00	eur	213000.00
+5496322	sell	apartment	12527	Berlin	Dahmestraße	7-8	13.58025260	52.42008920	\N	2.00	eur	226300.00
+5392331	sell	apartment	10247	Berlin	Rigaer Straße	66	13.46886000	52.51596000	\N	2.00	eur	83000.00
+5392778	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	2001	4.00	eur	129900.00
+389816	sell	apartment	10315	Berlin	Archenholdstraße	35	13.50310600	52.50629670	1911	3.00	eur	183000.00
+5392846	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	174900.00
+5392758	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	\N	3.00	eur	54000.00
+5392813	sell	multi_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	1950	1.00	eur	495000.00
+5392841	sell	villa	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	134900.00
+5392853	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	139000.00
+5392345	sell	apartment	10247	Berlin	Schreinerstraße	11	13.46488190	52.51729970	1900	1.00	eur	49900.00
+5392286	sell	apartment	10247	Berlin	Kinzigstraße	\N	13.46563890	52.51283010	\N	6.00	eur	515115.00
+5392301	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	2.00	eur	189912.00
+5392376	sell	apartment	10247	Berlin	Bänschstraße	35	13.46357400	52.51870590	1905	3.00	eur	762500.00
+5392304	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	4.00	eur	327355.00
+5506459	sell	apartment	12627	Berlin	\N	\N	13.62364230	52.53038830	1989	2.00	eur	58750.00
+5392315	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	270000.00
+506382	sell	semi_detached_house	12589	Berlin	\N	\N	13.68220790	52.44227090	2015	4.00	eur	290000.00
+5392283	sell	apartment	10247	Berlin	Kinzigstraße	\N	13.46563890	52.51283010	\N	5.00	eur	468300.00
+5392278	sell	apartment	10247	Berlin	Kinzigstraße	\N	13.46563890	52.51283010	\N	3.00	eur	263400.00
+5392323	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	5.00	eur	359900.00
+5392349	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	4.00	eur	326400.00
+5392356	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	2.00	eur	156420.00
+5392372	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	199000.00
+5392330	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	1900	2.00	eur	237000.00
+5392348	sell	apartment	10115	Berlin	Anklamer Straße	\N	13.39728920	52.53479530	\N	3.00	eur	189000.00
+5392321	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	2.00	eur	224250.00
+5392336	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5392362	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	2.00	eur	251125.00
+5392342	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	189000.00
+5392309	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	300000.00
+5392338	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5392312	sell	apartment	10115	Berlin	Chausseestraße	33-35	13.38042050	52.53288190	1850	2.00	eur	260000.00
+5392383	sell	apartment_roof_storey	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2014	0.00	eur	246000.00
+5392332	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1876	3.00	eur	138000.00
+5392370	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	3.00	eur	391100.00
+5392314	sell	apartment	10115	Berlin	Schlegelstraße	\N	13.38617630	52.52991350	1900	2.00	eur	290000.00
+5477005	sell	single_family_house	12209	Berlin	\N	\N	13.32695823	52.41883855	\N	7.00	eur	599000.00
+5392329	sell	apartment	10115	Berlin	Anklamer Straße	\N	13.39728920	52.53479530	1900	1.00	eur	58000.00
+5392398	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	235000.00
+5392313	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	153844.00
+5392316	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	363618.00
+5392310	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	3.00	eur	325286.00
+5392364	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	2.00	eur	186200.00
+5392367	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	2.00	eur	171875.00
+5392359	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	3.00	eur	271575.00
+5392402	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	185000.00
+5392388	sell	apartment_maisonette	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	\N	3.00	eur	375000.00
+5392394	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	421196.00
+5392374	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	1900	2.00	eur	156240.00
+5392334	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	24	13.44789430	52.52209120	1996	3.00	eur	178000.00
+5392515	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	98000.00
+5392409	sell	apartment	10245	Berlin	Simon-Dach-Straße	\N	13.45663320	52.51083890	1905	4.00	eur	269000.00
+5392582	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	483510.00
+5392586	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	1045000.00
+5392578	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	299000.00
+5392363	sell	apartment	10245	Berlin	Niemannstraße 6;	32	13.46050030	52.50704910	1900	3.00	eur	419000.00
+5392392	sell	apartment	10245	Berlin	Stralauer Allee	35	13.45308070	52.50137090	1986	3.00	eur	75000.00
+5392561	sell	apartment	10245	Berlin	Lehmbruckstraße	\N	13.45312790	52.50326780	1920	3.00	eur	203000.00
+5392566	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	759000.00
+5427564	sell	apartment	10585	Berlin	\N	\N	13.30591980	52.51753440	1900	4.50	eur	279000.00
+5392448	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	1.00	eur	58900.00
+5392467	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	4.00	eur	339000.00
+5392472	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	3.50	eur	285000.00
+5392484	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	3.00	eur	219000.00
+5392395	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	5.00	eur	463700.00
+5392454	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	4.00	eur	372000.00
+5392498	sell	apartment	10247	Berlin	Dolziger Straße	4	13.46378630	52.51946830	\N	2.00	eur	195000.00
+5392404	sell	apartment	10247	Berlin	Finowstraße	7	13.46849740	52.51277910	1910	4.00	eur	275000.00
+5392502	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	2.00	eur	185000.00
+5392461	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	4.00	eur	349000.00
+5392431	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1905	2.00	eur	149500.00
+5392400	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	5.00	eur	492800.00
+5392480	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	3.00	eur	239000.00
+5392424	sell	apartment	10249	Berlin	Petersburger Straße	76	13.45206010	52.51878340	1987	4.00	eur	0.00
+5392440	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	0.00	eur	331345.00
+5392495	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	180000.00
+5392453	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	2.00	eur	148000.00
+5392407	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	2.00	eur	125000.00
+5392442	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	506178.00
+5392445	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	153844.00
+5392460	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	222012.00
+5392508	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	4.00	eur	333000.00
+5392478	sell	apartment	10249	Berlin	Auerstraße	44	13.44622060	52.52086460	1900	3.00	eur	0.00
+5392430	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	227225.00
+5392447	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	4.00	eur	298000.00
+5392499	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1886	3.00	eur	393000.00
+5392452	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	5.00	eur	449000.00
+5392434	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	249000.00
+5392428	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	1.00	eur	142800.00
+5392493	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1935	3.00	eur	547000.00
+329494	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	269000.00
+5392534	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	227000.00
+5392553	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	339000.00
+5392558	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1962	4.00	eur	328000.00
+5392443	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1899	5.00	eur	449000.00
+5392500	sell	apartment	10179	Berlin	Inselstraße	1	13.41302450	52.51195700	1945	4.00	eur	295000.00
+5392580	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	710000.00
+5392479	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	496248.00
+5392542	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	466000.00
+5392545	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5392469	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5392616	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	1.00	eur	85000.00
+5392450	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	1994	9.00	eur	599000.00
+5392426	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	525000.00
+5392549	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	350000.00
+5392455	sell	multi_family_house	10115	Berlin	Brunnenstraße	\N	13.39639100	52.53790380	\N	26.00	eur	995000.00
+5392463	sell	multi_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	9.50	eur	995000.00
+5392485	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	2010	5.00	eur	1099000.00
+5392520	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	2010	4.00	eur	1049000.00
+5392527	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.50	eur	252000.00
+5392509	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	3.00	eur	770000.00
+5392456	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	1852000.00
+5392459	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1082000.00
+5392529	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	\N	4.00	eur	625900.00
+5392525	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	\N	3.00	eur	396900.00
+5392405	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1252000.00
+5392501	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1090000.00
+5392489	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	1920000.00
+5392477	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	6.00	eur	4709000.00
+5392524	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	\N	5.00	eur	748900.00
+5392552	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	\N	2.00	eur	299900.00
+5392544	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	\N	4.00	eur	506900.00
+5392492	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1095000.00
+5392548	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	\N	1.00	eur	177900.00
+5392451	sell	apartment	10117	Berlin	Leipziger Straße	47	13.39763660	52.51020540	1973	3.00	eur	223000.00
+5392465	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1142000.00
+5392503	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2001	3.00	eur	639000.00
+5392541	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	\N	3.00	eur	363900.00
+5435320	sell	apartment	10715	Berlin	Mainzer Straße	23	13.32341460	52.48004270	1907	2.00	eur	118500.00
+5392589	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1911	2.00	eur	140000.00
+5392510	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	2.00	eur	159000.00
+5392599	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	3.00	eur	374500.00
+5392577	sell	apartment	10247	Berlin	Gürtelstraße	26	13.47297430	52.50885090	1900	4.00	eur	50000.00
+5392583	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	1.00	eur	64000.00
+5392506	sell	apartment	10247	Berlin	Dolziger Straße	3	13.46359230	52.51951530	\N	2.00	eur	169000.00
+5392592	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1902	2.00	eur	102350.00
+5392441	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	1900	4.00	eur	398453.00
+5392617	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	63000.00
+5392526	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	1900	4.00	eur	192955.00
+5392587	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	306505.00
+5392540	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	4.00	eur	392560.00
+5392556	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	242150.00
+5392519	sell	single_family_house	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	221274.00
+5477030	sell	apartment	12209	Berlin	\N	\N	13.32695823	52.41883855	\N	1.00	eur	130000.00
+5392040	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	\N	13.44673390	52.52351910	1905	2.00	eur	0.00
+5392623	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	214600.00
+5392654	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	0.00	eur	149000.00
+5392562	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	298350.00
+5392615	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	2.00	eur	136000.00
+5392630	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	227700.00
+5392625	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	227700.00
+5392538	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	250500.00
+5392596	sell	apartment	10249	Berlin	Friedenstraße	\N	13.42494540	52.52816520	1957	2.00	eur	87000.00
+5392735	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	1.00	eur	190000.00
+5392724	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1100000.00
+5392687	sell	apartment	10117	Berlin	Charlottenstraße	\N	13.39070300	52.51712230	1997	2.00	eur	210000.00
+5392622	sell	apartment	10117	Berlin	Krausenstraße	37	13.39796990	52.50979410	\N	3.00	eur	291500.00
+5392683	sell	apartment	10117	Berlin	Schützenstraße	75	13.39111990	52.50864060	1997	2.00	eur	210000.00
+5392565	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1090000.00
+5392722	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	2.00	eur	294200.00
+5392511	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1973	3.00	eur	299000.00
+5392690	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	370000.00
+5392614	sell	apartment	10117	Berlin	Krausenstraße	37	13.39796990	52.50979410	\N	2.00	eur	227000.00
+5392624	sell	apartment	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	3.00	eur	316500.00
+5392715	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	268000.00
+5392588	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1892	3.00	eur	724800.00
+5392693	sell	apartment	10117	Berlin	Schadowstraße	3	13.38383800	52.51819710	\N	2.00	eur	599236.00
+5392699	sell	apartment	10117	Berlin	Seydelstraße	19	13.40516906	52.50871105	1996	2.00	eur	170000.00
+327266	sell	apartment	10117	Berlin	Tucholskystraße	36	13.39361890	52.52654840	\N	3.00	eur	320000.00
+311263	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	249000.00
+5392584	sell	apartment	10179	Berlin	Engeldamm	64	13.42112280	52.50580910	1898	4.00	eur	462000.00
+5392632	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	81590.00
+5392721	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	339000.00
+5392595	sell	apartment_roof_storey	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	1575000.00
+5392649	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	249000.00
+5392604	sell	apartment	10179	Berlin	Michaelkirchplatz	4-6	13.42020780	52.50671060	\N	4.00	eur	513230.00
+5392637	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	249000.00
+5392600	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1962	4.00	eur	328000.00
+404707	sell	apartment	10715	Berlin	Durlacher Straße	5	13.33649840	52.47986090	2016	1.00	eur	283150.00
+5392698	sell	apartment	10179	Berlin	Rungestraße	\N	13.41788350	52.51241950	\N	3.00	eur	300000.00
+311867	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	249000.00
+330128	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	195000.00
+5516424	sell	mid_terrace_house	13055	Berlin	\N	\N	13.48748120	52.53690390	\N	4.00	eur	324900.00
+329565	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	249000.00
+5392658	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	1.50	eur	119044.00
+5392660	sell	apartment_maisonette	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	3.50	eur	371865.00
+5392663	sell	apartment_maisonette	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	4.00	eur	490143.00
+5392679	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	5.00	eur	0.00
+5392651	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	4.50	eur	399500.00
+5392591	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	162000.00
+5392641	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	594000.00
+5392653	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	478150.00
+5392667	sell	apartment	10245	Berlin	Markgrafendamm	27	13.46556650	52.49967160	1980	3.00	eur	139500.00
+5392643	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	179000.00
+5392646	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1920	5.00	eur	200500.00
+5392671	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	0.00	eur	336688.00
+5392628	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	0.00
+5392647	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	5.00	eur	367097.00
+5392798	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	289006.00
+5392780	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	299030.00
+5392784	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	255548.00
+5392631	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	263221.00
+5392788	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	201713.00
+5392528	sell	apartment	10247	Berlin	Waldeyerstraße	\N	13.47108250	52.51441160	1910	2.00	eur	55000.00
+5392626	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	0.00
+5392650	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	210269.00
+5392662	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	2.00	eur	193370.00
+341388	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	2012	3.00	eur	339500.00
+5392763	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	\N	13.40424710	52.51001280	\N	2.00	eur	284100.00
+5392710	sell	apartment	10115	Berlin	Chausseestraße	33-35	13.38042050	52.53288190	1850	2.00	eur	260000.00
+5392680	sell	apartment	10115	Berlin	Anklamer Straße	35	13.39965226	52.53566240	1900	3.00	eur	264600.00
+5392792	sell	multi_family_house	10115	Berlin	Schwartzkopffstraße	\N	13.38086960	52.53524720	\N	9.50	eur	485000.00
+5392633	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	455300.00
+5392681	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1965	3.00	eur	395000.00
+5392776	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	390336.00
+5392673	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	498000.00
+5392639	sell	multi_family_house	10115	Berlin	Schwartzkopffstraße	\N	13.38086960	52.53524720	\N	42.00	eur	485000.00
+5392652	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	385000.00
+5392655	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	251600.00
+5392766	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	390336.00
+5392886	sell	apartment	10249	Berlin	Kochhannstraße	\N	13.44907810	52.52434370	\N	2.00	eur	176700.00
+5392668	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	3.00	eur	275500.00
+5392659	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	3.00	eur	271575.00
+5392665	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	2.00	eur	125000.00
+5392914	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	2.00	eur	167100.00
+5392889	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	0.00
+5392669	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	4.00	eur	318500.00
+5392902	sell	apartment	10249	Berlin	Richard-Sorge-Straße	36	13.44603100	52.52246540	\N	3.00	eur	198000.00
+5392979	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	268780.00
+5392891	sell	apartment	10249	Berlin	Mühsamstraße	44	13.44969410	52.51984550	\N	3.00	eur	300438.00
+5392672	sell	apartment	10249	Berlin	Petersburger Straße	78	13.45223820	52.51875950	1987	3.50	eur	0.00
+5392968	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	381625.00
+5392661	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	1.00	eur	80000.00
+5392958	sell	apartment	10249	Berlin	Richard-Sorge-Straße	24	13.44750890	52.52043300	1901	3.00	eur	0.00
+5392953	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	1900	3.00	eur	185000.00
+5392971	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	1900	2.00	eur	65000.00
+5392713	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	1002300.00
+5392692	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	948000.00
+311100	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	5.00	eur	595000.00
+5392706	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1863	4.00	eur	495000.00
+5392711	sell	apartment	10247	Berlin	Frankfurter Allee	24	13.45894204	52.51498940	1956	2.00	eur	177000.00
+5392720	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	140000.00
+324587	sell	single_family_house	10243	Berlin	Mühlenstraße	78	13.44560070	52.50285950	\N	3.00	eur	99000.00
+5392723	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	165000.00
+5392709	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	165000.00
+5392702	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	243400.00
+5392576	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	140000.00
+5392742	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1918	4.00	eur	599000.00
+5392717	sell	apartment	10243	Berlin	Karl-Marx-Allee	117	13.44694650	52.51709960	1952	2.00	eur	225000.00
+5392786	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41431670	52.51212940	1932	3.00	eur	427000.00
+331826	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1991	3.00	eur	350000.00
+5392800	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	269000.00
+5392756	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	683810.00
+5392752	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	2.00	eur	313900.00
+5392730	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1962	4.00	eur	328000.00
+5392727	sell	apartment	10179	Berlin	Alte Jakobstraße	76	13.40887020	52.51044490	1997	2.00	eur	125000.00
+5392770	sell	single_family_house	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	179000.00
+5392759	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	484230.00
+330181	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	880000.00
+332090	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1991	3.00	eur	182000.00
+5392757	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	460657.00
+5392736	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	269000.00
+5392740	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	\N	2.00	eur	285000.00
+5392761	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	484230.00
+5419335	sell	apartment	10551	Berlin	\N	\N	13.33855250	52.53167100	\N	1.00	eur	99000.00
+5392795	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	509130.00
+5392874	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	0.00	eur	251000.00
+5392773	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	375000.00
+5392764	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1065000.00
+5392767	sell	apartment	10117	Berlin	Schadowstraße	3	13.38383800	52.51819710	\N	4.00	eur	2090547.00
+5392832	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2002	3.00	eur	436000.00
+5392877	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1900	3.00	eur	650000.00
+5392820	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	6.00	eur	200000.00
+5392885	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	2600000.00
+5392814	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	3.00	eur	363900.00
+5392879	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1065000.00
+5392864	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	440000.00
+5431794	sell	apartment	10707	Berlin	\N	\N	13.31477920	52.49502430	1900	3.00	eur	270000.00
+349841	sell	apartment	10707	Berlin	Zähringerstraße	29	13.31193271	52.49573315	1905	2.50	eur	249800.00
+5392696	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	\N	3.00	eur	402900.00
+5392817	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	4.00	eur	506900.00
+5392869	sell	apartment	10117	Berlin	Dorotheenstraße	83	13.38390560	52.51829640	\N	0.00	eur	2256349.00
+5392830	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	564210.00
+5392745	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	478150.00
+5392911	sell	apartment	10245	Berlin	Dirschauer Straße	8	13.45655400	52.50794450	\N	1.00	eur	72000.00
+5392969	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	340000.00
+5392746	sell	penthouse	10245	Berlin	Bödikerstraße	\N	13.46305710	52.49931490	1905	2.00	eur	330000.00
+5551103	sell	apartment	13587	Berlin	\N	\N	13.21741330	52.55718140	1961	2.00	eur	65000.00
+5392947	sell	apartment	10245	Berlin	Lenbachstraße	\N	13.46662330	52.50542400	1900	3.00	eur	349500.00
+5392972	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	230000.00
+5392843	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	299438.00
+5392917	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	294000.00
+5392772	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	10.00	eur	285000.00
+5392748	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1995	3.00	eur	150000.00
+5392934	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1997	3.00	eur	212500.00
+5392929	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	165000.00
+5392956	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	4.50	eur	495000.00
+5392926	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41431670	52.51212940	1932	3.00	eur	427000.00
+5392847	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	915372.00
+5392918	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41431670	52.51212940	1932	2.00	eur	296000.00
+327613	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	97000.00
+5392978	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1996	3.00	eur	212500.00
+5392845	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	1226200.00
+326134	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	2.00	eur	162000.00
+5392836	sell	apartment	10243	Berlin	Kadiner Straße	20	13.45073700	52.51425800	1905	2.00	eur	250000.00
+5392964	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1030575.00
+312478	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	1413666.00
+311757	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	478000.00
+5392952	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	295000.00
+5392805	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1996	2.00	eur	186628.00
+5393043	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	467000.00
+5393005	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	2.00	eur	285000.00
+333406	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	210000.00
+5393004	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	298000.00
+5392933	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	515000.00
+332702	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1991	3.00	eur	220000.00
+5392907	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	302800.00
+5392970	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1961	4.00	eur	235000.00
+312092	sell	apartment	10179	Berlin	Neue Grünstraße	33	13.40489310	52.50941160	\N	2.00	eur	351000.00
+5393028	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	477400.00
+5392975	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	474730.00
+5393015	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	289000.00
+342500	sell	apartment	10585	Berlin	Wulfsheinstraße	10	13.29705910	52.51780910	1900	1.00	eur	120000.00
+5392893	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	436000.00
+5392816	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	5.00	eur	402550.00
+5392903	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1964	2.00	eur	98800.00
+5392818	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	5.00	eur	349513.00
+5392842	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	165000.00
+5392849	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	178000.00
+5392825	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	1906	3.00	eur	86000.00
+5392833	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	361000.00
+5392910	sell	penthouse	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	3.00	eur	409000.00
+5392881	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1890	4.00	eur	820000.00
+5392939	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	279558.00
+5392870	sell	penthouse	10115	Berlin	Tieckstraße	\N	13.39044810	52.52996180	\N	4.00	eur	820000.00
+5392866	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+343758	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2015	2.00	eur	262000.00
+5392863	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	398000.00
+5392844	sell	multi_family_house	10115	Berlin	Schwartzkopffstraße	\N	13.38086960	52.53524720	\N	42.00	eur	485000.00
+5392840	sell	apartment	10115	Berlin	Gartenstraße	88	13.38851300	52.53254930	\N	4.00	eur	698000.00
+5392854	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	477949.00
+310444	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	1.00	eur	138100.00
+343845	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2013	2.00	eur	203700.00
+5385982	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2010	2.00	eur	202800.00
+5392857	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	1147097.00
+5392875	sell	apartment	10315	Berlin	Robert-Uhrig-Straße	2	13.51182650	52.50978430	1920	2.00	eur	89000.00
+5392884	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	0.00
+5392807	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1985	3.00	eur	85000.00
+5392865	sell	apartment	10315	Berlin	Robert-Uhrig-Straße	2	13.51182650	52.50978430	1920	3.00	eur	119000.00
+5392896	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1911	1.00	eur	50000.00
+5392951	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	215000.00
+5392948	sell	apartment	10315	Berlin	Rosenfelder Ring	\N	13.51205360	52.51318000	\N	2.00	eur	68500.00
+5392908	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1985	3.00	eur	85000.00
+5392880	sell	apartment	10315	Berlin	Archenholdstraße	92	13.49973140	52.50217740	\N	1.00	eur	65000.00
+5392961	sell	apartment	10315	Berlin	Am Tierpark	\N	13.51918420	52.50950650	\N	1.00	eur	63000.00
+5392923	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1994	3.00	eur	115000.00
+5392916	sell	apartment	10315	Berlin	Robert-Uhrig-Straße	\N	13.51137410	52.50504790	1912	3.50	eur	113000.00
+5392871	sell	apartment	10315	Berlin	Robert-Uhrig-Straße	2	13.51182650	52.50978430	1920	2.00	eur	109000.00
+5392974	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1998	2.00	eur	62000.00
+5393049	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	2.00	eur	312900.00
+5393068	sell	apartment	10117	Berlin	Auguststraße	87	13.39137183	52.52613035	\N	2.00	eur	112000.00
+355099	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	235000.00
+5392992	sell	apartment	10117	Berlin	Oranienburger Straße	32	13.39381260	52.52519340	1900	7.00	eur	1312400.00
+5392960	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	2.00	eur	390000.00
+5392959	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	0.00
+5392945	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1900	2.00	eur	532926.00
+5393057	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1065000.00
+5392957	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	0.00
+5393090	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	3.00	eur	1250000.00
+5392901	sell	apartment	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	2.00	eur	829000.00
+5392955	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1996	2.00	eur	156000.00
+5392942	sell	apartment_roof_storey	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1090000.00
+5392950	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2006	3.00	eur	260000.00
+5392861	sell	apartment_roof_storey	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	5.00	eur	5500000.00
+5392980	sell	apartment	10247	Berlin	Rigaer Straße	59	13.47059310	52.51550150	1905	1.00	eur	110000.00
+5392941	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	0.00
+5392966	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	3.00	eur	254900.00
+5392937	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	4.00	eur	98000.00
+5392920	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	173012.00
+5392954	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1908	2.00	eur	63000.00
+5392935	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	38500.00
+5393013	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	442000.00
+5392962	sell	apartment	10247	Berlin	Waldeyerstraße	\N	13.47108250	52.51441160	1910	4.00	eur	140000.00
+5393037	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	5.00	eur	483000.00
+5393025	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	442000.00
+5393112	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	1.00	eur	79900.00
+5393020	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	105000.00
+5393102	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	418015.00
+5393012	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	98000.00
+5393085	sell	apartment_maisonette	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	4.00	eur	656100.00
+5393071	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	593537.00
+5393030	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	410000.00
+5393105	sell	apartment	10245	Berlin	Simplonstraße	30	13.46074170	52.50726960	1900	2.00	eur	159000.00
+5393035	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	595725.00
+5393039	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	299438.00
+5393091	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	360984.00
+5392976	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	350000.00
+5393088	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	245242.00
+5393024	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	1.00	eur	138100.00
+5392991	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	230740.00
+5393098	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	311000.00
+5393164	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2009	8.00	eur	0.00
+5393032	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	1.00	eur	162400.00
+5393078	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	179000.00
+5392986	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	3.00	eur	422700.00
+5393148	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	490448.00
+5393045	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	4.00	eur	367000.00
+5393040	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	2.00	eur	195200.00
+5393143	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	260130.00
+5393159	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	0.00	eur	391100.00
+5393256	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	498000.00
+5393083	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	585000.00
+342444	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	2013	2.00	eur	253000.00
+342735	sell	penthouse	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	2012	3.00	eur	547500.00
+5393101	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	179000.00
+5392989	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	1.00	eur	67000.00
+5393027	sell	apartment	10315	Berlin	Am Tierpark	\N	13.51918420	52.50950650	1998	2.00	eur	70000.00
+5393140	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	181144.00
+5427786	sell	apartment	10585	Berlin	\N	\N	13.30591980	52.51753440	\N	4.00	eur	483800.00
+5426067	sell	apartment	10439	Berlin	Finnländische Straße	4	13.39974730	52.55356790	1972	2.00	eur	299500.00
+5393051	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	49000.00
+5393055	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	1.00	eur	48300.00
+5393002	sell	apartment	10315	Berlin	Rosenfelder Ring	80	13.51637320	52.51312490	\N	2.00	eur	89000.00
+5393158	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1910	4.00	eur	135000.00
+5393031	sell	apartment	10315	Berlin	Am Tierpark	\N	13.51918420	52.50950650	1998	1.00	eur	67000.00
+5393136	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	182374.00
+5392985	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	70000.00
+5393228	sell	apartment	10243	Berlin	Mühlenstraße	78	13.44560070	52.50285950	\N	3.00	eur	99000.00
+5414441	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1904	2.00	eur	225800.00
+575098	rent	apartment	13469	Berlin	Zabel-Krüger-Damm	54	13.33654140	52.61059100	1997	3.00	eur	379.00
+5393007	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	10.00	eur	7500000.00
+5393107	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	209000.00
+5393065	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1239000.00
+5393029	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	334982.00
+5393232	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1904	4.00	eur	622000.00
+5393067	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1071900.00
+5393053	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	685300.00
+5551123	sell	apartment	13587	Berlin	\N	\N	13.21741330	52.55718140	\N	3.00	eur	245000.00
+5393033	sell	apartment	10249	Berlin	Matthiasstraße	\N	13.44029570	52.52301820	\N	3.00	eur	272700.00
+5393103	sell	apartment	10249	Berlin	Matternstraße	3	13.45229170	52.52158820	1900	3.00	eur	189000.00
+5393044	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	2.00	eur	135000.00
+5393215	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	241773.00
+5393050	sell	apartment	10249	Berlin	Pufendorfstraße	7	13.43973550	52.52275740	\N	3.00	eur	323750.00
+5393017	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	125000.00
+5392994	sell	apartment	10249	Berlin	Hermann-Blankenstein-Straße	\N	13.46952640	52.52092990	2002	2.00	eur	162000.00
+5393109	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	2.00	eur	100000.00
+5393072	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	391050.00
+5393059	sell	apartment	10249	Berlin	Hermann-Blankenstein-Straße	\N	13.46952640	52.52092990	2002	3.00	eur	199000.00
+5392990	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	\N	6.00	eur	582725.00
+5393089	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	99000.00
+332763	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	410000.00
+5393141	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	222000.00
+5393183	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	200000.00
+5393144	sell	apartment	10179	Berlin	Brückenstraße	4	13.41726410	52.51227660	2000	3.00	eur	145000.00
+5393139	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	138000.00
+5393111	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	348900.00
+5393062	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	1989	2.00	eur	138000.00
+5393063	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	1989	3.00	eur	272000.00
+5393167	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	249000.00
+5393187	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	141000.00
+311319	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	355000.00
+5393133	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	131000.00
+5393117	sell	penthouse	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	3.00	eur	442650.00
+5393099	sell	apartment	10247	Berlin	Jessnerstraße	57	13.47033920	52.50949090	1910	2.00	eur	113777.00
+5393073	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1910	1.00	eur	64000.00
+5393075	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	163156.00
+5393086	sell	apartment	10247	Berlin	Gürtelstraße	26	13.47297430	52.50885090	1900	3.00	eur	165000.00
+5393122	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	4.00	eur	349000.00
+5393104	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	4.00	eur	349000.00
+5515896	sell	apartment	13059	Berlin	Kröpeliner Straße	9/0301	13.51828430	52.57152280	1987	3.00	eur	94800.00
+544741	sell	apartment	13059	Berlin	Kröpeliner Straße	17	13.51845010	52.57102710	1987	3.00	eur	84600.00
+5393126	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	287000.00
+5393182	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	632000.00
+5393199	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1999	2.00	eur	172000.00
+5393238	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	678700.00
+5393246	sell	apartment	10117	Berlin	Jägerstraße	48	13.39582810	52.51438310	\N	1.00	eur	320000.00
+5393188	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	313800.00
+5393110	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	2.00	eur	301900.00
+5393251	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	840000.00
+5393113	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	4.00	eur	1258800.00
+5393190	sell	apartment	10117	Berlin	Oranienburger Straße	32	13.39381260	52.52519340	1900	2.00	eur	510000.00
+5393132	sell	apartment_maisonette	10117	Berlin	\N	\N	13.38532280	52.52362850	2010	3.00	eur	308000.00
+5393174	sell	apartment	10117	Berlin	Albrechtstraße	11	13.38490169	52.52117605	2000	2.00	eur	295000.00
+5393161	sell	apartment	10117	Berlin	Krausenstraße	37	13.39796990	52.50979410	\N	3.00	eur	678700.00
+5393185	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	229100.00
+5393189	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	600500.00
+5393223	sell	apartment	10117	Berlin	Schadowstraße	3	13.38383800	52.51819710	\N	4.00	eur	1773948.00
+5393191	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	564210.00
+359555	sell	apartment	10117	Berlin	Mittelstraße	30	13.38433300	52.51790510	2015	3.00	eur	868936.00
+5393150	sell	apartment	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	3.00	eur	849000.00
+5393181	sell	apartment	10245	Berlin	Döringstraße	11	13.46212550	52.50567220	\N	4.00	eur	400000.00
+5393205	sell	apartment_maisonette	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	3.50	eur	371865.00
+5393198	sell	apartment	10245	Berlin	Alt-Stralau	14	13.46993620	52.49395100	1996	2.00	eur	195000.00
+5393210	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	410000.00
+5393225	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	705644.00
+5393264	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	360984.00
+5393155	sell	apartment	10249	Berlin	Ebertystraße	51	13.45210890	52.52619760	\N	2.00	eur	85000.00
+5393200	sell	apartment	10249	Berlin	Matthiasstraße	2	13.43973139	52.52337315	\N	4.00	eur	310500.00
+5393196	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	1.50	eur	82500.00
+5393146	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	34	13.44655400	52.52406200	1997	4.00	eur	277500.00
+5393184	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	4.00	eur	327500.00
+5393151	sell	apartment	10249	Berlin	Matthiasstraße	2	13.43973139	52.52337315	\N	4.00	eur	329400.00
+5393157	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	311750.00
+5393123	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	4.00	eur	304000.00
+5393202	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	1.00	eur	78000.00
+5393248	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	2.00	eur	125000.00
+5393165	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	324950.00
+5393237	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	369000.00
+5393172	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	182374.00
+5393070	sell	apartment	10315	Berlin	Rhinstraße	\N	13.51922940	52.51946300	1980	3.00	eur	168900.00
+5393338	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1930	2.00	eur	54000.00
+5393265	sell	mid_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	246900.00
+5393320	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	4.00	eur	306900.00
+5393253	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1998	2.00	eur	0.00
+5393217	sell	apartment	10315	Berlin	Robert-Uhrig-Straße	\N	13.51137410	52.50504790	1912	2.00	eur	109005.00
+5393310	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	2.00	eur	174800.00
+5393278	sell	end_terrace_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	238900.00
+5393214	sell	apartment	10315	Berlin	Robert-Uhrig-Straße	\N	13.51137410	52.50504790	1912	2.00	eur	103155.00
+5393239	sell	apartment	10315	Berlin	Robert-Uhrig-Straße	\N	13.51137410	52.50504790	1912	2.00	eur	109005.00
+5393313	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	219900.00
+5393177	sell	apartment	10315	Berlin	Robert-Uhrig-Straße	\N	13.51137410	52.50504790	1912	2.00	eur	87488.00
+320223	sell	single_family_house	10315	Berlin	Alt-Friedrichsfelde	16	13.50980510	52.51017600	1890	4.00	eur	162000.00
+5393241	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	123000.00
+5393302	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	545000.00
+5393314	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	174000.00
+5393244	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	155000.00
+5393322	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	514000.00
+5393308	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	130000.00
+5393197	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	614000.00
+313968	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	309000.00
+315564	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	514000.00
+313509	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	195000.00
+5393249	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	535000.00
+5393235	sell	apartment	10179	Berlin	Alte Jakobstraße	49	13.40580150	52.50852840	\N	3.00	eur	414500.00
+5393268	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	220000.00
+5393216	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1903	3.00	eur	310444.00
+5393277	sell	apartment	10247	Berlin	Rigaer Straße	6	13.45544140	52.51798570	1910	2.00	eur	105900.00
+5393287	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	159700.00
+5393242	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	3.00	eur	261000.00
+5393219	sell	apartment	10247	Berlin	Bänschstraße	85	13.47076650	52.51750430	\N	2.00	eur	210600.00
+5393231	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	2.00	eur	218325.00
+5393279	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	4.00	eur	419950.00
+5393323	sell	apartment	10247	Berlin	Gürtelstraße	17	13.47321650	52.50962520	1900	2.00	eur	140000.00
+328770	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	\N	2.00	eur	225080.00
+5393233	sell	apartment	10247	Berlin	Pettenkoferstraße	38	13.47108840	52.51778640	\N	3.00	eur	255150.00
+327875	sell	apartment	10243	Berlin	Lasdehner Straße	26	13.44811376	52.51416150	\N	4.00	eur	370000.00
+5393382	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	282900.00
+5435587	sell	apartment	10707	Berlin	Wittelsbacherstraße	15/15	13.31064000	52.49536000	\N	2.00	eur	219900.00
+502907	sell	single_family_house	12527	Berlin	\N	\N	13.56175298	52.42545500	1998	12.00	eur	735000.00
+5393359	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	99000.00
+313910	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	308000.00
+5393420	sell	apartment	10243	Berlin	Friedrichsberger Straße	1-2	13.43516490	52.52160720	1920	2.00	eur	139000.00
+328189	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1895	3.50	eur	329000.00
+5393433	sell	apartment	10243	Berlin	\N	\N	13.43856000	52.51474550	\N	2.00	eur	180000.00
+5393371	sell	apartment	10243	Berlin	Koppenstraße	25	13.43629910	52.51582580	\N	2.00	eur	169000.00
+5393388	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	1.00	eur	143000.00
+327106	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	10.00	eur	7500000.00
+5393457	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	3.00	eur	499000.00
+5393304	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	7.00	eur	1125000.00
+342015	sell	apartment	10115	Berlin	Schlegelstraße	\N	13.38617630	52.52991350	1998	2.00	eur	195000.00
+5393301	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	1920	7.00	eur	295000.00
+5393469	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	2.00	eur	195000.00
+5525397	sell	apartment	13156	Berlin	Waldemarstraße	45-47	13.40708740	52.58986800	\N	4.00	eur	321000.00
+5525478	sell	single_family_house	13125	Berlin	\N	\N	13.45830042	52.60831005	2000	0.00	eur	1200000.00
+5393296	sell	penthouse	10115	Berlin	Novalisstraße	\N	13.38855350	52.52860790	\N	2.00	eur	373000.00
+5393369	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	272996.00
+5393272	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	2600000.00
+5393267	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1884	4.00	eur	1023824.00
+5393414	sell	apartment	10117	Berlin	Oranienburger Straße	32	13.39381260	52.52519340	1900	3.00	eur	1260000.00
+5393391	sell	apartment	10117	Berlin	Oranienburger Straße	32	13.39381260	52.52519340	1900	2.00	eur	433100.00
+5393318	sell	apartment	10117	Berlin	\N	\N	13.38475390	52.51550980	\N	3.00	eur	753820.00
+5393309	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	567000.00
+5393297	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1190000.00
+5393406	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	3.00	eur	1023824.00
+349212	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	895000.00
+5393394	sell	apartment	10117	Berlin	Oranienburger Straße	32	13.39381260	52.52519340	\N	2.00	eur	321111.00
+5393384	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2014	2.00	eur	425000.00
+5393335	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	925000.00
+5393339	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	963000.00
+5393364	sell	apartment	10117	Berlin	Auguststraße	83	13.39214041	52.52638575	1900	0.00	eur	390000.00
+5440968	sell	apartment	10779	Berlin	\N	\N	13.34583010	52.49402810	1962	3.00	eur	170000.00
+5440975	sell	apartment	10779	Berlin	\N	\N	13.34037840	52.49209520	1962	3.00	eur	170000.00
+5393295	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	463000.00
+5437048	sell	apartment	10707	Berlin	Wittelsbacherstraße	2	13.31675840	52.49410660	\N	4.50	eur	295000.00
+5393299	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	330000.00
+5393280	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	264475.00
+5393385	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43819460	52.52170100	\N	4.00	eur	364000.00
+5393337	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	1.00	eur	79000.00
+5393396	sell	apartment	10249	Berlin	Matthiasstraße	11	13.44035490	52.52318610	\N	3.00	eur	295000.00
+5393378	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	149900.00
+5393367	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	1995	3.00	eur	245000.00
+5393390	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	272700.00
+5393354	sell	apartment	10249	Berlin	Kochhannstraße	\N	13.44907810	52.52434370	1900	3.00	eur	320000.00
+5393307	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	139000.00
+5393365	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	79500.00
+5393411	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	105000.00
+5412977	sell	apartment	10409	Berlin	\N	\N	13.45519750	52.54342460	\N	2.00	eur	185000.00
+5393370	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	175000.00
+5393383	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	370071.00
+5393415	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	330000.00
+5393380	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	300000.00
+5393407	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	230000.00
+5393332	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	3.00	eur	199900.00
+5393419	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	67000.00
+5393352	sell	apartment	10245	Berlin	Bossestraße	\N	13.46012070	52.49963170	1985	3.00	eur	95000.00
+5393375	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	455000.00
+5393534	sell	apartment	10245	Berlin	Niemannstraße 6;	32	13.46050030	52.50704910	1900	4.00	eur	189000.00
+5393546	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	240000.00
+5391959	sell	apartment	10245	Berlin	Boxhagener Straße	54	13.46730030	52.50769560	1900	2.00	eur	85000.00
+5393539	sell	apartment	10245	Berlin	Boxhagener Straße	54	13.46730030	52.50769560	1900	3.00	eur	195000.00
+5393424	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	1907	3.00	eur	225000.00
+5393331	sell	apartment	10247	Berlin	Jungstraße	\N	13.46695280	52.51260380	1911	2.00	eur	140000.00
+5393440	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	5.00	eur	483000.00
+5393426	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	1907	4.00	eur	239500.00
+5393475	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	169000.00
+5393436	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	204900.00
+5393455	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	6.00	eur	433000.00
+5393477	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	220000.00
+5393466	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	393000.00
+5393467	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	178000.00
+5393363	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1930	3.00	eur	580000.00
+5393437	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	\N	2.00	eur	368000.00
+5393421	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	730000.00
+605794	rent	apartment	13125	Berlin	Achillesstraße	90	13.49380210	52.61485150	1997	1.50	eur	367.00
+5393346	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	99000.00
+5393353	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	239000.00
+5393431	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	2.00	eur	321000.00
+5393374	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1966	3.00	eur	240000.00
+5393425	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	820000.00
+5393349	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	148000.00
+5393393	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	669000.00
+5393361	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	140000.00
+5393386	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	2.00	eur	527000.00
+411332	sell	apartment	10827	Berlin	Hauptstraße	134	13.35423500	52.48480860	1900	2.00	eur	213000.00
+5393417	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	2.00	eur	554000.00
+5393413	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	532000.00
+5393449	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	\N	2.00	eur	473000.00
+5393379	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1998	2.00	eur	95000.00
+5393397	sell	multi_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	1.00	eur	495000.00
+5393355	sell	apartment	10315	Berlin	Hohenschönhauser Weg	5	13.52228650	52.51220040	1994	2.00	eur	93000.00
+5393362	sell	apartment	10315	Berlin	Rummelsburger Straße	25	13.50801650	52.50213490	1960	3.00	eur	0.00
+5393404	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	1900	2.00	eur	72000.00
+5393441	sell	single_family_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	242900.00
+5393448	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	9.50	eur	589000.00
+5393351	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	\N	2.00	eur	152500.00
+5393347	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	\N	3.00	eur	187500.00
+5393373	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	72000.00
+5393471	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	1900	2.00	eur	94500.00
+5393387	sell	apartment	10315	Berlin	Allee der Kosmonauten	17	13.51132473	52.52290735	\N	4.00	eur	292700.00
+5393428	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1998	2.00	eur	85000.00
+5393480	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	90000.00
+5393405	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1996	2.00	eur	150000.00
+5393554	sell	apartment	10247	Berlin	Eldenaer Straße	\N	13.45688670	52.52087970	1932	2.00	eur	99000.00
+5393423	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	310400.00
+330269	sell	apartment	10249	Berlin	Matthiasstraße	2	13.43973139	52.52337315	2012	3.00	eur	295850.00
+5393410	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1996	2.00	eur	150000.00
+5393498	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	260000.00
+5393527	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1896	2.00	eur	170000.00
+330477	sell	apartment	10249	Berlin	Pintschstraße	13	13.44774990	52.52355350	\N	2.00	eur	210000.00
+5393429	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	522120.00
+5393445	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	195000.00
+5393490	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	2002	2.00	eur	188000.00
+5393560	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	179000.00
+5393479	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	4.00	eur	545900.00
+323445	sell	apartment	10117	Berlin	Mohrenstraße	2	13.38563050	52.51085950	2002	3.00	eur	434250.00
+5393491	sell	apartment_roof_storey	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	2030937.00
+5393501	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	345000.00
+5393464	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2002	4.00	eur	698000.00
+5393540	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2014	2.00	eur	695000.00
+5393476	sell	apartment	10117	Berlin	Kommandantenstraße	76-79	13.40133830	52.50925790	\N	3.00	eur	445900.00
+320496	sell	penthouse	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	5.00	eur	3750000.00
+320474	sell	apartment	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	2.00	eur	489000.00
+5393543	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	1.00	eur	425000.00
+5393533	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1973	3.00	eur	349000.00
+355851	sell	apartment	10117	Berlin	Albrechtstraße	11	13.38488710	52.52139430	\N	4.00	eur	325000.00
+5393483	sell	apartment_maisonette	10117	Berlin	Behrenstraße	28	13.38984610	52.51559560	1996	2.50	eur	560000.00
+5393497	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	802138.00
+5393494	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	222000.00
+5393542	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	155000.00
+5393508	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	5.00	eur	1137000.00
+5393492	sell	apartment	10179	Berlin	Holzmarktstraße	75	13.41890322	52.51598250	1971	1.00	eur	133000.00
+5393487	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	168000.00
+313917	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	335000.00
+5393499	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	357000.00
+5393489	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	338000.00
+5393511	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	0.00	eur	146381.00
+331135	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	2.00	eur	219000.00
+5393562	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	159000.00
+5393553	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	116000.00
+5393478	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	3.50	eur	690000.00
+5393462	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	249000.00
+5393535	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1997	1.50	eur	165000.00
+5393544	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	98000.00
+5393516	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	1374750.00
+5458851	sell	apartment	12055	Berlin	\N	\N	13.44744400	52.47185975	1902	3.00	eur	99900.00
+5393573	sell	penthouse	10243	Berlin	\N	\N	13.43856000	52.51474550	\N	6.00	eur	10120000.00
+5393465	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1911	2.00	eur	135000.00
+5393520	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	1413666.00
+5393590	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1890	4.00	eur	495000.00
+314783	sell	apartment	10243	Berlin	Karl-Marx-Allee	61	13.43146220	52.51856290	1955	3.00	eur	200000.00
+5393506	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1909	1.00	eur	71961.00
+5393514	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	3861632.00
+328980	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1912	2.00	eur	115000.00
+5393617	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	449000.00
+5393505	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1905	1.00	eur	85600.00
+5393488	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	3.00	eur	294000.00
+5393486	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	301000.00
+5393500	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	4.50	eur	245000.00
+5390808	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1910	3.00	eur	179000.00
+5393548	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	193141.00
+5393515	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1906	2.00	eur	150000.00
+5393603	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	215611.00
+5393658	sell	apartment	10315	Berlin	Seddiner Straße	1	13.52317500	52.51305190	\N	2.00	eur	80000.00
+5393669	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	178550.00
+5393577	sell	multi_family_house	10315	Berlin	Alt-Friedrichsfelde	85	13.52103680	52.51012570	1880	3.00	eur	410000.00
+5393668	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	156040.00
+5393589	sell	apartment	10315	Berlin	Rosenfelder Ring	\N	13.51205360	52.51318000	\N	3.00	eur	83500.00
+5393561	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51141170	52.52373520	\N	3.00	eur	259800.00
+5393635	sell	apartment	10315	Berlin	Hohenschönhauser Weg	3	13.52229050	52.51258090	1994	2.00	eur	79200.00
+5393595	sell	apartment	10315	Berlin	Archenholdstraße	35	13.50310600	52.50629670	1904	3.00	eur	244000.00
+5393645	sell	apartment	10315	Berlin	Allee der Kosmonauten	17	13.51132473	52.52290735	\N	3.00	eur	209800.00
+5393621	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	85000.00
+5393570	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1998	1.00	eur	69000.00
+5393659	sell	apartment	10315	Berlin	Seddiner Straße	1	13.52317500	52.51305190	1995	2.00	eur	78500.00
+5393666	sell	mid_terrace_house	10315	Berlin	Rosenfelder Ring	63	13.51505931	52.51250965	\N	4.00	eur	234900.00
+5505975	sell	villa	12589	Berlin	\N	\N	13.68220790	52.44227090	\N	5.00	eur	501000.00
+5393588	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	2.00	eur	425000.00
+5393600	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	430000.00
+5393654	sell	penthouse	10117	Berlin	Leipziger Straße	46	13.39733610	52.51057060	1974	3.00	eur	499000.00
+5393633	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	2.00	eur	298900.00
+5393651	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	2031026.00
+5393597	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	4.00	eur	529900.00
+5393697	sell	apartment	10117	Berlin	Am Zirkus	12	13.38571950	52.52308100	\N	2.00	eur	695000.00
+5393704	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1974	6.00	eur	674000.00
+5393624	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1989	4.50	eur	1699000.00
+5393571	sell	apartment	10117	Berlin	Kommandantenstraße	76-79	13.40133830	52.50925790	\N	1.00	eur	193900.00
+389956	sell	apartment	10117	Berlin	Bertolt-Brecht-Platz	2	13.38629670	52.52243240	2014	3.00	eur	765100.00
+5393551	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	149900.00
+5393565	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	2.00	eur	306900.00
+5393581	sell	apartment	10117	Berlin	Auguststraße	9	13.39402460	52.52639730	1900	1.00	eur	234000.00
+5393574	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	3.00	eur	299000.00
+5395114	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5393631	sell	apartment	10245	Berlin	Simplonstraße	46	13.46316690	52.50600710	\N	5.00	eur	610000.00
+5393582	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	8.00	eur	398400.00
+5393677	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	547500.00
+5533822	sell	apartment	13156	Berlin	\N	\N	13.40278550	52.58466620	\N	3.00	eur	224205.00
+5393673	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	547500.00
+5393605	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	705644.00
+5393611	sell	apartment_maisonette	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	4.00	eur	558675.00
+5393569	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	4.00	eur	299000.00
+5393604	sell	penthouse	10245	Berlin	Alt-Stralau	52-53	13.47063520	52.49475670	\N	5.00	eur	1626525.00
+5393640	sell	apartment	10245	Berlin	Kopernikusstraße	18	13.45566650	52.51013230	1900	4.00	eur	478150.00
+5393552	sell	apartment	10245	Berlin	Simplonstraße	30	13.46074170	52.50726960	1900	5.00	eur	394000.00
+5393661	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1909	2.00	eur	145749.00
+5393587	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1920	8.00	eur	398400.00
+331021	sell	apartment	10249	Berlin	Friedenstraße	93	13.43558780	52.52205340	1995	2.00	eur	137700.00
+5393642	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	241808.00
+5393646	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	115000.00
+5393572	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	300000.00
+362437	sell	apartment	10707	Berlin	\N	\N	13.31064550	52.49316400	1912	5.00	eur	589000.00
+5393620	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	158478.00
+5393602	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	115000.00
+312593	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	7.00	eur	299000.00
+5393618	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	2.00	eur	149210.00
+5393663	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	345100.00
+5393705	sell	apartment	10117	Berlin	Luisenstraße	45	13.37968900	52.52310130	\N	3.00	eur	0.00
+5393628	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	665500.00
+5393575	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	384450.00
+5393610	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	391050.00
+5393660	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	286150.00
+335148	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	137000.00
+335285	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	299000.00
+5393758	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	4.00	eur	690000.00
+5393670	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	335000.00
+5393619	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	107000.00
+5393630	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	178012.00
+5393727	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	480000.00
+5393637	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	225000.00
+5468581	sell	apartment	12159	Berlin	\N	\N	13.34497820	52.47419770	1998	3.50	eur	255000.00
+5393627	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	222000.00
+5393754	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	470000.00
+5468628	sell	apartment	12159	Berlin	Rubensstraße	50	13.34312090	52.47255210	1927	3.50	eur	165000.00
+5468627	sell	apartment	12161	Berlin	Friedrich-Wilhelm-Platz	\N	13.32788990	52.47163660	1895	3.00	eur	336000.00
+5393692	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	435000.00
+5423612	sell	apartment	10557	Berlin	\N	\N	13.36794180	52.52190990	1905	3.00	eur	448000.00
+361773	sell	apartment	10557	Berlin	Paulstraße	25	13.35632270	52.52126710	1998	2.00	eur	220000.00
+474018	sell	apartment	12161	Berlin	\N	\N	13.32763350	52.47179560	1911	3.00	eur	209000.00
+5393781	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	625000.00
+5435494	sell	apartment	10713	Berlin	\N	\N	13.31671310	52.48137610	1979	2.00	eur	200000.00
+5393759	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	7.00	eur	1125000.00
+5435702	sell	apartment	10713	Berlin	\N	\N	13.31671310	52.48137610	1910	2.00	eur	159000.00
+5435707	sell	apartment	10713	Berlin	\N	\N	13.31671310	52.48137610	1910	4.00	eur	455000.00
+5435337	sell	apartment	10585	Berlin	\N	\N	13.30591980	52.51753440	1883	2.00	eur	124000.00
+5393790	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	9.00	eur	425000.00
+5393664	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	635000.00
+5393830	sell	apartment	10115	Berlin	Chausseestraße	56	13.37618310	52.53630780	\N	4.00	eur	419000.00
+314654	sell	apartment	10243	Berlin	Warschauer Straße	76	13.45322380	52.51292920	1900	2.00	eur	198000.00
+5397071	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	680000.00
+5393732	sell	apartment	10243	Berlin	Koppenstraße	77	13.43468480	52.51393110	1898	2.00	eur	152612.00
+5393752	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	690900.00
+5393680	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	334982.00
+5393641	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1908	3.00	eur	248000.00
+5393735	sell	apartment	10243	Berlin	Koppenstraße	78	13.43458710	52.51381810	1898	4.00	eur	249900.00
+313639	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	1374750.00
+5393769	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	5.00	eur	4108120.00
+5393786	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1002300.00
+5393682	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	2.00	eur	245000.00
+5393720	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	234900.00
+5393745	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1911	3.00	eur	139990.00
+5393707	sell	apartment	10315	Berlin	Lincolnstraße	\N	13.50439950	52.50619270	\N	2.00	eur	90000.00
+5393779	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.50	eur	255900.00
+5393757	sell	apartment_maisonette	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.50	eur	326976.00
+5393751	sell	apartment	10315	Berlin	Marie-Curie-Allee	\N	13.50041040	52.50506610	1925	2.00	eur	69900.00
+5393725	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	6.00	eur	162000.00
+5393743	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	2008	4.00	eur	265000.00
+5393748	sell	apartment	10315	Berlin	Rosenfelder Ring	\N	13.51205360	52.51318000	\N	2.00	eur	67000.00
+5393783	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	25.00	eur	452500.00
+5393755	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	161288.00
+5393796	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	253100.00
+5393767	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	299000.00
+5486500	sell	apartment	12355	Berlin	Elfriede-Kuhr-Straße	\N	13.50809770	52.40365690	1997	4.00	eur	310000.00
+5393804	sell	apartment	10249	Berlin	Matthiasstraße	2	13.43973139	52.52337315	\N	3.00	eur	360125.00
+5393717	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	4.00	eur	384450.00
+5393765	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	2.00	eur	192850.00
+5393711	sell	apartment	10249	Berlin	Pufendorfstraße	7	13.43973550	52.52275740	\N	3.00	eur	360125.00
+5393816	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	292900.00
+5392601	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	2.00	eur	145000.00
+5393782	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	1.00	eur	99000.00
+5393799	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	303600.00
+5393795	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1906	4.00	eur	394400.00
+330059	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	250000.00
+5393729	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	149000.00
+5393760	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43880860	52.52205130	\N	3.00	eur	267200.00
+5393694	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	0.00
+5393855	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	3.00	eur	313650.00
+5393896	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	0.00
+5551140	sell	villa	13587	Berlin	\N	\N	13.21741330	52.55718140	\N	15.00	eur	750000.00
+5393853	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	3.00	eur	265500.00
+5393839	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	\N	2.00	eur	209100.00
+5393862	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	\N	4.00	eur	335175.00
+5393885	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	2.00	eur	144900.00
+5393753	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	343715.00
+5393875	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	104900.00
+5393814	sell	penthouse	10117	Berlin	Schumannstraße	7	13.38193520	52.52338620	\N	5.00	eur	1546000.00
+305421	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1908	4.00	eur	395000.00
+5393738	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	199000.00
+5393849	sell	apartment_roof_storey	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	3.00	eur	3950000.00
+5393719	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	276932.00
+302962	sell	apartment_maisonette	10117	Berlin	\N	\N	13.38532280	52.52362850	1884	2.00	eur	301800.00
+5393789	sell	apartment	10117	Berlin	Dorotheenstraße	83	13.38390560	52.51829640	\N	3.00	eur	963398.00
+5393787	sell	apartment	10117	Berlin	Dorotheenstraße	83	13.38390560	52.51829640	\N	4.00	eur	1340240.00
+5393829	sell	apartment	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	3.00	eur	1059000.00
+5393718	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	425000.00
+5393733	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1250000.00
+5393780	sell	apartment	10117	Berlin	Dorotheenstraße	1	13.39639410	52.51953000	\N	4.00	eur	1340240.00
+5393756	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	500000.00
+5393792	sell	apartment	10117	Berlin	Schiffbauerdamm	6/7	13.38602730	52.52148470	1908	2.00	eur	320000.00
+5393805	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	274278.00
+5393846	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	458000.00
+5393840	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	455000.00
+5393851	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	230000.00
+5393835	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	330000.00
+5393833	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	350000.00
+5393843	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	340000.00
+572418	sell	apartment	10245	Berlin	Markgrafendamm	28	13.46554140	52.49958580	1965	2.00	eur	130000.00
+5393871	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	458000.00
+5393791	sell	apartment	10245	Berlin	Kopernikusstraße	18	13.45566650	52.51013230	1999	3.00	eur	288000.00
+5393807	sell	apartment	10245	Berlin	Neue Bahnhofstraße	30	13.46943450	52.50551520	\N	3.00	eur	266505.00
+316573	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	266000.00
+5393873	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	3.00	eur	186505.00
+336174	sell	apartment	10179	Berlin	Schillingstraße	1	13.42070370	52.51730090	\N	3.00	eur	296649.00
+336408	sell	apartment	10179	Berlin	Schillingstraße	1	13.42070370	52.51730090	\N	4.00	eur	467265.00
+5393771	sell	apartment	10179	Berlin	Rungestraße	\N	13.41788350	52.51241950	1900	4.00	eur	209500.00
+5393889	sell	apartment	10179	Berlin	Schillingstraße	1	13.42070370	52.51730090	\N	4.00	eur	500330.00
+5394079	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	5.00	eur	651024.00
+5394100	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	4.00	eur	457416.00
+5394108	sell	penthouse	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	3.00	eur	683810.00
+5393827	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	299000.00
+5394090	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	2.00	eur	228993.00
+335948	sell	apartment	10179	Berlin	Schillingstraße	1	13.42070370	52.51730090	\N	4.00	eur	500330.00
+5393901	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	3.00	eur	202926.00
+5393806	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	25.00	eur	365000.00
+321931	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	2014	4.00	eur	215000.00
+5393815	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1998	14.00	eur	450000.00
+311432	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	2014	3.00	eur	229670.00
+5393909	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1998	1.00	eur	69000.00
+5393850	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	246033.00
+5393888	sell	semi_detached_house	10315	Berlin	Rosenfelder Ring	63	13.51505931	52.51250965	\N	4.00	eur	224900.00
+5393803	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	35.00	eur	538800.00
+5393921	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	9.50	eur	460000.00
+5393893	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	4.00	eur	295000.00
+5393917	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2004	4.00	eur	614000.00
+5393976	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1957	2.00	eur	109000.00
+5394024	sell	apartment	10243	Berlin	Kadiner Straße	20	13.45130400	52.51420790	1905	1.00	eur	225000.00
+5394060	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	163000.00
+5394019	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	7.00	eur	4100000.00
+5393972	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	3.00	eur	255000.00
+5393969	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	220000.00
+313080	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	1626300.00
+5393999	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	3.00	eur	255000.00
+5394055	sell	semi_detached_house	10243	Berlin	Koppenstraße	77	13.43459650	52.51394780	\N	6.00	eur	399500.00
+5393870	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1713000.00
+5393913	sell	apartment	10249	Berlin	Barnimstraße	12	13.42399000	52.52544270	1968	3.00	eur	82754.00
+5393864	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	149000.00
+5393856	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	0.00	eur	108000.00
+5393872	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	485000.00
+12326099	rent	apartment	12623	Berlin	Lutherstraße	13	13.61286060	52.49313420	2008	4.50	eur	880.00
+5393848	sell	apartment	10245	Berlin	Simon-Dach-Straße	\N	13.45642160	52.51044110	\N	2.00	eur	195000.00
+5393922	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	470000.00
+5393931	sell	apartment	10249	Berlin	Straßmannstraße	\N	13.45086230	52.52243900	\N	2.00	eur	252000.00
+5393854	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	665500.00
+5393874	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	309500.00
+344315	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2014	4.00	eur	410000.00
+5394044	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	399000.00
+5393841	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	599000.00
+5414498	sell	apartment	10247	Berlin	Voigtstraße	13	13.46924860	52.51803540	1910	1.00	eur	189000.00
+5394036	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	2.00	eur	249500.00
+5393950	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	394800.00
+5393858	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	475000.00
+5393963	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	585000.00
+5394395	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	557550.00
+5393852	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1901	5.00	eur	410000.00
+5394032	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	510000.00
+5393880	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	625000.00
+5393911	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	495000.00
+5393973	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	449000.00
+5394054	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	475000.00
+5394078	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	675710.00
+5393984	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	498000.00
+357930	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2012	5.00	eur	359000.00
+5393938	sell	apartment	10117	Berlin	Kommandantenstraße	76-79	13.40133830	52.50925790	\N	3.00	eur	344900.00
+343710	sell	apartment	10409	Berlin	\N	\N	13.45519750	52.54342460	2016	8.00	eur	758000.00
+5393898	sell	apartment	10117	Berlin	Mittelstraße	52	13.38800190	52.51780320	\N	4.00	eur	255000.00
+5477046	sell	apartment	12209	Berlin	Oberhofer Weg	26	13.32870985	52.42352760	1932	3.00	eur	169000.00
+353789	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1908	3.00	eur	395000.00
+360323	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1908	3.00	eur	395000.00
+358584	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	995000.00
+307586	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1910	3.00	eur	1100000.00
+5413086	sell	apartment	10245	Berlin	Alt-Stralau	44	13.47333025	52.49420360	\N	3.00	eur	424500.00
+361969	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1908	3.00	eur	395000.00
+5393894	sell	apartment	10117	Berlin	Leipziger Platz	12	13.37952760	52.51013720	\N	6.00	eur	500000.00
+5393910	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	309000.00
+5393907	sell	apartment	10117	Berlin	Beuthstraße	3	13.40253720	52.50914830	\N	3.00	eur	440000.00
+5393979	sell	apartment_maisonette	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1490000.00
+5393947	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	155500.00
+5393895	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	336000.00
+5393884	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	291000.00
+5393906	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	359500.00
+5393965	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1952	3.00	eur	207000.00
+5394013	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	3.00	eur	282805.00
+5393970	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1895	5.00	eur	350000.00
+5393948	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	400000.00
+5389566	sell	apartment	10245	Berlin	Alt-Stralau	32	13.47857760	52.49314180	\N	4.00	eur	494500.00
+5393902	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	310500.00
+5393904	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	365000.00
+5496583	sell	apartment	12557	Berlin	\N	\N	13.56211180	52.43972170	\N	4.00	eur	403000.00
+5393912	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	5.00	eur	403000.00
+5393946	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	3.00	eur	149900.00
+5393997	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2005	5.00	eur	398000.00
+5393962	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	268464.00
+5393975	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.50	eur	162500.00
+5394407	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	626500.00
+5394423	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.50	eur	1238200.00
+5394007	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	2.00	eur	195975.00
+5393981	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1906	2.00	eur	150000.00
+5393941	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	650000.00
+5393951	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	1902	2.00	eur	110000.00
+5419101	sell	apartment	10555	Berlin	\N	\N	13.33596470	52.52246290	1920	2.00	eur	69000.00
+5393996	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	275950.00
+5393978	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	9.50	eur	538800.00
+5393991	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	126000.00
+5393995	sell	apartment	10315	Berlin	Einbecker Straße	55	13.50616140	52.50997755	\N	4.00	eur	223963.00
+5394035	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1995	3.00	eur	160000.00
+5393964	sell	apartment	10315	Berlin	Marie-Curie-Allee	\N	13.50041040	52.50506610	1931	1.00	eur	52000.00
+5393971	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	9.50	eur	365000.00
+5394018	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	197416.00
+5394000	sell	apartment	10315	Berlin	Rosenfelder Ring	78	13.51607270	52.51312120	\N	3.00	eur	81500.00
+5394048	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1966	3.00	eur	103500.00
+5394045	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	265000.00
+5394049	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	265000.00
+5394073	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1998	1.00	eur	61950.00
+5394005	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1920	2.00	eur	126000.00
+5394041	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	665500.00
+334983	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2014	4.00	eur	275950.00
+5394085	sell	apartment	10249	Berlin	Matternstraße	\N	13.45129090	52.52142420	1900	10.00	eur	480000.00
+331734	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	139000.00
+5394076	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1902	3.00	eur	144000.00
+5394107	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	2002	3.00	eur	189000.00
+5394056	sell	multi_family_house	10249	Berlin	\N	\N	13.44735700	52.52649200	1994	9.50	eur	2100000.00
+5394116	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	420000.00
+5393998	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	864500.00
+5394065	sell	apartment	10117	Berlin	Kommandantenstraße	76-79	13.40133830	52.50925790	\N	3.00	eur	361900.00
+5394121	sell	apartment	10117	Berlin	Auguststraße	9	13.39402460	52.52639730	\N	4.00	eur	1103445.00
+364372	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2008	4.00	eur	235000.00
+5394095	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1985	1.50	eur	160000.00
+5394168	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	4.00	eur	475000.00
+303207	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	1000000.00
+5394092	sell	penthouse	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	4.00	eur	3450000.00
+5394021	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	3.00	eur	447900.00
+5393993	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	380000.00
+5394082	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	2.00	eur	895000.00
+5394088	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1839	4.00	eur	695000.00
+5394080	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	4.00	eur	432250.00
+5394033	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	8.00	eur	314200.00
+5394102	sell	apartment_maisonette	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	211554.00
+5394062	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	4.00	eur	362100.00
+5394037	sell	apartment	10247	Berlin	Bänschstraße	85	13.47076650	52.51750430	\N	2.00	eur	195975.00
+5394072	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	\N	4.00	eur	412500.00
+5394059	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	3.00	eur	353100.00
+5394022	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	3.00	eur	395900.00
+5394015	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	4.00	eur	376600.00
+5394064	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	\N	4.00	eur	381500.00
+5394038	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	\N	2.00	eur	234600.00
+5394039	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	2.00	eur	230625.00
+5394089	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1915	0.00	eur	125000.00
+5394053	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	3.00	eur	362100.00
+5394075	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	3.00	eur	395900.00
+5394030	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	4.00	eur	379600.00
+5394112	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1952	3.00	eur	216900.00
+5394047	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1952	3.00	eur	216900.00
+5394397	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1884	4.00	eur	1055000.00
+5394043	sell	apartment	10245	Berlin	Dirschauer Straße	16	13.45718790	52.50866230	1900	2.00	eur	159250.00
+5394083	sell	apartment	10245	Berlin	Stralauer Allee	35	13.45311300	52.50132600	1985	5.00	eur	150000.00
+5394103	sell	apartment	10245	Berlin	Dirschauer Straße	16	13.45718790	52.50866230	1900	2.00	eur	183750.00
+5394034	sell	apartment	10245	Berlin	Dirschauer Straße	16	13.45718790	52.50866230	1900	3.00	eur	192000.00
+5394020	sell	apartment	10245	Berlin	Simon-Dach-Straße	20	13.45541500	52.50873570	1900	2.00	eur	156800.00
+5394031	sell	apartment	10245	Berlin	Dirschauer Straße	16	13.45718790	52.50866230	1900	2.00	eur	135000.00
+5394131	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	3.00	eur	249100.00
+5394105	sell	apartment	10245	Berlin	Dirschauer Straße	16	13.45718790	52.50866230	1900	2.00	eur	159500.00
+5394040	sell	apartment	10245	Berlin	Dirschauer Straße	16	13.45718790	52.50866230	1900	2.00	eur	104400.00
+5394099	sell	apartment	10245	Berlin	Dirschauer Straße	16	13.45718790	52.50866230	1900	1.00	eur	68400.00
+5394115	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	2.00	eur	330000.00
+5394128	sell	apartment	10245	Berlin	Simplonstraße	30	13.46074170	52.50726960	1900	2.00	eur	149000.00
+5394119	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	200855.00
+346261	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1998	4.50	eur	599000.00
+5394324	sell	villa	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	7.00	eur	655000.00
+348782	sell	apartment	10115	Berlin	Bergstraße 16;	16/17	13.39494980	52.53074610	1900	2.00	eur	153000.00
+5394382	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	452925.00
+5394303	sell	apartment	10115	Berlin	Schwartzkopffstraße	15	13.37991817	52.53505670	1905	1.00	eur	129000.00
+345297	sell	apartment	10115	Berlin	Schwartzkopffstraße	15	13.37991817	52.53505670	1895	1.00	eur	129000.00
+5394366	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	261625.00
+311254	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1960	2.00	eur	165000.00
+5394172	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1995	3.00	eur	209000.00
+5394224	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	10.00	eur	365000.00
+5394186	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1995	3.00	eur	209000.00
+5394182	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1995	1.00	eur	94000.00
+5394160	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	28.00	eur	408800.00
+375769	sell	apartment	10439	Berlin	Finnländische Straße	4	13.39974730	52.55356790	2016	2.00	eur	320840.00
+5394282	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	217801.00
+5394155	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	25.00	eur	365000.00
+5394310	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	254900.00
+5394086	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	1998	1.00	eur	82000.00
+5394176	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1995	2.00	eur	150000.00
+5394272	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	180510.00
+5449076	sell	apartment	10789	Berlin	Augsburger Straße	31	13.33444050	52.50167410	1890	2.00	eur	349000.00
+5394292	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	177012.00
+5394316	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1980	3.50	eur	233000.00
+5394111	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	75000.00
+5394097	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	576000.00
+5394175	sell	apartment	10243	Berlin	Koppenstraße	78	13.43458710	52.51381810	1898	3.00	eur	192322.00
+5394087	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	282200.00
+329396	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	282900.00
+5394605	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	283938.00
+329327	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	1.50	eur	149850.00
+5394132	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1908	3.00	eur	248000.00
+5394109	sell	apartment	10243	Berlin	Kopernikusstraße	32	13.45076400	52.51180810	2010	4.00	eur	631000.00
+5394199	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	3.00	eur	640000.00
+5394135	sell	apartment	10243	Berlin	Koppenstraße	77-78	13.43468480	52.51393110	1898	3.00	eur	375000.00
+5394192	sell	apartment	10243	Berlin	Koppenstraße	78	13.43458710	52.51381810	1898	3.00	eur	161538.00
+5394189	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	3.00	eur	612855.00
+5394158	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	2.00	eur	275000.00
+5394193	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	5.00	eur	455000.00
+5394113	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	178192.00
+5394117	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	314534.00
+5394215	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	375000.00
+5394207	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	285000.00
+5394204	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	264000.00
+5394267	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	135000.00
+5394232	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1900	5.00	eur	1060000.00
+5394225	sell	apartment	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	\N	3.00	eur	372000.00
+5394278	sell	apartment	10247	Berlin	Zur Innung	\N	13.45901510	52.52355450	\N	5.00	eur	469000.00
+5394123	sell	apartment	10247	Berlin	Finowstraße	7	13.46849740	52.51277910	\N	3.00	eur	559275.00
+5394166	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	188000.00
+5393463	sell	penthouse	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	3.00	eur	409000.00
+5403671	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	378394.00
+5533737	sell	apartment	13187	Berlin	\N	\N	13.40634460	52.56851170	1958	2.00	eur	66000.00
+5394300	sell	apartment	10247	Berlin	Schreinerstraße	38-39	13.47003270	52.51662760	\N	4.00	eur	454300.00
+5394283	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	433161.00
+5533798	sell	apartment	13187	Berlin	\N	\N	13.40634460	52.56851170	1902	5.00	eur	460000.00
+5394196	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	145000.00
+5394296	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	698585.00
+5394228	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	490235.00
+5394127	sell	apartment	10249	Berlin	Heidenfeldstraße	\N	13.45113560	52.52604040	1920	2.00	eur	115000.00
+5394161	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1990	0.00	eur	155100.00
+5394164	sell	apartment	10249	Berlin	Thaerstraße	42	13.45402040	52.52011580	\N	1.00	eur	70000.00
+5394188	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1906	4.00	eur	442000.00
+5394148	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	831000.00
+5394183	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	695000.00
+5394180	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	516000.00
+5394141	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	464000.00
+5394134	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	713000.00
+5468712	sell	apartment	12161	Berlin	\N	\N	13.32763350	52.47179560	1906	3.00	eur	165000.00
+5394138	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	710000.00
+5394202	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	817000.00
+5394151	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	554000.00
+5394230	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	4.00	eur	763000.00
+5394238	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	368000.00
+5394174	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	850000.00
+5394217	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	285000.00
+5394234	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	3.00	eur	638000.00
+5394145	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	289000.00
+5394205	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	368000.00
+5394213	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	473000.00
+5394198	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	5.00	eur	1137000.00
+5394240	sell	apartment	10245	Berlin	Simplonstraße	32	13.46097440	52.50714950	1900	2.00	eur	165000.00
+5394137	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	700000.00
+5394150	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	2.00	eur	159600.00
+5394214	sell	apartment	10245	Berlin	Lenbachstraße	\N	13.46662330	52.50542400	1900	3.00	eur	120000.00
+5419164	sell	apartment	10555	Berlin	\N	\N	13.33878410	52.52154190	1900	2.00	eur	144000.00
+5394242	sell	apartment	10245	Berlin	Niemannstraße 6;	32	13.46050030	52.50704910	1900	2.00	eur	165000.00
+5394206	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	95000.00
+5394190	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	389500.00
+5394195	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	419000.00
+5394221	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	1995	2.00	eur	210000.00
+5394265	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	344692.00
+363333	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1908	3.00	eur	395000.00
+5394237	sell	apartment_roof_storey	10117	Berlin	\N	\N	13.38532280	52.52362850	2001	3.00	eur	0.00
+371191	sell	apartment	10117	Berlin	Leipziger Platz	12	13.37952760	52.51013720	\N	4.00	eur	249000.00
+5394241	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2001	3.00	eur	0.00
+5394271	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	419000.00
+5394231	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	795000.00
+5394247	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	753820.00
+5394313	sell	apartment	10117	Berlin	Wilhelmstraße	\N	13.38184110	52.51446820	1910	5.50	eur	2034600.00
+370017	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2006	3.50	eur	393000.00
+5394263	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	753820.00
+5394252	sell	apartment_roof_storey	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	2031026.00
+5394233	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	732000.00
+5394304	sell	apartment	10117	Berlin	Schützenstraße	70	13.39139790	52.50872800	1997	2.00	eur	195000.00
+5394293	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1500000.00
+5394286	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	4.00	eur	4500000.00
+5394387	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	174000.00
+400158	sell	apartment	10789	Berlin	Augsburger Straße	31	13.33444050	52.50167410	1890	2.00	eur	359000.00
+315924	sell	apartment	10243	Berlin	Karl-Marx-Allee	53	13.42991370	52.51868870	\N	2.00	eur	160000.00
+5394335	sell	apartment	10319	Berlin	Am Tierpark	51	13.52138830	52.50244820	\N	2.00	eur	205215.00
+5394389	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	675710.00
+5394249	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	3.00	eur	629000.00
+5394339	sell	apartment	10319	Berlin	Am Tierpark	51	13.52138830	52.50244820	\N	4.00	eur	206373.00
+5394346	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	270000.00
+5394392	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	399000.00
+312249	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	368000.00
+5394295	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	339000.00
+5394251	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	4.00	eur	599000.00
+5394243	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	777000.00
+5394285	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	350000.00
+317943	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	7.00	eur	1244034.00
+335452	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	183378.00
+317527	sell	apartment	10179	Berlin	Alte Jakobstraße	48-51	13.40549270	52.50834140	\N	2.00	eur	223400.00
+5394342	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	308000.00
+5394280	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	475000.00
+5394349	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	173505.00
+5394284	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	155000.00
+5394288	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	275000.00
+5394258	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	115000.00
+5394246	sell	apartment	10249	Berlin	Auerstraße	7	13.44345130	52.51876530	1900	4.00	eur	230000.00
+5515802	sell	apartment	13088	Berlin	Piesporter Straße	\N	13.47697800	52.56323000	1998	2.00	eur	110500.00
+5394343	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	209999.00
+5394317	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	109000.00
+5394264	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	135000.00
+5394297	sell	apartment	10249	Berlin	Eckertstraße	12	13.45000280	52.51976240	\N	5.00	eur	660000.00
+5394322	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	105000.00
+335745	sell	apartment	10249	Berlin	Kochhannstraße	40	13.44694580	52.52391340	1997	2.00	eur	157500.00
+5394244	sell	apartment	10249	Berlin	Straßmannstraße	30	13.45183000	52.52255520	\N	6.00	eur	359000.00
+5394333	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	114380.00
+5394308	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	266505.00
+5394371	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	4.00	eur	238350.00
+5394319	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	364764.00
+5394331	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	290062.00
+5394277	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	306802.00
+5394345	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	5.00	eur	499000.00
+5394337	sell	apartment_maisonette	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	4.00	eur	490143.00
+5394305	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	227808.00
+5394357	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	495000.00
+5394326	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	359206.00
+5394351	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	4.00	eur	499000.00
+5394420	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	458000.00
+5394413	sell	apartment	10245	Berlin	Döringstraße	11	13.46212550	52.50567220	\N	4.00	eur	440000.00
+5394376	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1905	4.00	eur	760000.00
+5394321	sell	apartment_maisonette	10247	Berlin	Kinzigstraße	\N	13.46563890	52.51283010	\N	5.00	eur	682800.00
+5394415	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	79000.00
+5394401	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	4.00	eur	350000.00
+5394432	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1910	9.00	eur	350000.00
+5394329	sell	penthouse	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	4.00	eur	394625.00
+5394320	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	45000.00
+5394391	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	3.00	eur	351000.00
+5394354	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	4.00	eur	760000.00
+5394347	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	260304.00
+5394358	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	295000.00
+5394336	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1905	2.00	eur	130000.00
+5394315	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	3.00	eur	394050.00
+5394325	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	1.00	eur	77049.00
+321950	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	2014	5.00	eur	349000.00
+5394439	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	224538.00
+5394433	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	165454.00
+5394364	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	224538.00
+5394449	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	269600.00
+313887	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	1.00	eur	132990.00
+5394328	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	\N	3.00	eur	80000.00
+5394470	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	183425.00
+5394332	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	33.00	eur	482900.00
+5394352	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1999	3.00	eur	249000.00
+5394406	sell	apartment	13156	Berlin	Kreuzgraben	2	13.40529940	52.58618840	1997	3.00	eur	172500.00
+5394367	sell	apartment	10315	Berlin	Archenholdstraße	94	13.49959610	52.50199520	1900	2.00	eur	125000.00
+5394474	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	206394.00
+306011	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2001	3.00	eur	495000.00
+5394380	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	665000.00
+373390	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2013	3.00	eur	989000.00
+352516	sell	apartment	10117	Berlin	Kronenstraße	72	13.38745440	52.51121780	\N	4.00	eur	225000.00
+5394363	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1882	6.00	eur	1190000.00
+5394386	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1882	6.00	eur	1190000.00
+5394394	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	3450000.00
+5394012	sell	penthouse	10117	Berlin	Kommandantenstraße	76-79	13.40133830	52.50925790	\N	4.00	eur	592900.00
+5394405	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	963000.00
+5394400	sell	apartment_maisonette	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1950000.00
+5394402	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	1450000.00
+5394416	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	864500.00
+5394524	sell	apartment	10249	Berlin	Friedenstraße	\N	13.42494540	52.52816520	\N	3.00	eur	283000.00
+5394537	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	408000.00
+5394370	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	160000.00
+5394409	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	4.00	eur	417819.00
+5394482	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	312416.00
+5394362	sell	apartment	10249	Berlin	Thaerstraße	33	13.45546080	52.52208790	1905	2.00	eur	85000.00
+5394378	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2012	5.00	eur	474292.00
+5394534	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	344520.00
+5394385	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	189536.00
+5394484	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	147500.00
+5397094	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	870000.00
+5394452	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	439000.00
+5391974	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	294292.00
+335918	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2014	4.00	eur	275950.00
+5394562	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1904	1.00	eur	79900.00
+5394513	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1960	2.00	eur	65000.00
+5394536	sell	apartment	10243	Berlin	Strausberger Platz	2-5	13.42734620	52.51934880	1953	2.00	eur	195000.00
+5394525	sell	apartment	10243	Berlin	Am Comeniusplatz	4	13.44705591	52.51212475	1905	3.00	eur	310000.00
+5394422	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	6.00	eur	6000000.00
+5394399	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	2.00	eur	300000.00
+5394438	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1935	1.00	eur	109000.00
+5394442	sell	single_family_house	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	1175000.00
+5394480	sell	apartment	10243	Berlin	Warschauer Straße	76	13.45322380	52.51292920	1906	3.00	eur	208000.00
+5394467	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	2.00	eur	125000.00
+5394504	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	89990.00
+5394510	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	1462500.00
+5394458	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	282200.00
+5394544	sell	apartment	10243	Berlin	Strausberger Platz	2-5	13.42734620	52.51934880	1953	2.00	eur	250000.00
+5394541	sell	apartment	10243	Berlin	Strausberger Platz	2-5	13.42734620	52.51934880	1953	2.00	eur	245000.00
+5394486	sell	apartment	10243	Berlin	Kadiner Straße	20	13.45130400	52.51420790	1905	2.00	eur	298000.00
+12351481	rent	apartment	13125	Berlin	Am Hohen Feld	127	13.49594560	52.61409030	\N	3.00	eur	506.00
+12351595	rent	apartment	13125	Berlin	Am Hohen Feld	128	13.49629910	52.61389910	\N	2.00	eur	390.00
+5394463	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	4.00	eur	831000.00
+5394465	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	5.00	eur	812000.00
+11724213	sell	apartment	10117	Berlin	\N	\N	13.38885990	52.51703650	1928	2.50	eur	89600.00
+5394461	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	285000.00
+5394403	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1971	1.00	eur	98500.00
+5394436	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	3.00	eur	629000.00
+5394410	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	400000.00
+5394457	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	3.00	eur	501000.00
+5394501	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	457000.00
+315016	sell	apartment	10179	Berlin	Inselstraße	10	13.41243730	52.51202430	\N	4.00	eur	550000.00
+5394503	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	375000.00
+5394418	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	138000.00
+5394466	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1908	1.00	eur	0.00
+5394581	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	136454.00
+5394548	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	250000.00
+5394491	sell	apartment	10245	Berlin	Stralauer Allee	20	13.46119760	52.49867950	1907	2.00	eur	149000.00
+5394512	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	344692.00
+5394434	sell	apartment	10245	Berlin	Wühlischstraße	44	13.46167930	52.50844820	\N	3.00	eur	107000.00
+5394451	sell	apartment	10245	Berlin	Sonntagstraße	30	13.46606550	52.50568020	1900	2.00	eur	209000.00
+5394551	sell	apartment	10245	Berlin	Krossener Straße	13	13.45746480	52.51080850	\N	2.00	eur	148208.00
+5394572	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	495000.00
+5394460	sell	apartment	10245	Berlin	Kopernikusstraße	24	13.45430499	52.51079325	2001	5.00	eur	282500.00
+5394496	sell	apartment	10245	Berlin	Gärtnerstraße	3	13.45995490	52.50854770	1900	3.00	eur	0.00
+5394578	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	148208.00
+5394576	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	172845.00
+5394588	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	148208.00
+5394590	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	8.50	eur	1202850.00
+5394615	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	385000.00
+5394622	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	260000.00
+5394618	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	260000.00
+5394604	sell	apartment	10115	Berlin	Chausseestraße	92	13.37486830	52.53683510	\N	1.00	eur	98400.00
+5394583	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	4.00	eur	545895.00
+5394455	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	259875.00
+5394532	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	563200.00
+5394611	sell	apartment	10115	Berlin	Scharnhorststraße	26-27	13.37081210	52.53379770	1910	2.00	eur	245500.00
+5394519	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	469700.00
+5394553	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.50	eur	1238200.00
+5394579	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	156086.00
+5394545	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	646000.00
+5394487	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	405213.00
+5394445	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	240720.00
+5394490	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.50	eur	341000.00
+5394535	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	109000.00
+5394506	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	3.00	eur	319000.00
+5394530	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	87000.00
+5394507	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1999	2.00	eur	166000.00
+5394459	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1995	1.00	eur	79000.00
+5394493	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	197000.00
+5394515	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	320000.00
+5394441	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2006	3.00	eur	219000.00
+5394542	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	136890.00
+5394543	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	1.00	eur	79500.00
+5394573	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1980	3.50	eur	239000.00
+5394624	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	\N	2.00	eur	150000.00
+5394608	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	\N	3.00	eur	209000.00
+5394521	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	135749.00
+5394613	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1980	3.50	eur	233000.00
+5394522	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	376155.00
+5394580	sell	apartment	10315	Berlin	Allee der Kosmonauten	17	13.51132473	52.52290735	\N	3.00	eur	299800.00
+5394626	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1984	3.00	eur	129000.00
+5394664	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	\N	3.00	eur	209000.00
+313627	sell	apartment	10319	Berlin	Am Tierpark	49	13.52133720	52.50276340	1910	2.00	eur	69000.00
+5394599	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	\N	1.00	eur	94000.00
+5394495	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	341433.00
+5394619	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	\N	1.00	eur	82000.00
+5394625	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394586	sell	apartment_maisonette	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	459000.00
+5394629	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394549	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	585000.00
+5394691	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	525000.00
+5394559	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394693	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	490000.00
+5394565	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394741	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	525000.00
+5394677	sell	apartment	10179	Berlin	Ifflandstraße	4	13.42091720	52.51696960	1969	4.00	eur	250000.00
+5394698	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	620000.00
+5394649	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	339000.00
+5427848	sell	penthouse	10439	Berlin	\N	\N	13.41343470	52.54996860	\N	5.00	eur	1365000.00
+5427773	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	210000.00
+5394689	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	490000.00
+317508	sell	penthouse	10179	Berlin	Alte Jakobstraße	48-51	13.40549270	52.50834140	\N	3.00	eur	631000.00
+5394595	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	3.00	eur	324000.00
+5394558	sell	apartment	10243	Berlin	Strausberger Platz	2-5	13.42734620	52.51934880	1953	3.00	eur	298000.00
+5394646	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1071900.00
+306097	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	2016	2.00	eur	445000.00
+5394718	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	499500.00
+5394587	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	3.00	eur	159000.00
+5394566	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	3.00	eur	420000.00
+5394710	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	2.00	eur	289000.00
+5403780	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	94000.00
+5394669	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	10.00	eur	500000.00
+5394672	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	10.00	eur	500000.00
+5394641	sell	apartment	10247	Berlin	Mainzer Straße	\N	13.46227140	52.51319160	1910	3.00	eur	181300.00
+5394647	sell	penthouse	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	2.00	eur	290700.00
+311578	sell	apartment	10247	Berlin	Rigaer Straße	67	13.46860520	52.51586760	2013	3.00	eur	342305.00
+5487175	sell	apartment	12439	Berlin	\N	\N	13.55066310	52.45067340	\N	2.00	eur	101000.00
+5394660	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	6.00	eur	597000.00
+5394657	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	4.00	eur	375594.00
+5394663	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	6.00	eur	597000.00
+5394435	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	2.00	eur	187575.00
+5394678	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	9.50	eur	500000.00
+5394556	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	4.00	eur	261000.00
+5394685	sell	apartment	10249	Berlin	Matternstraße	3	13.45229170	52.52158820	1900	5.00	eur	439000.00
+5394740	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	200000.00
+5394643	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	743750.00
+5394628	sell	apartment	10249	Berlin	Richard-Sorge-Straße	65	13.44588160	52.52194290	\N	3.00	eur	265000.00
+11745895	sell	apartment	10585	Berlin	\N	\N	13.30410540	52.51660230	\N	5.00	eur	1013650.00
+5394632	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1985	3.00	eur	149000.00
+5394610	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	254100.00
+5394650	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	210975.00
+5394658	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	214500.00
+5394635	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1915	4.50	eur	240000.00
+5394690	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	254100.00
+5394694	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	364788.00
+314822	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	1.00	eur	98000.00
+5394609	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	4.00	eur	427976.00
+5394686	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1897	3.00	eur	195000.00
+5394674	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1920	7.00	eur	409000.00
+5394679	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1900	1.00	eur	89500.00
+5394639	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	3.00	eur	399460.00
+5394603	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	1.50	eur	119044.00
+5394623	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	1.50	eur	122455.00
+5395196	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1100000.00
+5394659	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	11.00	eur	1261468.00
+5394637	sell	apartment_maisonette	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	3.50	eur	371865.00
+5394642	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	4.00	eur	430893.00
+5394692	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1900	5.00	eur	275000.00
+5394655	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	\N	4.50	eur	399500.00
+5394661	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	5.00	eur	865000.00
+5394681	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	10.00	eur	758186.00
+349162	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2011	2.00	eur	204880.00
+5394720	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	321000.00
+5394560	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	395000.00
+5394726	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	658000.00
+5394719	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	273000.00
+5394665	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	706400.00
+5394767	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	618000.00
+5394729	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	679000.00
+5394705	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	208000.00
+5394716	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	2.00	eur	192415.00
+5394771	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	650000.00
+5394735	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	270000.00
+5394813	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	1996	0.00	eur	1540000.00
+5394845	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	283500.00
+5394822	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1927	2.00	eur	96000.00
+5394881	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1908	1.00	eur	89900.00
+5394894	sell	apartment	10315	Berlin	Seddiner Straße	\N	13.52055060	52.51341990	1994	2.00	eur	96000.00
+324904	sell	apartment	10315	Berlin	Archenholdstraße	8	13.50440480	52.50867520	1912	6.00	eur	328950.00
+5394673	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	\N	2.00	eur	82000.00
+5394900	sell	multi_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	8.00	eur	196999.00
+5394671	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	209000.00
+5387530	sell	apartment	10243	Berlin	Karl-Marx-Allee	\N	13.42955100	52.51821320	\N	3.00	eur	114000.00
+5394834	sell	single_family_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	379000.00
+5394903	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	196000.00
+5394821	sell	multi_family_house	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	\N	9.50	eur	1540000.00
+5394842	sell	apartment	10315	Berlin	Alt-Friedrichsfelde	65	13.53608480	52.51048310	1997	2.00	eur	139000.00
+5394864	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1994	2.00	eur	96000.00
+5394805	sell	apartment	10247	Berlin	Glatzer Straße	\N	13.46528630	52.50934840	\N	2.50	eur	1000000.00
+5394733	sell	apartment	10247	Berlin	Zur Innung	\N	13.45901510	52.52355450	\N	5.00	eur	499000.00
+5394730	sell	single_family_house	10247	Berlin	Zur Innung	\N	13.45901510	52.52355450	\N	5.00	eur	499000.00
+5394752	sell	penthouse	10247	Berlin	Bänschstraße	\N	13.46526830	52.51812870	\N	2.00	eur	225225.00
+5394703	sell	apartment	10247	Berlin	Glatzer Straße	6	13.46588140	52.50979470	\N	2.00	eur	116000.00
+5394743	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	74000.00
+5394799	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	229900.00
+5394768	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	229900.00
+5393983	sell	apartment	10247	Berlin	Dolziger Straße	8	13.46466780	52.51932010	1900	1.00	eur	63500.00
+5394734	sell	apartment	10245	Berlin	Lehmbruckstraße	9	13.45318980	52.50303390	\N	4.00	eur	0.00
+5394784	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	272700.00
+5394824	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	3.00	eur	249100.00
+5394766	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	88290.00
+5394770	sell	apartment	10245	Berlin	Danneckerstraße	24	13.45352600	52.50156840	\N	3.50	eur	249000.00
+5394773	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1900	3.00	eur	155500.00
+5394855	sell	apartment	10245	Berlin	Stralauer Allee	20	13.46119760	52.49867950	1907	1.00	eur	68800.00
+5394776	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	134193.00
+5394700	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	5.00	eur	406250.00
+5394827	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	4.00	eur	325950.00
+5394797	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	4.00	eur	553000.00
+5394765	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	124118.00
+5394786	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	2.00	eur	147075.00
+5394850	sell	apartment	10245	Berlin	Grünberger Straße	26	13.45107000	52.51214000	\N	5.00	eur	499950.00
+5394891	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	283938.00
+5394800	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1902	2.00	eur	152000.00
+5394794	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	85000.00
+5541671	sell	single_family_house	13465	Berlin	\N	\N	13.28746136	52.63509032	\N	8.00	eur	629000.00
+5394727	sell	apartment	10249	Berlin	Friedenstraße	50	13.43715020	52.52041490	1957	2.00	eur	80000.00
+5394713	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	93000.00
+5394828	sell	apartment	10249	Berlin	Hausburgstraße	22	13.45445181	52.52393510	1917	2.00	eur	168500.00
+5394818	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	364788.00
+5394905	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	274000.00
+5394924	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	243484.00
+5394696	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1996	2.00	eur	118000.00
+5459020	sell	apartment	12059	Berlin	Heidelberger Straße	35	13.45277570	52.48589270	1906	2.00	eur	112000.00
+5459054	sell	apartment	12059	Berlin	Ederstraße	7	13.45459680	52.47524250	1906	3.00	eur	160000.00
+5394777	sell	penthouse	10179	Berlin	Köpenicker Straße	48	13.42361210	52.50925180	1994	2.00	eur	595000.00
+5394745	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394789	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394888	sell	penthouse	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	1095000.00
+5394884	sell	penthouse	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	1245000.00
+5394861	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	114000.00
+315441	sell	apartment	10179	Berlin	Legiendamm	10	13.41680732	52.50577555	1998	2.00	eur	179800.00
+5394874	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	439000.00
+5395011	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	2.00	eur	330000.00
+5394853	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	612000.00
+5394899	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394748	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394795	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5394862	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	300000.00
+5394746	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	1.50	eur	210000.00
+304247	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	7.00	eur	558000.00
+330008	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	2016	3.00	eur	361500.00
+5394843	sell	apartment	10243	Berlin	Kadiner Straße	20	13.45130400	52.51420790	1905	1.00	eur	255000.00
+5394769	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	2.00	eur	298000.00
+5394761	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	294000.00
+5394781	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	1.50	eur	165000.00
+5394859	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	455000.00
+5394790	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	2.00	eur	235000.00
+5394806	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	398500.00
+5394798	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	5.00	eur	369000.00
+5394808	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	160499.00
+5394851	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	395000.00
+5394810	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	5.00	eur	369000.00
+366457	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2015	4.00	eur	645000.00
+5394749	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1991	3.00	eur	299000.00
+379789	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1990	3.00	eur	480000.00
+373239	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	2015	3.50	eur	393900.00
+5496600	sell	apartment_maisonette	12557	Berlin	\N	\N	13.56211180	52.43972170	1918	3.00	eur	75000.00
+5394764	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	2.00	eur	336600.00
+5394802	sell	apartment	10117	Berlin	Seydelstraße	7	13.40306160	52.51000970	1998	2.00	eur	219000.00
+5394819	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1882	5.00	eur	950000.00
+5394838	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	500000.00
+5394760	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	4.00	eur	1260000.00
+5394751	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	864500.00
+5394832	sell	apartment	10117	Berlin	Schumannstraße	7	13.38147190	52.52372800	\N	2.00	eur	250800.00
+5394778	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	645000.00
+5394782	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	3.00	eur	436900.00
+368333	sell	apartment	10117	Berlin	Beuthstraße	\N	13.40117020	52.51042390	2015	3.00	eur	429900.00
+5394868	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	2.00	eur	239000.00
+344341	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	2013	2.00	eur	181500.00
+5394950	sell	apartment	10115	Berlin	Chausseestraße	108/109	13.38200720	52.53128650	\N	3.00	eur	319500.00
+5394904	sell	apartment	10115	Berlin	Scharnhorststraße	26-27	13.37081210	52.53379770	1910	3.00	eur	369000.00
+346700	sell	apartment	10115	Berlin	Wöhlertstraße	11	13.37930490	52.53696880	1905	3.00	eur	275000.00
+5392143	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	3.00	eur	329500.00
+5394916	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	2.00	eur	275000.00
+5394796	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	2.00	eur	214700.00
+5394873	sell	apartment	10115	Berlin	Schwartzkopffstraße	15	13.37991817	52.53505670	1905	3.00	eur	199000.00
+5394935	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	585428.00
+5394909	sell	apartment	10115	Berlin	Schwartzkopffstraße	15	13.37991817	52.53505670	1895	3.00	eur	325000.00
+351052	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	2.00	eur	208000.00
+5394936	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	678300.00
+5394929	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	447000.00
+5394931	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	493185.00
+5394830	sell	penthouse	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	3.00	eur	442650.00
+5394841	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	7.00	eur	623200.00
+5394453	sell	apartment_maisonette	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	389900.00
+5394919	sell	apartment_maisonette	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	5.00	eur	496700.00
+5394932	sell	apartment_maisonette	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	5.00	eur	679600.00
+5394816	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	252144.00
+5394865	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	2.00	eur	138500.00
+5394870	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	94900.00
+5394811	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	306505.00
+5394825	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	74000.00
+5394863	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	4.00	eur	425800.00
+5394895	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	78000.00
+5394833	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	178192.00
+5394844	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1900	5.00	eur	990000.00
+5394937	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	7.00	eur	623200.00
+5394852	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	169000.00
+5394812	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	155400.00
+332833	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	2015	9.00	eur	12920000.00
+5395066	sell	apartment	10243	Berlin	Gubener Straße	18	13.44757270	52.51283970	1955	2.00	eur	220500.00
+5394889	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	2.00	eur	289000.00
+331965	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	385000.00
+5395042	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1999	2.00	eur	155000.00
+5394893	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	1.50	eur	210000.00
+333168	sell	apartment	10243	Berlin	Gubener Straße	53	13.44700840	52.51412160	1955	2.00	eur	175010.00
+334042	sell	apartment	10405	Berlin	Belforter Straße	28	13.41607000	52.53356000	2016	3.00	eur	650000.00
+334823	sell	penthouse	10243	Berlin	Stralauer Platz	2	13.43291210	52.50943860	2015	3.00	eur	1000000.00
+5394879	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	520000.00
+326453	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	2.00	eur	125000.00
+333454	sell	apartment	10243	Berlin	Gubener Straße	18	13.44757270	52.51283970	1955	2.00	eur	225950.00
+5395058	sell	apartment	10243	Berlin	Gubener Straße	53	13.44700840	52.51412160	1955	2.00	eur	241200.00
+364305	sell	apartment	10243	Berlin	Gubener Straße	53	13.44686090	52.51431250	1955	2.00	eur	306075.00
+5394897	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	193630.00
+5435358	sell	apartment	10585	Berlin	Nithackstraße	17	13.29808130	52.51857690	1977	2.00	eur	179000.00
+5435395	sell	apartment	10585	Berlin	\N	\N	13.30591980	52.51753440	1900	2.00	eur	129000.00
+5395009	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	395000.00
+5395007	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	360900.00
+5394923	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	3.00	eur	212000.00
+5394948	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	8.00	eur	398400.00
+5394989	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	1171000.00
+5395006	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	365000.00
+5394973	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	360900.00
+5394996	sell	apartment	10245	Berlin	Lehmbruckstraße	18	13.45249040	52.50254940	\N	3.00	eur	245000.00
+5394921	sell	apartment	10317	Berlin	Geusenstraße	\N	13.47962710	52.50339580	2002	3.00	eur	199000.00
+5394941	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2001	3.00	eur	495000.00
+384104	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1973	4.00	eur	299000.00
+381794	sell	apartment	10117	Berlin	Leipziger Straße	46	13.39733610	52.51057060	\N	4.00	eur	299000.00
+5394949	sell	apartment	10117	Berlin	Leipziger Straße	46	13.39733610	52.51057060	1973	2.00	eur	158000.00
+5394898	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1973	4.00	eur	299000.00
+5394991	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	3.50	eur	416900.00
+385780	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	2014	4.00	eur	475000.00
+5394967	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2008	5.00	eur	8000000.00
+422544	sell	apartment	10247	Berlin	Weserstraße	37	13.46776376	52.50891835	2018	3.00	eur	504000.00
+5394997	sell	penthouse	10117	Berlin	Werderscher Markt	1	13.39848270	52.51544050	\N	5.00	eur	3450000.00
+5394390	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	949000.00
+5394944	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1974	3.00	eur	389000.00
+5394961	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	3775000.00
+5395133	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	285000.00
+5394946	sell	semi_detached_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	6.00	eur	298000.00
+5394951	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1997	2.00	eur	149950.00
+314692	sell	apartment	10315	Berlin	Seddiner Straße	9	13.52211640	52.51305320	1995	2.00	eur	96000.00
+5394910	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	143999.00
+5394939	sell	single_family_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	440000.00
+5395046	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	1.00	eur	84999.00
+5394920	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	1.00	eur	79950.00
+5394926	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	200000.00
+5395031	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	1912	5.00	eur	367000.00
+5394915	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1905	1.00	eur	79999.00
+5395064	sell	apartment_roof_storey	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	183100.00
+5395050	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	1912	3.00	eur	381500.00
+5468736	sell	apartment	12161	Berlin	\N	\N	13.32763350	52.47179560	1906	2.50	eur	165000.00
+5395061	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	209600.00
+5394913	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	4.00	eur	299900.00
+5395026	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	3.00	eur	193285.00
+5440791	sell	apartment	10707	Berlin	Darmstädter Straße	8	13.31729100	52.49752070	1903	4.00	eur	329000.00
+5440818	sell	apartment	10719	Berlin	\N	\N	13.32569543	52.49919989	1913	6.00	eur	800000.00
+5395123	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	655000.00
+5440925	sell	apartment	10719	Berlin	\N	\N	13.32569543	52.49919989	1900	4.00	eur	279000.00
+5395107	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	620000.00
+5394938	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5395096	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	3.00	eur	231435.00
+5395082	sell	apartment_maisonette	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	725000.00
+5395008	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	3.00	eur	206615.00
+5395001	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	2.00	eur	206615.00
+5394971	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	320000.00
+5395022	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	2.00	eur	157296.00
+5394942	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5395116	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	1180000.00
+5395086	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	345000.00
+5395092	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	4.00	eur	391287.00
+5394986	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	4.00	eur	369199.00
+5395035	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	430000.00
+5394987	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	201015.00
+5395005	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1902	4.00	eur	213500.00
+5394981	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	75000.00
+5394968	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	360000.00
+5394995	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1915	0.00	eur	125000.00
+5394957	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1900	5.00	eur	860000.00
+5395010	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	285000.00
+5394945	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1906	4.00	eur	290000.00
+5395000	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.00	eur	358150.00
+5395013	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	335000.00
+5394992	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1902	2.00	eur	113850.00
+5394976	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	4.00	eur	293525.00
+5395030	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	415000.00
+5394990	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1908	2.00	eur	74000.00
+5395020	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	375000.00
+317838	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1890	3.00	eur	365000.00
+340571	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	98000.00
+5395044	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	596784.00
+5395029	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	266951.00
+5395017	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	175866.00
+315090	sell	apartment	10249	Berlin	Ebertystraße	31	13.45423620	52.52237090	1910	1.00	eur	70585.00
+318287	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2002	2.00	eur	169000.00
+5395101	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	349500.00
+5395021	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	220720.00
+5395025	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	244532.00
+5395069	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1969	3.00	eur	127980.00
+5395039	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	551784.00
+5395072	sell	apartment	10249	Berlin	Richard-Sorge-Straße	50	13.44419610	52.52437190	2010	5.00	eur	493736.00
+5395034	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	325621.00
+5395063	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	314100.00
+5395122	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	3.00	eur	335800.00
+313559	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	250000.00
+5395040	sell	apartment	10115	Berlin	Boyenstraße	39	13.37175240	52.53718250	\N	3.00	eur	438244.00
+5395129	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	230600.00
+5395080	sell	apartment	10115	Berlin	Chausseestraße	121	13.38403730	52.52928970	\N	3.00	eur	346700.00
+5395070	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	419200.00
+5395089	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	3.00	eur	365000.00
+5395060	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	334866.00
+5395125	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	3.00	eur	237500.00
+5395120	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	285400.00
+5395135	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	159700.00
+5395052	sell	penthouse	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	5.00	eur	853521.00
+350486	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2013	4.00	eur	575138.00
+5395083	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	4.00	eur	385000.00
+5395023	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	454900.00
+5486572	sell	apartment	12349	Berlin	\N	\N	13.41337380	52.41736310	1995	3.00	eur	249000.00
+5413240	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	189000.00
+5395014	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	593000.00
+5395047	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	534800.00
+5395110	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	126666.00
+5395045	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	454900.00
+5484733	sell	single_family_house	12357	Berlin	\N	\N	13.48963390	52.43686190	1982	5.00	eur	285000.00
+5486741	sell	single_family_house	12349	Berlin	\N	\N	13.41337380	52.41736310	1934	6.00	eur	450000.00
+5395115	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	190000.00
+5395127	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	621000.00
+5413245	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	179000.00
+5395178	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	0.00
+5395166	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	3.00	eur	895000.00
+5395087	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	2.00	eur	748900.00
+5395146	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	281000.00
+5395173	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1998	2.00	eur	245000.00
+5395163	sell	apartment	10117	Berlin	Schumannstraße	7	13.38193520	52.52338620	\N	2.00	eur	0.00
+396688	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2013	2.00	eur	345500.00
+351976	sell	apartment	10117	Berlin	Mittelstraße	53	13.38811340	52.51768060	1999	3.00	eur	299000.00
+5395140	sell	apartment	10117	Berlin	Schumannstraße	7	13.38147190	52.52372800	\N	4.00	eur	983500.00
+391346	sell	apartment	10117	Berlin	Oranienburger Straße	32	13.39381260	52.52519340	1890	6.00	eur	1293100.00
+5471377	sell	apartment	12163	Berlin	Deitmerstraße	\N	13.32487960	52.45929740	1972	3.00	eur	107000.00
+5395106	sell	apartment	10179	Berlin	Neue Grünstraße	1	13.40409530	52.50830370	\N	2.00	eur	0.00
+5395075	sell	apartment	10247	Berlin	Rigaer Straße	22	13.45958850	52.51723960	\N	3.00	eur	232031.00
+5395081	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	1905	2.00	eur	129000.00
+5395043	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	440000.00
+5395049	sell	apartment	10247	Berlin	Bänschstraße	85	13.47076650	52.51750430	\N	2.00	eur	175500.00
+5395095	sell	apartment	10247	Berlin	Rigaer Straße	61	13.47005720	52.51560550	\N	3.00	eur	334900.00
+5395138	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1900	3.00	eur	331000.00
+5395085	sell	apartment	10247	Berlin	Rigaer Straße	60	13.47041430	52.51554010	\N	3.00	eur	398900.00
+5395199	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1000000.00
+5405320	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	395000.00
+5395088	sell	apartment	10247	Berlin	Rigaer Straße	60	13.47041430	52.51554010	\N	4.00	eur	749700.00
+5395077	sell	apartment_maisonette	10247	Berlin	Rigaer Straße	22	13.45958850	52.51723960	\N	6.00	eur	525446.00
+5395159	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	360000.00
+5395098	sell	apartment	10247	Berlin	Rigaer Straße	61	13.47005720	52.51560550	\N	4.00	eur	417100.00
+5395059	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	0.00
+5395175	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	1885	4.00	eur	434500.00
+5395097	sell	single_family_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	269000.00
+5395102	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	7.00	eur	310000.00
+5395056	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1997	0.00	eur	77000.00
+5395071	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	235900.00
+5395304	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	683810.00
+5395108	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	374414.00
+5395112	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	319220.00
+5395169	sell	semi_detached_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	4.00	eur	216900.00
+322665	sell	apartment	10315	Berlin	Allee der Kosmonauten	17	13.51132473	52.52290735	\N	4.00	eur	289400.00
+5395111	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	319220.00
+5395073	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1908	1.00	eur	85200.00
+5393793	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	222400.00
+5395067	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	4.00	eur	259700.00
+5395119	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	6.00	eur	380000.00
+5394540	sell	apartment_maisonette	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.50	eur	299900.00
+5395189	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	0.00
+336106	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2015	5.00	eur	665000.00
+337023	sell	apartment	10243	Berlin	Gubener Straße	17	13.44717330	52.51294780	1955	10.00	eur	136500.00
+5419418	sell	apartment	10555	Berlin	\N	\N	13.33596470	52.52246290	1900	3.00	eur	145000.00
+5395177	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	8.00	eur	187200.00
+337930	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	380000.00
+329793	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	2015	4.00	eur	2263000.00
+5395076	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1950	4.00	eur	434200.00
+5392070	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	1904	4.00	eur	699000.00
+5395141	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	169000.00
+5395157	sell	apartment_maisonette	10179	Berlin	Voltairestraße	9	13.41523230	52.51735330	\N	2.00	eur	0.00
+5395126	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	530000.00
+312389	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	655000.00
+5395130	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	780000.00
+5395348	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	3.00	eur	195732.00
+315871	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	3.00	eur	397000.00
+5395134	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	535000.00
+5395295	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	562000.00
+5395320	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	2.00	eur	184858.00
+336475	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.50	eur	345000.00
+5395198	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	85000.00
+5395147	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	250000.00
+5395249	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.50	eur	408524.00
+338718	sell	apartment	10249	Berlin	Thaerstraße	37	13.45459290	52.52089740	2014	2.00	eur	279000.00
+5395156	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	226868.00
+5395171	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	258341.00
+330025	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	34	13.44655400	52.52406200	1997	3.00	eur	192000.00
+5395194	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	240000.00
+5395225	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	\N	2.00	eur	84000.00
+5395143	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	468161.00
+5395212	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	119000.00
+5395153	sell	apartment	10249	Berlin	Friedenstraße	\N	13.42494540	52.52816520	1958	2.00	eur	232000.00
+351288	sell	apartment	10115	Berlin	Schlegelstraße	9	13.38661140	52.52995040	\N	4.00	eur	277000.00
+5395259	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	459459.00
+5395191	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	499500.00
+5395148	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	299000.00
+5395234	sell	apartment	10117	Berlin	Mittelstraße	\N	13.38712960	52.51794130	\N	2.00	eur	295960.00
+307965	sell	penthouse	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	2014	2.00	eur	351997.00
+5395187	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	438300.00
+5395155	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	404819.00
+5395136	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	4.00	eur	907800.00
+5395263	sell	apartment_roof_storey	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	668304.00
+5395274	sell	apartment_roof_storey	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	530464.00
+5395193	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	518000.00
+5395265	sell	apartment_roof_storey	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	729232.00
+5395200	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	690800.00
+5395270	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	420848.00
+5395144	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.50	eur	299900.00
+5395208	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.50	eur	1504000.00
+5395180	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1900	2.00	eur	165500.00
+5395231	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1900	7.00	eur	444000.00
+5395237	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	3.00	eur	306800.00
+357541	sell	apartment	10589	Berlin	\N	\N	13.30540420	52.52648410	1913	2.00	eur	87000.00
+5395170	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1904	2.00	eur	199000.00
+5395261	sell	apartment	10245	Berlin	Persiusstraße	11	13.46422630	52.50023440	1987	3.00	eur	73000.00
+5395269	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46356420	52.49791430	1885	1.00	eur	60000.00
+5395219	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	3.00	eur	193550.00
+5395253	sell	apartment	10245	Berlin	Gärtnerstraße	\N	13.45997730	52.50898340	\N	3.00	eur	285000.00
+5395267	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	104900.00
+5395197	sell	apartment_maisonette	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	1885	4.00	eur	478500.00
+5395288	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	12.00	eur	729300.00
+5395240	sell	apartment	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	\N	6.00	eur	728000.00
+5395281	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	5.00	eur	404000.00
+442649	sell	apartment	10247	Berlin	Weserstraße	37	13.46776376	52.50891835	2016	4.00	eur	648000.00
+5394803	sell	apartment	10247	Berlin	Eldenaer Straße	18	13.46560630	52.51992000	1998	3.00	eur	195000.00
+5395226	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	5.00	eur	338000.00
+5395271	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	338000.00
+5395246	sell	apartment	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	\N	3.00	eur	356000.00
+5395278	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	1.00	eur	57900.00
+5395290	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	2.00	eur	220000.00
+5395232	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	135000.00
+5395293	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	3.00	eur	748900.00
+5525567	sell	apartment	13125	Berlin	\N	\N	13.45830042	52.60831005	1993	2.00	eur	210000.00
+5395243	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1195000.00
+5395289	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	2008	5.00	eur	8000000.00
+5525386	sell	apartment	13158	Berlin	Schillerstraße	\N	13.37188000	52.58706130	1930	3.00	eur	169000.00
+5395202	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	1800000.00
+5395331	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	4.00	eur	991200.00
+5395363	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	1.50	eur	135000.00
+5395214	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	680000.00
+5395367	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1100000.00
+401222	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	199000.00
+5395218	sell	apartment	10117	Berlin	Mohrenstraße	1	13.38555270	52.51079120	2002	3.00	eur	544120.00
+5395233	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	3.00	eur	800000.00
+5395260	sell	apartment	10117	Berlin	Mohrenstraße	2	13.38563050	52.51085950	\N	2.00	eur	155000.00
+5395257	sell	apartment	10117	Berlin	Schützenstraße	70	13.39139790	52.50872800	1999	2.00	eur	185000.00
+5395266	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	230000.00
+5395254	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2004	4.00	eur	448000.00
+5395223	sell	apartment	10243	Berlin	Krautstraße	38	13.42823990	52.51400910	1999	3.00	eur	290000.00
+339225	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	110000.00
+5395241	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2005	3.00	eur	430000.00
+338444	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1957	2.00	eur	145000.00
+340057	sell	apartment	10243	Berlin	Karl-Marx-Allee	61	13.43146220	52.51856290	1955	4.00	eur	359000.00
+340237	sell	apartment	10243	Berlin	Gubener Straße	50	13.44817480	52.51261620	1900	3.00	eur	309000.00
+5395322	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	398000.00
+5395393	sell	apartment	10243	Berlin	Kadiner Straße	16	13.45050870	52.51363960	1900	1.00	eur	79500.00
+5395277	sell	apartment	10243	Berlin	Warschauer Straße	\N	13.45014800	52.50739100	1956	3.00	eur	185000.00
+5395403	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	455000.00
+5395280	sell	apartment	10243	Berlin	Grünberger Straße	5	13.44861420	52.51332970	1955	3.00	eur	268275.00
+5395360	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	210000.00
+5395297	sell	apartment	10315	Berlin	Hohenschönhauser Weg	9	13.52220840	52.51180800	1994	3.00	eur	179000.00
+5397047	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5395317	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	139000.00
+5395272	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	248000.00
+5395258	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	7.00	eur	332000.00
+5395303	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	6.00	eur	270000.00
+5395328	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1984	3.00	eur	129000.00
+5395268	sell	mid_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	217000.00
+5395276	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	4.00	eur	265950.00
+5395388	sell	apartment	10317	Berlin	Heinrichstraße	12	13.49824000	52.50480000	1911	1.00	eur	70000.00
+5395353	sell	apartment	10315	Berlin	Kurze Straße	11	13.51560490	52.50729410	1984	4.00	eur	209000.00
+5395340	sell	mid_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	251000.00
+5395343	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	340000.00
+5395313	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	5.00	eur	409000.00
+5395359	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	1.00	eur	113950.00
+5395411	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	4.00	eur	427350.00
+5395301	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1904	2.00	eur	257580.00
+5395408	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	2.00	eur	193600.00
+5395345	sell	apartment	10245	Berlin	Simon-Dach-Straße	\N	13.45663320	52.51083890	1905	1.00	eur	58000.00
+5395296	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	135000.00
+5395416	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	74000.00
+5395397	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	189600.00
+5397110	sell	apartment	10117	Berlin	Seydelstraße	6	13.40268520	52.50992350	\N	3.00	eur	470000.00
+5395428	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	147600.00
+5395392	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	135000.00
+5395308	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	105950.00
+5395349	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1906	3.00	eur	265005.00
+5423782	sell	apartment	10557	Berlin	\N	\N	13.36794180	52.52190990	1900	2.00	eur	295000.00
+313862	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	2013	4.00	eur	605905.00
+5395287	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	889298.00
+5395386	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	457746.00
+5395305	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	889300.00
+5395383	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	270000.00
+5395326	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	417400.00
+5395315	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	320600.00
+5395312	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	272900.00
+5395342	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.50	eur	1300150.00
+5395329	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	440200.00
+5395302	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	5.00	eur	517840.00
+5395365	sell	apartment	13347	Berlin	Neue Hochstraße	54	13.37525000	52.53847000	1900	2.00	eur	163000.00
+5395334	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	475600.00
+5395486	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	295000.00
+5395481	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	250500.00
+5395422	sell	penthouse	10247	Berlin	Bänschstraße	85	13.47076650	52.51750430	\N	3.00	eur	393900.00
+5395298	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1911	2.00	eur	99000.00
+5395429	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	0.00
+5395306	sell	apartment	10247	Berlin	Müggelstraße	6	13.47124540	52.51294020	1929	2.00	eur	0.00
+5395292	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1911	3.00	eur	198000.00
+5395327	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	268464.00
+5395417	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	99000.00
+5395415	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	347332.00
+5395437	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	0.00
+5395406	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	168000.00
+5395475	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	242000.00
+5395055	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	279000.00
+5395057	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	144500.00
+5395488	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	292500.00
+5395445	sell	apartment	10249	Berlin	Straßmannstraße	6	13.44750610	52.52141200	2007	2.00	eur	169000.00
+5395361	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1999	2.00	eur	115000.00
+5395371	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	358600.00
+5395377	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	4.00	eur	375270.00
+5395381	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	456300.00
+5395335	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	2.00	eur	148000.00
+5395379	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	5.00	eur	388990.00
+5395487	sell	penthouse	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	5.00	eur	434000.00
+5395458	sell	penthouse	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	329400.00
+5395356	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	4.00	eur	411344.00
+5395476	sell	penthouse	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	2.00	eur	214700.00
+5395347	sell	apartment	10249	Berlin	Eckertstraße	2	13.45116170	52.51855970	\N	3.00	eur	720475.00
+405439	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	1100000.00
+5395474	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	680000.00
+5395380	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2009	3.00	eur	468000.00
+5395485	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	750000.00
+5395480	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	550000.00
+5395405	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	599000.00
+5395462	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	1100000.00
+5395489	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.50	eur	670000.00
+399369	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	650000.00
+5395467	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	750000.00
+5395496	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	930000.00
+400160	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	750000.00
+401072	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	2.00	eur	472500.00
+5395468	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	980000.00
+5468900	sell	apartment	12161	Berlin	\N	\N	13.32763350	52.47179560	1905	9.00	eur	329000.00
+5395461	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	817000.00
+5395441	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	3.00	eur	397000.00
+5394791	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	1100000.00
+5395453	sell	apartment	10179	Berlin	Alte Jakobstraße	51	13.40611040	52.50871550	\N	4.00	eur	593700.00
+5395514	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	4.00	eur	574000.00
+5395511	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	487000.00
+5395493	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	487000.00
+316622	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	648000.00
+5395407	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	2.00	eur	205000.00
+5395413	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	4.00	eur	465000.00
+5395382	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1971	2.00	eur	132412.00
+5395438	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	2.50	eur	417700.00
+5395300	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	399000.00
+308401	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1984	4.00	eur	185000.00
+5386558	sell	apartment	10179	Berlin	Inselstraße	10	13.41243730	52.51202430	\N	4.00	eur	477000.00
+5395435	sell	apartment_maisonette	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.50	eur	357834.00
+5395447	sell	apartment	10315	Berlin	Allee der Kosmonauten	17	13.51132473	52.52290735	\N	4.00	eur	253700.00
+5395431	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	351676.00
+5395395	sell	mid_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	6.00	eur	255000.00
+5395450	sell	apartment	10315	Berlin	Allee der Kosmonauten	17	13.51132473	52.52290735	\N	3.00	eur	189900.00
+5395454	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1953	3.00	eur	93000.00
+5395390	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	285000.00
+5395402	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	2014	2.00	eur	205215.00
+5395440	sell	apartment	10315	Berlin	Allee der Kosmonauten	17	13.51132473	52.52290735	\N	3.00	eur	299600.00
+5395517	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	2.00	eur	219000.00
+5395574	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	379000.00
+5395520	sell	apartment	10243	Berlin	Kadiner Straße	\N	13.45035620	52.51391710	\N	2.00	eur	83000.00
+5395482	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	850000.00
+5395477	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	495000.00
+5395583	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	109000.00
+5395611	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	295000.00
+340515	sell	apartment	10243	Berlin	Kadiner Straße	\N	13.45035620	52.51391710	1995	1.00	eur	83000.00
+344380	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	2016	4.00	eur	470000.00
+5395523	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1906	3.00	eur	390000.00
+5395588	sell	apartment	10243	Berlin	Warschauer Straße	76	13.45322380	52.51292920	1906	3.00	eur	384000.00
+5395434	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	555000.00
+5395442	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	1.00	eur	115000.00
+5395516	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	2.00	eur	185000.00
+5395524	sell	multi_family_house	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	18.00	eur	1890000.00
+343153	sell	multi_family_house	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	18.00	eur	1890000.00
+5395646	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	666000.00
+5395586	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	2.00	eur	195100.00
+5506087	sell	single_family_house	12589	Berlin	\N	\N	13.68220790	52.44227090	1936	5.00	eur	124100.00
+5506089	sell	single_family_house	12589	Berlin	\N	\N	13.68220790	52.44227090	2006	5.00	eur	500000.00
+5395479	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	372000.00
+5395543	sell	apartment	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	2.00	eur	246960.00
+5395464	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	1.50	eur	213800.00
+5395629	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	5.00	eur	952805.00
+5395556	sell	apartment	10115	Berlin	Tieckstraße	\N	13.39044810	52.52996180	1910	2.00	eur	120000.00
+325389	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	111760.00
+5395518	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	2.00	eur	297000.00
+5395632	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	395000.00
+5395622	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	515000.00
+5395659	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	385000.00
+5395578	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	1900	3.00	eur	269500.00
+5395638	sell	penthouse	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	599000.00
+5402546	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	270000.00
+5395616	sell	apartment	13347	Berlin	Neue Hochstraße	54	13.37526000	52.53840000	1900	2.00	eur	139500.00
+5395642	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	275520.00
+5395652	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	2.00	eur	193600.00
+5395600	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	4.00	eur	369900.00
+5395439	sell	apartment	10245	Berlin	Gärtnerstraße	1	13.45974500	52.50808190	\N	3.00	eur	158500.00
+5395572	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	328015.00
+5395508	sell	apartment	10245	Berlin	Simon-Dach-Straße	33	13.45612910	52.50938020	1905	1.00	eur	59000.00
+5395624	sell	apartment_maisonette	10245	Berlin	Sonntagstraße	15	13.46571910	52.50666200	1954	3.00	eur	299000.00
+5395566	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	306800.00
+5395598	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	4.00	eur	331000.00
+5395557	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	288360.00
+5395658	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	257580.00
+5395521	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.50	eur	650000.00
+315251	sell	apartment	10249	Berlin	Mühsamstraße	44	13.44969410	52.51984550	2013	5.00	eur	474292.00
+5395580	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1898	3.00	eur	117600.00
+5395643	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1900	4.00	eur	389000.00
+5395637	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1989	3.00	eur	270000.00
+5395603	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	89000.00
+5395551	sell	apartment	10249	Berlin	Mühsamstraße	\N	13.45464500	52.52119180	1898	3.00	eur	98000.00
+5395564	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	98000.00
+5395682	sell	apartment	10249	Berlin	Matternstraße	19	13.45193290	52.52170770	\N	3.00	eur	315000.00
+5395495	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	4.00	eur	749300.00
+336197	sell	apartment	10249	Berlin	Matternstraße	3	13.45229170	52.52158820	1900	5.00	eur	432000.00
+5395490	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	632000.00
+5395655	sell	apartment	10249	Berlin	Hermann-Blankenstein-Straße	\N	13.46952640	52.52092990	2002	4.00	eur	279000.00
+5395352	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	2.00	eur	196700.00
+5395649	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	179000.00
+5395501	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	85000.00
+5395510	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	4.00	eur	302500.00
+5395740	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	219000.00
+5395497	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	4.00	eur	321000.00
+5395547	sell	apartment	10247	Berlin	Voigtstraße	13	13.46924860	52.51803540	\N	4.00	eur	299000.00
+5395494	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	287500.00
+5395500	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	4.00	eur	383000.00
+5395513	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	403000.00
+5395505	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	194500.00
+5395536	sell	apartment	10247	Berlin	Voigtstraße	13	13.46924860	52.51803540	\N	1.00	eur	89000.00
+5395542	sell	apartment	10247	Berlin	Voigtstraße	13	13.46924860	52.51803540	\N	1.00	eur	89000.00
+5395527	sell	apartment	10247	Berlin	Bänschstraße	43	13.46453840	52.51858130	1903	3.00	eur	180000.00
+5395530	sell	apartment	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	1910	2.50	eur	229000.00
+342891	sell	apartment	10247	Berlin	Rigaer Straße	59	13.47059310	52.51550150	2013	2.00	eur	228767.00
+5395662	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	789000.00
+5395595	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	4.00	eur	391000.00
+5395532	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1900	3.00	eur	259000.00
+5395607	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	292500.00
+380785	sell	apartment	10117	Berlin	Oranienburger Straße	32	13.39381260	52.52519340	1890	2.00	eur	420900.00
+5395515	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	750000.00
+5395552	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	1.50	eur	135000.00
+5395684	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	8.00	eur	6500000.00
+5395548	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	0.00
+5395744	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	430000.00
+5395707	sell	apartment	10117	Berlin	Beuthstraße	18-22	13.40187100	52.51026950	\N	2.00	eur	748900.00
+5395677	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1969	4.00	eur	449000.00
+5395509	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	770000.00
+5395498	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	800000.00
+405692	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	1800000.00
+5395733	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	3.00	eur	500000.00
+5395605	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	527000.00
+13841867	sell	single_family_house	13505	Berlin	\N	\N	13.24640140	52.58835940	\N	5.00	eur	992003.00
+5395602	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	804000.00
+5395541	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	1076000.00
+5395626	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5395525	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	1085000.00
+5395519	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	1513000.00
+5395534	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	2.00	eur	1187000.00
+5395560	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	2540000.00
+5395549	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	349000.00
+5395648	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	3.00	eur	245000.00
+5395570	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	1130000.00
+5395608	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	817000.00
+5395644	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	114000.00
+5395571	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	269500.00
+5395599	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	4.00	eur	299600.00
+5395555	sell	apartment	10315	Berlin	Archenholdstraße	8	13.50440480	52.50867520	1912	1.00	eur	88800.00
+5395582	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	244600.00
+5395535	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1953	3.00	eur	85000.00
+5395561	sell	apartment	10315	Berlin	Archenholdstraße	8	13.50440480	52.50867520	1912	2.00	eur	156800.00
+5395567	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	6.00	eur	295000.00
+5395597	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	247800.00
+5395587	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1908	1.00	eur	65000.00
+5395654	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	165000.00
+5395559	sell	apartment	10315	Berlin	Archenholdstraße	8	13.50440480	52.50867520	1912	1.00	eur	88800.00
+5395579	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	2.00	eur	219000.00
+5395628	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	0.00
+5395657	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	113000.00
+5395800	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2005	2.00	eur	298000.00
+341831	sell	apartment	10243	Berlin	Kadiner Straße	21	13.45087090	52.51454670	1997	2.00	eur	93000.00
+345696	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	379000.00
+5395651	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	399500.00
+305056	sell	apartment	10243	Berlin	Karl-Marx-Allee	123	13.44784520	52.51700000	1952	2.00	eur	186500.00
+5395783	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1906	3.00	eur	325000.00
+5395788	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1906	4.00	eur	390000.00
+5394914	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	395000.00
+5395755	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	2200000.00
+346168	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	4.00	eur	361900.00
+5395640	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	4.00	eur	330000.00
+5395686	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2014	5.00	eur	4521000.00
+5395681	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	451500.00
+5395815	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	349500.00
+316173	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2005	3.00	eur	450000.00
+5395688	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1915	2.00	eur	149000.00
+13841869	sell	single_family_house	12559	Berlin	\N	\N	13.69519420	52.42883780	\N	6.00	eur	395000.00
+5395633	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1910	1.00	eur	92000.00
+5395693	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	3.00	eur	295113.00
+5395700	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	64000.00
+5394050	sell	apartment	10247	Berlin	Pettenkoferstraße	38	13.47108840	52.51778640	\N	3.00	eur	283075.00
+5395678	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1915	3.00	eur	147000.00
+5395683	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	238406.00
+5395671	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	4.00	eur	285000.00
+5395625	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	140000.00
+5395711	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	64000.00
+5395738	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	0.00
+5395675	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	3.00	eur	285000.00
+5395734	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	0.00
+5395656	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	135000.00
+5395770	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	257580.00
+5395636	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	1.00	eur	92000.00
+5395730	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	3.00	eur	326400.00
+5395752	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	221000.00
+5395710	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	219000.00
+308929	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1953	3.00	eur	90000.00
+5395728	sell	apartment	10315	Berlin	Archenholdstraße	94	13.49959610	52.50199520	1908	1.00	eur	91300.00
+329659	sell	apartment	10315	Berlin	Archenholdstraße	8	13.50440480	52.50867520	1912	4.50	eur	282600.00
+5395732	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1953	3.00	eur	80000.00
+327285	sell	apartment	10319	Berlin	Am Tierpark	49	13.52133720	52.50276340	1910	2.00	eur	49000.00
+5395782	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	219000.00
+5395760	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1927	2.00	eur	145310.00
+5394712	sell	mid_terrace_house	10315	Berlin	Gensinger Straße	44	13.52793600	52.51191400	\N	5.00	eur	263500.00
+5395661	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	219000.00
+5395701	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1948	2.00	eur	98000.00
+5395767	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	219000.00
+364927	sell	apartment	10245	Berlin	Döringstraße	5	13.46247570	52.50580260	2014	3.00	eur	290000.00
+5395666	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	328015.00
+5395663	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	288360.00
+5395748	sell	apartment	10245	Berlin	Fischzug	4	13.46918740	52.49715690	\N	3.00	eur	289670.00
+5395690	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	350000.00
+324586	sell	apartment	10245	Berlin	Glasbläserallee	10	13.46836900	52.49664300	2014	2.00	eur	247800.00
+5395723	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	108025.00
+5395766	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	4.00	eur	331000.00
+5395736	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	4.00	eur	369900.00
+5395759	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	10.00	eur	477720.00
+5395687	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	245242.00
+5395763	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	5.00	eur	750000.00
+5395836	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	302100.00
+5395838	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	4.00	eur	515000.00
+349833	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	165000.00
+5395872	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	650000.00
+5395828	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	385000.00
+5395824	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	208000.00
+353403	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	650000.00
+5395928	sell	apartment_roof_storey	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2014	0.00	eur	419700.00
+5395832	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	132000.00
+5395960	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	417375.00
+5395957	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	314160.00
+5395841	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	6.00	eur	1237500.00
+5395907	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	2.00	eur	255200.00
+5395921	sell	apartment	10115	Berlin	Boyenstraße	\N	13.36882400	52.53595360	2012	6.00	eur	998000.00
+5395934	sell	apartment_roof_storey	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2014	0.00	eur	213800.00
+5395966	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	3.00	eur	359600.00
+5395703	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	229000.00
+5395665	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	207930.00
+5395780	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	389000.00
+5395709	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	114000.00
+5395673	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	160000.00
+5395786	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	585000.00
+5395705	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	144000.00
+318279	sell	apartment	10179	Berlin	Neue Grünstraße	19	13.40665050	52.51053010	\N	5.00	eur	715184.00
+5395714	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2014	3.00	eur	729000.00
+5395756	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	770000.00
+5395746	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	302000.00
+5395749	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	289000.00
+11746598	sell	apartment	10117	Berlin	\N	\N	13.38885990	52.51703650	\N	2.00	eur	120000.00
+5395727	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	3.00	eur	124000.00
+5395691	sell	penthouse	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	362200.00
+5395761	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	1.00	eur	91200.00
+5395739	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	2.00	eur	176900.00
+5395743	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	3.00	eur	310000.00
+5395799	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	3.00	eur	146000.00
+5395722	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	199000.00
+316540	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	341904.00
+5395785	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	4.00	eur	317200.00
+462659	sell	apartment	10245	Berlin	Glasbläserallee	12	13.46846410	52.49676040	2015	3.00	eur	539500.00
+339084	sell	apartment	10249	Berlin	Thaerstraße	37	13.45459290	52.52089740	2014	4.00	eur	369000.00
+5395742	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	3.50	eur	306300.00
+5395802	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	5.00	eur	306300.00
+5395768	sell	apartment	10249	Berlin	Matternstraße	3	13.45229170	52.52158820	\N	5.00	eur	439000.00
+5395793	sell	apartment	10249	Berlin	Straßmannstraße	6	13.44750610	52.52141200	2007	2.00	eur	115000.00
+5395704	sell	penthouse	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	304000.00
+5395797	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	3.00	eur	124000.00
+5395833	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	350000.00
+5395808	sell	apartment	10247	Berlin	Rigaer Straße	67	13.46860520	52.51586760	\N	3.00	eur	252144.00
+5395747	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	4.00	eur	354700.00
+5395804	sell	penthouse	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	4.00	eur	533400.00
+5395757	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	3.00	eur	316600.00
+5395811	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	\N	4.00	eur	359700.00
+5395830	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	3.00	eur	350000.00
+5395792	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	4.00	eur	332800.00
+5395762	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	4.00	eur	317405.00
+5395789	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	3.00	eur	326350.00
+5395821	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1995	3.00	eur	189000.00
+408026	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	1450000.00
+5395765	sell	apartment	10117	Berlin	Leipziger Straße	47	13.39763660	52.51020540	\N	3.00	eur	454000.00
+401979	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	2.50	eur	600000.00
+5395750	sell	multi_family_house	10117	Berlin	Caroline-von-Humboldt-Weg	\N	13.39831260	52.51385370	2009	9.00	eur	6200000.00
+402463	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	2.50	eur	600000.00
+410147	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1908	2.00	eur	435000.00
+380449	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	3.00	eur	895000.00
+5506097	sell	apartment_roof_storey	12589	Berlin	\N	\N	13.68220790	52.44227090	1996	2.00	eur	149000.00
+5395805	sell	apartment	10245	Berlin	Glasbläserallee	16	13.46863450	52.49697590	\N	2.00	eur	214200.00
+5395817	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	0.00
+5395847	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	288360.00
+5395840	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	257580.00
+5395855	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	328015.00
+5395858	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	306800.00
+5395814	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1998	4.00	eur	419000.00
+5395867	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	5.00	eur	0.00
+328665	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1906	3.00	eur	266550.00
+5395791	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	325000.00
+5395834	sell	apartment	10245	Berlin	Simplonstraße	25	13.45989000	52.50803000	\N	4.00	eur	355000.00
+5395925	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	344400.00
+5395889	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1897	3.00	eur	195000.00
+5395956	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5395916	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5395943	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	329000.00
+5395900	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	490000.00
+5396007	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	439000.00
+5395950	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1890	2.00	eur	215000.00
+5395962	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	689000.00
+5395812	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	508000.00
+369580	sell	apartment	10179	Berlin	Melchiorstraße	3	13.42559370	52.50635880	1999	3.00	eur	215000.00
+5396018	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	791000.00
+5395880	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	255000.00
+5395854	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	219000.00
+326608	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	2015	4.00	eur	310500.00
+5395865	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1994	2.00	eur	149800.00
+5395890	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.50	eur	294600.00
+5395806	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	219000.00
+5395829	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	268870.00
+5395958	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1910	2.00	eur	105000.00
+335169	sell	apartment	10315	Berlin	Lincolnstraße	43	13.50452020	52.50599850	1927	2.00	eur	105000.00
+5395887	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	4.00	eur	319800.00
+5395917	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1950	3.00	eur	89000.00
+5395846	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1905	1.00	eur	63000.00
+5395893	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	4.00	eur	310500.00
+5395909	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	279500.00
+5395912	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	2.00	eur	243484.00
+5395931	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	415000.00
+5395878	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	2.00	eur	125000.00
+5395882	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	2.00	eur	125000.00
+5395862	sell	apartment	10249	Berlin	Petersburger Straße	45	13.45095930	52.52221140	1910	2.00	eur	222755.00
+5395827	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1998	3.00	eur	149000.00
+5395939	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	3.00	eur	310000.00
+5403859	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	3.00	eur	152000.00
+326095	sell	apartment	10247	Berlin	Bänschstraße	52	13.46527870	52.51801900	1910	3.00	eur	288360.00
+5403811	sell	single_family_house	10365	Berlin	Bornitzstraße	92	13.49323372	52.52029830	\N	4.00	eur	422500.00
+5395933	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	2.00	eur	151500.00
+5395852	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	357568.00
+5395940	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	4.00	eur	494752.00
+5395883	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2005	3.00	eur	390000.00
+5395901	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	190000.00
+5395826	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1906	4.00	eur	399000.00
+5395941	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1904	2.00	eur	85000.00
+5395953	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1906	4.00	eur	735000.00
+5395822	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	0.00	eur	187200.00
+5395876	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	850000.00
+345016	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2014	3.00	eur	880000.00
+5395820	sell	apartment	10243	Berlin	Strausberger Platz	3	13.42769800	52.51936010	1952	2.00	eur	195000.00
+5395906	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	429000.00
+349736	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	2016	3.00	eur	450500.00
+304356	sell	apartment	10243	Berlin	Strausberger Platz	2	13.42734620	52.51934880	1953	3.00	eur	415000.00
+5395990	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1957	2.00	eur	179000.00
+5395831	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1906	4.00	eur	735000.00
+5395879	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	495000.00
+5459072	sell	apartment	12059	Berlin	Heidelberger Straße	\N	13.45343440	52.48570830	1900	4.00	eur	169000.00
+5395877	sell	penthouse	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	4.00	eur	394625.00
+5395837	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	0.00
+5459132	sell	apartment	12059	Berlin	\N	\N	13.44553310	52.47922980	\N	2.00	eur	105000.00
+5395843	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	105000.00
+5395875	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	3.00	eur	273167.00
+5395919	sell	apartment	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	1910	4.00	eur	231000.00
+5395868	sell	apartment	10247	Berlin	Schreinerstraße	38-39	13.47003270	52.51662760	\N	5.00	eur	653540.00
+5395929	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1907	1.00	eur	69000.00
+5395896	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	105000.00
+5395932	sell	apartment	10247	Berlin	Samariterstraße	\N	13.46558440	52.51731180	1900	3.00	eur	330000.00
+5395848	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1906	1.00	eur	88000.00
+5395664	sell	apartment	10247	Berlin	Scharnweberstraße	\N	13.47008640	52.51239490	1907	2.00	eur	105000.00
+5395910	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	3.00	eur	169000.00
+5395857	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	4.00	eur	342305.00
+5395926	sell	apartment	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	\N	3.00	eur	414200.00
+5395964	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	1.00	eur	99000.00
+5395891	sell	apartment	10247	Berlin	Frankfurter Allee	8	13.45616180	52.51533210	1952	2.00	eur	160000.00
+5395946	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	430000.00
+409767	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1910	2.00	eur	439900.00
+401416	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1974	14.00	eur	1498000.00
+5395974	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1992	3.00	eur	399000.00
+5395930	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	685000.00
+5395965	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	2.00	eur	695000.00
+5395985	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	695000.00
+5395961	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	4.00	eur	3450000.00
+5395897	sell	apartment	10117	Berlin	Niederlagstraße	\N	13.39761930	52.51650210	\N	2.00	eur	1392000.00
+5396006	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1872	4.00	eur	995000.00
+5395983	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	306800.00
+5431786	sell	apartment	10589	Berlin	\N	\N	13.30540420	52.52648410	1900	2.00	eur	135000.00
+5395970	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	257580.00
+5395998	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	2.00	eur	288750.00
+5395987	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1999	2.00	eur	255320.00
+5395952	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	288360.00
+327857	sell	apartment	10245	Berlin	Glasbläserallee	14	13.46855680	52.49687480	2014	2.00	eur	232900.00
+5395988	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	378600.00
+5395954	sell	penthouse	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	2.00	eur	225225.00
+5395981	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	0.00
+5395977	sell	apartment	10247	Berlin	Bänschstraße	85	13.47076650	52.51750430	\N	3.00	eur	284200.00
+5395963	sell	apartment	10247	Berlin	Jungstraße	2	13.46716150	52.51396440	1900	2.00	eur	135000.00
+5396019	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	2.00	eur	130067.00
+5395984	sell	apartment	10247	Berlin	Finowstraße	\N	13.46838490	52.51246380	\N	2.00	eur	159000.00
+5395936	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	3.00	eur	285000.00
+5395991	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	119900.00
+5395999	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	6.00	eur	573700.00
+5395971	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	515000.00
+5396014	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.45936160	52.51250530	1900	3.00	eur	170000.00
+5395935	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	4.00	eur	285000.00
+5396005	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1954	3.00	eur	896664.00
+5395982	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	165000.00
+5396077	sell	apartment_roof_storey	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	5.00	eur	331000.00
+5395979	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	372000.00
+5395972	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1902	3.00	eur	172000.00
+5395951	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	1.00	eur	80800.00
+5396081	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1888	2.00	eur	238000.00
+5395986	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	165000.00
+5396029	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	2.00	eur	151500.00
+5396035	sell	apartment	10249	Berlin	Eckertstraße	2	13.45116170	52.51855970	\N	6.00	eur	869920.00
+5395874	sell	apartment	10249	Berlin	Eckertstraße	2	13.45116170	52.51855970	\N	3.00	eur	388832.00
+5396078	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	69800.00
+5396025	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	330000.00
+5396021	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	2.00	eur	160000.00
+5395959	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	1.00	eur	97000.00
+5396152	sell	apartment	10315	Berlin	Seddiner Straße	\N	13.52055060	52.51341990	1994	2.00	eur	89000.00
+5396044	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	1905	1.00	eur	63000.00
+5396607	sell	apartment	10247	Berlin	Bänschstraße	35	13.46357400	52.51870590	1905	4.00	eur	730000.00
+5396008	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	255000.00
+336614	sell	apartment	10315	Berlin	Eggersdorfer Straße	33	13.50493850	52.50523980	1927	3.00	eur	120000.00
+5396013	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.50	eur	299900.00
+338265	sell	apartment	10315	Berlin	Massower Straße	40	13.51617980	52.50754880	1985	4.00	eur	174300.00
+5396587	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	6.00	eur	308000.00
+5396156	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1953	3.00	eur	89000.00
+5396066	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	2.00	eur	0.00
+5396150	sell	mid_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	6.00	eur	305000.00
+5396555	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	259800.00
+5396016	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	279500.00
+5396079	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	3.00	eur	0.00
+351789	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2016	4.00	eur	672000.00
+5396121	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	2.00	eur	179500.00
+5396003	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2014	3.00	eur	2243000.00
+350785	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	\N	3.00	eur	669000.00
+5414668	sell	apartment	10405	Berlin	\N	\N	13.42256590	52.53279640	1900	4.00	eur	399500.00
+5414829	sell	apartment	10405	Berlin	\N	\N	13.42256590	52.53279640	1910	1.00	eur	69500.00
+5396047	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	2.00	eur	129000.00
+5396105	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	0.00	eur	210000.00
+5414869	sell	apartment	10405	Berlin	\N	\N	13.42256590	52.53279640	1900	3.00	eur	589000.00
+5396033	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	1.00	eur	189500.00
+333469	sell	apartment	10243	Berlin	Grünberger Straße	5	13.44861420	52.51332970	1955	2.00	eur	247050.00
+364392	sell	apartment	10245	Berlin	Libauer Straße	13	13.45355340	52.50857660	2014	4.00	eur	291000.00
+5396023	sell	apartment	10245	Berlin	Glasbläserallee	18	13.46875950	52.49712510	\N	4.00	eur	572000.00
+5396004	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	365000.00
+5396058	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	410000.00
+365240	sell	apartment	10245	Berlin	Libauer Straße	13	13.45355340	52.50857660	2014	5.00	eur	670000.00
+5396046	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	330000.00
+5396039	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	300000.00
+5396203	sell	apartment	10247	Berlin	Dolziger Straße	2	13.46333410	52.51956110	1905	2.00	eur	135000.00
+5396108	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	2.00	eur	799500.00
+5396100	sell	apartment	10117	Berlin	Seydelstraße	24	13.40401250	52.50958580	\N	8.00	eur	930000.00
+5396111	sell	apartment	10117	Berlin	Leipziger Straße	44	13.39593080	52.51010570	\N	2.00	eur	249500.00
+302867	sell	apartment	10117	Berlin	Schumannstraße	7	13.38147190	52.52372800	2013	2.00	eur	800000.00
+5396097	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	3.00	eur	556871.00
+5396076	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	4.00	eur	2450000.00
+5396070	sell	penthouse	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	3.00	eur	1490000.00
+313221	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	2012	5.00	eur	1479000.00
+5396042	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	359000.00
+5396038	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	2.00	eur	349000.00
+5396122	sell	penthouse	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	595000.00
+354364	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	2009	3.00	eur	550000.00
+5396109	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	2.00	eur	100000.00
+5396032	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	5.00	eur	645000.00
+5396206	sell	apartment	10247	Berlin	Rigaer Straße	17	13.45845040	52.51744750	\N	3.00	eur	285000.00
+5396113	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	3.00	eur	100000.00
+5396142	sell	apartment	10115	Berlin	Scharnhorststraße	26-27	13.37081210	52.53379770	1910	3.00	eur	369000.00
+5396130	sell	penthouse	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	5.00	eur	779000.00
+5396116	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	100000.00
+5551099	sell	apartment	13507	Berlin	\N	\N	13.27882820	52.57719090	\N	3.00	eur	163500.00
+5396120	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1984	3.00	eur	206000.00
+5396030	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	7.00	eur	500000.00
+5396140	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	2.00	eur	210000.00
+5396080	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	619000.00
+5396115	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	5.00	eur	1137000.00
+5396129	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	370000.00
+5396074	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	2.50	eur	417700.00
+5396135	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	5.00	eur	812000.00
+5396040	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	289000.00
+317080	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	310000.00
+5396067	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	509000.00
+5396143	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	1245000.00
+5396138	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	1105000.00
+5396043	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	405000.00
+5396094	sell	apartment_roof_storey	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	655000.00
+5396028	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2014	4.00	eur	559000.00
+5396084	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	279000.00
+5396071	sell	apartment	10179	Berlin	Alte Jakobstraße	51	13.40611040	52.50871550	\N	2.00	eur	364000.00
+5396089	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	2.00	eur	168087.00
+5396096	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	2.00	eur	189000.00
+5396137	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	76000.00
+5396154	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	124151.00
+5396148	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	138902.00
+5396159	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	151576.00
+5396119	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	6.00	eur	450000.00
+5396151	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	297955.00
+5396064	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.50	eur	520000.00
+5396069	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	119900.00
+5395318	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	65000.00
+5396060	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	4.00	eur	357000.00
+5396241	sell	apartment	10249	Berlin	Straßmannstraße	30	13.45183000	52.52255520	\N	1.00	eur	67892.00
+5396086	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1989	3.00	eur	270000.00
+5396222	sell	apartment	10249	Berlin	Landsberger Allee	48	13.44163000	52.52399000	\N	5.00	eur	354000.00
+5396188	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1999	3.00	eur	200000.00
+5396184	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	340000.00
+5396099	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1911	2.00	eur	160000.00
+5396106	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	155000.00
+5396195	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	2.00	eur	301000.00
+5396165	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	1.00	eur	98000.00
+5396182	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	213792.00
+5396231	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	326978.00
+5396170	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	1885	4.00	eur	598800.00
+5396174	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	1885	4.00	eur	588000.00
+5396160	sell	apartment	10249	Berlin	Thaerstraße	37	13.45459290	52.52089740	\N	2.00	eur	205000.00
+5396175	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	341904.00
+5396238	sell	apartment	10249	Berlin	Eckertstraße	2	13.45116170	52.51855970	\N	3.00	eur	470087.00
+5396149	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	328015.00
+5396133	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	328015.00
+5396117	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1890	4.00	eur	409000.00
+5396128	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	288360.00
+5396114	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1890	4.00	eur	369900.00
+5396204	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	4.00	eur	535000.00
+5396166	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	705644.00
+5396191	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	330000.00
+5396158	sell	penthouse	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	3.00	eur	1171425.00
+5396194	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	455000.00
+338680	sell	apartment	10243	Berlin	An der Schillingbrücke	4	13.42948090	52.50971620	2001	2.50	eur	298000.00
+5396249	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	1300000.00
+5396131	sell	apartment	10243	Berlin	Andreasstraße	20	13.43184000	52.51325000	\N	3.00	eur	135000.00
+5396269	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	0.00
+5396307	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	2.00	eur	189000.00
+5396126	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	1.00	eur	110000.00
+356039	sell	apartment	10243	Berlin	Andreasstraße	20	13.43184000	52.51325000	\N	3.00	eur	135000.00
+352536	sell	apartment	10245	Berlin	Simon-Dach-Straße	9	13.45630810	52.51101250	1910	1.00	eur	109000.00
+5396259	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	0.00
+356487	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	376000.00
+5396304	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	299500.00
+353068	sell	apartment	10243	Berlin	Karl-Marx-Allee	125	13.44815040	52.51693340	\N	1.00	eur	129000.00
+5396262	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	0.00
+357664	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1986	2.00	eur	130000.00
+5396309	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	260000.00
+5396308	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1971	3.00	eur	198000.00
+5396161	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	699000.00
+5396322	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	405000.00
+5396153	sell	apartment	10179	Berlin	Köpenicker Straße	55	13.42271400	52.50953590	\N	2.00	eur	155000.00
+5396187	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	369000.00
+5396196	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5396189	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	975800.00
+5396287	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	695000.00
+5396290	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	547000.00
+5396319	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	299000.00
+313350	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	2013	2.00	eur	536500.00
+5423870	sell	apartment	10557	Berlin	\N	\N	13.36794180	52.52190990	1900	3.00	eur	550000.00
+5432501	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	\N	3.00	eur	415000.00
+351845	sell	apartment_maisonette	10115	Berlin	Strelitzer Straße	65	13.39516587	52.53498270	2009	3.00	eur	520000.00
+5396190	sell	apartment	10115	Berlin	Novalisstraße	4	13.38886200	52.52838650	1900	1.00	eur	112000.00
+5396216	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	495704.00
+5396289	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2005	2.00	eur	0.00
+5396230	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	400000.00
+5396235	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	6.00	eur	1433600.00
+5396242	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	265400.00
+5396264	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	4.00	eur	429000.00
+5396275	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	2.00	eur	267000.00
+5396285	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	1.00	eur	84000.00
+423149	sell	multi_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	28.00	eur	1190000.00
+398790	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2015	3.00	eur	630000.00
+407627	sell	apartment	10117	Berlin	Charlottenstraße	75	13.39181050	52.50934390	1997	2.00	eur	325000.00
+398146	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2015	3.00	eur	1890000.00
+420616	sell	apartment	10117	Berlin	Schumannstraße	7	13.38193520	52.52338620	2013	2.00	eur	393800.00
+5396255	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1986	4.00	eur	495000.00
+5396200	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	714000.00
+5516004	sell	multi_family_house	13088	Berlin	\N	\N	13.47679690	52.55059560	2004	6.00	eur	330000.00
+5396202	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	995000.00
+5396257	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	892044.00
+5396218	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	714000.00
+5515976	sell	apartment	12683	Berlin	\N	\N	13.56812190	52.52790320	2009	6.00	eur	585000.00
+5396225	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1994	1.00	eur	151000.00
+5396321	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	0.00
+5396213	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	292500.00
+5396209	sell	apartment_maisonette	10247	Berlin	Bänschstraße	29	13.46297430	52.51881530	1904	5.00	eur	517275.00
+5396358	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	99777.00
+5396239	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	72000.00
+5396211	sell	apartment	10247	Berlin	Jungstraße	\N	13.46695280	52.51260380	2010	4.00	eur	385000.00
+339694	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	2012	4.00	eur	362969.00
+5393360	sell	apartment	10245	Berlin	Neue Bahnhofstraße	7	13.47028060	52.50553490	1910	3.00	eur	151000.00
+5396338	sell	apartment_roof_storey	10247	Berlin	Bänschstraße	29	13.46297430	52.51881530	1904	5.00	eur	517275.00
+5396283	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	306800.00
+331280	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	145000.00
+5396314	sell	penthouse	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	4.00	eur	779500.00
+331600	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	257000.00
+5396252	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	257580.00
+5533665	sell	apartment	13357	Berlin	\N	\N	13.37867730	52.55047040	1900	1.00	eur	110000.00
+5396224	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	4.00	eur	347350.00
+5396240	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	4.00	eur	300000.00
+5396325	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	3.00	eur	399900.00
+5396334	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	3.00	eur	325900.00
+5396293	sell	apartment	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	4.00	eur	536250.00
+5396408	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	1900	2.00	eur	138500.00
+5394597	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	3.00	eur	365500.00
+5396471	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	372000.00
+328840	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	2014	3.00	eur	306800.00
+5396346	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	\N	2.00	eur	189000.00
+5396352	sell	apartment	10247	Berlin	Eldenaer Straße	\N	13.45688670	52.52087970	\N	3.00	eur	303299.00
+475314	sell	apartment	12207	Berlin	\N	\N	13.31693840	52.42947800	1958	1.50	eur	98000.00
+5396247	sell	apartment	10249	Berlin	Matternstraße	3	13.45229170	52.52158820	1900	4.00	eur	342900.00
+5396349	sell	apartment	10247	Berlin	Eldenaer Straße	\N	13.45688670	52.52087970	\N	2.00	eur	249359.00
+5396258	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1998	3.00	eur	195000.00
+5396301	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1907	2.00	eur	309094.00
+5396277	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1990	3.00	eur	209000.00
+5396296	sell	apartment	10249	Berlin	Straßmannstraße	6	13.44750610	52.52141200	2007	2.00	eur	149000.00
+5396250	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	150000.00
+5396265	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	1.00	eur	105000.00
+5396260	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	2.00	eur	205000.00
+5396335	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	326978.00
+5396284	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	2001	2.00	eur	229000.00
+5396281	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1990	3.00	eur	209000.00
+5396266	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	3.00	eur	750000.00
+5396390	sell	penthouse	10117	Berlin	Seydelstraße	24	13.40401250	52.50958580	\N	5.00	eur	1100000.00
+5396271	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	2.50	eur	632576.00
+5396288	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	3.00	eur	657664.00
+5431719	sell	apartment	10589	Berlin	Osnabrücker Straße	30	13.30288380	52.52552750	1908	2.00	eur	130000.00
+5396291	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	3.00	eur	556640.00
+5396273	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	3.00	eur	770000.00
+5396367	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	11	13.40376780	52.50999180	\N	4.00	eur	650000.00
+5396370	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	3.00	eur	600000.00
+5396365	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	11	13.40376780	52.50999180	\N	3.50	eur	670000.00
+5396341	sell	penthouse	10117	Berlin	Französische Straße	56-60	13.38748830	52.51469600	\N	5.00	eur	5500000.00
+5396383	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	2.50	eur	632576.00
+5396327	sell	apartment	10179	Berlin	Inselstraße	1	13.41267050	52.51214520	\N	2.00	eur	397404.00
+5396286	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	11	13.40376780	52.50999180	\N	4.00	eur	650000.00
+5396363	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	3.00	eur	630000.00
+5468669	sell	apartment	12203	Berlin	\N	\N	13.31742810	52.45023750	1912	3.00	eur	123000.00
+5396379	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	208000.00
+5396387	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	446749.00
+5396360	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	657825.00
+5396342	sell	apartment	10115	Berlin	Chausseestraße	101	13.38053720	52.53238840	1903	2.00	eur	234500.00
+5396405	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	320000.00
+5396372	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	493200.00
+5396355	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	475571.00
+5396351	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	373931.00
+5396438	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	431900.00
+5396364	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	846904.00
+5396310	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	650000.00
+5396399	sell	apartment	10115	Berlin	Gartenstraße	\N	13.38744950	52.53347610	\N	3.00	eur	509000.00
+5396393	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.50	eur	272869.00
+5396465	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	274900.00
+5396344	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	2.00	eur	235000.00
+357803	sell	apartment	10243	Berlin	Warschauer Straße	68	13.45247490	52.51132190	1986	3.00	eur	299500.00
+5396369	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	2.00	eur	235000.00
+353974	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	2.00	eur	235000.00
+5396424	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	2.00	eur	157000.00
+5396414	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	398000.00
+5396410	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	2.00	eur	235000.00
+5396403	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	238500.00
+357827	sell	apartment	10243	Berlin	Warschauer Straße	68	13.45247490	52.51132190	1896	4.00	eur	376000.00
+5396431	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	2.00	eur	189000.00
+5396436	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	307000.00
+5396311	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	299500.00
+5396389	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	398000.00
+5396429	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	4.00	eur	376000.00
+5396418	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	2.00	eur	158000.00
+5396443	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	299500.00
+319091	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2001	2.00	eur	141000.00
+5396368	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	325000.00
+5396420	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	266000.00
+5396564	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.50	eur	1430000.00
+5396561	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	523128.00
+5396470	sell	apartment_roof_storey	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	429000.00
+5396329	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	329000.00
+5396481	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	296000.00
+5396398	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	2.00	eur	290000.00
+5396374	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	440000.00
+5396472	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	2.00	eur	340000.00
+5396478	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	429000.00
+5396333	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	359000.00
+5396378	sell	apartment	10249	Berlin	Richard-Sorge-Straße	50	13.44419610	52.52437190	\N	2.00	eur	244000.00
+5396396	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	596784.00
+5396439	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	291965.00
+5396411	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	4.00	eur	494752.00
+5396394	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1999	2.00	eur	158000.00
+5396357	sell	apartment	10247	Berlin	Eldenaer Straße	\N	13.45688670	52.52087970	\N	4.00	eur	634000.00
+5396464	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	220720.00
+5396388	sell	apartment	10249	Berlin	Pufendorfstraße	7	13.43973550	52.52275740	\N	3.00	eur	385334.00
+5396361	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	\N	3.50	eur	949504.00
+5396457	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	249150.00
+5396493	sell	apartment	10245	Berlin	Alt-Stralau	4	13.46730000	52.49566000	\N	3.00	eur	593500.00
+5396426	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46682350	52.49611510	\N	2.00	eur	172112.00
+5396468	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	367970.00
+5396430	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	233804.00
+5396435	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	243651.00
+5396444	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	195034.00
+5396446	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	867500.00
+5396451	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	286443.00
+5396490	sell	apartment_maisonette	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	5.00	eur	682400.00
+5396412	sell	apartment	10247	Berlin	Rigaer Straße	74	13.46590190	52.51649230	1908	4.00	eur	120000.00
+5396428	sell	apartment_maisonette	10247	Berlin	Schreinerstraße	38-39	13.47003270	52.51662760	\N	2.00	eur	229710.00
+5396496	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	155000.00
+5396507	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	106000.00
+5396469	sell	penthouse	10247	Berlin	Dolziger Straße	20	13.46798870	52.51871730	\N	4.00	eur	878500.00
+5396423	sell	apartment	10247	Berlin	Schreinerstraße	38-39	13.47003270	52.51662760	\N	5.00	eur	808520.00
+5396503	sell	apartment	10247	Berlin	Bänschstraße	2	13.45831080	52.51925020	1986	3.00	eur	99000.00
+5396432	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.00	eur	327450.00
+5396499	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	85000.00
+316641	sell	apartment_maisonette	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	2014	4.00	eur	403750.00
+5396482	sell	apartment	10247	Berlin	Proskauer Straße	19	13.46255300	52.51939100	1900	2.00	eur	106000.00
+5396516	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1903	2.00	eur	115000.00
+5396392	sell	apartment_roof_storey	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	5.00	eur	1800000.00
+5396421	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1999	3.00	eur	299000.00
+5396415	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	3.00	eur	800000.00
+5396538	sell	apartment	10117	Berlin	Mittelstraße	23	13.38725470	52.51803210	1999	3.00	eur	299000.00
+5396515	sell	apartment	10117	Berlin	Oberwallstraße	31	13.39676170	52.51595760	\N	5.00	eur	7825000.00
+413927	sell	mid_terrace_house	10117	Berlin	\N	\N	13.38532280	52.52362850	2009	9.00	eur	6200000.00
+436624	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1989	3.00	eur	250000.00
+5396416	sell	apartment	10117	Berlin	Mittelstraße	11	13.38930600	52.51808600	1999	3.00	eur	299000.00
+5396542	sell	single_family_house	10117	Berlin	\N	\N	13.39067250	52.52272780	2009	12.00	eur	6200000.00
+436148	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	5.00	eur	892000.00
+5396445	sell	apartment	10245	Berlin	Fischzug	4	13.46918740	52.49715690	\N	3.00	eur	289980.00
+5396458	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	4.00	eur	455700.00
+5396450	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	4.00	eur	328015.00
+5396455	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	5.00	eur	404550.00
+5396512	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	175000.00
+5396437	sell	apartment	10245	Berlin	Fischzug	4	13.46918740	52.49715690	\N	2.00	eur	259200.00
+5396449	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	2.00	eur	328375.00
+5396500	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1906	4.00	eur	370190.00
+5396476	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	364900.00
+310535	sell	apartment	10245	Berlin	Dirschauer Straße	3	13.45696230	52.50878580	1910	2.00	eur	144900.00
+385417	sell	apartment	10245	Berlin	Fischzug	6	13.46942050	52.49708280	\N	2.00	eur	285950.00
+358767	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1986	2.00	eur	170000.00
+5396944	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1900	3.00	eur	847500.00
+357836	sell	apartment	10405	Berlin	\N	\N	13.42256590	52.53279640	1905	1.00	eur	142900.00
+312553	sell	apartment	10405	Berlin	\N	\N	13.42256590	52.53279640	1900	2.00	eur	249000.00
+5396895	sell	apartment	10243	Berlin	Warschauer Straße	76	13.45322380	52.51292920	1900	3.00	eur	389000.00
+5396467	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	145000.00
+5396713	sell	apartment	10243	Berlin	Strausberger Platz	3	13.42769800	52.51936010	1952	8.00	eur	195000.00
+363616	sell	apartment	10243	Berlin	\N	\N	13.43856000	52.51474550	1953	3.00	eur	345000.00
+5396761	sell	apartment	10243	Berlin	Gubener Straße	40	13.44970810	52.51057890	1902	2.00	eur	165000.00
+5396947	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1884	4.00	eur	905000.00
+5396718	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	2.00	eur	229000.00
+354859	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	2.00	eur	229000.00
+360841	sell	apartment	10243	Berlin	Karl-Marx-Allee	\N	13.42955100	52.51821320	1950	2.00	eur	145000.00
+5396865	sell	apartment	10243	Berlin	Frankfurter Allee	\N	13.45409510	52.51572240	1950	2.00	eur	139900.00
+5396489	sell	apartment_roof_storey	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2014	0.00	eur	706400.00
+5396526	sell	apartment	10115	Berlin	Gartenstraße	23/24	13.38957170	52.53204230	\N	5.00	eur	732000.00
+312122	sell	apartment_maisonette	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	2015	2.00	eur	325000.00
+5396513	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	399000.00
+5551156	sell	apartment	13507	Berlin	\N	\N	13.27882820	52.57719090	1958	3.00	eur	107000.00
+344786	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	176000.00
+5396508	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	391000.00
+5396523	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	233900.00
+5396488	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2014	0.00	eur	787900.00
+5396558	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	644000.00
+5396475	sell	apartment_roof_storey	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	455900.00
+5396494	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	255060.00
+5396480	sell	apartment_roof_storey	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2014	4.00	eur	574500.00
+5396556	sell	apartment	10249	Berlin	\N	\N	13.42354180	52.52385320	1885	1.00	eur	1495000.00
+5396696	sell	apartment	10249	Berlin	Straßmannstraße	24	13.45121690	52.52239900	1907	2.00	eur	324639.00
+5396510	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	631800.00
+5396514	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	159000.00
+5396571	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	269000.00
+5396691	sell	apartment	10249	Berlin	Ebertystraße	27	13.45470660	52.52181950	\N	2.00	eur	205000.00
+5396559	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	5.00	eur	388000.00
+5396573	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	269000.00
+337020	sell	apartment	10179	Berlin	Alte Jakobstraße	77	13.40859750	52.51064270	\N	2.00	eur	139000.00
+5396579	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	380000.00
+5396618	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5396543	sell	apartment_maisonette	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	4.00	eur	297000.00
+5396545	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	285000.00
+5396570	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	435000.00
+5396546	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	490000.00
+5396610	sell	apartment_roof_storey	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	519000.00
+5396528	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	1180000.00
+5396583	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	257000.00
+5396460	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	4.00	eur	400000.00
+5396560	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	398500.00
+5396563	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	469000.00
+5396599	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	799000.00
+5396544	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	5.00	eur	340740.00
+5396586	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	306800.00
+5396537	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	621388.00
+5396632	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	3.00	eur	325900.00
+5396534	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	410000.00
+5396485	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	4.00	eur	597550.00
+331167	sell	penthouse	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	2013	5.00	eur	875500.00
+5396547	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1908	2.00	eur	145000.00
+5396606	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	3.00	eur	365500.00
+5396539	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	593537.00
+5396572	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	257580.00
+5396624	sell	penthouse	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	5.00	eur	875500.00
+5396622	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	3.00	eur	399900.00
+609074	sell	apartment	13507	Berlin	\N	\N	13.27882820	52.57719090	1998	2.00	eur	212000.00
+370044	sell	apartment	10117	Berlin	Am Zirkus	18	13.38578790	52.52264560	2014	3.00	eur	1650000.00
+5396562	sell	apartment	10117	Berlin	Kommandantenstraße	76-79	13.40133830	52.50925790	\N	2.00	eur	259900.00
+383355	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	1100000.00
+5396567	sell	apartment_roof_storey	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	3.00	eur	950000.00
+5396569	sell	penthouse	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	4.00	eur	3755000.00
+385873	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	2014	3.00	eur	770000.00
+419775	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1992	3.00	eur	399000.00
+5396565	sell	penthouse	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	4.00	eur	1050000.00
+5396685	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	650000.00
+5396730	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	0.00
+5396473	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	4.00	eur	825600.00
+5396778	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	306800.00
+5396592	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	241700.00
+5396649	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	178000.00
+5396601	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	319500.00
+352070	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	2003	4.00	eur	980000.00
+5396693	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	1.00	eur	179600.00
+5396639	sell	apartment	10115	Berlin	Novalisstraße	4	13.38886200	52.52838650	1900	1.00	eur	167000.00
+315326	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.50	eur	573408.00
+5396591	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	237000.00
+354792	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1960	1.00	eur	65000.00
+5396566	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	567180.00
+352746	sell	apartment	10115	Berlin	Wöhlertstraße	11	13.37930490	52.53696880	1903	2.50	eur	225000.00
+353715	sell	apartment	10115	Berlin	Novalisstraße	4	13.38886200	52.52838650	1900	1.00	eur	98000.00
+5396596	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	3.00	eur	403300.00
+348347	sell	apartment	10315	Berlin	Seddiner Straße	1	13.52317500	52.51305190	1994	2.00	eur	114500.00
+328689	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	2016	5.00	eur	315000.00
+5396647	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	1.00	eur	92000.00
+5396695	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	1.00	eur	92000.00
+5396636	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1984	3.00	eur	140000.00
+405741	sell	apartment	10789	Berlin	\N	\N	13.33801105	52.50214750	2005	3.00	eur	1100000.00
+5396870	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	6.00	eur	1343938.00
+5396593	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	0.00
+5396651	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	232000.00
+5396873	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1998	2.00	eur	239000.00
+328148	sell	end_terrace_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	297763.00
+5396611	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1925	3.00	eur	139000.00
+5396625	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1927	2.00	eur	119000.00
+5476889	sell	apartment	12205	Berlin	\N	\N	13.29410051	52.43376045	\N	4.00	eur	470000.00
+5396511	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	247000.00
+5396621	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	398000.00
+5396657	sell	apartment	10247	Berlin	Kinzigstraße	6	13.46580690	52.51401670	1990	3.00	eur	78900.00
+5396626	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.50	eur	146700.00
+5396628	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	119750.00
+5396655	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	96698.00
+5396629	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	3.00	eur	260000.00
+5396660	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1927	2.00	eur	199999.00
+5396641	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	187000.00
+5396662	sell	apartment	10247	Berlin	Schreinerstraße	\N	13.46660000	52.51711880	\N	2.00	eur	87000.00
+5396749	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5396751	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	285000.00
+5396714	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	315000.00
+5396777	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	2.00	eur	324900.00
+5396661	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	455000.00
+5396768	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	4.00	eur	496000.00
+5396648	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	505000.00
+5396774	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	524000.00
+5396630	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	455000.00
+5396710	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	399000.00
+5396735	sell	apartment	10179	Berlin	Köpenicker Straße	53	13.42334131	52.50961645	\N	6.00	eur	690000.00
+5396781	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	469000.00
+5396679	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	3.00	eur	399000.00
+5396744	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	3.00	eur	995000.00
+5396692	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	330000.00
+5396683	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	175000.00
+5396633	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	4.00	eur	469500.00
+5396602	sell	penthouse	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	4.00	eur	779500.00
+5396706	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	593537.00
+5396688	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	240000.00
+5396645	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	3.00	eur	386925.00
+5396775	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	328015.00
+332037	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	4.00	eur	120000.00
+5396664	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1912	2.00	eur	126300.00
+5396724	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	2.00	eur	168087.00
+342727	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	130000.00
+5396677	sell	single_family_house	10247	Berlin	Zur Innung	\N	13.45901510	52.52355450	\N	5.00	eur	469000.00
+5396733	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	4.00	eur	366000.00
+5396674	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	5.00	eur	459228.00
+5396709	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	5.00	eur	498750.00
+312485	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1902	8.00	eur	290176.00
+5396686	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	5.00	eur	459228.00
+5396682	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	389900.00
+5396680	sell	single_family_house	10247	Berlin	Zur Innung	\N	13.45901510	52.52355450	\N	5.00	eur	502000.00
+5396717	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	2.00	eur	186000.00
+5396742	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1998	2.00	eur	180000.00
+5396746	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	500000.00
+5396769	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	450000.00
+5396788	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	0.00	eur	372000.00
+5396867	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	749000.00
+5396697	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	2.00	eur	274900.00
+5396847	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	799999.00
+5396750	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	658000.00
+5396716	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	400000.00
+5396874	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	238000.00
+5396753	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	530000.00
+5396841	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	350000.00
+5396786	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	2.00	eur	210000.00
+5396793	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	4.00	eur	403000.00
+5396752	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.50	eur	879000.00
+5396754	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	749000.00
+5396760	sell	apartment	10249	Berlin	Straßmannstraße	30	13.45183000	52.52255520	\N	4.00	eur	258780.00
+5396725	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	75000.00
+5396790	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	5.00	eur	423000.00
+317168	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1958	2.00	eur	97500.00
+5396770	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	149000.00
+5396796	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	2.00	eur	198000.00
+5396758	sell	apartment_roof_storey	10117	Berlin	Seydelstraße	24	13.40401250	52.50958580	\N	4.00	eur	1100000.00
+403013	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	750000.00
+400069	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	5.00	eur	1800000.00
+5396755	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	4.00	eur	650000.00
+400106	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	750000.00
+5396734	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	11	13.40376780	52.50999180	\N	3.50	eur	680000.00
+5396812	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1974	2.00	eur	200000.00
+423658	sell	penthouse	10117	Berlin	\N	\N	13.39067250	52.52272780	2014	5.00	eur	1800000.00
+424089	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2014	4.00	eur	930000.00
+422818	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2014	3.00	eur	722792.00
+5396809	sell	apartment	10247	Berlin	Rigaer Straße	74	13.46590190	52.51649230	1908	2.00	eur	72000.00
+374412	sell	apartment	10719	Berlin	Pfalzburger Straße	\N	13.32220110	52.49551480	1900	2.00	eur	178000.00
+312144	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1908	4.00	eur	210000.00
+5396782	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	4.00	eur	533400.00
+5396885	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	87000.00
+5396879	sell	penthouse	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	\N	3.00	eur	372000.00
+5396882	sell	penthouse	10247	Berlin	Mainzer Straße	24	13.46309510	52.51410250	\N	6.00	eur	728000.00
+5396783	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	151000.00
+5396787	sell	apartment	10247	Berlin	Eldenaer Straße	\N	13.47053170	52.52046710	\N	3.00	eur	151000.00
+5396764	sell	apartment	10247	Berlin	Rigaer Straße	60	13.47041430	52.51554010	1900	2.00	eur	105000.00
+5397109	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	3.00	eur	397700.00
+5396772	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1995	1.00	eur	79000.00
+5395612	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1918	1.00	eur	35000.00
+5396779	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	360000.00
+5396026	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	175000.00
+5396893	sell	single_family_house	10315	Berlin	Alfred-Kowalke-Straße	1	13.51443835	52.50525720	1960	0.00	eur	44444.00
+5396973	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1997	8.00	eur	99000.00
+5396830	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1994	3.00	eur	165000.00
+5396785	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	4.00	eur	342520.00
+5396951	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	6.00	eur	309000.00
+5396970	sell	apartment_maisonette	10315	Berlin	\N	\N	13.50909750	52.50888840	1997	3.00	eur	99000.00
+5396800	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	4.00	eur	329800.00
+5396861	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1927	2.00	eur	120000.00
+357744	sell	apartment	10315	Berlin	Zachertstraße	28	13.50532970	52.50608030	1927	3.00	eur	148000.00
+5396902	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1927	2.00	eur	119000.00
+5396767	sell	apartment	10315	Berlin	Allee der Kosmonauten	19	13.51139336	52.52369900	\N	3.00	eur	278900.00
+5396795	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	0.00	eur	269000.00
+5396850	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	3.00	eur	407606.00
+5396828	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	915070.00
+5396856	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	2.00	eur	338140.00
+5396807	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2010	3.00	eur	650000.00
+5396837	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	3.00	eur	442050.00
+5396804	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	4.00	eur	684000.00
+5396791	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5396852	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	3.00	eur	358708.00
+5396818	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	690000.00
+5458906	sell	apartment_roof_storey	10999	Berlin	Paul-Lincke-Ufer	4	13.43541460	52.49192600	1890	4.00	eur	1055650.00
+5396866	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	399000.00
+5396831	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	6.00	eur	1591375.00
+5396860	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	5.00	eur	680427.00
+5396859	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	3.00	eur	482331.00
+5396670	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	368000.00
+5396833	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	0.00
+5396810	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	478000.00
+329456	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	2014	4.00	eur	379200.00
+5396827	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	305500.00
+5534979	sell	apartment	13407	Berlin	Lindauer Allee	24	13.35399020	52.57387960	1970	2.00	eur	72000.00
+5396888	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	193630.00
+5396802	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1986	2.00	eur	89000.00
+485280	sell	single_family_house	12357	Berlin	\N	\N	13.48963390	52.43686190	\N	5.00	eur	218000.00
+5396805	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	135564.00
+5396813	sell	penthouse	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	4.00	eur	328015.00
+5396846	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	1370200.00
+325703	sell	penthouse	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	2013	4.00	eur	859500.00
+5396916	sell	apartment	10249	Berlin	Petersburger Straße	45	13.45095930	52.52221140	\N	3.00	eur	675947.00
+5396824	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	5.00	eur	403000.00
+5396815	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	4.00	eur	379000.00
+5396875	sell	apartment	10249	Berlin	Landsberger Allee	48	13.44163000	52.52399000	\N	4.00	eur	462000.00
+5396977	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	90000.00
+5552258	sell	apartment	13597	Berlin	\N	\N	13.20837590	52.53912440	1961	3.00	eur	79000.00
+5396858	sell	apartment	10249	Berlin	Landsberger Allee	48	13.44163000	52.52399000	\N	2.00	eur	207000.00
+5396941	sell	apartment	10249	Berlin	Thaerstraße	41	13.45415940	52.52030690	1910	3.00	eur	275000.00
+5396869	sell	apartment	10249	Berlin	Landsberger Allee	48	13.44163000	52.52399000	\N	4.00	eur	305000.00
+5396966	sell	apartment	10249	Berlin	Straßmannstraße	6	13.44750610	52.52141200	2007	2.00	eur	129000.00
+5396889	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	799000.00
+5396891	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	3.00	eur	449000.00
+5396962	sell	apartment_roof_storey	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	685000.00
+5396949	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	3.00	eur	482331.00
+5396942	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	525000.00
+5396896	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+5396928	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	1250000.00
+5396932	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	553000.00
+5396924	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	655000.00
+5396956	sell	apartment_roof_storey	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	330000.00
+5396887	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	310000.00
+5396967	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	275000.00
+316810	sell	apartment	10115	Berlin	Chausseestraße	57	13.37602420	52.53643690	2015	2.00	eur	327568.00
+357123	sell	apartment	10115	Berlin	Krausnickstraße	8	13.39757564	52.52511200	1997	5.00	eur	630000.00
+357903	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	650000.00
+5396930	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	2.00	eur	292542.00
+5396898	sell	apartment	10115	Berlin	Chausseestraße	57	13.37602420	52.53643690	\N	2.00	eur	305999.00
+5396922	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	890000.00
+5396981	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	1972	9.50	eur	480000.00
+5396904	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	658000.00
+5396915	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	650000.00
+5525428	sell	apartment	13158	Berlin	\N	\N	13.36880340	52.59274540	1995	2.00	eur	129500.00
+5396946	sell	apartment	10115	Berlin	Bergstraße	68	13.39420370	52.53160110	1875	3.00	eur	620000.00
+5396926	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	698150.00
+5396965	sell	multi_family_house	10115	Berlin	Hannoversche Straße	16	13.38027749	52.52819540	1856	1.00	eur	2850000.00
+5396903	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	530000.00
+5396900	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	500000.00
+5396908	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	6.00	eur	1747000.00
+5396913	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	450000.00
+5396953	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	445000.00
+340184	sell	apartment	10247	Berlin	Proskauer Straße	17	13.46243840	52.51898690	1903	1.00	eur	96698.00
+5560772	sell	semi_detached_house	13591	Berlin	\N	\N	13.13034000	52.54170010	1996	4.00	eur	359000.00
+5396938	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	0.00
+5397019	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	2.00	eur	240210.00
+5396933	sell	apartment_roof_storey	10243	Berlin	Frankfurter Tor	4	13.45490800	52.51668850	\N	3.00	eur	498000.00
+5396937	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	0.00
+5396957	sell	apartment	10247	Berlin	Bänschstraße	12	13.45957710	52.51904850	1920	2.00	eur	110000.00
+5397014	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	169900.00
+311909	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	2014	2.00	eur	263950.00
+5397007	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	186000.00
+312803	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	568500.00
+360942	sell	apartment	10243	Berlin	Rüdersdorfer Straße	10	13.43727600	52.51474010	1957	2.00	eur	129000.00
+11097176	sell	single_family_house	12559	Berlin	\N	\N	13.60577610	52.43830620	\N	6.00	eur	344900.00
+5397000	sell	apartment_roof_storey	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	1.00	eur	1223000.00
+364931	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1887	2.00	eur	177978.00
+350808	sell	apartment	10243	Berlin	\N	\N	13.43856000	52.51474550	1953	3.00	eur	389000.00
+5396971	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	1700000.00
+356805	sell	apartment	10243	Berlin	Koppenstraße	25	13.43629910	52.51582580	\N	2.00	eur	165000.00
+5396994	sell	apartment_roof_storey	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	671000.00
+5396964	sell	apartment	10243	Berlin	Frankfurter Tor	6	13.45441250	52.51560830	1956	1.00	eur	115000.00
+365781	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1896	3.00	eur	307000.00
+359269	sell	apartment	10243	Berlin	Koppenstraße	25	13.43629910	52.51582580	\N	2.00	eur	219000.00
+5396983	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	1.00	eur	671000.00
+411424	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	2.50	eur	657664.00
+411571	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	2.50	eur	632576.00
+5396952	sell	apartment_roof_storey	10117	Berlin	Schumannstraße	7	13.38193520	52.52338620	\N	2.00	eur	384200.00
+415683	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2011	3.00	eur	598000.00
+5397150	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	340000.00
+5396958	sell	apartment	10117	Berlin	Schumannstraße	7	13.38193520	52.52338620	\N	2.00	eur	384200.00
+427138	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	6.00	eur	3390000.00
+400051	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	722792.00
+5397089	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	6.00	eur	3390000.00
+5397045	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	3.00	eur	700000.00
+5397005	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1993	1.00	eur	55146.00
+5397079	sell	apartment	10117	Berlin	Wilhelmstraße	56-59	13.38222820	52.51424850	\N	2.00	eur	1345000.00
+404313	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	1100000.00
+411590	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	5.00	eur	1800000.00
+5397046	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	288360.00
+5396978	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.00	eur	99000.00
+364246	sell	apartment	10245	Berlin	Dirschauer Straße	3	13.45696230	52.50878580	1900	1.00	eur	65000.00
+330692	sell	apartment	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	1998	1.00	eur	99000.00
+5515989	sell	single_family_house	12683	Berlin	\N	\N	13.56812190	52.52790320	1935	5.00	eur	195000.00
+528066	sell	apartment	12683	Berlin	\N	\N	13.56812190	52.52790320	2004	1.50	eur	71000.00
+332977	sell	apartment	10245	Berlin	Boxhagener Straße	119	13.45522210	52.51439450	1994	3.00	eur	165000.00
+365362	sell	apartment	10245	Berlin	Alt-Stralau	52-53	13.47063520	52.49475670	2013	4.00	eur	1221500.00
+5397049	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	341000.00
+333617	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	2013	4.00	eur	359250.00
+5396954	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	478000.00
+5396990	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	218000.00
+5397002	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	347500.00
+5396989	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	319000.00
+5397017	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	5.00	eur	749723.00
+5397038	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2009	3.00	eur	799000.00
+5397022	sell	penthouse	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	519000.00
+5397051	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	710000.00
+5396982	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	329000.00
+318138	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	2.00	eur	341000.00
+5396976	sell	apartment	10179	Berlin	Neue Grünstraße	19	13.40665050	52.51053010	1900	8.00	eur	461656.00
+5396985	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	325000.00
+5396974	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	415000.00
+5397092	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	1876	4.00	eur	790000.00
+307090	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2015	4.00	eur	749000.00
+371893	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1985	2.00	eur	119000.00
+373830	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	1997	3.00	eur	110000.00
+361000	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	14	13.52026480	52.50585240	1998	1.00	eur	100000.00
+5397055	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	375615.00
+5397009	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1996	2.00	eur	180000.00
+5397078	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	4.00	eur	485000.00
+5397013	sell	end_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	336000.00
+5397048	sell	mid_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	6.00	eur	327000.00
+5397027	sell	multi_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	0.00	eur	1782500.00
+373808	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	\N	13.51609190	52.50563030	1997	1.00	eur	65000.00
+5397006	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	399637.00
+5397003	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	2.00	eur	373377.00
+5397073	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	3.00	eur	482300.00
+5396995	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	417600.00
+5397070	sell	penthouse	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	293500.00
+5397016	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	2.00	eur	275870.00
+5396991	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1920	1.50	eur	89000.00
+5397062	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	220300.00
+5397060	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	207600.00
+5397107	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	3.00	eur	335000.00
+5397159	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	2.00	eur	215487.00
+5397065	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	224500.00
+5396993	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	336800.00
+5397085	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	1970	6.00	eur	300000.00
+5397145	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	749000.00
+5397044	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	7.00	eur	629000.00
+5397148	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	1.00	eur	99000.00
+5397039	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	340000.00
+5397057	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1953	2.00	eur	119000.00
+5397138	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	1.00	eur	99000.00
+5397066	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	630000.00
+5397118	sell	apartment	10249	Berlin	Matternstraße	3	13.45229170	52.52158820	1900	8.00	eur	439000.00
+5397037	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	2.00	eur	149000.00
+5397140	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	550329.00
+319221	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	269000.00
+5397056	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1953	2.00	eur	119000.00
+5397033	sell	apartment	10243	Berlin	Warschauer Straße	\N	13.45014800	52.50739100	1956	2.00	eur	120000.00
+5397042	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	375000.00
+5397069	sell	apartment	10243	Berlin	Warschauer Straße	14	13.45238070	52.51297050	1999	3.00	eur	299000.00
+5397143	sell	apartment	10243	Berlin	Warschauer Straße	5-8	13.45332000	52.51505860	1999	3.00	eur	299000.00
+5397091	sell	apartment	10243	Berlin	Warschauer Straße	21	13.45172050	52.51146220	1999	3.00	eur	299000.00
+485621	sell	single_family_house	12357	Berlin	Zwergasternweg	\N	13.48877940	52.43702730	2013	4.00	eur	296800.00
+5397008	sell	apartment	10243	Berlin	Koppenstraße	49	13.43716990	52.51943590	1890	4.00	eur	398000.00
+368114	sell	apartment	10243	Berlin	Koppenstraße	49	13.43716990	52.51943590	1890	4.00	eur	398000.00
+5397100	sell	apartment	10243	Berlin	Warschauer Straße	27	13.45119590	52.51022550	1999	3.00	eur	299000.00
+5397095	sell	apartment	10243	Berlin	Warschauer Straße	24	13.45152000	52.51099380	1999	3.00	eur	299000.00
+5397149	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	400000.00
+5397072	sell	apartment	10243	Berlin	Warschauer Straße	18	13.45195450	52.51198490	1999	3.00	eur	299000.00
+5397028	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	3.00	eur	275400.00
+313838	sell	apartment	10247	Berlin	Pettenkoferstraße	38	13.47108840	52.51778640	2014	3.00	eur	308425.00
+5397153	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	186000.00
+5397157	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	358000.00
+5397081	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	250500.00
+5396961	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	399900.00
+5397158	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	6.00	eur	425000.00
+5397036	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	4.00	eur	329420.00
+311760	sell	apartment	10247	Berlin	Pettenkoferstraße	38	13.47108840	52.51778640	2014	4.00	eur	463680.00
+5397178	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	359000.00
+5397155	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	3.00	eur	180000.00
+5397043	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	4.00	eur	360060.00
+5397032	sell	apartment	10247	Berlin	Pettenkoferstraße	37	13.47092000	52.51807640	\N	3.00	eur	329420.00
+5397179	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	281800.00
+374758	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	20	13.52345460	52.50699220	2017	3.00	eur	355750.00
+375127	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	2017	3.00	eur	301300.00
+5397111	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	3.00	eur	647400.00
+374807	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	20	13.52345460	52.50699220	2017	2.00	eur	207000.00
+5397097	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	3.00	eur	335000.00
+5397101	sell	mid_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	331000.00
+5397099	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	3.00	eur	369000.00
+587555	sell	apartment	13351	Berlin	\N	\N	13.33651382	52.55124720	\N	3.00	eur	210000.00
+5397283	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1986	1.00	eur	60000.00
+5397359	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	548000.00
+5397198	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	341000.00
+5397166	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	189000.00
+5397154	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	2.00	eur	306250.00
+5397237	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	4.00	eur	352000.00
+5397277	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	359500.00
+5397292	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	4.00	eur	299500.00
+5397087	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	189000.00
+5397117	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	297675.00
+5397136	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	3.00	eur	459900.00
+5397317	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	257580.00
+367860	sell	apartment	10245	Berlin	Neue Bahnhofstraße	30	13.46943450	52.50551520	2014	4.00	eur	306801.00
+428242	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	4.00	eur	2850000.00
+435539	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	4.00	eur	1300000.00
+435754	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	2.50	eur	630000.00
+435809	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	556640.00
+435825	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	770000.00
+435740	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	800000.00
+435892	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	5.00	eur	892000.00
+435765	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	750000.00
+421044	sell	apartment	10117	Berlin	Wilhelmstraße	56-59	13.38222820	52.51424850	\N	2.00	eur	765000.00
+5397137	sell	apartment	10117	Berlin	Glinkastraße	42	13.38630260	52.51511980	\N	6.00	eur	6900000.00
+5397170	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	0.00	eur	269000.00
+5397106	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	554000.00
+5397217	sell	apartment_roof_storey	10179	Berlin	\N	\N	13.40743300	52.51442610	1998	2.00	eur	239000.00
+5397127	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	610000.00
+5397124	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	710000.00
+5397114	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	979000.00
+5397225	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2000	4.00	eur	347000.00
+5397186	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2014	6.00	eur	2100000.00
+5397210	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	990000.00
+5397229	sell	penthouse	10179	Berlin	Neue Roßstraße	16	13.40901970	52.51154520	\N	3.00	eur	648000.00
+5397141	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	4.00	eur	819000.00
+5397121	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	475000.00
+5458988	sell	apartment	10999	Berlin	\N	\N	13.41970650	52.49668640	2009	3.00	eur	850000.00
+5397231	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	291966.00
+5397246	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	243651.00
+5517044	sell	apartment	13059	Berlin	\N	\N	13.51929320	52.57479810	1987	3.00	eur	118500.00
+5397238	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	494753.00
+5397241	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	665844.00
+5397151	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2000	5.00	eur	498000.00
+5397209	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	178000.00
+5397259	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	551785.00
+5397234	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	550329.00
+5397227	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	213511.00
+5397188	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	1.50	eur	82500.00
+5397218	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	172112.00
+5397262	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	311141.00
+5397248	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	166491.00
+5397255	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	325622.00
+356833	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	221400.00
+376454	sell	apartment	10243	Berlin	Friedrichsberger Straße	9	13.43404545	52.52073835	1956	2.00	eur	175000.00
+5397201	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	175000.00
+371633	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	217000.00
+5397202	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1996	4.00	eur	450000.00
+5397175	sell	apartment	10243	Berlin	Rüdersdorfer Straße	10	13.43727600	52.51474010	1954	8.00	eur	329256.00
+5397252	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	879000.00
+5397220	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.50	eur	750000.00
+5397176	sell	apartment	10243	Berlin	Rüdersdorfer Straße	10	13.43727600	52.51474010	1954	2.00	eur	81889.00
+5397235	sell	apartment	10243	Berlin	Friedrichsberger Straße	\N	13.43562460	52.52182660	\N	1.00	eur	130000.00
+370039	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	410000.00
+5397192	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	300000.00
+5397173	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	380919.00
+5397239	sell	penthouse	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	308500.00
+5397161	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	583162.00
+5397199	sell	apartment	10115	Berlin	Schlegelstraße	5	13.38590700	52.52965660	\N	6.00	eur	697500.00
+5397208	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	3.00	eur	515700.00
+5397224	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	3.00	eur	430000.00
+5397168	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	2.00	eur	482809.00
+5397243	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1996	3.00	eur	330000.00
+5397204	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	5.00	eur	966723.00
+5397200	sell	apartment	10115	Berlin	Chausseestraße	57	13.37602420	52.53643690	\N	1.00	eur	170325.00
+5397167	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	6.00	eur	474000.00
+5397233	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	258500.00
+438373	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	770000.00
+440482	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	5.00	eur	892000.00
+5397191	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	299000.00
+440609	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	2.50	eur	657664.00
+5397316	sell	apartment	10117	Berlin	Leipziger Straße	\N	13.38950460	52.51032540	1973	2.00	eur	199985.00
+5397242	sell	apartment	10117	Berlin	Schumannstraße	7	13.38147190	52.52372800	\N	2.00	eur	490000.00
+5397330	sell	apartment_roof_storey	10117	Berlin	\N	\N	13.38532280	52.52362850	1889	3.00	eur	183000.00
+5397303	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1999	4.00	eur	255000.00
+442295	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2013	3.00	eur	519000.00
+5397187	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	313000.00
+376353	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	20	13.52345460	52.50699220	2017	5.00	eur	454000.00
+5397226	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	177400.00
+5397276	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	231800.00
+5397267	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	260700.00
+5397214	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	181100.00
+373170	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	2016	2.50	eur	485000.00
+5397184	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	184200.00
+5397207	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1981	3.00	eur	199000.00
+377034	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	20	13.52345460	52.50699220	2017	3.00	eur	454000.00
+373007	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	2016	2.00	eur	215000.00
+379741	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	20	13.52345460	52.50699220	2017	4.00	eur	463100.00
+5397271	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	257300.00
+5397339	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	2.00	eur	205900.00
+339300	sell	apartment	10247	Berlin	Schreinerstraße	38-39	13.47003270	52.51662760	2013	4.00	eur	570003.00
+5397249	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	1908	2.00	eur	197000.00
+5397257	sell	apartment_maisonette	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	3.00	eur	383100.00
+5397213	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	3.00	eur	288400.00
+5397260	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	\N	3.00	eur	320000.00
+5397308	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	65000.00
+5397264	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	180000.00
+315279	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	89000.00
+5397367	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	3.00	eur	288400.00
+5397305	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	2.00	eur	155000.00
+5397353	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	455000.00
+303588	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	2015	2.50	eur	427000.00
+305028	sell	apartment	10179	Berlin	Michaelkirchstraße	16	13.42208520	52.51071940	2016	2.00	eur	270000.00
+5397269	sell	apartment_roof_storey	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	6.00	eur	1591375.00
+5397265	sell	apartment_roof_storey	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	6.00	eur	1343938.00
+5397280	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	2.00	eur	338140.00
+5397285	sell	apartment	10179	Berlin	Neue Grünstraße	19	13.40665050	52.51053010	\N	2.00	eur	561844.00
+5397261	sell	apartment_roof_storey	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	915070.00
+5397263	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	516600.00
+5396801	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	363000.00
+5396171	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	366000.00
+5397023	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	543000.00
+303702	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2015	4.00	eur	469000.00
+317199	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2013	3.00	eur	435900.00
+5397638	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	408455.00
+341713	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2013	4.00	eur	510200.00
+5397291	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	236300.00
+5397661	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1850	2.00	eur	310000.00
+5397251	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	1895	4.50	eur	449000.00
+317228	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	2013	4.00	eur	540400.00
+5397636	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	431610.00
+5395864	sell	apartment	10115	Berlin	Anklamer Straße	16	13.39888830	52.53490580	1900	2.00	eur	155000.00
+5397586	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	395000.00
+355845	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	235000.00
+5397313	sell	penthouse	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	4.00	eur	879000.00
+360241	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	213200.00
+5385231	sell	apartment	10178	Berlin	\N	\N	13.38885990	52.51703650	1895	3.00	eur	1393065.00
+367262	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	200000.00
+5397420	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	730000.00
+5397388	sell	apartment	10243	Berlin	Koppenstraße	49	13.43716990	52.51943590	1890	3.00	eur	275000.00
+351005	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	3.00	eur	304150.00
+5397394	sell	apartment	10243	Berlin	Warschauer Straße	76	13.45322380	52.51292920	\N	4.00	eur	730000.00
+5397288	sell	apartment	10243	Berlin	Marchlewskistraße	77	13.44733350	52.51072000	\N	3.00	eur	739000.00
+5424024	sell	apartment	10557	Berlin	Spenerstraße	3	13.35347080	52.52335620	1900	4.00	eur	280000.00
+5397287	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	367971.00
+5397325	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	311141.00
+5397323	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	291966.00
+5397345	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	596784.00
+5397336	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	551785.00
+5397284	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	586296.00
+5397290	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	195034.00
+5397349	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	2008	3.00	eur	1250000.00
+5397310	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	233805.00
+5397320	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	286444.00
+5397324	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	301821.00
+321307	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	239715.00
+5397341	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	586296.00
+364599	sell	apartment	10557	Berlin	Lehrter Straße	23	13.36248000	52.53072000	2016	3.00	eur	568000.00
+5397318	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	231800.00
+5397360	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	177400.00
+5397361	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	231800.00
+5397338	sell	apartment	10315	Berlin	Marie-Curie-Allee	\N	13.50041040	52.50506610	1920	2.00	eur	158000.00
+5397326	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	3.00	eur	319000.00
+5397331	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	198500.00
+5397306	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	273600.00
+5397322	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	184200.00
+5397358	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1994	2.00	eur	120000.00
+5397335	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	286500.00
+5397344	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	281800.00
+5397340	sell	apartment_roof_storey	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	225000.00
+5397351	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1998	2.00	eur	205000.00
+5397365	sell	mid_terrace_house	10315	Berlin	Allee der Kosmonauten	23	13.51378860	52.52573060	\N	5.00	eur	342000.00
+445811	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1840	4.00	eur	315000.00
+5397362	sell	apartment	10117	Berlin	Reinhardtstraße	15	13.38519080	52.52338560	1890	3.50	eur	480000.00
+5397393	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1915	6.00	eur	3600000.00
+448319	sell	apartment	10117	Berlin	Jägerstraße	48	13.39582810	52.51438310	\N	2.00	eur	1198000.00
+5397414	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	2.00	eur	415000.00
+440096	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	1800000.00
+5397493	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	2.00	eur	188762.00
+5397348	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	311000.00
+5396180	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	227000.00
+5397380	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	8.00	eur	704998.00
+5397377	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	589351.00
+5397384	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	749500.00
+321124	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	174866.00
+5397413	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	190000.00
+5397545	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2002	3.00	eur	875000.00
+5397387	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	1499600.00
+5397370	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	459000.00
+5397374	sell	apartment	10249	Berlin	\N	\N	13.42354180	52.52385320	2000	5.00	eur	498000.00
+5397366	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	681072.00
+5397555	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	64000.00
+5397368	sell	apartment_maisonette	10249	Berlin	Mühsamstraße	64	13.45315650	52.52072730	1900	3.00	eur	359900.00
+5397409	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	1.00	eur	75000.00
+5397487	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	95000.00
+5397486	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	3.00	eur	117000.00
+5397379	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	6.00	eur	420000.00
+5397386	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	\N	2.00	eur	218280.00
+5397434	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	3.00	eur	420370.00
+5397490	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1900	1.00	eur	95000.00
+5397443	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	7.00	eur	430000.00
+5397424	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45221910	52.50401270	\N	4.00	eur	365545.00
+5397438	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.00	eur	452750.00
+314407	sell	apartment	10247	Berlin	Dolziger Straße	30	13.47071710	52.51822220	2014	2.00	eur	246980.00
+342257	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	155000.00
+460913	sell	apartment	10999	Berlin	Kohlfurter Straße	1	13.41442579	52.49826655	1955	2.00	eur	139000.00
+334574	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1906	3.00	eur	350000.00
+5397421	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2014	4.00	eur	619000.00
+5397459	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	3.00	eur	979000.00
+5397475	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	530000.00
+5397518	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	\N	5.00	eur	2100000.00
+5397375	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	415000.00
+5397473	sell	apartment_maisonette	10179	Berlin	\N	\N	13.40743300	52.51442610	1997	4.00	eur	421500.00
+5397429	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2014	4.00	eur	899000.00
+5397411	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2014	4.00	eur	1125000.00
+5397436	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2014	3.00	eur	939000.00
+5397383	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	553000.00
+305580	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	4.00	eur	465000.00
+305544	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	3.00	eur	415000.00
+5397483	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2010	3.00	eur	800000.00
+5397403	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	341000.00
+5397478	sell	apartment	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	3.00	eur	290175.00
+5397408	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	297675.00
+5435512	sell	apartment	10585	Berlin	\N	\N	13.30591980	52.51753440	1900	2.00	eur	129000.00
+333752	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	2013	4.00	eur	306900.00
+5397496	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	227808.00
+5397494	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	429850.00
+5397466	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	4.00	eur	449000.00
+5397402	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	257580.00
+5397444	sell	apartment	10245	Berlin	Ehrenbergstraße	\N	13.45287690	52.50502740	\N	3.00	eur	385000.00
+5397482	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	5.00	eur	580000.00
+5397508	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	306802.00
+5397458	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1995	2.00	eur	205000.00
+5397430	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	3.00	eur	335000.00
+5397499	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	205000.00
+5397410	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	255000.00
+5397450	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	225000.00
+5397484	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1910	2.00	eur	160000.00
+5397418	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	4.00	eur	419000.00
+5397507	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.50	eur	335000.00
+373026	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	2016	4.00	eur	425000.00
+5397479	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	2.00	eur	93000.00
+5397635	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	1000000.00
+5397428	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.50	eur	85000.00
+322033	sell	apartment	10249	Berlin	Ebertystraße	43	13.45316585	52.52466940	1914	1.00	eur	77640.00
+5397432	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	264000.00
+5397460	sell	apartment	10249	Berlin	Straßmannstraße	24	13.45121690	52.52239900	1907	3.00	eur	283499.00
+5397470	sell	penthouse	10249	Berlin	Petersburger Straße	24	13.44851050	52.52438980	1907	4.00	eur	356416.00
+5397468	sell	apartment	10249	Berlin	Straßmannstraße	24	13.45121690	52.52239900	1907	3.00	eur	334782.00
+320879	sell	apartment	10249	Berlin	Landsberger Allee	48	13.44163000	52.52399000	\N	3.00	eur	264000.00
+374011	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	250000.00
+5397164	sell	apartment_roof_storey	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	3.00	eur	1225000.00
+5419359	sell	apartment	10437	Berlin	Hiddenseer Straße	9	13.42446161	52.54251805	1910	2.00	eur	198000.00
+5396997	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	4.00	eur	440000.00
+375474	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1954	2.00	eur	145000.00
+375787	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1995	2.00	eur	230000.00
+377521	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	2017	8.00	eur	5800000.00
+378690	sell	apartment	10243	Berlin	Gubener Straße	\N	13.44800100	52.51260640	1904	3.00	eur	250000.00
+5397471	sell	penthouse	10247	Berlin	Frankfurter Allee	20-26	13.45831446	52.51505280	1955	3.00	eur	288576.00
+5397455	sell	penthouse	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	4.00	eur	829000.00
+450154	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	5.00	eur	892045.00
+5397498	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	64000.00
+5397501	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2007	6.00	eur	419000.00
+5397467	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	64000.00
+5431810	sell	apartment	10629	Berlin	\N	\N	13.30732968	52.50254175	\N	4.00	eur	710000.00
+5431868	sell	apartment	10629	Berlin	\N	\N	13.30732968	52.50254175	\N	3.00	eur	570000.00
+5397506	sell	apartment_roof_storey	10117	Berlin	Jägerstraße	\N	13.38820830	52.51378190	2007	6.00	eur	419000.00
+5397517	sell	apartment	10117	Berlin	Leipziger Straße	103	13.38954200	52.51045930	\N	2.00	eur	220000.00
+5397481	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	64000.00
+5397509	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2007	6.00	eur	419000.00
+5397511	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	597000.00
+450609	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2000	3.00	eur	450000.00
+460947	sell	penthouse	10117	Berlin	Niederlagstraße	\N	13.39761930	52.51650210	2018	5.00	eur	5863000.00
+5397474	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	64000.00
+5397566	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1900	4.00	eur	285000.00
+5397540	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	69000.00
+5397520	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	3.00	eur	242000.00
+5397531	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	139900.00
+5397573	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	125000.00
+5397561	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1900	2.00	eur	145000.00
+5397502	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	4.00	eur	346000.00
+5397554	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	256000.00
+5397556	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	140000.00
+5397552	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	285000.00
+5397529	sell	apartment	10247	Berlin	Gürtelstraße	17	13.47321650	52.50962520	1900	2.00	eur	175000.00
+5551207	sell	mid_terrace_house	13591	Berlin	\N	\N	13.13034000	52.54170010	2004	4.00	eur	215000.00
+5397541	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	242500.00
+5397522	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1954	2.00	eur	145000.00
+5397504	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	595000.00
+5397527	sell	apartment	10243	Berlin	Am Comeniusplatz	6	13.44657660	52.51196665	1957	4.00	eur	195000.00
+5397588	sell	apartment	10243	Berlin	Singerstraße	\N	13.43380480	52.51491500	1965	2.00	eur	155000.00
+5397562	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1920	1.00	eur	100000.00
+381837	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	185000.00
+5397547	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1966	4.00	eur	199000.00
+5419544	sell	apartment	10437	Berlin	\N	\N	13.41995060	52.54600630	1910	3.00	eur	216000.00
+384086	sell	apartment	10315	Berlin	Massower Straße	48	13.51713600	52.50763330	1985	3.00	eur	159000.00
+5397543	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	\N
+5397546	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	3.00	eur	\N
+5397645	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	259000.00
+5397536	sell	multi_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	1900	0.00	eur	1785000.00
+5397534	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1995	2.00	eur	198000.00
+5397627	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1994	2.00	eur	211300.00
+5397611	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	14	13.52026480	52.50585240	1998	1.00	eur	96000.00
+387474	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	2016	3.00	eur	335000.00
+5397525	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1905	2.00	eur	189000.00
+5397663	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	552160.00
+5397662	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	198000.00
+5397538	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	3.00	eur	416500.00
+5397535	sell	apartment	10245	Berlin	Glasbläserallee	14	13.46855680	52.49687480	\N	3.00	eur	315150.00
+5397678	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	315150.00
+5397664	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	1300106.00
+323770	sell	apartment	10245	Berlin	Glasbläserallee	14	13.46855680	52.49687480	2014	3.00	eur	308750.00
+5397672	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	566928.00
+5397549	sell	apartment	10245	Berlin	Glasbläserallee	14	13.46855680	52.49687480	\N	2.00	eur	226050.00
+5397581	sell	apartment	10117	Berlin	Wilhelmstraße	56-59	13.38222820	52.51424850	\N	2.00	eur	1360000.00
+327363	sell	apartment	10245	Berlin	Fischzug	4	13.46918740	52.49715690	2014	2.00	eur	289950.00
+324853	sell	penthouse	10245	Berlin	Glasbläserallee	14	13.46855680	52.49687480	2014	4.00	eur	556780.00
+5397653	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	288360.00
+340064	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2015	2.00	eur	385000.00
+344907	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	617000.00
+345469	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	2010	3.00	eur	195000.00
+5397560	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	617000.00
+341268	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	2016	3.00	eur	734000.00
+5397710	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	764000.00
+5397597	sell	penthouse	10179	Berlin	Dresdener Straße	33	13.41475150	52.50530840	2010	3.00	eur	820000.00
+5397404	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	365000.00
+303844	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2015	3.00	eur	729000.00
+5397715	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	905000.00
+5397589	sell	apartment	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	3.00	eur	408000.00
+5397711	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	4.00	eur	1028000.00
+5397720	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	1117000.00
+344593	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2015	3.00	eur	316000.00
+5397608	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	530000.00
+5397630	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	750000.00
+5397557	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2010	3.00	eur	288000.00
+5397600	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	64000.00
+5397590	sell	apartment	10117	Berlin	Am Zirkus	1	13.38586450	52.52207040	\N	4.00	eur	3450000.00
+5397559	sell	apartment_maisonette	10117	Berlin	Leipziger Platz	12	13.37952760	52.51013720	2010	3.00	eur	288000.00
+5397625	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	750000.00
+5397633	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	550000.00
+5397665	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1200000.00
+454296	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	425000.00
+5397615	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	1800000.00
+5397660	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	1902	3.00	eur	710000.00
+5397593	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	998000.00
+5397631	sell	apartment_maisonette	10249	Berlin	Mühsamstraße	64	13.45315650	52.52072730	1900	2.50	eur	359900.00
+308682	sell	end_terrace_house	10365	Berlin	\N	\N	13.51033370	52.53400550	2013	5.00	eur	480000.00
+5397641	sell	single_family_house	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	0.00	eur	1600000.00
+5397643	sell	single_family_house	10249	Berlin	\N	\N	13.44735700	52.52649200	1925	6.00	eur	319000.00
+347910	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	159000.00
+5397649	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	315000.00
+5397609	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	279000.00
+5397595	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	157000.00
+5397592	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	150000.00
+5397582	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	142000.00
+5397621	sell	penthouse	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	413000.00
+5397606	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	217000.00
+5397604	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	220000.00
+5397626	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	442000.00
+346326	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	199000.00
+314639	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	162000.00
+5397587	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	139000.00
+5397594	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	150000.00
+5397601	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	222000.00
+5397629	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	6.00	eur	433000.00
+5397632	sell	penthouse	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	464000.00
+5397579	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	144000.00
+348529	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1912	2.00	eur	185000.00
+329062	sell	apartment	10243	Berlin	Karl-Marx-Allee	107	13.44537760	52.51720440	1952	1.00	eur	135000.00
+5397607	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	575000.00
+370690	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	320000.00
+5397701	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	275000.00
+374902	sell	apartment	10243	Berlin	Strausberger Platz	3	13.42769800	52.51936010	1951	2.00	eur	240000.00
+5424086	sell	apartment	10557	Berlin	Calvinstraße	28	13.35212580	52.52283210	1960	2.00	eur	220000.00
+5397689	sell	apartment	10315	Berlin	Kurze Straße	10	13.51604030	52.50732210	1985	3.00	eur	160000.00
+388971	sell	apartment	10315	Berlin	Kurze Straße	6	13.51610190	52.50706010	1985	1.00	eur	75000.00
+389172	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	2016	4.00	eur	425000.00
+5397658	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	239000.00
+392158	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	2016	2.00	eur	219000.00
+5397693	sell	apartment	10315	Berlin	Massower Straße	34	13.51493930	52.50733130	1984	3.00	eur	155000.00
+5397656	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	239000.00
+390281	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	2016	3.00	eur	335000.00
+5397695	sell	apartment_roof_storey	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	215000.00
+5397651	sell	apartment	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	259000.00
+315826	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	1900	3.00	eur	117000.00
+5397698	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	96000.00
+5397666	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	117000.00
+347108	sell	apartment	10247	Berlin	Rigaer Straße	93	13.45832020	52.51788040	1900	3.00	eur	198000.00
+347571	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	2.00	eur	124151.00
+5397739	sell	multi_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	0.00	eur	10000000.00
+345885	sell	apartment	10247	Berlin	Bänschstraße	25	13.46253600	52.51889520	1904	3.00	eur	249000.00
+5397671	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	383000.00
+342451	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1900	3.00	eur	330000.00
+5397705	sell	apartment	10247	Berlin	Dolziger Straße	19	13.46770650	52.51876850	\N	4.00	eur	525000.00
+5397740	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	250500.00
+5397742	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	287500.00
+5393034	sell	penthouse	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	413000.00
+449796	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	530000.00
+5398005	sell	apartment_roof_storey	10117	Berlin	Schützenstraße	46	13.39798840	52.50916860	\N	3.00	eur	950000.00
+5397716	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	3.00	eur	780000.00
+442387	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2015	3.00	eur	580000.00
+363844	sell	apartment	10115	Berlin	Wöhlertstraße	12-13	13.37905920	52.53690830	\N	5.00	eur	330000.00
+5398020	sell	penthouse	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1810000.00
+5397692	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	455000.00
+5386624	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	4.00	eur	239000.00
+5386720	sell	apartment	10179	Berlin	Michaelkirchplatz	\N	13.42015470	52.50692380	\N	2.00	eur	209800.00
+5397690	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	4.00	eur	514303.00
+5397699	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	3.00	eur	509999.00
+5397751	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	862867.00
+5397709	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	5.00	eur	1095936.00
+347923	sell	apartment	10115	Berlin	Linienstraße	154	13.39345860	52.52752840	1910	2.00	eur	289000.00
+5397700	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	5.00	eur	1020818.00
+5397694	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	475000.00
+368301	sell	apartment	10115	Berlin	Scharnhorststraße	3	13.37310740	52.53195040	\N	2.00	eur	150000.00
+5397707	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	471642.00
+5397770	sell	apartment_roof_storey	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	5.00	eur	1095936.00
+5397974	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	134800.00
+5468760	sell	villa	12203	Berlin	\N	\N	13.31742810	52.45023750	1973	3.00	eur	465000.00
+5397947	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	216603.00
+5397949	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	274050.00
+5468955	sell	apartment	12203	Berlin	\N	\N	13.31742810	52.45023750	1904	3.00	eur	169000.00
+5397937	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	213511.00
+5397987	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	232805.00
+5397941	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	311141.00
+5397992	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	300821.00
+5397984	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	190952.00
+345888	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	631500.00
+5397902	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	367970.00
+5397988	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	270143.00
+5397730	sell	apartment	10245	Berlin	Glasbläserallee	14	13.46855680	52.49687480	\N	2.00	eur	249275.00
+5397732	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	2.00	eur	328375.00
+5397702	sell	penthouse	10245	Berlin	Stralauer Allee	17	13.46289680	52.49811720	1905	4.00	eur	552500.00
+5397758	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	697500.00
+5397805	sell	penthouse	10245	Berlin	Fischzug	6	13.46942050	52.49708280	\N	3.00	eur	297260.00
+5397788	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	3.00	eur	495000.00
+5397818	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	4.00	eur	469200.00
+5397813	sell	apartment	10245	Berlin	Glasbläserallee	14	13.46855680	52.49687480	\N	3.00	eur	308750.00
+5397761	sell	penthouse	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	365000.00
+5397712	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	90000.00
+5397769	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	256200.00
+5397779	sell	penthouse	10245	Berlin	Alt-Stralau	\N	13.46686760	52.49633500	\N	2.00	eur	537405.00
+5397757	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	206500.00
+5397759	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	3.00	eur	328500.00
+386014	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	2.00	eur	200000.00
+5397840	sell	apartment	10243	Berlin	Krautstraße	\N	13.42707970	52.51177270	\N	3.50	eur	269000.00
+5397814	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	216500.00
+387693	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	3.00	eur	323900.00
+380014	sell	apartment	10243	Berlin	\N	\N	13.43856000	52.51474550	1953	2.00	eur	216500.00
+354161	sell	apartment	10243	Berlin	Kadiner Straße	12	13.44972610	52.51333970	1955	2.00	eur	222300.00
+5397755	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	216500.00
+5397823	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1917	2.00	eur	250000.00
+5397754	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	3.00	eur	340500.00
+5397765	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	232000.00
+5397851	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	2.00	eur	280000.00
+339624	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	5.00	eur	1420000.00
+351628	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1960	2.50	eur	127000.00
+5449161	sell	apartment	10823	Berlin	\N	\N	13.35746170	52.48744440	\N	2.00	eur	114900.00
+5449508	sell	apartment	10823	Berlin	Apostel-Paulus-Straße	34	13.35066720	52.48811250	1900	1.00	eur	110000.00
+5397752	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1966	2.00	eur	140000.00
+5397749	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	515000.00
+5397766	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1960	2.50	eur	127000.00
+341462	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	811000.00
+349206	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	3.00	eur	390000.00
+5525441	sell	apartment	13158	Berlin	\N	\N	13.36880340	52.59274540	1995	4.00	eur	158000.00
+5397820	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	325000.00
+5397967	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1920	3.00	eur	135000.00
+5397806	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	2.00	eur	242440.00
+5397746	sell	apartment	10315	Berlin	Zachertstraße	9	13.50280350	52.50687880	1914	4.00	eur	236466.00
+5397744	sell	apartment	10315	Berlin	Zachertstraße	9	13.50280350	52.50687880	1914	3.00	eur	288420.00
+5397768	sell	apartment	10315	Berlin	Archenholdstraße	\N	13.50183180	52.50478630	1920	2.00	eur	129000.00
+5397738	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	5.00	eur	534000.00
+5397781	sell	apartment	10315	Berlin	Kurze Straße	10	13.51604030	52.50732210	1985	2.00	eur	125000.00
+5397786	sell	apartment	10315	Berlin	Archenholdstraße	30	13.50320870	52.50696690	1914	2.00	eur	143003.00
+5397737	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	1996	2.00	eur	214484.00
+5397789	sell	apartment	10315	Berlin	Archenholdstraße	30	13.50320870	52.50696690	1914	4.00	eur	377332.00
+312229	sell	apartment	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	2015	4.00	eur	698000.00
+5397803	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	352800.00
+5397831	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	3.00	eur	483915.00
+5397804	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	750000.00
+5397857	sell	apartment	10115	Berlin	Hannoversche Straße	9	13.37996478	52.52846120	1997	4.00	eur	688000.00
+5397809	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	975000.00
+5397807	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	170000.00
+5397828	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	4.00	eur	658896.00
+5397799	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	930000.00
+5397812	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	750000.00
+5397816	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	594000.00
+5397858	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	385000.00
+5397785	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	650000.00
+5397810	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	750000.00
+5397834	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	4.00	eur	639848.00
+340964	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2013	3.00	eur	331000.00
+5397849	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	1900	2.00	eur	109500.00
+313163	sell	apartment	10249	Berlin	Mühsamstraße	68	13.45374150	52.52069430	1898	2.00	eur	129000.00
+5397898	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	3.00	eur	407903.00
+5397821	sell	apartment_maisonette	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	\N	4.00	eur	395100.00
+5397837	sell	apartment	10247	Berlin	Waldeyerstraße	12	13.47105360	52.51459740	1998	2.00	eur	165000.00
+5397832	sell	apartment	10247	Berlin	Kinzigstraße	2-10	13.46592190	52.51428180	1955	2.00	eur	114500.00
+5397848	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	4.00	eur	377860.00
+5397860	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	4.00	eur	399120.00
+341481	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2013	4.00	eur	371000.00
+5397863	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	3.00	eur	349820.00
+5397894	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	4.00	eur	403718.00
+5397970	sell	apartment	10247	Berlin	Rigaer Straße	22	13.45958850	52.51723960	\N	3.00	eur	147023.00
+5397790	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	939000.00
+348273	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	2015	4.00	eur	430000.00
+5397787	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	296000.00
+340766	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	2014	2.00	eur	698000.00
+5397885	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	547000.00
+5397913	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	570000.00
+5397817	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	345000.00
+5397801	sell	apartment	10179	Berlin	Wassergasse	2	13.41356810	52.51209940	1932	2.00	eur	490000.00
+5397842	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	655000.00
+5397935	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	650000.00
+338114	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2015	4.00	eur	710000.00
+5397899	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	480000.00
+306168	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	4.00	eur	655000.00
+345968	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	4.00	eur	547000.00
+354178	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2015	5.00	eur	750000.00
+5397903	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	230000.00
+5397841	sell	apartment	10245	Berlin	Lehmbruckstraße	14	13.45274130	52.50294250	\N	4.00	eur	399000.00
+5397868	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	0.00
+5397900	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	175000.00
+5397793	sell	apartment	10245	Berlin	Ehrenbergstraße	2-5	13.45127710	52.50220060	\N	3.00	eur	315000.00
+5397891	sell	penthouse	10245	Berlin	Alt-Stralau	52-53	13.47063520	52.49475670	\N	2.00	eur	523624.00
+5397862	sell	apartment	10245	Berlin	Lehmbruckstraße	16	13.45263640	52.50277890	\N	4.00	eur	385000.00
+5397826	sell	apartment	10245	Berlin	Lehmbruckstraße	18	13.45249040	52.50254940	\N	2.00	eur	239000.00
+5397897	sell	penthouse	10245	Berlin	Bödikerstraße	1	13.46279030	52.49835790	1905	5.00	eur	552500.00
+5397917	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	330000.00
+5397925	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	593537.00
+5397882	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.50	eur	385000.00
+5397906	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	2.00	eur	255000.00
+5397846	sell	apartment	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	1.00	eur	79000.00
+5397879	sell	apartment_roof_storey	10315	Berlin	Einbecker Straße	74	13.50826710	52.50776350	\N	4.00	eur	530000.00
+589078	sell	apartment	13351	Berlin	\N	\N	13.33651382	52.55124720	1954	2.00	eur	155000.00
+5397886	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	2009	7.00	eur	3600000.00
+432052	sell	multi_family_house	10247	Berlin	\N	\N	13.46543476	52.51637250	1896	17.00	eur	3500000.00
+5397918	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	606000.00
+5397919	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	2.00	eur	293000.00
+5397932	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	430000.00
+5397865	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	240000.00
+5397895	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	491424.00
+5397924	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	424469.00
+5398085	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	610000.00
+5397945	sell	penthouse	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	4.00	eur	1600000.00
+5397939	sell	penthouse	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	4.50	eur	1424750.00
+5397905	sell	apartment	10115	Berlin	Schlegelstraße	\N	13.38617630	52.52991350	\N	7.00	eur	1200000.00
+5397921	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	4.00	eur	514303.00
+5397896	sell	penthouse	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	6.00	eur	1950000.00
+5397942	sell	penthouse	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	4.00	eur	1430875.00
+11854587	sell	apartment	10779	Berlin	Prager Platz	\N	13.33256900	52.49317750	\N	2.00	eur	239000.00
+5405267	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	344246.00
+389670	sell	apartment	10243	Berlin	Kadiner Straße	12	13.44972610	52.51333970	1955	2.00	eur	249000.00
+5397966	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1894	1.00	eur	145000.00
+5397901	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	214200.00
+5397989	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	2.00	eur	242500.00
+393516	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1956	2.00	eur	130000.00
+394010	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	288000.00
+395949	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	3.00	eur	230000.00
+5398049	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	308750.00
+392129	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	1.00	eur	169000.00
+388648	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	4.00	eur	335280.00
+5397958	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1894	1.00	eur	155000.00
+5398004	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1957	4.00	eur	190000.00
+5397955	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	539500.00
+5397923	sell	single_family_house	10315	Berlin	\N	\N	13.50909750	52.50888840	\N	5.00	eur	399000.00
+5397963	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	285000.00
+5397968	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2007	4.00	eur	355000.00
+5397959	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2008	4.00	eur	399000.00
+5397998	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1930	3.00	eur	134748.00
+5398000	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1930	1.00	eur	77108.00
+5398011	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	1994	9.50	eur	1050000.00
+5398017	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	335000.00
+5398012	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	2.00	eur	112438.00
+5397990	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	251250.00
+583298	sell	semi_detached_house	13591	Berlin	\N	\N	13.13034000	52.54170010	1998	5.00	eur	250000.00
+5560957	sell	single_family_house	13591	Berlin	\N	\N	13.13034000	52.54170010	\N	4.00	eur	395000.00
+5397936	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	6.00	eur	970000.00
+620395	sell	apartment	14050	Berlin	\N	\N	13.27269360	52.51950430	1918	2.00	eur	119000.00
+5397940	sell	apartment	10245	Berlin	Fischzug	6	13.46942050	52.49708280	\N	3.00	eur	297260.00
+5398037	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	297675.00
+5398031	sell	apartment	10245	Berlin	Simon-Dach-Straße	30	13.45587910	52.50885990	\N	2.00	eur	296700.00
+5397944	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	177450.00
+5398035	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	256200.00
+5397956	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	358800.00
+5397946	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	243373.00
+5397951	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	315900.00
+5397960	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	332500.00
+5397961	sell	apartment_maisonette	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	333750.00
+5398042	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	0.00
+341559	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	817000.00
+360207	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	2560000.00
+5398064	sell	apartment	10179	Berlin	Alte Jakobstraße	51	13.40611040	52.50871550	\N	3.00	eur	459000.00
+5398066	sell	apartment	10179	Berlin	Alte Jakobstraße	49	13.40580150	52.50852840	\N	4.00	eur	544000.00
+382392	sell	apartment	10585	Berlin	\N	\N	13.30591980	52.51753440	\N	3.00	eur	288500.00
+317037	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	564000.00
+5398065	sell	apartment	10179	Berlin	Alte Jakobstraße	51	13.40611040	52.50871550	\N	1.00	eur	150000.00
+5398071	sell	apartment	10179	Berlin	Alte Jakobstraße	77	13.40859750	52.51064270	1998	2.00	eur	320000.00
+312261	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	725000.00
+342775	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	4.00	eur	1180000.00
+5398018	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	445000.00
+5398074	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	523000.00
+5398055	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	884000.00
+5398069	sell	apartment	10179	Berlin	Alte Jakobstraße	49	13.40580150	52.50852840	\N	3.00	eur	448000.00
+5398058	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	758000.00
+5398026	sell	apartment	10115	Berlin	Tieckstraße	\N	13.39044810	52.52996180	1890	6.00	eur	509804.00
+5394356	sell	penthouse	10117	Berlin	Elisabeth-Mara-Straße	\N	13.40424710	52.51001280	\N	5.00	eur	2030937.00
+5396073	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	4.00	eur	550000.00
+5398021	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	270000.00
+5398056	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	2.00	eur	158000.00
+5397999	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	365294.00
+5398032	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	890000.00
+5397954	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.50	eur	389000.00
+5398010	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	2.00	eur	325000.00
+5398023	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	2.00	eur	279000.00
+5398029	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	600000.00
+5398030	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	635000.00
+5398080	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	110000.00
+5398013	sell	apartment	10115	Berlin	Rheinsberger Straße	78	13.39483930	52.53668100	1900	1.00	eur	120000.00
+5398015	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	780000.00
+317275	sell	apartment	10247	Berlin	Rigaer Straße	22	13.45958850	52.51723960	2013	2.00	eur	138054.00
+347807	sell	apartment	10247	Berlin	Frankfurter Allee	\N	13.45474940	52.51579850	1953	3.00	eur	255000.00
+5398047	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	233500.00
+5397991	sell	apartment	10437	Berlin	Ystader Straße	16	13.40460000	52.54740000	1920	1.50	eur	119000.00
+5398036	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	354500.00
+5398127	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	3.00	eur	289259.00
+5398148	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	3.00	eur	362560.00
+5398001	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1907	1.00	eur	69000.00
+5398078	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	2.00	eur	246980.00
+5398043	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	2.00	eur	194500.00
+5398131	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	4.00	eur	377860.00
+5398087	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.00	eur	433500.00
+5398052	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	4.00	eur	379000.00
+5398185	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	4.00	eur	353800.00
+5398019	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	4.00	eur	378950.00
+5397996	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	310141.00
+5398039	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1920	2.00	eur	220000.00
+5398117	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	664844.00
+352166	sell	apartment	10249	Berlin	Löwestraße	\N	13.44646610	52.51909330	1920	1.00	eur	109000.00
+5398123	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	166000.00
+5398025	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2007	2.00	eur	250000.00
+5398027	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	324500.00
+341727	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287100	52.52418360	\N	2.00	eur	189100.00
+5398053	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	274050.00
+5398149	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	190952.00
+5398173	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	205000.00
+5398156	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	324622.00
+5398033	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1900	3.00	eur	149000.00
+5398090	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	0.00	eur	0.00
+5398054	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	172200.00
+5398048	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	2008	0.00	eur	340000.00
+5398094	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1900	1.00	eur	45000.00
+5398101	sell	penthouse	10317	Berlin	\N	\N	13.48610820	52.49214840	2008	3.00	eur	335000.00
+5398041	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2008	3.00	eur	335000.00
+5398077	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	62000.00
+5398051	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	9.00	eur	386400.00
+5397969	sell	apartment	10317	Berlin	Irenenstraße	\N	13.49997980	52.50933170	1910	1.00	eur	37000.00
+5398086	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	37000.00
+5398088	sell	apartment	10243	Berlin	Lange Straße	77	13.43269870	52.51287090	1958	2.00	eur	427800.00
+5398081	sell	apartment	10243	Berlin	Lange Straße	74	13.43320040	52.51281690	1958	2.00	eur	433100.00
+5551326	sell	apartment	13591	Berlin	\N	\N	13.13034000	52.54170010	1970	3.00	eur	85000.00
+5398096	sell	apartment	10243	Berlin	Koppenstraße	83	13.43386820	52.51324180	1958	2.00	eur	148400.00
+5398105	sell	apartment	10243	Berlin	Koppenstraße	85	13.43374290	52.51310020	1958	2.00	eur	440100.00
+5398187	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	418977.00
+5423709	sell	apartment	10551	Berlin	Wilhelmshavener Straße	38	13.34116150	52.53384960	1900	3.00	eur	249000.00
+5398104	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	395000.00
+5398166	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	325655.00
+5398160	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	333750.00
+5398224	sell	penthouse	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	3.00	eur	398475.00
+5398146	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	579375.00
+5398196	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	303703.00
+5398205	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	358800.00
+5398089	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	230000.00
+5398152	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	525000.00
+5398212	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	193630.00
+5398175	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	315900.00
+5398201	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	251624.00
+5398124	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	621388.00
+5398240	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1998	4.00	eur	419000.00
+452779	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2003	5.00	eur	1500000.00
+457416	sell	apartment	10117	Berlin	Kommandantenstraße	72	13.40312050	52.50861150	2014	3.00	eur	550000.00
+5398198	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	7	13.40426940	52.50986030	\N	3.00	eur	770000.00
+454930	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1997	2.00	eur	350000.00
+460605	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	7.00	eur	1540000.00
+5398128	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	5.00	eur	1500000.00
+5398178	sell	apartment	10117	Berlin	Seydelstraße	24	13.40401250	52.50958580	\N	3.00	eur	750000.00
+461115	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2015	4.00	eur	2350000.00
+5398197	sell	apartment	10117	Berlin	Elisabeth-Mara-Straße	5	13.40450570	52.50980410	\N	4.00	eur	650000.00
+5398200	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	1490000.00
+451853	sell	apartment	10117	Berlin	Schumannstraße	7	13.38147190	52.52372800	2013	2.00	eur	760000.00
+5398108	sell	apartment	10115	Berlin	Novalisstraße	4	13.38886200	52.52838650	1900	1.00	eur	117862.00
+5398097	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	414946.00
+313623	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1934	2.00	eur	85000.00
+5403928	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1996	3.00	eur	259000.00
+5403968	sell	single_family_house	10365	Berlin	Bornitzstraße	92	13.49323372	52.52029830	\N	4.00	eur	409900.00
+5398133	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	425000.00
+5398129	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	359000.00
+5398112	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	198180.00
+5398100	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	432894.00
+5398268	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	498000.00
+5398496	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	329000.00
+5449235	sell	apartment	10829	Berlin	Katzlerstraße	17	13.36939530	52.49219360	\N	3.00	eur	279000.00
+5398147	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	7.00	eur	1440000.00
+5398235	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	606000.00
+5398140	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	494000.00
+375431	sell	apartment	10585	Berlin	\N	\N	13.30591980	52.51753440	1898	2.00	eur	129000.00
+5398176	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1908	6.00	eur	1200000.00
+5398179	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	710000.00
+374212	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1890	6.00	eur	820000.00
+5427635	sell	apartment	10709	Berlin	Cicerostraße	\N	13.30185210	52.49894160	1963	1.00	eur	50000.00
+5435469	sell	apartment	10709	Berlin	\N	\N	13.30938540	52.49178030	1901	3.00	eur	298900.00
+340368	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	5.00	eur	525000.00
+5398154	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	750000.00
+5414891	sell	apartment	10405	Berlin	\N	\N	13.42256590	52.53279640	1897	2.00	eur	110000.00
+5414579	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	890000.00
+5398362	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	5.00	eur	260000.00
+5398168	sell	penthouse	10317	Berlin	\N	\N	13.48610820	52.49214840	1928	3.00	eur	369941.00
+5398191	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	1928	6.00	eur	879000.00
+5398207	sell	apartment	10317	Berlin	Georg-Löwenstein-Straße	\N	13.48750680	52.49427540	2009	2.00	eur	194000.00
+5398211	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1905	0.00	eur	51500.00
+5398161	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	340000.00
+5398164	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	302544.00
+5398186	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	269318.00
+5398255	sell	apartment	10243	Berlin	Koppenstraße	82	13.43399800	52.51338830	1958	2.00	eur	323700.00
+5398401	sell	apartment	10243	Berlin	Koppenstraße	86	13.43361680	52.51295790	1958	2.00	eur	183400.00
+5398407	sell	apartment	10243	Berlin	Andreasstraße	\N	13.43059740	52.51132930	\N	3.00	eur	195000.00
+5398369	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	\N
+5398306	sell	apartment	10243	Berlin	Koppenstraße	86	13.43361680	52.51295790	1958	2.00	eur	258400.00
+5398344	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	3.00	eur	366000.00
+5398303	sell	apartment	10243	Berlin	Lange Straße	79	13.43217060	52.51292760	1958	2.00	eur	272300.00
+5398299	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	195000.00
+5398257	sell	apartment	10249	Berlin	Eckertstraße	2	13.45116170	52.51855970	\N	2.00	eur	255381.00
+319812	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	423000.00
+5398222	sell	apartment	10249	Berlin	Mühsamstraße	64	13.45315650	52.52072730	1900	3.00	eur	345500.00
+351648	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	114000.00
+5398253	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2008	4.00	eur	1400000.00
+348385	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	150000.00
+5398330	sell	apartment	10249	Berlin	Friedenstraße	47	13.43677060	52.52060830	1957	2.00	eur	101000.00
+5398335	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	169500.00
+324097	sell	apartment	10587	Berlin	Lohmeyerstraße	9	13.30190300	52.51959550	\N	3.00	eur	389000.00
+351959	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	195000.00
+5398215	sell	apartment	10249	Berlin	Ebelingstraße	5	13.45139800	52.52368460	1909	1.00	eur	79900.00
+5398232	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1910	4.00	eur	390000.00
+5398238	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	378000.00
+5398351	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1969	1.00	eur	134800.00
+5398285	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	240000.00
+5398280	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	1.00	eur	60900.00
+5398314	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	0.00
+345711	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1960	3.00	eur	179000.00
+5398254	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	2.00	eur	158631.00
+5398241	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	259378.00
+5398270	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	4.00	eur	447728.00
+5398298	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1930	2.00	eur	72000.00
+5398305	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	3.00	eur	399938.00
+5398259	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	2.00	eur	182028.00
+5398165	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	200500.00
+5398273	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.50	eur	146965.00
+5398236	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	1929	4.00	eur	450899.00
+5398248	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	160755.00
+5398243	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1900	2.00	eur	67000.00
+5398295	sell	apartment	10317	Berlin	Wönnichstraße	\N	13.50028060	52.51001100	1918	1.00	eur	40000.00
+5398284	sell	penthouse	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	319192.00
+5398264	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	112955.00
+5398225	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	85000.00
+5398277	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1928	3.00	eur	450899.00
+5398307	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1996	2.00	eur	51000.00
+5398297	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	422995.00
+5398291	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	188114.00
+370431	sell	apartment	10245	Berlin	Alt-Stralau	52-53	13.47063520	52.49475670	2013	2.00	eur	500976.00
+5397104	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	2.00	eur	519000.00
+5398260	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	4.00	eur	299500.00
+5398294	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1920	2.00	eur	214973.00
+5398245	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	1.50	eur	125000.00
+5398269	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	256530.00
+5398432	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	360984.00
+5398433	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	360984.00
+5398079	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	122444.00
+5398266	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	0.00
+5398402	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	113195.00
+5398413	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	525000.00
+375425	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2015	4.00	eur	749000.00
+5398513	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	365000.00
+5398578	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	0.00
+5398372	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	430000.00
+5398374	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	665000.00
+5398460	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	438000.00
+5398505	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	279000.00
+5398368	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	665000.00
+5398518	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	325000.00
+5525472	sell	apartment	13158	Berlin	\N	\N	13.36880340	52.59274540	\N	4.00	eur	148300.00
+5525488	sell	apartment_maisonette	13158	Berlin	\N	\N	13.36880340	52.59274540	1995	3.00	eur	140000.00
+5398412	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	2.00	eur	372965.00
+5398409	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	2.00	eur	339085.00
+5398389	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	2.00	eur	260377.00
+5398422	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	400905.00
+5398396	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	2.00	eur	286189.00
+5398316	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	2.00	eur	435000.00
+5398450	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	409767.00
+5398481	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	425000.00
+5398428	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	385000.00
+5398446	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	2.00	eur	402175.00
+5398324	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	129439.00
+5398312	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.50	eur	146865.00
+5398313	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	188114.00
+5398354	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	3.00	eur	212500.00
+5398358	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	116160.00
+5398346	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1911	2.00	eur	140000.00
+5398365	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	112955.00
+5398331	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	3.00	eur	160755.00
+5398328	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	2.00	eur	112955.00
+5398318	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1907	3.00	eur	129000.00
+5398333	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	2.00	eur	140131.00
+5398341	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	112955.00
+5398343	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.50	eur	146865.00
+5398326	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	160755.00
+5398322	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.50	eur	146865.00
+5398350	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1911	5.00	eur	327470.00
+5398482	sell	apartment	10117	Berlin	Behrenstraße	14/15	13.38644570	52.51537970	\N	3.00	eur	349000.00
+5398474	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1999	3.00	eur	349000.00
+5398439	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1892	4.00	eur	1975000.00
+5398399	sell	apartment	10117	Berlin	Werderscher Markt	12	13.39702460	52.51540230	\N	2.00	eur	880000.00
+469847	sell	apartment	10117	Berlin	Wilhelmstraße	\N	13.38184110	52.51446820	1978	2.50	eur	260500.00
+457934	sell	apartment	10117	Berlin	Mohrenstraße	67	13.38404300	52.51222490	1992	3.00	eur	500000.00
+461666	sell	apartment	10117	Berlin	Am Zirkus	18	13.38578790	52.52264560	2014	2.00	eur	550000.00
+470058	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	499999.00
+463078	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1892	4.00	eur	1975000.00
+5398580	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	0.00
+5398364	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	175000.00
+5398395	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	3.00	eur	318690.00
+5398353	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1995	2.00	eur	142780.00
+5398398	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	4.00	eur	399120.00
+5398348	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1920	3.00	eur	219827.00
+5398339	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	175000.00
+5398355	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	0.00
+5398411	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	4.00	eur	457880.00
+5398380	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	2.00	eur	135000.00
+5398329	sell	apartment	10247	Berlin	Rigaer Straße	66	13.46900780	52.51580010	1910	1.50	eur	96900.00
+5398425	sell	apartment	10247	Berlin	Zellestraße	\N	13.45968560	52.51856210	\N	1.00	eur	40000.00
+5398390	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	152500.00
+5398417	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	5.00	eur	499150.00
+5398391	sell	apartment	10249	Berlin	Ebertystraße	31	13.45423620	52.52237090	1910	1.00	eur	74900.00
+5398375	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	290000.00
+353162	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	172000.00
+5427886	sell	apartment	10553	Berlin	Kaiserin-Augusta-Allee	8	13.32496260	52.52539560	1995	3.00	eur	210000.00
+5398452	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1896	3.00	eur	239000.00
+328185	sell	apartment	10589	Berlin	\N	\N	13.30540420	52.52648410	1900	3.00	eur	207000.00
+5398472	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	681072.00
+324570	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	271143.00
+5398493	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	194034.00
+5444504	sell	apartment	10715	Berlin	Berliner Straße	17	13.32833740	52.48697830	1910	3.50	eur	299000.00
+5398445	sell	apartment	10317	Berlin	Hauptstraße	5	13.47664410	52.49968620	1999	3.00	eur	243600.00
+5398488	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	140217.00
+5398388	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	140217.00
+5515948	sell	single_family_house	13089	Berlin	\N	\N	13.45098730	52.56764050	1999	3.00	eur	275000.00
+5398431	sell	apartment	10317	Berlin	Kernhofer Straße	1	13.47792670	52.50446620	1900	3.00	eur	139000.00
+5398466	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	140217.00
+5398458	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	116160.00
+5398435	sell	apartment	10317	Berlin	Skandinavische Straße	\N	13.50634630	52.51217410	1930	1.00	eur	100322.00
+5398394	sell	apartment	10317	Berlin	Emanuelstraße	13	13.49082180	52.50200900	1900	2.00	eur	87000.00
+5398448	sell	apartment	10317	Berlin	Egmontstraße	3	13.50376490	52.51160360	1930	2.50	eur	146865.00
+5398473	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	2.00	eur	116094.00
+5398487	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	160755.00
+5398378	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	160755.00
+5398483	sell	penthouse	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	735000.00
+5398385	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	116160.00
+5398465	sell	apartment	10243	Berlin	Lange Straße	74	13.43320040	52.51281690	1958	2.00	eur	264200.00
+396994	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	7.00	eur	950000.00
+396967	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	1.00	eur	170000.00
+5398561	sell	apartment	10245	Berlin	Kopernikusstraße	30	13.45242690	52.51071950	1928	2.00	eur	320000.00
+5398416	sell	apartment	10243	Berlin	Warschauer Straße	65	13.45224960	52.51082560	1929	3.00	eur	595000.00
+5398437	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1904	2.00	eur	139000.00
+5398470	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	297675.00
+5398444	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	352000.00
+5398441	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	265530.00
+332664	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	170000.00
+5398499	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	203719.00
+5398447	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	321300.00
+5398515	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	0.00	eur	383100.00
+5398492	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	\N	0.00	eur	129439.00
+349332	sell	penthouse	10247	Berlin	\N	\N	13.46501361	52.51604144	2013	3.50	eur	595000.00
+5398440	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	346000.00
+5398567	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	189000.00
+5398467	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	595000.00
+317884	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2014	4.00	eur	287000.00
+5398480	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	287000.00
+349918	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	5.00	eur	617500.00
+5398676	sell	apartment_maisonette	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	4.00	eur	320300.00
+5396098	sell	apartment	10117	Berlin	Seydelstraße	24	13.40401250	52.50958580	\N	8.00	eur	750000.00
+5396279	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	400000.00
+5398495	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	176000.00
+5398681	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	125000.00
+5398293	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	1.00	eur	43000.00
+5398731	sell	apartment	10247	Berlin	Rigaer Straße	22	13.45958850	52.51723960	\N	2.00	eur	125058.00
+5398509	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	\N	4.00	eur	83000.00
+5398529	sell	apartment	10317	Berlin	Lückstraße	74-76	13.48605000	52.50284600	\N	3.00	eur	321300.00
+5398514	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	\N	3.00	eur	72000.00
+5398522	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	72000.00
+5398534	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	112955.00
+5398494	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	\N	0.00	eur	119231.00
+5398570	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	\N	4.00	eur	83000.00
+5398575	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	\N	2.00	eur	60000.00
+5398559	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	140217.00
+5398568	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	\N	3.00	eur	72000.00
+5398501	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1929	3.00	eur	369941.00
+5398538	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	160755.00
+5449249	sell	apartment	10829	Berlin	Gustav-Müller-Platz	1	13.36183090	52.48347930	\N	2.00	eur	149435.00
+5398648	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1957	2.50	eur	92000.00
+5398542	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	470000.00
+5449305	sell	apartment	10829	Berlin	Monumentenstraße	\N	13.36877720	52.48824100	1900	1.00	eur	42000.00
+5398625	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1957	2.50	eur	92000.00
+5398508	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	617193.00
+5398656	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	447780.00
+5398651	sell	apartment	10115	Berlin	Brunnenstraße	43	13.39740930	52.53687260	\N	10.00	eur	229000.00
+5398604	sell	apartment	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	1.00	eur	170000.00
+5398519	sell	apartment	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	4.00	eur	750000.00
+5398539	sell	penthouse	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	668304.00
+356282	sell	apartment	10115	Berlin	Tieckstraße	29	13.38874140	52.52965070	1910	5.00	eur	595000.00
+5398660	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	560000.00
+5398525	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	598000.00
+5398662	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1969	1.00	eur	120000.00
+5398599	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	553284.00
+5413133	sell	apartment	10247	Berlin	Proskauer Straße	35	13.46037230	52.51622070	1896	8.00	eur	185000.00
+5398537	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	243651.00
+326809	sell	apartment	10405	Berlin	Prenzlauer Allee	36	13.42246660	52.53463440	1900	4.00	eur	239500.00
+5398626	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	482652.00
+5398507	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45714790	52.52465400	2002	2.00	eur	119000.00
+5398603	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	848595.00
+5398621	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	264150.00
+5398609	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	216603.00
+5398595	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	274050.00
+5398449	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	\N	3.00	eur	128000.00
+5398615	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	529638.00
+5398644	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	222298.00
+378535	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2013	3.00	eur	295000.00
+376652	sell	penthouse	10969	Berlin	Alte Jakobstraße	48	13.40600720	52.50846790	2015	2.00	eur	499000.00
+5414809	sell	apartment	10247	Berlin	Weserstraße	36	13.46830620	52.50912880	1900	2.00	eur	156000.00
+5398605	sell	apartment	10179	Berlin	Alte Jakobstraße	77	13.40859750	52.51064270	1997	1.00	eur	125000.00
+5398659	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	2.00	eur	362000.00
+5398583	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1971	1.00	eur	133000.00
+5398663	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	2.00	eur	470000.00
+5398672	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	2.00	eur	470000.00
+5398526	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1984	1.00	eur	99000.00
+5398545	sell	apartment	10179	Berlin	Alte Jakobstraße	51	13.40611040	52.50871550	\N	3.00	eur	459000.00
+360638	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	3.00	eur	390000.00
+5398577	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1961	4.50	eur	319000.00
+5398614	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	360000.00
+471885	sell	villa	10117	Berlin	\N	\N	13.38532280	52.52362850	2009	7.00	eur	950000.00
+5398630	sell	apartment_roof_storey	10117	Berlin	\N	\N	13.39067250	52.52272780	1770	3.00	eur	\N
+5398571	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	304000.00
+5398634	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	\N
+5398632	sell	apartment	10117	Berlin	Leipziger Platz	14	13.37884210	52.51042140	\N	3.00	eur	\N
+5398637	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1999	3.00	eur	\N
+5398655	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1999	3.00	eur	\N
+5398658	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1999	3.00	eur	\N
+5398543	sell	apartment	10117	Berlin	Schumannstraße	7	13.38186950	52.52353870	\N	2.00	eur	490000.00
+5398699	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	175000.00
+5398611	sell	apartment	10117	Berlin	Mohrenstraße	1	13.38555270	52.51079120	2002	4.00	eur	1068535.00
+5398597	sell	apartment	10243	Berlin	Koppenstraße	82	13.43399800	52.51338830	1958	2.00	eur	257800.00
+5398689	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	299000.00
+398564	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	2.00	eur	210000.00
+5398579	sell	apartment	10243	Berlin	Warschauer Straße	65	13.45224960	52.51082560	1928	2.00	eur	305000.00
+5398710	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1957	4.00	eur	190000.00
+5398619	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	2.00	eur	285000.00
+5398590	sell	apartment	10243	Berlin	Kadiner Straße	12	13.44972610	52.51333970	1955	2.00	eur	210000.00
+5398702	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	2.00	eur	278000.00
+5398647	sell	apartment	10243	Berlin	Koppenstraße	85	13.43374290	52.51310020	1958	2.00	eur	189600.00
+5398606	sell	apartment	10243	Berlin	Am Comeniusplatz	\N	13.44770270	52.51213780	1957	4.00	eur	185000.00
+5398650	sell	apartment	10243	Berlin	Lange Straße	74	13.43320040	52.51281690	1958	2.00	eur	155000.00
+5398596	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1910	0.00	eur	72000.00
+5398553	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	60000.00
+5398585	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	1910	4.00	eur	83000.00
+5398624	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	376800.00
+5398649	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	3.00	eur	183626.00
+5398586	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	1910	3.00	eur	72000.00
+5398657	sell	apartment	10317	Berlin	Skandinavische Straße	\N	13.50634630	52.51217410	1930	1.00	eur	100873.00
+5398592	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1910	0.00	eur	60000.00
+5398622	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	3.00	eur	82000.00
+5398610	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1910	0.00	eur	79000.00
+5398646	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	2.00	eur	112890.00
+5398360	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	77000.00
+5398629	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	2.00	eur	137815.00
+5398730	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	240000.00
+5398788	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	182774.00
+5398746	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	395000.00
+5398631	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	344813.00
+5398717	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	195000.00
+5398712	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	238980.00
+5398714	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	345000.00
+5398722	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	193630.00
+5398739	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	2.00	eur	300000.00
+5398700	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1904	2.00	eur	188000.00
+5398708	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1986	3.00	eur	90000.00
+5398745	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	141600.00
+5398742	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1920	3.00	eur	130000.00
+5398727	sell	apartment	10317	Berlin	Skandinavische Straße	3	13.50305480	52.51170310	1930	1.00	eur	100873.00
+5398753	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	2.00	eur	276000.00
+5398668	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	3.00	eur	160755.00
+5398685	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	276000.00
+5398738	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	345300.00
+5398724	sell	single_family_house	10315	Berlin	Einbecker Straße	76-78	13.50801000	52.50816000	\N	8.00	eur	349000.00
+5398770	sell	apartment	10317	Berlin	Lückstraße	75	13.48604440	52.50280380	\N	3.00	eur	230700.00
+5398734	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	344000.00
+5398703	sell	penthouse	10179	Berlin	Alte Jakobstraße	48	13.40549270	52.50834140	\N	2.00	eur	499000.00
+5459049	sell	apartment	10999	Berlin	Forster Straße	55	13.43424072	52.49578805	1900	8.00	eur	440440.00
+5398692	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	2.00	eur	344000.00
+5398737	sell	penthouse	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	985000.00
+381845	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	5.00	eur	595000.00
+344308	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	2013	4.00	eur	1360000.00
+5398777	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	395000.00
+5398612	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	672000.00
+5398679	sell	apartment_roof_storey	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	985000.00
+5398696	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	597000.00
+5398743	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1932	4.00	eur	1450000.00
+5398747	sell	apartment	10969	Berlin	Alte Jakobstraße	48	13.40600720	52.50846790	\N	4.50	eur	772000.00
+5398866	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	439000.00
+384611	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	2015	3.00	eur	339000.00
+5398838	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	255000.00
+5398707	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1999	4.00	eur	\N
+5398711	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1999	4.00	eur	\N
+5398769	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1999	4.00	eur	\N
+5398772	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	\N
+5398733	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	6.00	eur	640000.00
+5398787	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	\N
+5398789	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	\N
+5398791	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	\N
+5398773	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	3.00	eur	425000.00
+5398683	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1999	4.00	eur	325000.00
+5398826	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	\N
+5398716	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2010	3.00	eur	998000.00
+5398883	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	239000.00
+325220	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1899	3.00	eur	120000.00
+5398783	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	151489.00
+5398808	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	367981.00
+347415	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	631300.00
+5398804	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	281641.00
+5398751	sell	apartment	10249	Berlin	Ebertystraße	\N	13.45287970	52.52414120	\N	2.00	eur	95000.00
+325194	sell	apartment	10249	Berlin	Friedenstraße	56	13.43817060	52.51948300	\N	3.00	eur	399000.00
+5398813	sell	apartment	10249	Berlin	Mühsamstraße	64	13.45315650	52.52072730	1900	2.00	eur	345500.00
+5398868	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	377950.00
+5398803	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	490000.00
+5398784	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	698000.00
+5398779	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	229000.00
+5398732	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	488560.00
+5398786	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	695000.00
+5398792	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	545000.00
+5398796	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	720000.00
+5398721	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1970	2.00	eur	224000.00
+5398812	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	1.00	eur	193700.00
+5398755	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	495704.00
+5398750	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	2.00	eur	197999.00
+5398790	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	1600000.00
+5398725	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2010	3.00	eur	495000.00
+5398760	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	1.00	eur	100000.00
+5398741	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	449829.00
+5398759	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	369985.00
+401522	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2015	2.00	eur	485000.00
+399183	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	1.00	eur	205000.00
+307095	sell	apartment	10243	Berlin	Marchlewskistraße	73	13.44711280	52.51099270	1996	2.00	eur	199000.00
+5398795	sell	apartment	10243	Berlin	Lange Straße	74	13.43320040	52.51281690	1958	2.00	eur	183400.00
+5398846	sell	apartment	10243	Berlin	Koppenstraße	85	13.43374290	52.51310020	1958	2.00	eur	249600.00
+387150	sell	apartment	10243	Berlin	Gubener Straße	14	13.44703180	52.51362240	1955	2.00	eur	275600.00
+393256	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1955	1.00	eur	192000.00
+319775	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1956	2.00	eur	179500.00
+5398856	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	562500.00
+5398962	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	499000.00
+5398849	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	165000.00
+5398824	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	1900	2.00	eur	98000.00
+5398862	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	116909.00
+5398774	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	316000.00
+5398794	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	176000.00
+5398964	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	129000.00
+317670	sell	apartment	10247	Berlin	Kinzigstraße	13-15	13.46590130	52.51349650	2014	3.00	eur	314800.00
+5398807	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	435822.00
+5398744	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	149000.00
+5398785	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	562500.00
+317038	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1904	1.00	eur	40000.00
+5398874	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	198000.00
+5398780	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	6.00	eur	496900.00
+5398870	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	69000.00
+5398848	sell	apartment	10317	Berlin	Skandinavische Straße	\N	13.50634630	52.51217410	\N	0.00	eur	165071.00
+5398880	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	58000.00
+5398833	sell	apartment	10317	Berlin	Skandinavische Straße	\N	13.50634630	52.51217410	\N	0.00	eur	140131.00
+5398809	sell	apartment_roof_storey	10317	Berlin	Irenenstraße	\N	13.49997980	52.50933170	\N	2.00	eur	69000.00
+5398841	sell	apartment	10317	Berlin	Skandinavische Straße	\N	13.50634630	52.51217410	\N	0.00	eur	188114.00
+5398875	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	3.00	eur	191295.00
+5398831	sell	apartment	10317	Berlin	Skandinavische Straße	\N	13.50634630	52.51217410	\N	0.00	eur	116160.00
+5398894	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	1.00	eur	89800.00
+5398896	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	6.00	eur	349000.00
+5398890	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	2.00	eur	160912.00
+5398836	sell	apartment	10317	Berlin	Skandinavische Straße	\N	13.50634630	52.51217410	\N	0.00	eur	97554.00
+5398882	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	4.00	eur	440840.00
+5398815	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	344595.00
+5398869	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	352000.00
+5398907	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	159000.00
+373304	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	189000.00
+5398863	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	265530.00
+5398793	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	300295.00
+5398903	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	177450.00
+5398857	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	297675.00
+5398843	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	196388.00
+5398850	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	176755.00
+5398893	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	189000.00
+5398872	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	4.00	eur	533900.00
+5398830	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	1.00	eur	275200.00
+5398900	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	1.00	eur	329000.00
+5398897	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	7.00	eur	827258.00
+5398910	sell	multi_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	40000.00
+5398821	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	1.00	eur	239700.00
+5398873	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	4.00	eur	522800.00
+5398817	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	1.00	eur	222300.00
+5398884	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	6.00	eur	760000.00
+5398842	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	419200.00
+5398832	sell	penthouse	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	2.00	eur	308500.00
+5398865	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	3.00	eur	515700.00
+5398892	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1970	2.00	eur	224000.00
+5398881	sell	apartment	10115	Berlin	Schwartzkopffstraße	15	13.37991817	52.53505670	1895	3.00	eur	349000.00
+5385806	sell	penthouse	10117	Berlin	Kleine Jägerstraße	\N	13.39892900	52.51313380	2007	5.00	eur	1500000.00
+5398834	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	3.00	eur	436800.00
+5398904	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	40000.00
+5551493	sell	apartment	13585	Berlin	\N	\N	13.20056770	52.54118310	1941	3.00	eur	88980.00
+485754	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	4.00	eur	2000000.00
+5398840	sell	apartment	10117	Berlin	Mohrenstraße	67	13.38404300	52.51222490	1989	3.00	eur	0.00
+494109	sell	apartment	10117	Berlin	Albrechtstraße	\N	13.38379290	52.52325720	2013	3.00	eur	1338000.00
+494972	sell	apartment	10117	Berlin	Leipziger Straße	44	13.39593080	52.51010570	1973	3.00	eur	480000.00
+484350	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	1200000.00
+484953	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	4.00	eur	710000.00
+496180	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	795000.00
+5397108	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	791000.00
+5397278	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1900	2.00	eur	390569.00
+5398899	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	457000.00
+381030	sell	penthouse	10179	Berlin	Michaelkirchstraße	16	13.42211000	52.51072000	2015	5.00	eur	1082000.00
+374726	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1898	1.00	eur	129000.00
+318596	sell	apartment	10179	Berlin	Neue Grünstraße	19	13.40665050	52.51053010	1900	3.00	eur	360039.00
+5399003	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	350000.00
+5398932	sell	apartment	10969	Berlin	Alte Jakobstraße	48	13.40600720	52.50846790	\N	3.00	eur	407000.00
+5398920	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	440000.00
+5398988	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	620000.00
+5398971	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	279000.00
+5399014	sell	apartment	10179	Berlin	Alte Jakobstraße	77	13.40836930	52.51087090	1997	3.00	eur	265000.00
+5398901	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	764000.00
+5399065	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	1090000.00
+385762	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	2015	2.00	eur	685000.00
+5398905	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	4.00	eur	614000.00
+5398955	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	835000.00
+403551	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1953	3.00	eur	366000.00
+5398925	sell	apartment	10243	Berlin	Mühlenstraße	60	13.43707840	52.50611340	\N	2.00	eur	540000.00
+403789	sell	apartment	10243	Berlin	\N	\N	13.43529150	52.50957840	1958	2.00	eur	204200.00
+5399012	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1950	2.00	eur	176000.00
+5399078	sell	apartment	10243	Berlin	Fürstenwalder Straße	16	13.43173190	52.51906690	1966	3.50	eur	185000.00
+403836	sell	apartment	10243	Berlin	\N	\N	13.43529150	52.50957840	1958	4.50	eur	835900.00
+405558	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1958	3.00	eur	256400.00
+404114	sell	apartment	10243	Berlin	Koppenstraße	85	13.43374290	52.51310020	1958	2.00	eur	249600.00
+406400	sell	apartment	10243	Berlin	Am Comeniusplatz	6	13.44657660	52.51196665	1957	2.00	eur	170000.00
+5398973	sell	multi_family_house	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	0.00	eur	4600000.00
+5398912	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	140000.00
+5399043	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	175000.00
+5427599	sell	apartment	10587	Berlin	\N	\N	13.30688680	52.51741170	\N	3.00	eur	332000.00
+5427608	sell	apartment	10587	Berlin	\N	\N	13.30688680	52.51741170	\N	3.00	eur	350000.00
+5398957	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	185500.00
+317013	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	305000.00
+5399063	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1969	1.00	eur	120000.00
+5398919	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	292500.00
+5399020	sell	apartment	10317	Berlin	Kernhofer Straße	\N	13.47730380	52.50387890	1900	3.00	eur	169900.00
+5398926	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	302100.00
+5398909	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	418977.00
+5444222	sell	apartment	10719	Berlin	\N	\N	13.32569543	52.49919989	1960	3.00	eur	425000.00
+5398958	sell	apartment	10317	Berlin	Wönnichstraße	\N	13.50028060	52.51001100	1918	1.00	eur	58500.00
+5398924	sell	mid_terrace_house	10317	Berlin	\N	\N	13.48610820	52.49214840	2003	6.00	eur	325000.00
+5399011	sell	apartment	10317	Berlin	Hauptstraße	4	13.47585180	52.49981000	1999	2.00	eur	169600.00
+5398994	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	3.00	eur	135000.00
+5398914	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	62100.00
+5398949	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	133423.00
+5399022	sell	apartment	10317	Berlin	Irenenstraße	\N	13.49997980	52.50933170	1900	2.00	eur	191500.00
+5398917	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	4.00	eur	440840.00
+5399025	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	210000.00
+5398931	sell	apartment	10317	Berlin	Archibaldweg	2	13.48174090	52.50254790	\N	2.00	eur	180083.00
+5398956	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2008	3.00	eur	499000.00
+5398945	sell	apartment	10315	Berlin	Einbecker Straße	55	13.50614100	52.50997610	\N	2.00	eur	142900.00
+5398952	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1930	4.00	eur	229000.00
+5398930	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	499000.00
+5398998	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1906	3.00	eur	350000.00
+5399040	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	352000.00
+361882	sell	apartment	10245	Berlin	Simon-Dach-Straße	30	13.45587910	52.50885990	2013	3.00	eur	296700.00
+5398939	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	265530.00
+5398928	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	698500.00
+5398922	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1897	4.00	eur	591000.00
+5399005	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1897	3.00	eur	229000.00
+5399037	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	265530.00
+5399042	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	305333.00
+5398929	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1897	3.00	eur	200000.00
+5398936	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	193630.00
+5398944	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	135000.00
+5398938	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	825000.00
+5398961	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	808000.00
+5419542	sell	apartment	10557	Berlin	Spenerstraße	29	13.35346818	52.52190925	1958	1.00	eur	57000.00
+5398997	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	2.00	eur	270000.00
+5419503	sell	apartment	10245	Berlin	Dora-Benjamin-Park	15	13.46617460	52.49532810	\N	4.00	eur	705000.00
+5398963	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	460000.00
+5398999	sell	apartment	10115	Berlin	Brunnenstraße	38	13.39791570	52.53608900	\N	2.00	eur	99000.00
+5399015	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	580500.00
+5398991	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	315913.00
+5399009	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	1.00	eur	110000.00
+5398959	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	361284.00
+5398934	sell	apartment	10119	Berlin	Gipsstraße	16	13.40256000	52.52630000	1997	1.00	eur	245000.00
+5398995	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	0.00	eur	454300.00
+5399013	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2009	3.00	eur	395000.00
+5398979	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	0.00	eur	383000.00
+5399068	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	2.00	eur	155100.00
+5399070	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	0.00	eur	178900.00
+5399084	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	0.00	eur	167600.00
+5399032	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	160000.00
+5399026	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	3.00	eur	270000.00
+5399075	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	2.00	eur	165900.00
+5398972	sell	apartment	10247	Berlin	Oderstraße	20	13.46802610	52.51108430	1920	2.00	eur	130000.00
+5399087	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	0.00	eur	158400.00
+5399090	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	3.00	eur	320300.00
+5399050	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	1.00	eur	51000.00
+497117	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1974	3.00	eur	345000.00
+5399217	sell	apartment	10117	Berlin	Leipziger Straße	43	13.39560750	52.51046420	1973	3.00	eur	268000.00
+5399052	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1880	3.00	eur	135000.00
+5399304	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	1999	4.00	eur	298000.00
+5399183	sell	apartment	10117	Berlin	Reinhardtstraße	35	13.38048440	52.52262550	1830	2.00	eur	126000.00
+500439	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1900	2.00	eur	300000.00
+502119	sell	apartment	10117	Berlin	Leipziger Straße	47	13.39763660	52.51020540	1973	2.00	eur	145000.00
+502849	sell	apartment	10117	Berlin	Seydelstraße	6	13.40268520	52.50992350	1999	3.00	eur	525000.00
+5399222	sell	apartment_maisonette	10117	Berlin	\N	\N	13.38532280	52.52362850	1986	7.00	eur	1500000.00
+505339	sell	apartment	10117	Berlin	Kronenstraße	4	13.38782670	52.51096890	2000	2.00	eur	630000.00
+5399185	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	2003	6.00	eur	0.00
+5399033	sell	apartment	10115	Berlin	Schwartzkopffstraße	15	13.37991817	52.53505670	2007	3.00	eur	399900.00
+5399080	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	368650.00
+5399076	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	315913.00
+5399028	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2007	3.00	eur	390000.00
+5399176	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	2.00	eur	153048.00
+5399163	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1903	14.00	eur	1098000.00
+5399086	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	430021.00
+5399179	sell	apartment	10115	Berlin	Chausseestraße	101	13.38053720	52.53238840	\N	1.00	eur	117800.00
+5399184	sell	apartment	10115	Berlin	Schlegelstraße	21	13.38710410	52.53041340	\N	2.50	eur	275000.00
+5399126	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	643000.00
+5399082	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	430021.00
+5399092	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	924213.00
+5399193	sell	apartment	10115	Berlin	Scharnhorststraße	28	13.37004980	52.53326390	1998	2.00	eur	180000.00
+5399079	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	361284.00
+5399154	sell	apartment	10115	Berlin	Boyenstraße	43	13.37249580	52.53747715	1998	1.00	eur	95000.00
+5399146	sell	penthouse	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	924213.00
+5399166	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	169900.00
+5399083	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	368650.00
+5399035	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	0.00
+5399051	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1880	0.00	eur	135000.00
+5399056	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	525000.00
+5399220	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	\N
+5399059	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	0.00
+5399054	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	6.00	eur	327000.00
+5399122	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	3.00	eur	184800.00
+5399048	sell	apartment	10317	Berlin	Hildegard-Marcusson-Straße	\N	13.48470050	52.49566420	1880	3.00	eur	135000.00
+5399073	sell	apartment	10317	Berlin	Hauptstraße	53	13.48278030	52.49857610	1938	4.00	eur	350000.00
+5399145	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	6.00	eur	349990.00
+5399124	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	94400.00
+5399061	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	2.00	eur	156022.00
+5399089	sell	apartment	10317	Berlin	Hauptstraße	57	13.48192430	52.49911970	1938	2.00	eur	150000.00
+5399101	sell	apartment	10317	Berlin	Hauptstraße	55	13.48231740	52.49882340	1938	2.00	eur	150000.00
+5399115	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	91550.00
+5399141	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	177039.00
+5399173	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	344264.00
+5399238	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	391000.00
+5399168	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	194513.00
+5399132	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	243373.00
+5399049	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	364764.00
+5399064	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	455000.00
+5399148	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	251250.00
+5399085	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	409800.00
+5399108	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	360500.00
+5399125	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	352000.00
+5399158	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	363122.00
+5551504	sell	apartment	13585	Berlin	\N	\N	13.20056770	52.54118310	1911	2.00	eur	96000.00
+5399100	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	585000.00
+5399211	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	263150.00
+5399200	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	278630.00
+5399202	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	528638.00
+5399170	sell	apartment	10249	Berlin	Kochhannstraße	28	13.45088660	52.52489570	2000	4.00	eur	585000.00
+5399096	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	4.00	eur	250000.00
+5399221	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	115000.00
+5399156	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	587600.00
+5399165	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	4.00	eur	455000.00
+5399150	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	150000.00
+5399069	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1910	2.00	eur	380000.00
+349220	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	3.00	eur	333000.00
+5399103	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	130000.00
+5399161	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	273050.00
+5399196	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44609000	52.52144000	\N	3.00	eur	585000.00
+5399129	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	152000.00
+348100	sell	apartment_maisonette	10179	Berlin	Michaelkirchstraße	16	13.42208520	52.51071940	2015	3.00	eur	379000.00
+5399149	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	0.00
+387991	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2011	3.00	eur	499000.00
+5399240	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	0.00
+5399098	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	380000.00
+5399088	sell	apartment	10179	Berlin	Alte Jakobstraße	49	13.40580150	52.50852840	\N	3.00	eur	544000.00
+5399113	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	5.00	eur	1119000.00
+5399117	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	229000.00
+5399164	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	299000.00
+5399077	sell	apartment	10179	Berlin	Alte Jakobstraße	51	13.40611040	52.50871550	\N	3.00	eur	421000.00
+407203	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	2001	3.00	eur	300000.00
+5399210	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1903	2.00	eur	169000.00
+5399095	sell	apartment	10247	Berlin	Finowstraße	38	13.46960530	52.51359260	\N	1.00	eur	250500.00
+5399177	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	2.00	eur	130000.00
+5385343	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	347999.00
+5399351	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2000	4.00	eur	585000.00
+5399175	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1952	2.00	eur	130000.00
+5399350	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	220000.00
+5399107	sell	apartment	10247	Berlin	Kinzigstraße	13/15	13.46590130	52.51349650	\N	5.00	eur	518750.00
+5399155	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	389000.00
+5399104	sell	apartment	10247	Berlin	Kinzigstraße	13/15	13.46590130	52.51349650	\N	3.00	eur	315000.00
+5399328	sell	apartment_roof_storey	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.50	eur	652500.00
+5399159	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1899	3.00	eur	80000.00
+5399152	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	395000.00
+5405317	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	560000.00
+5399331	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	379000.00
+5399118	sell	apartment	10247	Berlin	Dolziger Straße	25-26	13.46939030	52.51846300	\N	2.00	eur	163500.00
+5399322	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	169000.00
+5399110	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	130000.00
+5399336	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	1.00	eur	53500.00
+5399337	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	2.00	eur	155100.00
+5399315	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1920	1.50	eur	119000.00
+5399306	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	60900.00
+5399247	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	218000.00
+5399208	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	208000.00
+5399186	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	170400.00
+5399251	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	189000.00
+5399189	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	95000.00
+5399225	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	3.00	eur	201300.00
+5399180	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	386300.00
+5398618	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	552200.00
+5399197	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	152500.00
+5399269	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	391000.00
+5399281	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	4.00	eur	588000.00
+5399294	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	346000.00
+5399219	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	2.00	eur	131600.00
+5399270	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	297675.00
+5399258	sell	apartment	10245	Berlin	Tunnelstraße	44	13.47966111	52.49151660	1988	2.00	eur	29000.00
+5399226	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	181796.00
+5399242	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	333574.00
+368264	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	2013	3.00	eur	330000.00
+5399274	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	265530.00
+5399292	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	698585.00
+5398504	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	256949.00
+5399287	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	5.00	eur	0.00
+5399253	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	583071.00
+5399279	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	0.00
+5397802	sell	penthouse	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	5.00	eur	925500.00
+5399234	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	341625.00
+5399363	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	84900.00
+5399248	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	84900.00
+5399203	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	315913.00
+5399195	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	135000.00
+5399206	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	361284.00
+5399214	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	430021.00
+5399257	sell	apartment	10115	Berlin	Linienstraße	158	13.39452160	52.52781640	1870	5.00	eur	1500000.00
+5399268	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	457746.00
+5399250	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	4.00	eur	499000.00
+5399352	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	385000.00
+5399223	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	523129.00
+5399262	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1870	5.00	eur	2000000.00
+5399237	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	723608.00
+5399229	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	643971.00
+5399246	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	567163.00
+5399364	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	561000.00
+5399318	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	650000.00
+5399236	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	310141.00
+5399265	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	151489.00
+5399310	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	1.00	eur	91200.00
+5399256	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	290966.00
+5399239	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	680072.00
+5399278	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	232805.00
+5399289	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	310141.00
+5399296	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	552284.00
+5399271	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	281641.00
+5399345	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	680072.00
+5399299	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	585296.00
+5399332	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	366971.00
+5399300	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	\N	3.00	eur	486000.00
+5399373	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	221000.00
+5399276	sell	apartment	10179	Berlin	Alte Jakobstraße	102	13.40469600	52.50808900	\N	3.00	eur	495000.00
+5399312	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	370000.00
+5399264	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	2015	1.00	eur	164759.00
+5399371	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	257000.00
+5399365	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	345000.00
+403106	sell	apartment	10243	Berlin	\N	\N	13.43529150	52.50957840	1958	4.50	eur	835900.00
+382587	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1910	3.00	eur	199000.00
+5399502	sell	apartment	10243	Berlin	Straße der Pariser Kommune	\N	13.43885010	52.51270990	\N	3.00	eur	189000.00
+5399509	sell	apartment_maisonette	10243	Berlin	\N	\N	13.43293380	52.51072750	2005	3.00	eur	\N
+5399436	sell	apartment	10243	Berlin	Karl-Marx-Allee	125	13.44815040	52.51693340	1952	1.00	eur	110000.00
+5399610	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	361284.00
+5399592	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	389000.00
+410883	sell	apartment	10243	Berlin	Koppenstraße	86	13.43361680	52.51295790	1958	2.00	eur	170200.00
+5399324	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	5.00	eur	346000.00
+5399329	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	5.00	eur	349000.00
+5399330	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	5.00	eur	346000.00
+5399308	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	108000.00
+5399321	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	3.00	eur	196400.00
+5399297	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	373000.00
+5399316	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	211700.00
+5399340	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	3.00	eur	201300.00
+5398589	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	1910	2.00	eur	77000.00
+5399334	sell	apartment_roof_storey	10317	Berlin	Skandinavische Straße	3	13.50305480	52.51170310	\N	3.00	eur	149000.00
+5399303	sell	apartment	10317	Berlin	Wönnichstraße	\N	13.50028060	52.51001100	1959	2.00	eur	64000.00
+5399339	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	243700.00
+5399367	sell	apartment	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	3.00	eur	403000.00
+508300	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1968	3.00	eur	950000.00
+5399323	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	\N
+511637	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1882	6.00	eur	1440000.00
+5443814	sell	apartment	10707	Berlin	\N	\N	13.31477920	52.49502430	\N	3.00	eur	393536.00
+513401	sell	apartment	10117	Berlin	Schadowstraße	3	13.38383800	52.51819710	2015	2.00	eur	687400.00
+510386	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1903	5.00	eur	1198000.00
+5399244	sell	apartment	10117	Berlin	Neustädtische Kirchstraße	\N	13.38539480	52.51910140	\N	4.00	eur	298000.00
+531665	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	800000.00
+514820	sell	apartment	10117	Berlin	Leipziger Straße	47	13.39763660	52.51020540	1973	4.00	eur	410000.00
+5399431	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	4.00	eur	\N
+520321	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1910	6.00	eur	1795000.00
+5399451	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	165000.00
+5399440	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	119000.00
+5399401	sell	penthouse	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.50	eur	652500.00
+5399388	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	439000.00
+5399460	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	296780.00
+5399465	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	149000.00
+5399498	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2009	3.00	eur	369000.00
+5399495	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.50	eur	245000.00
+5399608	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	315913.00
+5399399	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1930	2.00	eur	70000.00
+5399361	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	289000.00
+5399383	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	151489.00
+5399450	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	493753.00
+5399392	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	550785.00
+5399397	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	231167.00
+5399362	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	290966.00
+5399456	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	552284.00
+5399400	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	901139.00
+5399425	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	151489.00
+5399360	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	619000.00
+5399445	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	552284.00
+5399404	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	847595.00
+5399423	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	366971.00
+5399422	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	310141.00
+5399434	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	281641.00
+5399454	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	595367.00
+5399576	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	200330.00
+375613	sell	apartment	10245	Berlin	Gärtnerstraße	15	13.46127630	52.51119290	1910	1.00	eur	95000.00
+5399580	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	280000.00
+5399555	sell	apartment	10245	Berlin	Libauer Straße	\N	13.45277240	52.50838280	\N	2.00	eur	91550.00
+5399682	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	352000.00
+5399381	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	4.00	eur	285000.00
+5399566	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	265530.00
+5399678	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	265530.00
+5399547	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	572316.00
+5399376	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	289670.00
+5399485	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	432000.00
+5399468	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	150000.00
+5399499	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	523129.00
+5399497	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	361284.00
+5399403	sell	penthouse	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	2.00	eur	755989.00
+5399385	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	281804.00
+5399491	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	656000.00
+5399493	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	315913.00
+5399476	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	255000.00
+5399398	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	853522.00
+5399503	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	567163.00
+5399375	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	4.00	eur	590000.00
+5399474	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	243000.00
+5399470	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	208000.00
+5399507	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	643971.00
+5399402	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	77000.00
+5399384	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	392000.00
+5399437	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	1910	2.00	eur	79000.00
+5399433	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	79000.00
+5399409	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	0.00
+5399463	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	215603.00
+5399391	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	6.00	eur	287000.00
+5399418	sell	apartment_roof_storey	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	618000.00
+5399382	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	374000.00
+5399427	sell	apartment	10317	Berlin	Leopoldstraße	\N	13.48895840	52.50292600	1900	3.00	eur	200000.00
+5399387	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	0.00
+390123	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	2015	3.00	eur	579500.00
+591236	sell	apartment	13351	Berlin	\N	\N	13.33651382	52.55124720	1940	4.00	eur	300000.00
+5399519	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	345000.00
+388673	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	2014	4.00	eur	1250000.00
+5399413	sell	apartment	10179	Berlin	Wilhelmine-Gemberg-Weg	9	13.42391890	52.51080320	\N	6.00	eur	2100000.00
+385304	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2000	5.00	eur	1160000.00
+5399510	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	257000.00
+5399533	sell	penthouse	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	780000.00
+5399525	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2000	5.00	eur	1070000.00
+5399488	sell	apartment	10315	Berlin	Einbecker Straße	55	13.50614100	52.50997610	\N	2.00	eur	257500.00
+5399624	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	153000.00
+5399584	sell	apartment	10317	Berlin	Egmontstraße	3	13.50359760	52.51163800	1930	1.00	eur	93200.00
+5399581	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	174000.00
+5399609	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	270800.00
+5399561	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	134000.00
+5399480	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	3.00	eur	392000.00
+5399550	sell	apartment_maisonette	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	4.00	eur	421000.00
+5399546	sell	mid_terrace_house	10317	Berlin	Alice-und-Hella-Hirsch-Ring	\N	13.48247920	52.49688960	2009	5.00	eur	650000.00
+332131	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1930	4.00	eur	239500.00
+5399619	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	479600.00
+5399567	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	110000.00
+5399518	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	585296.00
+341622	sell	apartment	10247	Berlin	Eldenaer Straße	\N	13.45570130	52.52110260	\N	3.00	eur	303289.00
+5399429	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	290966.00
+5560925	sell	apartment	14050	Berlin	\N	\N	13.26912281	52.52017450	1959	2.00	eur	109000.00
+5399486	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	215603.00
+5399699	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2009	3.00	eur	799000.00
+5399481	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	552284.00
+5399511	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	375839.00
+5399504	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	637000.00
+5399483	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	367981.00
+354003	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	242651.00
+5399506	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	537132.00
+5399496	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	537132.00
+5399448	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	847595.00
+5399467	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	585296.00
+5399520	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	481652.00
+5399501	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	231167.00
+5399475	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	493753.00
+5399625	sell	apartment	10117	Berlin	Charlottenstraße	75	13.39181050	52.50934390	1997	2.00	eur	290000.00
+5399541	sell	apartment	10117	Berlin	Mittelstraße	\N	13.38463710	52.51778320	\N	4.00	eur	\N
+523209	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1997	1.00	eur	245000.00
+5399551	sell	single_family_house	10117	Berlin	\N	\N	13.38532280	52.52362850	1948	4.00	eur	\N
+5399558	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.50	eur	924462.00
+527833	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1973	4.00	eur	425000.00
+528794	sell	apartment	10117	Berlin	Behrenstraße	28	13.38984610	52.51559560	1999	1.00	eur	256000.00
+530383	sell	apartment	10117	Berlin	Leipziger Straße	43	13.39560750	52.51046420	1973	2.00	eur	130000.00
+5399478	sell	apartment_roof_storey	10117	Berlin	Mohrenstraße	69	13.38414290	52.51185330	1990	7.00	eur	1500000.00
+5399553	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.00	eur	680000.00
+528396	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1898	2.00	eur	460000.00
+457094	sell	apartment	12169	Berlin	Bergstraße	68	13.34031850	52.45887770	\N	1.00	eur	59500.00
+5399596	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	2.00	eur	419109.00
+5399512	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	356000.00
+5399598	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	3.00	eur	502920.00
+5399575	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	368650.00
+5399530	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	2.00	eur	482809.00
+5399593	sell	apartment	10115	Berlin	Chausseestraße	101	13.38053720	52.53238840	1900	1.00	eur	109500.00
+5399585	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	650496.00
+5399516	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1904	5.00	eur	595000.00
+5399578	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	430021.00
+5399565	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1996	1.50	eur	125000.00
+5399545	sell	apartment	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	1.00	eur	240000.00
+5399508	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	723608.00
+5399540	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	395000.00
+5399605	sell	apartment	10115	Berlin	Schwartzkopffstraße	15	13.37991817	52.53505670	\N	0.00	eur	399900.00
+5516271	sell	single_family_house	13089	Berlin	\N	\N	13.45098730	52.56764050	1995	4.00	eur	379900.00
+5399556	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	4.00	eur	679000.00
+5399559	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	599000.00
+5399590	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	3.00	eur	739000.00
+5399583	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	2.00	eur	459000.00
+5399577	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	\N	5.00	eur	1125000.00
+413729	sell	apartment	10243	Berlin	Karl-Marx-Allee	136	13.45148270	52.51581380	1952	3.00	eur	291000.00
+323508	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	2015	4.00	eur	297718.00
+352675	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	129000.00
+5399628	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1895	3.00	eur	368900.00
+5399635	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	6.00	eur	393000.00
+5399573	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	369000.00
+5399881	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.50	eur	198000.00
+5399840	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	123000.00
+5399548	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1915	2.00	eur	128299.00
+323032	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	117000.00
+5399884	sell	apartment	10247	Berlin	Frankfurter Allee	15	13.45770230	52.51595090	1954	4.00	eur	313425.00
+5399644	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2009	3.00	eur	369000.00
+320211	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1920	2.00	eur	128299.00
+5399878	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	39000.00
+415820	sell	apartment	10243	Berlin	Karl-Marx-Allee	136	13.45148270	52.51581380	1952	3.00	eur	320000.00
+5399677	sell	single_family_house	10243	Berlin	Marchlewskistraße	\N	13.44916410	52.50820800	\N	4.50	eur	199900.00
+5399683	sell	apartment	10243	Berlin	\N	\N	13.43293380	52.51072750	1900	3.00	eur	373000.00
+416691	sell	apartment	10243	Berlin	Karl-Marx-Allee	116	13.44708600	52.51619840	1950	4.00	eur	275000.00
+5427666	sell	apartment	10587	Berlin	\N	\N	13.30688680	52.51741170	1960	2.00	eur	130000.00
+358332	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	6.00	eur	1800000.00
+5399615	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	567163.00
+5399631	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	523129.00
+5399694	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	5.00	eur	560000.00
+5399612	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	523129.00
+5399641	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	349000.00
+5399638	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	361284.00
+5399670	sell	apartment	10115	Berlin	Gartenstraße	88	13.38851300	52.53254930	\N	2.00	eur	332400.00
+5399691	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	2.00	eur	288000.00
+5399623	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	567163.00
+5399733	sell	apartment	10115	Berlin	Boyenstraße	43	13.37249580	52.53747715	1996	2.00	eur	209500.00
+5399617	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	643971.00
+5551587	sell	apartment	13585	Berlin	\N	\N	13.20056770	52.54118310	\N	0.00	eur	268000.00
+5399656	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	349000.00
+5399636	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	3.00	eur	321000.00
+5399660	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1996	1.00	eur	129000.00
+5399649	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	345000.00
+5399674	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	399000.00
+5399655	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	115000.00
+5399651	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	98000.00
+5399695	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	151489.00
+5399658	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	225000.00
+5399689	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	310141.00
+5399704	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	587600.00
+5399675	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	493753.00
+5399616	sell	apartment	10249	Berlin	Kochhannstraße	28	13.45088660	52.52489570	1910	2.00	eur	145000.00
+5399622	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	91000.00
+5399698	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	552284.00
+5399665	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	215603.00
+367346	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2016	3.00	eur	486000.00
+5399755	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	0.00
+5399744	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	0.00
+392230	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2016	5.00	eur	655000.00
+390965	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	2015	2.00	eur	685000.00
+5399663	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	444000.00
+5399747	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	0.00
+5399739	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	0.00
+5399668	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	495000.00
+5399735	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	295000.00
+5399690	sell	apartment	10179	Berlin	Alte Jakobstraße	48-51	13.40549270	52.50834140	\N	5.00	eur	829000.00
+5399709	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	31000.00
+5399630	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	2.00	eur	134709.00
+5399648	sell	apartment	10317	Berlin	Lückstraße	\N	13.49517360	52.50049970	\N	3.00	eur	199320.00
+5399728	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	467000.00
+5399650	sell	apartment	10317	Berlin	Lückstraße	\N	13.49517360	52.50049970	\N	4.00	eur	340038.00
+5399705	sell	apartment	10317	Berlin	Emanuelstraße	\N	13.49121300	52.50248740	1905	1.00	eur	31000.00
+5399659	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	198800.00
+5399697	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	0.00
+5399693	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	0.00
+5399661	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	349000.00
+5399588	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	3.00	eur	161708.00
+5399702	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	40000.00
+330836	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2012	3.00	eur	152000.00
+5399730	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	193000.00
+532624	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	5.00	eur	1850000.00
+532893	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	650000.00
+531788	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	2014	3.00	eur	1050000.00
+5399719	sell	apartment	10117	Berlin	Charlottenstraße	57	13.39050860	52.51261330	1996	2.00	eur	157000.00
+5399861	sell	apartment	10117	Berlin	Glinkastraße	18	13.38627470	52.51429280	\N	2.00	eur	817000.00
+535145	sell	apartment	10117	Berlin	Taubenstraße	51	13.38629300	52.51286840	\N	1.00	eur	461000.00
+5399757	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	195200.00
+5399817	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	0.00
+5399717	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	6.00	eur	583000.00
+5399727	sell	apartment	10245	Berlin	Stralauer Allee	20	13.46119760	52.49867950	1907	3.00	eur	204500.00
+5399769	sell	apartment	10245	Berlin	Tunnelstraße	47-48	13.47939230	52.49212260	\N	3.00	eur	364500.00
+5399795	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1996	1.00	eur	72000.00
+5399711	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	355000.00
+335874	sell	apartment	10245	Berlin	Niemannstraße 6;	32	13.46050030	52.50704910	1900	3.00	eur	162000.00
+5399716	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	423000.00
+371831	sell	apartment	10245	Berlin	Holteistraße	12	13.46598160	52.50809730	1908	1.00	eur	89500.00
+5397126	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	2.00	eur	274000.00
+5399746	sell	apartment	10249	Berlin	Petersburger Straße	45	13.45095930	52.52221140	1907	3.00	eur	366993.00
+5399751	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	3.00	eur	349000.00
+326262	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	345000.00
+315230	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2000	2.00	eur	115700.00
+5399748	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	98000.00
+5399761	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	0.00	eur	137500.00
+5399797	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2000	4.00	eur	585000.00
+5399833	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	1910	2.00	eur	205000.00
+5399791	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	271000.00
+341531	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	34	13.44655400	52.52406200	1997	4.00	eur	254625.00
+5399713	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	537132.00
+5399836	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	34	13.44655400	52.52406200	1997	3.00	eur	182750.00
+5399843	sell	apartment	10249	Berlin	Landsberger Allee	48	13.44163000	52.52399000	\N	3.00	eur	319000.00
+5399710	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	585296.00
+5399756	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	8.00	eur	137500.00
+5477279	sell	apartment	12205	Berlin	\N	\N	13.29410051	52.43376045	1904	5.00	eur	249000.00
+5399782	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	3.00	eur	0.00
+5399778	sell	multi_family_house	10317	Berlin	Hauptstraße	\N	13.46850670	52.50245950	\N	0.00	eur	1625000.00
+5399732	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	311000.00
+5399815	sell	multi_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	0.00	eur	0.00
+5399829	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	70000.00
+5399892	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1903	2.00	eur	145000.00
+330094	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	2013	3.00	eur	260666.00
+5399824	sell	apartment	10317	Berlin	Egmontstraße	\N	13.50344550	52.51179360	1930	4.00	eur	219800.00
+5399749	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	375000.00
+5399894	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	5.00	eur	349000.00
+5399811	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	250000.00
+335920	sell	apartment	10317	Berlin	Kernhofer Straße	19	13.47718860	52.50331080	2015	4.00	eur	276000.00
+5399822	sell	apartment	10317	Berlin	Frankfurter Allee	\N	13.50366650	52.51082220	1920	1.00	eur	35000.00
+5399807	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	181000.00
+5399889	sell	apartment	10317	Berlin	Wönnichstraße	30	13.49882970	52.50792390	1930	5.00	eur	354100.00
+5399883	sell	apartment	10317	Berlin	Türrschmidtstraße	41	13.47838000	52.50300000	\N	1.00	eur	184000.00
+5385536	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	594500.00
+5399781	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.50	eur	924462.00
+5399772	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	567163.00
+5399771	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	523129.00
+5399770	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	491424.00
+5399783	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1904	5.00	eur	636000.00
+5399793	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	643971.00
+5399796	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	491424.00
+5399814	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	361284.00
+5399774	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	643971.00
+5399767	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	430021.00
+5399809	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	650496.00
+5399776	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	650496.00
+5399785	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1904	5.00	eur	660000.00
+5399743	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	204000.00
+5399740	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	4.00	eur	509500.00
+5399800	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	368650.00
+5399738	sell	apartment	10115	Berlin	Scharnhorststraße	28	13.37004980	52.53326390	1998	1.50	eur	150000.00
+5399806	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.50	eur	1430121.00
+5399792	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	0.00
+5399858	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	1250000.00
+5399775	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	5.00	eur	0.00
+5399841	sell	apartment	10179	Berlin	Michaelkirchstraße	16	13.42208520	52.51071940	\N	4.50	eur	561000.00
+5399802	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	0.00
+5399856	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	1250000.00
+5399947	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	590000.00
+346035	sell	apartment	10179	Berlin	Köpenicker Straße	50	13.42110060	52.50980010	2015	3.00	eur	559000.00
+5399831	sell	apartment	10179	Berlin	Holzmarktstraße	73	13.41910685	52.51681460	1972	3.00	eur	299000.00
+5399773	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	5.00	eur	0.00
+5399872	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1904	5.00	eur	660000.00
+5399790	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	723608.00
+5399973	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	315912.00
+5399821	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	315913.00
+5400002	sell	apartment_maisonette	10115	Berlin	Boyenstraße	39-40	13.37175240	52.53718250	\N	4.00	eur	523128.00
+5399818	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	430021.00
+5399844	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	3.00	eur	349000.00
+5399864	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	420000.00
+5399985	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	3.00	eur	502920.00
+5399819	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	523129.00
+5400006	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1904	5.00	eur	527000.00
+5400003	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	430000.00
+5399868	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	450000.00
+5399978	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	523129.00
+5399850	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	6.00	eur	1327000.00
+5399880	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	200230.00
+324291	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	2014	2.00	eur	337625.00
+5399895	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	120626.00
+5399847	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	2.50	eur	109900.00
+336957	sell	apartment	10245	Berlin	Libauer Straße	23	13.45518120	52.50989470	1905	1.00	eur	99325.00
+5399869	sell	apartment	10245	Berlin	Kopernikusstraße	18	13.45592100	52.51009690	\N	3.00	eur	240000.00
+5399903	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	200330.00
+5399946	sell	apartment	10245	Berlin	Glasbläserallee	12	13.46846410	52.49676040	\N	3.00	eur	324700.00
+5399942	sell	apartment	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	5.00	eur	443750.00
+5399910	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	395000.00
+5399852	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	2.50	eur	109900.00
+5399862	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	173500.00
+5399897	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	128300.00
+5399875	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	195200.00
+5399912	sell	penthouse	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	2.00	eur	337625.00
+5399948	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	4.00	eur	352000.00
+5399851	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	32	13.44700300	52.52336870	1910	4.00	eur	478600.00
+5400084	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	850000.00
+5400017	sell	apartment_maisonette	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	425000.00
+5399865	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	32	13.44700300	52.52336870	1910	4.00	eur	478600.00
+5399879	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	399000.00
+351992	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	310000.00
+5399992	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	184000.00
+5399921	sell	apartment	10249	Berlin	Pintschstraße	4	13.44871680	52.52273120	\N	2.00	eur	87500.00
+5399860	sell	apartment	10249	Berlin	Kochhannstraße	26	13.45126290	52.52499160	1918	3.00	eur	206000.00
+5400005	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	399000.00
+5400029	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	329000.00
+5400065	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1985	1.00	eur	120000.00
+5400092	sell	apartment_roof_storey	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	443000.00
+5399952	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	0.00	eur	180000.00
+5399920	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1900	3.00	eur	199800.00
+5399922	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	2001	7.00	eur	370000.00
+5486279	sell	apartment	12439	Berlin	\N	\N	13.55066310	52.45067340	1910	1.50	eur	63000.00
+5399925	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1930	2.00	eur	70000.00
+417801	sell	apartment	10243	Berlin	Blumenstraße	\N	13.43293380	52.51072750	1955	1.00	eur	180000.00
+5399929	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	238000.00
+5399943	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	339000.00
+5399940	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1909	5.00	eur	268000.00
+5399934	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1910	2.00	eur	70000.00
+5399915	sell	apartment_maisonette	10318	Berlin	\N	\N	13.54460910	52.49460730	2000	3.00	eur	199000.00
+5399949	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	2007	4.00	eur	395000.00
+5399933	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	172000.00
+5399956	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1998	2.00	eur	205000.00
+5399962	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1936	1.00	eur	125000.00
+5399917	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1996	2.00	eur	470000.00
+537303	sell	apartment	10117	Berlin	Leipziger Straße	44	13.39593080	52.51010570	1973	2.00	eur	160000.00
+536406	sell	apartment	10117	Berlin	Leipziger Straße	47	13.39763660	52.51020540	1973	2.00	eur	180000.00
+5399886	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1986	2.00	eur	470000.00
+418723	sell	apartment	10243	Berlin	Blumenstraße	\N	13.43293380	52.51072750	1905	1.00	eur	159500.00
+5399882	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	3.50	eur	569000.00
+538488	sell	apartment	10117	Berlin	Taubenstraße	\N	13.38834080	52.51293290	1998	1.00	eur	197650.00
+540709	sell	penthouse	10117	Berlin	\N	\N	13.38532280	52.52362850	1989	7.00	eur	1390000.00
+5399898	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	1996	2.00	eur	470000.00
+344279	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2013	3.00	eur	265629.00
+5399887	sell	apartment	10247	Berlin	Frankfurter Allee	13	13.45725590	52.51599250	1954	5.00	eur	424235.00
+351725	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	3.00	eur	404700.00
+5399966	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	99850.00
+5399896	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	446000.00
+5399926	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	24	13.52421900	52.50767200	\N	4.00	eur	498000.00
+5400206	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	375000.00
+5400045	sell	apartment	10247	Berlin	Jessnerstraße	66	13.46952700	52.50920160	1900	3.50	eur	206500.00
+5399986	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	145818.00
+5399899	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1905	4.00	eur	369000.00
+5399930	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1960	3.00	eur	179000.00
+350981	sell	apartment	10247	Berlin	Frankfurter Allee	12	13.45657260	52.51518420	1956	2.00	eur	189000.00
+5400047	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	415200.00
+5399960	sell	apartment	10317	Berlin	Lückstraße	\N	13.49517360	52.50049970	\N	4.00	eur	228866.00
+5399931	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	404000.00
+332997	sell	apartment	10317	Berlin	Irenenstraße	19	13.50099720	52.50926980	1910	2.00	eur	116900.00
+5399987	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1908	3.00	eur	123228.00
+5399928	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	221000.00
+5399995	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1908	3.00	eur	130007.00
+5399999	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1908	3.00	eur	138973.00
+5399969	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	290000.00
+5399939	sell	apartment	10317	Berlin	Wönnichstraße	32	13.49876620	52.50778140	1930	3.00	eur	216000.00
+5400048	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	491600.00
+5399980	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1908	2.00	eur	95120.00
+318972	sell	apartment_roof_storey	10317	Berlin	\N	\N	13.48610820	52.49214840	2013	3.00	eur	491600.00
+5400025	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2008	3.00	eur	525000.00
+5399935	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1930	3.00	eur	194600.00
+5400053	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	177000.00
+5399976	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1908	2.00	eur	83304.00
+333517	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1999	2.00	eur	244000.00
+11098506	sell	apartment	10243	Berlin	\N	\N	13.45457400	52.51591900	\N	2.00	eur	549200.00
+5400011	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	279000.00
+11098391	sell	apartment_roof_storey	12169	Berlin	\N	\N	13.33249650	52.45636610	\N	2.00	eur	319000.00
+5400039	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	1200000.00
+5400064	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	655000.00
+11097222	sell	single_family_house	12679	Berlin	\N	\N	13.54936270	52.54265850	\N	2.50	eur	130000.00
+5399957	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	590000.00
+5385752	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	639799.00
+393069	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	2013	3.00	eur	525000.00
+5400021	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	590000.00
+389602	sell	apartment	10179	Berlin	Michaelkirchstraße	16	13.42208520	52.51071940	2016	3.00	eur	403000.00
+5399961	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	525000.00
+5400044	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	1.00	eur	135000.00
+5400060	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	575000.00
+5400007	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	195000.00
+5400026	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	255000.00
+5400072	sell	apartment	10179	Berlin	Rungestraße	13	13.41784090	52.51229480	\N	2.00	eur	655000.00
+379483	sell	apartment	10245	Berlin	Grünberger Straße	83	13.46163200	52.51123320	1910	2.00	eur	125000.00
+554439	rent	apartment	12459	Berlin	Zeppelinstraße	75	13.51823090	52.46615100	1926	3.00	eur	574.00
+5399954	sell	apartment	10245	Berlin	Glasbläserallee	12	13.46846410	52.49676040	\N	4.00	eur	643950.00
+399355	sell	apartment_maisonette	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	2016	2.00	eur	477000.00
+5399972	sell	penthouse	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	4.00	eur	352000.00
+5400023	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1928	4.00	eur	345000.00
+5400027	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	89900.00
+354198	sell	penthouse	10629	Berlin	\N	\N	13.30732968	52.50254175	2014	5.00	eur	1500000.00
+5431938	sell	apartment	10629	Berlin	\N	\N	13.30732968	52.50254175	\N	3.00	eur	650500.00
+378027	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1890	2.00	eur	185000.00
+5399963	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	265500.00
+5399979	sell	penthouse	10245	Berlin	Fischzug	4	13.46918740	52.49715690	\N	3.00	eur	298930.00
+5400104	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	289670.00
+5400033	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1930	2.00	eur	85000.00
+5399990	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1900	9.50	eur	649000.00
+5400051	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	309820.00
+5400004	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	9.50	eur	2195000.00
+5443839	sell	apartment	10707	Berlin	\N	\N	13.31477920	52.49502430	\N	2.00	eur	385578.00
+5400062	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	285000.00
+5400058	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1900	2.00	eur	123900.00
+5399994	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	299000.00
+5399967	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1925	3.00	eur	150000.00
+5400036	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1918	1.00	eur	65000.00
+5400067	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	6.00	eur	358000.00
+5400080	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1938	2.00	eur	136500.00
+5400020	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	338000.00
+5443693	sell	apartment	10711	Berlin	Johann-Sigismund-Straße	2	13.29394610	52.49702630	1908	2.00	eur	39000.00
+5400041	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1910	9.00	eur	289000.00
+5400073	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1998	2.00	eur	63500.00
+5400024	sell	apartment_roof_storey	10117	Berlin	Am Zirkus	12	13.38571950	52.52308100	\N	3.00	eur	240000.00
+5400204	sell	apartment	10117	Berlin	\N	\N	13.38532280	52.52362850	\N	2.00	eur	399999.00
+546309	sell	apartment	10117	Berlin	\N	\N	13.39067250	52.52272780	\N	2.00	eur	409000.00
+543518	sell	apartment	10117	Berlin	Leipziger Straße	47	13.39763660	52.51020540	1974	4.00	eur	545000.00
+543008	sell	apartment	10117	Berlin	Schützenstraße	14	13.39465250	52.50868890	2000	2.00	eur	299000.00
+5400098	sell	apartment	10115	Berlin	Novalisstraße	7	13.38858550	52.52884710	\N	1.00	eur	80000.00
+544453	sell	apartment	10117	Berlin	\N	\N	13.39179870	52.49860490	1996	1.00	eur	259000.00
+5400028	sell	apartment	10178	Berlin	\N	\N	13.40666690	52.51944400	\N	2.00	eur	399000.00
+546018	sell	apartment	10117	Berlin	Beuthstraße	14	13.40185020	52.51029430	2017	4.00	eur	782560.00
+5400008	sell	apartment	10117	Berlin	Leipziger Straße	46	13.39733610	52.51057060	1978	4.00	eur	498750.00
+5525554	sell	penthouse	13158	Berlin	\N	\N	13.36880340	52.59274540	\N	5.00	eur	486000.00
+5400066	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	651906.00
+5400052	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	4.00	eur	747744.00
+5400071	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	682441.00
+5400019	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	600000.00
+5400057	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	699000.00
+5400012	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1904	4.00	eur	500000.00
+5400038	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	2.00	eur	262565.00
+5399991	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	247300.00
+5400110	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	535329.00
+5400063	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	649000.00
+5400074	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	1.00	eur	275000.00
+5400115	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	532957.00
+5400042	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	3.00	eur	583241.00
+5400054	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	481235.00
+5400078	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1957	2.00	eur	131000.00
+334163	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2014	2.00	eur	141750.00
+5400197	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	311000.00
+5400202	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	323000.00
+5400087	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	221000.00
+5400170	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2008	4.00	eur	569000.00
+5400123	sell	apartment	10317	Berlin	Pfarrstraße	135	13.47598010	52.50350270	\N	7.00	eur	560005.00
+5385763	sell	apartment	10115	Berlin	Habersaathstraße	27/29	13.37684450	52.53173140	\N	2.00	eur	155000.00
+5400182	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	140000.00
+5400085	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	258813.00
+5400194	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	299000.00
+5400187	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	144000.00
+5400166	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	156900.00
+5400075	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	2000000.00
+394939	sell	apartment	10179	Berlin	Alte Jakobstraße	76	13.40887020	52.51044490	2000	1.00	eur	116000.00
+5400220	sell	apartment	10179	Berlin	Engeldamm	60	13.42167000	52.50565010	\N	3.50	eur	445000.00
+5400112	sell	apartment_roof_storey	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	1105000.00
+5400117	sell	penthouse	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	1105000.00
+5400191	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	265000.00
+5400213	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	292973.00
+5400216	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	1187000.00
+5400124	sell	penthouse	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	2000000.00
+5400189	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	216228.00
+5400119	sell	apartment_roof_storey	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	2000000.00
+5400228	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	216228.00
+5400255	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	227000.00
+5400135	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	95000.00
+5400211	sell	single_family_house	10318	Berlin	\N	\N	13.53091060	52.48232590	\N	5.00	eur	277500.00
+5400114	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.50	eur	225510.00
+5400154	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	359576.00
+5400102	sell	apartment	10318	Berlin	Zwieseler Straße	\N	13.53917950	52.48892220	\N	5.00	eur	0.00
+5405325	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	125000.00
+5400156	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1909	5.00	eur	285200.00
+5400159	sell	villa	10318	Berlin	\N	\N	13.54460910	52.49460730	1895	4.00	eur	290000.00
+5400118	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	2000	6.00	eur	495000.00
+5400239	sell	single_family_house	10318	Berlin	\N	\N	13.53091060	52.48232590	\N	5.00	eur	285500.00
+5400143	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1974	2.00	eur	64200.00
+5400164	sell	apartment_maisonette	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	5.00	eur	394296.00
+5400178	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1910	8.00	eur	289000.00
+5400150	sell	mid_terrace_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	0.00	eur	209900.00
+5400172	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	170000.00
+5400241	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	720000.00
+5400116	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	901139.00
+5400126	sell	apartment	10249	Berlin	Thaerstraße	16	13.45400720	52.51951530	1900	2.00	eur	199500.00
+5400186	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	95000.00
+5400106	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	847595.00
+5400534	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	282600.00
+5400139	sell	apartment	10249	Berlin	Richard-Sorge-Straße	53	13.44406260	52.52374290	\N	3.00	eur	492000.00
+5400103	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	901139.00
+5399849	sell	apartment_roof_storey	10249	Berlin	Wilhelm-Stolze-Straße	32	13.44700300	52.52336870	1910	3.00	eur	499000.00
+5400473	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	549329.00
+322756	sell	apartment	10587	Berlin	Loschmidtstraße	22	13.31380430	52.51710550	1959	1.00	eur	155000.00
+5400129	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	6.00	eur	902190.00
+5400151	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	549117.00
+5400134	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	456922.00
+5400195	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	325868.00
+5400125	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	6.00	eur	1043304.00
+5400142	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	455013.00
+5400132	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	487203.00
+5400193	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	245442.00
+5400155	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	649000.00
+5400205	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	481235.00
+5400180	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	315118.00
+5400158	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	426200.00
+5400173	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	483279.00
+5400177	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	410682.00
+5400157	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	616312.00
+5400203	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	6.00	eur	1167250.00
+5400162	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	651906.00
+5400168	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	621451.00
+5400188	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	601503.00
+5400198	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	797174.00
+5400181	sell	penthouse	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	304629.00
+5400133	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	304629.00
+349554	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	290000.00
+5400308	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2009	3.00	eur	369000.00
+325076	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1908	4.00	eur	210000.00
+5400365	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	562500.00
+5400335	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	283428.00
+5400375	sell	penthouse	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	408554.00
+5400377	sell	apartment	10247	Berlin	Bänschstraße	25	13.46253600	52.51889520	1904	3.00	eur	420000.00
+5400340	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1908	4.00	eur	210000.00
+5400196	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	321300.00
+375891	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	178246.00
+627769	sell	apartment	14050	Berlin	\N	\N	13.26912281	52.52017450	1918	1.00	eur	126000.00
+5400317	sell	apartment_maisonette	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	354373.00
+5400201	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	430625.00
+5400175	sell	apartment	10245	Berlin	Simon-Dach-Straße	17	13.45566280	52.50925250	1903	3.00	eur	298000.00
+370769	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	99500.00
+5400339	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	344595.00
+5400349	sell	apartment	10245	Berlin	Böcklinstraße	6	13.46595350	52.50630610	1900	1.00	eur	70000.00
+5400351	sell	apartment	10245	Berlin	Persiusstraße	11	13.46422630	52.50023440	1987	2.00	eur	82500.00
+5400233	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.50	eur	569000.00
+5400207	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	375000.00
+5400325	sell	apartment	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	5.00	eur	570605.00
+5400215	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	421000.00
+5400382	sell	apartment	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	3.00	eur	240000.00
+5400249	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	148625.00
+5400336	sell	apartment	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	2.00	eur	171312.00
+5400258	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	218838.00
+5400273	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	258813.00
+5400210	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	404000.00
+5400266	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	327200.00
+5400345	sell	apartment	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	2.00	eur	153120.00
+5400268	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	242413.00
+5400231	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	443300.00
+5400270	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.50	eur	245078.00
+5400285	sell	apartment	10317	Berlin	Wönnichstraße	30	13.49882970	52.50792390	1930	2.00	eur	146000.00
+5400247	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	384888.00
+5400254	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	164000.00
+5400222	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	318406.00
+5400209	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	627612.00
+5400243	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	584744.00
+5400261	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	0.00	eur	850000.00
+5400309	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	271850.00
+5397685	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	329500.00
+5400235	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	458480.00
+5400313	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	314500.00
+5400321	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	2.00	eur	223400.00
+5400251	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	291101.00
+5400224	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	496183.00
+5400221	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	355265.00
+5399406	sell	penthouse	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	862867.00
+5400240	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	7.00	eur	1259586.00
+5400284	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	2.00	eur	152500.00
+5400307	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	164500.00
+5435518	sell	apartment	10709	Berlin	\N	\N	13.30938540	52.49178030	1956	1.00	eur	60000.00
+5400246	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	593321.00
+5400306	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	116900.00
+5400282	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	68500.00
+5400348	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	116900.00
+5400312	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1964	2.00	eur	66000.00
+5400368	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1900	3.00	eur	146000.00
+5400234	sell	apartment	10319	Berlin	Sewanstraße	\N	13.49688750	52.49996600	\N	3.00	eur	54500.00
+5400363	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1964	2.00	eur	66000.00
+5400372	sell	apartment	10319	Berlin	Moldaustraße	\N	13.51150590	52.49918800	1964	4.00	eur	97000.00
+5400257	sell	single_family_house	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	5.00	eur	193000.00
+5400253	sell	apartment	10319	Berlin	Schwarzmeerstraße	\N	13.51285480	52.50117280	1964	2.00	eur	50000.00
+5400294	sell	single_family_house	10319	Berlin	Erich-Kurz-Straße	\N	13.51896760	52.49925330	\N	4.00	eur	281000.00
+5400302	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	82598.00
+5400288	sell	apartment_maisonette	10319	Berlin	Elfriede-Tygör-Straße	\N	13.51906580	52.50365500	2010	3.50	eur	179000.00
+5400293	sell	single_family_house	10318	Berlin	\N	\N	13.53920480	52.48620030	2010	0.00	eur	350000.00
+5400410	sell	apartment	10318	Berlin	Güntherstraße	12	13.51219300	52.47926510	\N	4.00	eur	276925.00
+5400263	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1909	4.00	eur	299800.00
+5400278	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	179000.00
+5400264	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	189000.00
+5400297	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	2010	4.00	eur	350000.00
+5400329	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	232650.00
+5400413	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	2007	4.00	eur	379500.00
+5400341	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	150599.00
+5400315	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1930	2.00	eur	60000.00
+5400277	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	276000.00
+5400333	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	227957.00
+5400371	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	655000.00
+5400491	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	747000.00
+5400338	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	1090000.00
+5400369	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	430000.00
+396773	sell	apartment	10179	Berlin	\N	\N	13.41404600	52.51214010	2000	3.00	eur	396000.00
+5400416	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	233000.00
+5400427	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	233000.00
+5400356	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	5.00	eur	1119000.00
+5400435	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2000	3.00	eur	396000.00
+5400409	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	733000.00
+5400399	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	292000.00
+405617	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	1187000.00
+5400324	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	278796.00
+5400364	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	797174.00
+5400326	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	285506.00
+5400328	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	281804.00
+5400342	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	250664.00
+5400403	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	431174.00
+5400385	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	584744.00
+5400376	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	607029.00
+5400332	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	305999.00
+5400374	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	591744.00
+5400388	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	458480.00
+5400380	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	365495.00
+5400373	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	619320.00
+5400346	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	483279.00
+5400393	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	496183.00
+5400398	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	593321.00
+5400401	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	404819.00
+5400387	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	200230.00
+5551311	sell	single_family_house	13587	Berlin	\N	\N	13.21741330	52.55718140	\N	4.00	eur	60000.00
+5400359	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	1171425.00
+5399996	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1880	2.00	eur	163500.00
+5400589	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	245700.00
+5400571	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	129500.00
+5400648	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	262957.00
+5400397	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	381225.00
+321217	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	155000.00
+5400535	sell	apartment	10247	Berlin	Weichselstraße	\N	13.46923700	52.51157460	1900	2.00	eur	154000.00
+325451	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	174000.00
+5400539	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	389000.00
+325368	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	82000.00
+5400439	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	\N	4.00	eur	445785.00
+5400530	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	2.00	eur	60000.00
+325474	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	150000.00
+5400522	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	129000.00
+5400419	sell	apartment	10247	Berlin	Bänschstraße	37	13.46381480	52.51866200	1903	2.50	eur	187500.00
+5403874	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	524100.00
+5400421	sell	multi_family_house	10317	Berlin	Türrschmidtstraße	\N	13.47799790	52.50283620	\N	0.00	eur	850000.00
+5400392	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	226875.00
+5400438	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	239780.00
+5400579	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	29000.00
+5400544	sell	apartment	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	2.00	eur	234480.00
+335805	sell	apartment_maisonette	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	2014	4.00	eur	432460.00
+5400536	sell	apartment	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	2.00	eur	197534.00
+5400548	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	226875.00
+5400443	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	239780.00
+5400553	sell	apartment	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	3.00	eur	267963.00
+5400459	sell	apartment	10319	Berlin	Sewanstraße	205	13.51304880	52.49693277	1969	1.00	eur	59000.00
+307951	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	95000.00
+5400436	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	50000.00
+5400492	sell	apartment	10319	Berlin	Sewanstraße	203	13.51296850	52.49674143	1969	1.00	eur	46000.00
+5400440	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	93152.00
+5400396	sell	multi_family_house	10319	Berlin	\N	\N	13.51357230	52.49578750	1930	14.00	eur	685000.00
+5400465	sell	apartment	10319	Berlin	Sewanstraße	203	13.51296850	52.49674143	1969	2.00	eur	88083.00
+5400456	sell	apartment	10319	Berlin	Sewanstraße	205	13.51304880	52.49693277	1969	1.00	eur	58000.00
+5400478	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	50000.00
+5400463	sell	apartment	10319	Berlin	Sewanstraße	203	13.51296850	52.49674143	1969	2.00	eur	73000.00
+5400480	sell	apartment	10319	Berlin	Sewanstraße	205	13.51304880	52.49693277	1969	3.00	eur	104033.00
+5400408	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	318406.00
+5400462	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	482180.00
+5400501	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	511760.00
+5400464	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	455013.00
+5400498	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	303552.00
+5400446	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	6.00	eur	1043304.00
+5400430	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	574750.00
+5400411	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	425094.00
+5400434	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	471688.00
+5400437	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	456922.00
+5400454	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	627279.00
+5400418	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	444030.00
+5400482	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	338698.00
+5400489	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	1.00	eur	149739.00
+5400471	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	435129.00
+5400479	sell	apartment	10115	Berlin	Chausseestraße	101	13.38053720	52.53238840	\N	3.00	eur	395000.00
+5400557	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	0.00	eur	0.00
+5400564	sell	apartment	10318	Berlin	Güntherstraße	12	13.51219300	52.47926510	\N	4.00	eur	223099.00
+5400574	sell	semi_detached_house	10318	Berlin	Waldowallee	41	13.53008634	52.48783105	1936	5.00	eur	241000.00
+5400496	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	2012	5.00	eur	394296.00
+5400424	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1936	0.00	eur	380000.00
+5400449	sell	single_family_house	10318	Berlin	\N	\N	13.53530120	52.48059560	1936	7.00	eur	400000.00
+5400499	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	6.00	eur	159999.00
+5400429	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	223500.00
+5400481	sell	apartment_maisonette	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.00	eur	175000.00
+5400433	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	98000.00
+5400504	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1938	3.00	eur	345000.00
+5400500	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1935	7.00	eur	159999.00
+5400470	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	293076.00
+5400490	sell	villa	10318	Berlin	Odinstraße	18	13.51503610	52.48929650	\N	4.00	eur	299500.00
+5400502	sell	apartment	10319	Berlin	Sewanstraße	203	13.51296850	52.49674143	1964	2.00	eur	72968.00
+5400583	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	93152.00
+5400597	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	332547.00
+5400593	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.50	eur	264164.00
+5400513	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	332547.00
+5400605	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	4.00	eur	387729.00
+5400551	sell	apartment	10319	Berlin	Volkradstraße	27	13.50824000	52.49918000	1978	2.00	eur	275000.00
+5400517	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	203665.00
+5400514	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.50	eur	264164.00
+5400520	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	93152.00
+5400511	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	341433.00
+5400576	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	148197.00
+5400565	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	50000.00
+5400568	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	187110.00
+5400523	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	50000.00
+5400572	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	50000.00
+5400582	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	394673.00
+5400538	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	479800.00
+5400566	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	3.00	eur	545818.00
+5435332	sell	apartment	10709	Berlin	\N	\N	13.30938540	52.49178030	\N	4.00	eur	525000.00
+5400546	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	1.00	eur	213700.00
+5435392	sell	apartment_maisonette	10715	Berlin	Wilhelmsaue	8	13.32791468	52.48549240	1902	6.00	eur	549900.00
+5400591	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	1.00	eur	149739.00
+5400542	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	1.00	eur	295200.00
+5400531	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	439200.00
+5400595	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	5.00	eur	303552.00
+5400515	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	471688.00
+5400525	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	3.00	eur	349000.00
+5400604	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	4.00	eur	511760.00
+5400543	sell	apartment	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	3.00	eur	455900.00
+5400577	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	7.00	eur	827258.00
+5400518	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	619320.00
+5400616	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1908	3.00	eur	390000.00
+5400560	sell	apartment	10115	Berlin	Strelitzer Straße	70	13.39604110	52.53419830	\N	1.00	eur	109500.00
+5400545	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	3.00	eur	349000.00
+396863	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2013	4.00	eur	449000.00
+5533853	sell	apartment	13359	Berlin	Drontheimer Straße	\N	13.37695360	52.55873390	\N	1.00	eur	16000.00
+5400619	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1975	2.00	eur	189000.00
+5400533	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	3.00	eur	449000.00
+5400575	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	2.00	eur	339000.00
+5400541	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	4.00	eur	1579000.00
+5400549	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	2.00	eur	339000.00
+5400623	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	3.00	eur	349000.00
+5400677	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	289000.00
+12324688	rent	apartment	12623	Berlin	Hönower Straße	172	13.61726270	52.51968460	1910	2.00	eur	680.00
+5400630	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1994	1.00	eur	89000.00
+5400743	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	150000.00
+5400634	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	345000.00
+12325500	rent	apartment	12623	Berlin	\N	\N	13.62216950	52.49517310	1998	4.00	eur	900.00
+5400739	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	359000.00
+5400780	sell	apartment	10249	Berlin	Petersburger Straße	45	13.45095930	52.52221140	1907	3.00	eur	261122.00
+5400742	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1969	1.00	eur	109500.00
+5423233	sell	apartment	10559	Berlin	Birkenstraße	12	13.34929620	52.53039050	1885	1.00	eur	85000.00
+5400562	sell	apartment	10249	Berlin	Richard-Sorge-Straße	\N	13.44386680	52.52516490	\N	2.00	eur	243000.00
+5400800	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	107000.00
+5400666	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	345000.00
+5400795	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1985	1.00	eur	109500.00
+5400728	sell	apartment	10249	Berlin	Straßmannstraße	30	13.45183000	52.52255520	1900	2.00	eur	174500.00
+5400740	sell	multi_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	59.00	eur	1700000.00
+5400672	sell	apartment	10317	Berlin	Wönnichstraße	37	13.49872570	52.50703180	1899	3.00	eur	170000.00
+320685	sell	apartment	10317	Berlin	Irenenstraße	\N	13.49997980	52.50933170	1900	1.00	eur	29000.00
+5400707	sell	apartment	10317	Berlin	Hildegard-Marcusson-Straße	\N	13.48470050	52.49566420	2009	2.00	eur	370000.00
+5400716	sell	multi_family_house	10317	Berlin	Hauptstraße	21	13.49013430	52.49439020	1930	40.00	eur	1500000.00
+5400797	sell	penthouse	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	2.00	eur	144000.00
+5400607	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	183014.00
+337641	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2009	3.00	eur	480000.00
+5400613	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	100000.00
+5400752	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	285000.00
+5400744	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	261888.00
+5400662	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1908	3.00	eur	113800.00
+5400764	sell	penthouse	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	3.00	eur	373000.00
+5400768	sell	penthouse	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	3.00	eur	320000.00
+5400788	sell	penthouse	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	3.00	eur	311000.00
+5400667	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1908	3.00	eur	113800.00
+5400782	sell	penthouse	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	2.00	eur	193000.00
+5400602	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	138888.00
+5400665	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1909	5.00	eur	297000.00
+5400599	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	2.50	eur	146696.00
+5400603	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.00	eur	196464.00
+5400687	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.00	eur	240500.00
+5400625	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	200000.00
+5400627	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1896	2.00	eur	110000.00
+5400646	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1936	0.00	eur	1480000.00
+5400702	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	28000.00
+5400649	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	2001	7.00	eur	325000.00
+5400631	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	2000	5.00	eur	234000.00
+5400685	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	2007	4.00	eur	429650.00
+5400695	sell	apartment	10318	Berlin	Gundelfinger Straße	26	13.52555620	52.48862360	\N	3.00	eur	240500.00
+5400618	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	243500.00
+5400611	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.00	eur	201999.00
+5400673	sell	apartment	10318	Berlin	Dönhoffstraße	28	13.51981627	52.48434610	1896	2.00	eur	109500.00
+316178	sell	apartment_maisonette	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	2013	4.00	eur	320300.00
+5400650	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.50	eur	67500.00
+5400598	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1954	2.00	eur	125000.00
+5400601	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1996	2.00	eur	92700.00
+324952	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	2013	4.00	eur	446000.00
+5400656	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	110000.00
+5400745	sell	apartment	10247	Berlin	Dossestraße	\N	13.47374580	52.51128910	1900	4.00	eur	385900.00
+5400718	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	2.00	eur	163300.00
+5400781	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	275128.00
+5400683	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	155000.00
+5400784	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	423876.00
+5400805	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	215232.00
+5400645	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	206395.00
+5400626	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	4.00	eur	387729.00
+5400686	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	422451.00
+5400635	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	4.00	eur	341433.00
+5400689	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	6.00	eur	664890.00
+5400632	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1964	2.00	eur	93000.00
+5400652	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1967	2.00	eur	81800.00
+5400628	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	50000.00
+5400609	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	4.00	eur	311302.00
+5400731	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	427558.00
+5400766	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	3.00	eur	490776.00
+5400738	sell	apartment	10115	Berlin	Schwartzkopffstraße	\N	13.38086960	52.53524720	2007	3.00	eur	390000.00
+5400727	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	418186.00
+5400621	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	316000.00
+5400624	sell	penthouse	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	3.00	eur	290000.00
+5400688	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	3.00	eur	349000.00
+5400792	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	1.00	eur	229700.00
+5400757	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	176000.00
+5400701	sell	apartment	10115	Berlin	Schlegelstraße	\N	13.38617630	52.52991350	1890	2.00	eur	176000.00
+5400790	sell	apartment	10115	Berlin	Invalidenstraße	141	13.39269950	52.53180710	\N	2.00	eur	235000.00
+309759	sell	apartment	10115	Berlin	Gartenstraße	88	13.38851300	52.53254930	2014	2.00	eur	347300.00
+5400831	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	450000.00
+5400704	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	176000.00
+5400692	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	5.00	eur	591416.00
+5400708	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	1.00	eur	164759.00
+5400741	sell	apartment	10179	Berlin	Michaelkirchplatz	4	13.42020780	52.50671060	\N	2.00	eur	438000.00
+5400770	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	695500.00
+5400714	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1971	1.00	eur	135000.00
+395905	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2013	3.50	eur	470000.00
+393393	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	2015	5.00	eur	591416.00
+5400760	sell	apartment	10179	Berlin	Wilhelmine-Gemberg-Weg	9	13.42391890	52.51080320	\N	4.00	eur	899000.00
+5400712	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	3.00	eur	369000.00
+5400753	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	4.00	eur	529070.00
+5400847	sell	apartment	10245	Berlin	Fischzug	6	13.46942050	52.49708280	\N	2.00	eur	265530.00
+365074	sell	apartment	10715	Berlin	Babelsberger Straße	\N	13.33526260	52.48396050	1912	7.00	eur	829000.00
+5400799	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	572316.00
+5400711	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	196388.00
+5400839	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	3.00	eur	375550.00
+5400871	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	3.00	eur	381225.00
+5400796	sell	apartment	10245	Berlin	Simplonstraße	30	13.46074170	52.50726960	1900	2.00	eur	129000.00
+5400834	sell	apartment	10245	Berlin	Glasbläserallee	12	13.46846410	52.49676040	\N	3.00	eur	324700.00
+5400811	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	354373.00
+5400693	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	178246.00
+5400762	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	377813.00
+5400856	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	202630.00
+5400806	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	249743.00
+5400776	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1910	3.50	eur	219000.00
+310666	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	457173.00
+5525402	sell	apartment	13187	Berlin	\N	\N	13.41266040	52.57206610	\N	5.00	eur	559600.00
+5400715	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	422451.00
+5525616	sell	apartment	13187	Berlin	\N	\N	13.40634460	52.56851170	2010	6.00	eur	464800.00
+5400812	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	230863.00
+5400767	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1910	2.00	eur	89000.00
+5400749	sell	apartment	10319	Berlin	Sewanstraße	193	13.51105030	52.49721677	1969	3.00	eur	109000.00
+5400801	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	70100.00
+5400697	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	1.00	eur	130975.00
+5400734	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1982	3.00	eur	98400.00
+311019	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	230863.00
+5400771	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	6.00	eur	593292.00
+5400785	sell	apartment	10319	Berlin	Sewanstraße	191	13.51097030	52.49703623	1969	2.00	eur	76400.00
+5400971	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1920	2.00	eur	69900.00
+5400761	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	344000.00
+5400807	sell	penthouse	10318	Berlin	\N	\N	13.53920480	52.48620030	1934	2.00	eur	117000.00
+5400898	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	1.00	eur	125000.00
+5400917	sell	apartment	10318	Berlin	Güntherstraße	12	13.51219300	52.47926510	\N	2.50	eur	183447.00
+5400906	sell	mid_terrace_house	10318	Berlin	Hönower Straße	\N	13.52579070	52.48914820	\N	4.00	eur	249900.00
+5400922	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1901	29.00	eur	1550000.00
+5400912	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	88000.00
+5400967	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1920	2.00	eur	69900.00
+5400751	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	274738.00
+5400930	sell	end_terrace_house	10318	Berlin	Hönower Straße	\N	13.52579070	52.48914820	\N	4.00	eur	235800.00
+5400934	sell	apartment	10318	Berlin	Dorotheastraße	25	13.52155620	52.48503510	1910	3.00	eur	175000.00
+5400789	sell	apartment	10318	Berlin	Güntherstraße	12	13.51219300	52.47926510	\N	5.00	eur	359461.00
+308823	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	345000.00
+5400730	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1920	2.00	eur	114000.00
+5400775	sell	penthouse	10318	Berlin	\N	\N	13.53920480	52.48620030	1920	3.00	eur	145000.00
+5400786	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1918	3.00	eur	95000.00
+5400872	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	2.00	eur	149500.00
+5400803	sell	penthouse	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	5.00	eur	467000.00
+5400826	sell	apartment_roof_storey	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	3.00	eur	375000.00
+5400986	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	396000.00
+5400842	sell	penthouse	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	2.00	eur	140000.00
+5400968	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	31000.00
+5400892	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	311000.00
+5400932	sell	penthouse	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	375000.00
+5400938	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	144000.00
+5400920	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	158000.00
+5400977	sell	apartment	10317	Berlin	Wönnichstraße	115	13.49510720	52.50087630	1956	3.00	eur	82000.00
+5400950	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	299000.00
+321557	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1920	4.00	eur	285000.00
+5400864	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	4.00	eur	299000.00
+5400885	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1996	3.00	eur	160000.00
+5400980	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1908	2.00	eur	82400.00
+5400995	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1999	3.00	eur	279000.00
+322632	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	289000.00
+5400868	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	433025.00
+5400936	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	282000.00
+5400914	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	232100.00
+5400869	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	281326.00
+5400863	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	335458.00
+5400820	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	\N	3.00	eur	355000.00
+5400921	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	264100.00
+5400874	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	308632.00
+5400859	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	710899.00
+5400845	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	289000.00
+5400823	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	289000.00
+5400878	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	393524.00
+5400837	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	329000.00
+5400899	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	588600.00
+5399837	sell	apartment_roof_storey	10249	Berlin	Petersburger Straße	45	13.45095930	52.52221140	1907	3.00	eur	671937.00
+5400919	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	848595.00
+5400933	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	225000.00
+5400875	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	4.00	eur	320000.00
+5400857	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	2.00	eur	211000.00
+5400866	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	3.00	eur	261500.00
+5400821	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	326865.00
+5400824	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	242060.00
+5400905	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	380120.00
+5400832	sell	apartment	10247	Berlin	Oderstraße	\N	13.46970250	52.51065550	1910	2.00	eur	175500.00
+5400963	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	251000.00
+5400841	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	397000.00
+5400853	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	\N	3.00	eur	251000.00
+5400835	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	152000.00
+5400907	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	56900.00
+5431962	sell	apartment	10629	Berlin	\N	\N	13.30732968	52.50254175	\N	4.00	eur	735000.00
+5400816	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	457173.00
+5400844	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	76300.00
+311236	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	6.00	eur	524850.00
+5400827	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	97900.00
+5400860	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	135749.00
+308422	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	135749.00
+5400876	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	200360.00
+5400924	sell	apartment	10319	Berlin	Sewanstraße	205	13.51304880	52.49693277	1969	1.00	eur	56900.00
+5400929	sell	apartment	10319	Berlin	Sewanstraße	193	13.51105030	52.49721677	1969	2.00	eur	95000.00
+5400879	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	6.00	eur	524850.00
+5400902	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	95600.00
+5400840	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	94500.00
+5401033	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	321000.00
+5400966	sell	apartment	10115	Berlin	Boyenstraße	42	13.37226442	52.53736855	1996	2.00	eur	195000.00
+5401108	sell	apartment	10115	Berlin	Schwartzkopffstraße	6	13.38035040	52.53489280	1900	2.00	eur	116532.00
+5400943	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	5.00	eur	660000.00
+5401040	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	3.00	eur	349000.00
+5400935	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	557000.00
+5400882	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	430000.00
+5400985	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	6.00	eur	1327000.00
+5401149	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	368000.00
+5400956	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1904	5.00	eur	478000.00
+5401016	sell	apartment	10178	Berlin	Linienstraße	7	13.41437920	52.52685500	1956	3.00	eur	125000.00
+5401021	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1904	5.00	eur	636000.00
+5400942	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	387156.00
+5400958	sell	apartment	10245	Berlin	Simon-Dach-Straße	22	13.45526860	52.50842860	1900	1.00	eur	79000.00
+5400982	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	275306.00
+5400973	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	109900.00
+5400964	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	160000.00
+5400880	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	6.00	eur	799650.00
+5400862	sell	apartment	10245	Berlin	Lehmbruckstraße	14	13.45274130	52.50294250	\N	2.00	eur	279000.00
+5400987	sell	apartment	10245	Berlin	Danneckerstraße	16	13.45390190	52.50216350	1900	4.00	eur	349000.00
+5400951	sell	apartment_maisonette	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	588905.00
+5400913	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	354896.00
+5400896	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	275306.00
+5400918	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	350735.00
+395083	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2000	3.00	eur	315000.00
+5400974	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	2.00	eur	370000.00
+5400989	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	386474.00
+400691	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2016	4.00	eur	575000.00
+5401003	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	2.00	eur	370000.00
+5400888	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	185000.00
+5400900	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	233000.00
+5400983	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	536004.00
+5400516	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1997	2.00	eur	169000.00
+5400903	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.50	eur	695500.00
+5400993	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	405000.00
+5400978	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1920	3.00	eur	510000.00
+5400940	sell	penthouse	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	655000.00
+5401080	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	1526000.00
+5400948	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	6.00	eur	1494000.00
+5401070	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	225000.00
+5401030	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	179900.00
+5400944	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	477500.00
+5401065	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	225000.00
+327026	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	150000.00
+5400965	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	433025.00
+5401059	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	585000.00
+5400976	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	281326.00
+5400970	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	393524.00
+5401000	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	32	13.44700300	52.52336870	1910	2.00	eur	199000.00
+5401020	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1965	1.00	eur	105000.00
+5400960	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	300000.00
+5400931	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	345000.00
+5400992	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	32	13.44700300	52.52336870	1910	2.00	eur	273060.00
+5401004	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	32	13.44700300	52.52336870	1910	4.00	eur	349500.00
+5400957	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	332000.00
+308739	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	5.50	eur	94805.00
+5401023	sell	apartment_roof_storey	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	3.50	eur	347412.00
+5401019	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	3.00	eur	354499.00
+5400507	sell	apartment	10319	Berlin	Sewanstraße	201	13.51288820	52.49655010	1996	2.00	eur	87000.00
+5401042	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	2.00	eur	76300.00
+5401009	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	3.00	eur	429164.00
+5400981	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	4.00	eur	118300.00
+5401154	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	2010	2.00	eur	79000.00
+5401066	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	2.00	eur	149500.00
+5400975	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1910	4.00	eur	249000.00
+5401127	sell	single_family_house	10318	Berlin	\N	\N	13.53920480	52.48620030	2000	6.00	eur	699000.00
+5401091	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	241040.00
+5401116	sell	single_family_house	10318	Berlin	\N	\N	13.53920480	52.48620030	2001	7.00	eur	325000.00
+5401017	sell	single_family_house	10318	Berlin	Johanna-Hofer-straße	1	13.53233260	52.47725210	2010	5.00	eur	318000.00
+5401062	sell	semi_detached_house	10318	Berlin	\N	\N	13.53920480	52.48620030	1935	7.00	eur	159999.00
+5401110	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1933	3.00	eur	198000.00
+5401086	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	260790.00
+5400984	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	138000.00
+5401043	sell	apartment_maisonette	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.50	eur	282070.00
+5401102	sell	single_family_house	10318	Berlin	Am Carlsgarten	\N	13.53210450	52.47774850	\N	4.00	eur	329000.00
+5401095	sell	multi_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	20.00	eur	1600000.00
+5401044	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	276891.00
+5401026	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	341600.00
+5401100	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1887	3.00	eur	165600.00
+5401075	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	338811.00
+5401381	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1950	2.00	eur	187000.00
+5401384	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	300000.00
+5401328	sell	apartment	10247	Berlin	Gürtelstraße	\N	13.47590840	52.51230100	\N	3.00	eur	310000.00
+5401379	sell	penthouse	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	260000.00
+5401297	sell	penthouse	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	411694.00
+5401390	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	155000.00
+5401061	sell	multi_family_house	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	16.00	eur	1800000.00
+5401109	sell	apartment	10245	Berlin	Neue Bahnhofstraße	\N	13.47071760	52.50662940	\N	2.00	eur	152000.00
+5401028	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	289670.00
+5403990	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	192100.00
+571081	sell	apartment	10245	Berlin	Ehrenbergstraße	4	13.45146860	52.50247530	2015	3.00	eur	890000.00
+5401024	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	200230.00
+5401035	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	381225.00
+5401093	sell	apartment	10245	Berlin	Neue Bahnhofstraße	\N	13.47071760	52.50662940	\N	1.50	eur	115000.00
+378002	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	229600.00
+5401120	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	3.50	eur	475000.00
+5401079	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	2.00	eur	90000.00
+5401012	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	430625.00
+5401115	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	150000.00
+5401047	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1998	3.00	eur	245000.00
+5401053	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	89999.00
+5397190	sell	apartment	10247	Berlin	Finowstraße	12	13.46738920	52.51166750	\N	9.50	eur	550000.00
+5401029	sell	penthouse	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	2.00	eur	164000.00
+5401171	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	4.00	eur	440840.00
+5401050	sell	single_family_house	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	1.00	eur	2900000.00
+5401098	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.50	eur	52000.00
+5401039	sell	apartment	10317	Berlin	Kaskelstraße	12	13.47699970	52.50475950	1891	4.00	eur	259900.00
+5401175	sell	apartment	10317	Berlin	Schreiberhauer Straße	35	13.47486320	52.50449840	\N	2.00	eur	193000.00
+322391	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	4.00	eur	285500.00
+5401018	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	285300.00
+321618	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	2.00	eur	126500.00
+5401101	sell	apartment	10317	Berlin	Lückstraße	53	13.49157500	52.50144120	\N	2.00	eur	113521.00
+5401056	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	3.50	eur	357834.00
+5401153	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	1.00	eur	66700.00
+5401130	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	65000.00
+5401158	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	5.50	eur	94805.00
+5401167	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	61100.00
+5401125	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	1.00	eur	59000.00
+5401165	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	6.00	eur	231800.00
+5401150	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	2.00	eur	89250.00
+5401161	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	3.00	eur	112000.00
+5401139	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	44600.00
+5401145	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	2.00	eur	93100.00
+5401069	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	3.00	eur	351676.00
+5401146	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	3.00	eur	113000.00
+5401132	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	96000.00
+5401060	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	2.00	eur	212585.00
+5401135	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	65000.00
+5401103	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	\N	2.00	eur	199834.00
+5401147	sell	apartment	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	\N	2.00	eur	304900.00
+5401222	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	371000.00
+399953	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1898	3.00	eur	359000.00
+403567	sell	apartment	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	2017	2.00	eur	351900.00
+5401138	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	758000.00
+5401128	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1984	2.00	eur	180000.00
+5401107	sell	apartment	10179	Berlin	Wilhelmine-Gemberg-Weg	9	13.42391890	52.51080320	\N	6.00	eur	2250000.00
+5401215	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	242000.00
+5401244	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	245000.00
+5401211	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	357000.00
+5401099	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	817000.00
+5401089	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	1583000.00
+5401205	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	747000.00
+5401143	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	300000.00
+5401220	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	609000.00
+403444	sell	apartment	10179	Berlin	Sebastianstraße	16	13.41116291	52.50596935	\N	3.00	eur	1018000.00
+5401277	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	294500.00
+5401126	sell	apartment	10249	Berlin	Petersburger Straße	45	13.45095930	52.52221140	1907	2.00	eur	182000.00
+5401259	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1907	3.00	eur	435000.00
+5401232	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1903	1.00	eur	85000.00
+5401129	sell	apartment	10249	Berlin	Kochhannstraße	38	13.44739630	52.52402460	\N	3.00	eur	432000.00
+5401172	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	2.00	eur	232100.00
+5401141	sell	apartment_roof_storey	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	291500.00
+5385892	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43819460	52.52170100	\N	3.00	eur	323050.00
+5401240	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	899000.00
+5401207	sell	penthouse	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	848595.00
+5401275	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	91000.00
+463645	sell	apartment	12247	Berlin	\N	\N	13.34768607	52.43894820	1983	3.00	eur	220000.00
+5401216	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	291500.00
+5401192	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	499500.00
+5401292	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	2.00	eur	178000.00
+5401198	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	2.00	eur	135000.00
+5401155	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	368000.00
+5401301	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37770350	52.53261400	\N	10.00	eur	1070000.00
+5401160	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	567000.00
+362101	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1880	3.00	eur	550000.00
+5401201	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1997	4.00	eur	595000.00
+5401179	sell	apartment	13347	Berlin	Neue Hochstraße	54	13.37526000	52.53840000	1900	1.00	eur	89500.00
+5401334	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	8.00	eur	589000.00
+5401291	sell	apartment	10115	Berlin	Torstraße	155	13.39693620	52.52942400	\N	2.00	eur	169000.00
+5401219	sell	apartment	10115	Berlin	Chausseestraße	108	13.38200720	52.53128650	\N	3.00	eur	329500.00
+5401280	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	2.00	eur	260950.00
+5401276	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	3.00	eur	483915.00
+5401273	sell	apartment	10115	Berlin	Gartenstraße	89-90	13.38866740	52.53242850	\N	3.00	eur	442200.00
+5401270	sell	mid_terrace_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	274738.00
+5401176	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	6.00	eur	339000.00
+5401238	sell	single_family_house	10318	Berlin	\N	\N	13.53920480	52.48620030	1938	22.00	eur	1147000.00
+5401268	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1930	8.00	eur	189000.00
+5401191	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.00	eur	201376.00
+5401265	sell	single_family_house	10318	Berlin	\N	\N	13.53920480	52.48620030	1938	15.00	eur	1147000.00
+5401164	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1910	1.00	eur	22000.00
+5401187	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	2.50	eur	150364.00
+5401262	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1930	8.00	eur	189000.00
+5401254	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	2.50	eur	154000.00
+5401261	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.00	eur	212100.00
+379933	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	238890.00
+5401267	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	430625.00
+5401177	sell	apartment	10245	Berlin	Stralauer Allee	20	13.46119760	52.49867950	1907	3.00	eur	203500.00
+5401163	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	256890.00
+5401194	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	189000.00
+5401260	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	321300.00
+5401290	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1986	2.00	eur	74000.00
+5401251	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	200230.00
+5401230	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	336688.00
+5401263	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	381225.00
+5401245	sell	apartment	10245	Berlin	Dirschauer Straße	3	13.45696230	52.50878580	1910	2.00	eur	109000.00
+5401284	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1986	3.00	eur	130000.00
+5401212	sell	apartment	10245	Berlin	Stralauer Allee	20	13.46119760	52.49867950	1907	2.00	eur	125000.00
+5401180	sell	apartment_maisonette	10245	Berlin	Libauer Straße	23	13.45518120	52.50989470	1905	2.00	eur	139325.00
+5401221	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	6.00	eur	427000.00
+5401293	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	699000.00
+5401224	sell	apartment	10245	Berlin	Simon-Dach-Straße	\N	13.45663320	52.51083890	1900	1.00	eur	69000.00
+5401298	sell	apartment	10245	Berlin	Simon-Dach-Straße	\N	13.45663320	52.51083890	1900	4.00	eur	699000.00
+5401286	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1950	2.50	eur	98000.00
+5401178	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	193000.00
+5401266	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	1.00	eur	133423.00
+5401257	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	327200.00
+5401208	sell	apartment	10317	Berlin	Hauptstraße	21	13.49013430	52.49439020	1920	4.00	eur	218000.00
+5401202	sell	apartment	10317	Berlin	Hauptstraße	21	13.49013430	52.49439020	1920	3.00	eur	142150.00
+5401288	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	277400.00
+5401282	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2010	4.00	eur	449000.00
+5401305	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	1930	0.00	eur	440000.00
+5401274	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1908	2.00	eur	82400.00
+5401294	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	4.00	eur	258813.00
+5401299	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1950	5.00	eur	165000.00
+5401302	sell	apartment	10317	Berlin	Irenenstraße	22	13.49956990	52.50950710	1950	5.00	eur	165000.00
+5401309	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	3.00	eur	249000.00
+5401314	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	2.00	eur	135875.00
+5401225	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	2.00	eur	89250.00
+5401348	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	2.00	eur	212585.00
+5401186	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	2.00	eur	82800.00
+5401360	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	2.00	eur	78700.00
+5401188	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	2.00	eur	72500.00
+306895	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	2014	2.00	eur	212585.00
+5396298	sell	apartment	10179	Berlin	Neue Grünstraße	19	13.40665050	52.51053010	1900	3.00	eur	433209.00
+5401213	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1960	16.00	eur	499000.00
+5401173	sell	penthouse	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	180000.00
+5401218	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	2.00	eur	76000.00
+5401231	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	1.00	eur	66700.00
+307314	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	101500.00
+5401344	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	3.00	eur	387440.00
+5401351	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	72500.00
+5401353	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.00	eur	54900.00
+403988	sell	apartment	10179	Berlin	Alte Jakobstraße	77	13.40849580	52.51039800	1997	2.00	eur	192000.00
+405027	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2000	3.00	eur	290000.00
+404435	sell	apartment	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	2017	2.00	eur	1100000.00
+402826	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	2.00	eur	375000.00
+5401367	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	506920.00
+5401370	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	377029.00
+405502	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2000	3.00	eur	325000.00
+5401339	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	3.00	eur	685000.00
+5401395	sell	apartment	10179	Berlin	Michaelkirchstraße	16	13.42208520	52.51071940	\N	4.00	eur	713000.00
+5401405	sell	apartment	10179	Berlin	Michaelkirchstraße	16	13.42208520	52.51071940	\N	2.00	eur	346000.00
+5401256	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	1876	4.00	eur	1520000.00
+5401410	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	2.00	eur	107000.00
+5401311	sell	mid_terrace_house	10318	Berlin	Fuchsbau	\N	13.50949200	52.47632890	\N	3.00	eur	300000.00
+5401287	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1933	3.00	eur	160000.00
+5401304	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	175000.00
+5401343	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	0.00	eur	282000.00
+5401376	sell	single_family_house	10318	Berlin	Lisztstraße	\N	13.51971340	52.48823020	\N	4.00	eur	320000.00
+5401300	sell	mid_terrace_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	300000.00
+5401408	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	144000.00
+5401295	sell	apartment	10318	Berlin	Tannhäuserstraße	\N	13.51419870	52.49087050	1997	2.00	eur	107000.00
+5401387	sell	apartment	10318	Berlin	Tannhäuserstraße	90	13.51459810	52.49108870	1997	2.00	eur	74900.00
+5401401	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1996	2.00	eur	110000.00
+5401325	sell	apartment_roof_storey	10318	Berlin	Tannhäuserstraße	\N	13.51419870	52.49087050	\N	2.00	eur	107000.00
+5401404	sell	apartment_maisonette	10318	Berlin	Zwieseler Straße	\N	13.53917950	52.48892220	\N	5.00	eur	301745.00
+5401319	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1909	3.00	eur	227000.00
+5401771	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	249400.00
+5401449	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	0.00	eur	149900.00
+305001	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	2015	4.00	eur	522000.00
+5459807	sell	apartment	12049	Berlin	Flughafenstraße	72	13.42287780	52.48067180	\N	4.00	eur	535300.00
+5401420	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	329000.00
+5459973	sell	apartment	12049	Berlin	Flughafenstraße	72	13.42287780	52.48067180	\N	1.00	eur	116600.00
+5401312	sell	apartment_roof_storey	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	2.00	eur	264100.00
+5401400	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	93000.00
+5401385	sell	apartment	10249	Berlin	Pintschstraße	20	13.44839590	52.52260420	1900	2.00	eur	235000.00
+476183	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	230000.00
+305346	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	588600.00
+5401333	sell	apartment_roof_storey	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	3.00	eur	848595.00
+5401308	sell	apartment	10245	Berlin	Simon-Dach-Straße	18	13.45556400	52.50904250	\N	2.00	eur	165000.00
+5401324	sell	apartment	10245	Berlin	Markgrafendamm	32	13.46499460	52.49850440	1985	2.00	eur	89000.00
+5401303	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	699000.00
+5401374	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	178220.00
+5401326	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	499000.00
+5401242	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	698500.00
+5401310	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	395000.00
+5401329	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	699000.00
+5401313	sell	apartment	10245	Berlin	Alt-Stralau	5-6	13.46686590	52.49610270	\N	3.00	eur	705644.00
+11630111	sell	apartment	12353	Berlin	\N	\N	13.43927770	52.42238690	1968	1.00	eur	40000.00
+5401321	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	698500.00
+5401392	sell	penthouse	10245	Berlin	Simon-Dach-Straße	20	13.45541500	52.50873570	\N	4.00	eur	699000.00
+12339530	rent	apartment	12524	Berlin	\N	\N	13.53816450	52.40261900	1995	1.00	eur	289.00
+5401774	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	277400.00
+5401787	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1958	2.00	eur	45000.00
+5401765	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2009	3.00	eur	480000.00
+5401350	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	4.00	eur	299000.00
+5401740	sell	apartment	10317	Berlin	Maximilianstraße	17	13.49149180	52.50375290	1910	2.00	eur	145900.00
+5401776	sell	apartment	10317	Berlin	Irenenstraße	19	13.50099720	52.50926980	1950	1.50	eur	49000.00
+5401732	sell	apartment	10317	Berlin	Kernhofer Straße	1	13.47792520	52.50449130	1900	2.00	eur	95000.00
+5401347	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	3.00	eur	249000.00
+5401781	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	3.00	eur	117000.00
+5400911	sell	apartment	10317	Berlin	Lückstraße	\N	13.49517360	52.50049970	1958	2.00	eur	45000.00
+5401769	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	5.00	eur	426500.00
+5401763	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	45000.00
+5401419	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	7.00	eur	680000.00
+5401443	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	585000.00
+5401437	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	267700.00
+5401345	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	290000.00
+5401447	sell	apartment	10115	Berlin	Rheinsberger Straße	78	13.39483930	52.53668100	1900	1.00	eur	120000.00
+5401411	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	5.00	eur	890000.00
+5401162	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	650000.00
+322191	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	4.00	eur	486354.00
+361903	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	3.00	eur	499000.00
+5401450	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1892	2.00	eur	164384.00
+5401440	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	854000.00
+5401492	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	4.00	eur	723471.00
+5401342	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	650000.00
+5401426	sell	apartment	10115	Berlin	Chausseestraße	56	13.37618310	52.53630780	1904	1.00	eur	119000.00
+5401430	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	373000.00
+5401335	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	1500000.00
+5401523	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1963	3.50	eur	163000.00
+5401436	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1963	3.00	eur	90000.00
+5401369	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	101500.00
+5401398	sell	apartment	10319	Berlin	Am Tierpark	51	13.52154910	52.50250770	\N	1.00	eur	153140.00
+5401462	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	3.00	eur	113000.00
+5401457	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1970	2.00	eur	93100.00
+5401530	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	320000.00
+5401484	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	2010	3.00	eur	220000.00
+5401389	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	1.50	eur	54000.00
+5401497	sell	single_family_house	10319	Berlin	\N	\N	13.51357230	52.49578750	1935	5.00	eur	520000.00
+5401372	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1960	16.00	eur	499000.00
+5401394	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	90100.00
+5401391	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	2.00	eur	70400.00
+5401428	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	2.00	eur	81000.00
+311469	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	3.00	eur	101500.00
+5401418	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	179000.00
+5401498	sell	apartment	10247	Berlin	Müggelstraße	22	13.47067050	52.51155320	1900	1.00	eur	55000.00
+5401496	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1905	2.00	eur	129000.00
+5401507	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	69000.00
+5401399	sell	apartment	10247	Berlin	Bänschstraße	59	13.46692110	52.51822700	\N	2.00	eur	133500.00
+5401439	sell	apartment	10247	Berlin	Oderstraße	2	13.47266600	52.50963670	1910	2.00	eur	134500.00
+5401452	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	298500.00
+5401514	sell	penthouse	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	326865.00
+5401479	sell	apartment_roof_storey	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	235000.00
+5401488	sell	apartment	10247	Berlin	Jessnerstraße	\N	13.47170550	52.51106800	1913	2.00	eur	162500.00
+5401413	sell	apartment	10318	Berlin	Königswinterstraße	\N	13.52959250	52.48319740	1936	4.00	eur	220000.00
+5401466	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1920	1.00	eur	79000.00
+5401477	sell	apartment	10318	Berlin	Zwieseler Straße	\N	13.53917950	52.48892220	\N	5.00	eur	301745.00
+5401425	sell	penthouse	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	2.00	eur	102000.00
+5401540	sell	apartment	10318	Berlin	Königswinterstraße	\N	13.52959250	52.48319740	\N	5.00	eur	369000.00
+5401499	sell	mid_terrace_house	10318	Berlin	Fuchsbau	\N	13.50949200	52.47632890	\N	3.00	eur	276752.00
+5401469	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1995	2.00	eur	53000.00
+5401485	sell	single_family_house	10318	Berlin	Drosselstieg	\N	13.51046210	52.47690900	1925	4.00	eur	85000.00
+5401435	sell	villa	10318	Berlin	\N	\N	13.54460910	52.49460730	1895	4.00	eur	410000.00
+5401489	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1935	6.00	eur	380000.00
+5401442	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1910	4.00	eur	220000.00
+5401451	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	269600.00
+5401546	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	88000.00
+5401552	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	149500.00
+5551487	sell	apartment	13587	Berlin	\N	\N	13.21741330	52.55718140	1934	4.00	eur	125000.00
+5551509	sell	single_family_house	13587	Berlin	\N	\N	13.21741330	52.55718140	1918	15.00	eur	595000.00
+5401467	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	4.00	eur	842000.00
+5401710	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	1090000.00
+405536	sell	apartment	10179	Berlin	Legiendamm	18-20	13.41718230	52.50524870	1997	1.50	eur	139000.00
+5401487	sell	apartment_roof_storey	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	620000.00
+414475	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	2015	3.00	eur	399000.00
+5401707	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	1583000.00
+5401464	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	905000.00
+5401703	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	2560000.00
+5401695	sell	apartment_roof_storey	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	1046000.00
+5401672	sell	apartment	10179	Berlin	Rungestraße	21	13.41925520	52.51243240	\N	4.00	eur	692000.00
+5401681	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	1.00	eur	2560000.00
+5401685	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	1583000.00
+5401421	sell	apartment	10245	Berlin	Lenbachstraße	16	13.46766060	52.50580040	1900	2.00	eur	149000.00
+458916	sell	apartment	12169	Berlin	\N	\N	13.33911160	52.45652750	1905	2.00	eur	145000.00
+5401516	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	169000.00
+5401526	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	80340.00
+5401441	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	163000.00
+5469283	sell	single_family_house	12167	Berlin	\N	\N	13.33008290	52.45199040	\N	4.00	eur	259989.00
+5469058	sell	apartment	12159	Berlin	\N	\N	13.33664821	52.47322216	1958	1.00	eur	110000.00
+5401518	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	700000.00
+5401478	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	430625.00
+5401432	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	547500.00
+5401506	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	354000.00
+5401532	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	80340.00
+5401483	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	350735.00
+5401527	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	365000.00
+308262	sell	apartment	10249	Berlin	Ebertystraße	43	13.45316585	52.52466940	1914	1.00	eur	79697.00
+5401580	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	19	13.44728030	52.52235410	1900	2.00	eur	137500.00
+5401567	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	2.00	eur	269000.00
+5401522	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1907	3.00	eur	301253.00
+5401582	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	121000.00
+5401562	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	267500.00
+356832	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	121000.00
+304951	sell	apartment	10249	Berlin	Petersburger Straße	63	13.45240830	52.52033180	1956	2.00	eur	103000.00
+5401570	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	319000.00
+311507	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	91200.00
+5413138	sell	apartment	10405	Berlin	Greifswalder Straße	224	13.42579140	52.53035660	1900	2.00	eur	319000.00
+5413246	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46526830	52.51812870	\N	3.00	eur	349820.00
+5401414	sell	apartment	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	1885	1.00	eur	135000.00
+5401545	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	289000.00
+5401652	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	209000.00
+5401539	sell	apartment	10249	Berlin	Pufendorfstraße	7	13.44002350	52.52293270	\N	2.00	eur	250000.00
+5401533	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	387226.00
+325110	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	4.00	eur	537500.00
+5401520	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	1.00	eur	130000.00
+5401555	sell	apartment	10115	Berlin	Habersaathstraße	39	13.37773767	52.53222415	1914	3.00	eur	179000.00
+5401553	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	487000.00
+5401513	sell	apartment	10115	Berlin	Schröderstraße	\N	13.39365650	52.53058780	1904	2.00	eur	335000.00
+5401515	sell	apartment	10115	Berlin	Rheinsberger Straße	\N	13.40000960	52.53779620	\N	1.00	eur	130000.00
+5401517	sell	apartment_roof_storey	10115	Berlin	Tieckstraße	22	13.39054499	52.53015320	\N	4.00	eur	533900.00
+5401536	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	380967.00
+361190	sell	apartment	10115	Berlin	Rheinsberger Straße	78	13.39483930	52.53668100	1900	1.00	eur	100000.00
+5401599	sell	apartment	10115	Berlin	Tieckstraße	9	13.38872100	52.52940800	1890	2.00	eur	185000.00
+327603	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	267700.00
+5401617	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.50	eur	562500.00
+5401680	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	110000.00
+5401524	sell	multi_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	1920	26.00	eur	3199000.00
+5401528	sell	mid_terrace_house	10247	Berlin	Zur Waage	38	13.45887775	52.52203045	2010	5.00	eur	650000.00
+5401559	sell	apartment	10369	Berlin	Ernst-Reinke-Straße	4-6	13.46175100	52.52725950	\N	3.00	eur	322639.00
+5401519	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	327434.00
+5401590	sell	apartment	10247	Berlin	Rigaer Straße	66	13.46900780	52.51580010	1935	1.00	eur	49000.00
+5401642	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	253598.00
+5401678	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	349000.00
+5515747	sell	apartment	13089	Berlin	\N	\N	13.45098730	52.56764050	\N	4.00	eur	242000.00
+5401585	sell	apartment	10243	Berlin	Frankfurter Tor	4	13.45490800	52.51668850	1954	2.00	eur	81000.00
+5401650	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	1900	3.00	eur	294345.00
+5401534	sell	apartment	10247	Berlin	Jungstraße	\N	13.46695280	52.51260380	\N	0.00	eur	398000.00
+5401662	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	2.00	eur	132498.00
+5401427	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	2.00	eur	163500.00
+5401609	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	307125.00
+5401644	sell	apartment	10245	Berlin	Neue Bahnhofstraße	30	13.46943450	52.50551520	\N	3.00	eur	698900.00
+5401641	sell	apartment	10245	Berlin	Neue Bahnhofstraße	30	13.46943450	52.50551520	\N	5.00	eur	698900.00
+5401538	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1928	3.00	eur	299999.00
+5401547	sell	apartment	10245	Berlin	Fischzug	\N	13.47190280	52.49640570	\N	2.00	eur	219600.00
+5401573	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1995	3.00	eur	175000.00
+5401606	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	219600.00
+5401600	sell	apartment	10245	Berlin	Stralauer Allee	20	13.46119760	52.49867950	\N	2.00	eur	145500.00
+5401549	sell	apartment	10245	Berlin	Fischzug	\N	13.47190280	52.49640570	\N	3.00	eur	307125.00
+5401646	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	289670.00
+370825	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	150000.00
+5401597	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	245700.00
+5401638	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	5.00	eur	510000.00
+5401577	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	0.00
+5401722	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	2.00	eur	305000.00
+5401544	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	\N	3.00	eur	423951.00
+5401550	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1964	4.00	eur	172800.00
+5401671	sell	single_family_house	10319	Berlin	Sewanstraße	\N	13.49688750	52.49996600	1932	5.00	eur	30000.00
+5401571	sell	apartment	10319	Berlin	\N	\N	13.51357230	52.49578750	1969	2.00	eur	105000.00
+5401572	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1900	2.00	eur	82000.00
+5401574	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1890	1.00	eur	28000.00
+5401605	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	2000	2.00	eur	147000.00
+5401615	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1900	2.00	eur	83500.00
+5401643	sell	apartment	10318	Berlin	Johannes-Zoschke-Straße	2	13.53034270	52.48885810	1910	2.00	eur	79911.00
+5401610	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1994	1.00	eur	58000.00
+5401629	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1900	2.00	eur	83500.00
+5401640	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	4.00	eur	169900.00
+5419488	sell	apartment	10553	Berlin	\N	\N	13.32138460	52.52820390	\N	3.00	eur	857736.00
+343141	sell	apartment	10553	Berlin	Rostocker Straße	17	13.32680310	52.53025700	1900	1.00	eur	98000.00
+5401598	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	239400.00
+5401583	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	0.00
+5401632	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1920	1.00	eur	28000.00
+5401623	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1920	3.00	eur	159000.00
+5401635	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1890	1.00	eur	28000.00
+5401595	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1914	2.00	eur	169000.00
+318432	sell	apartment	10179	Berlin	Neue Grünstraße	19	13.40665050	52.51053010	1900	2.00	eur	372008.00
+5401651	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1994	1.00	eur	59000.00
+304487	sell	apartment	10249	Berlin	Auerstraße	25	13.44477290	52.51994180	1898	1.00	eur	115000.00
+336895	sell	apartment	10243	Berlin	Wedekindstraße	24	13.44683530	52.51293940	1955	2.00	eur	226800.00
+5401604	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1994	3.00	eur	130000.00
+355695	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	479000.00
+356209	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	209000.00
+359426	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	459000.00
+5401608	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	332000.00
+5401607	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	130000.00
+360260	sell	apartment	10249	Berlin	Hausburgstraße	6	13.45269657	52.52651235	1906	6.00	eur	945000.00
+5401622	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1994	1.00	eur	85000.00
+5401639	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	3.00	eur	295000.00
+5401624	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	215400.00
+5401614	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	2.00	eur	188848.00
+5401709	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	373000.00
+322676	sell	apartment	10115	Berlin	Strelitzer Straße	25	13.39413960	52.53684410	\N	2.00	eur	218800.00
+5401664	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	1.00	eur	125457.00
+5401697	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1999	2.00	eur	159000.00
+5401728	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	3.00	eur	550464.00
+5444059	sell	apartment	10711	Berlin	\N	\N	13.29164030	52.49902380	1890	7.00	eur	999000.00
+5401627	sell	apartment_maisonette	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	3.00	eur	361200.00
+5401648	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	2.00	eur	197125.00
+5401742	sell	apartment	10115	Berlin	Tieckstraße	\N	13.39044810	52.52996180	1900	4.00	eur	449000.00
+5401665	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1892	3.00	eur	490240.00
+5401691	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1938	3.00	eur	345000.00
+5401726	sell	apartment_maisonette	10318	Berlin	\N	\N	13.54460910	52.49460730	1895	5.00	eur	374000.00
+5401786	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.00	eur	190000.00
+5401661	sell	penthouse	10318	Berlin	\N	\N	13.54460910	52.49460730	2013	2.00	eur	257500.00
+5401789	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	190000.00
+5401806	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	8.00	eur	214900.00
+5401808	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	6.00	eur	194700.00
+5401795	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1924	5.50	eur	265000.00
+5401657	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	2003	6.00	eur	244500.00
+5401660	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	2013	2.00	eur	145750.00
+5401725	sell	apartment	10318	Berlin	\N	\N	13.51864680	52.48103570	1895	5.00	eur	374000.00
+5401760	sell	apartment	10318	Berlin	Gundelfinger Straße	3	13.52427414	52.48324900	1915	4.00	eur	180000.00
+5401750	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	0.00	eur	251000.00
+5401801	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	76000.00
+5401798	sell	single_family_house	10318	Berlin	Hoher Wallgraben	\N	13.51581900	52.47754560	\N	5.00	eur	305000.00
+5401764	sell	mid_terrace_house	10318	Berlin	Fuchsbau	18	13.50948410	52.47588730	\N	5.00	eur	315000.00
+5401688	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	307125.00
+5401669	sell	apartment	10245	Berlin	Kopernikusstraße	20	13.45511864	52.51026785	\N	3.00	eur	174900.00
+5401666	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	390000.00
+5401791	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	231200.00
+5401775	sell	apartment	10245	Berlin	Neue Bahnhofstraße	30	13.46943450	52.50551520	\N	5.00	eur	698900.00
+5401670	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	137000.00
+5401766	sell	apartment	10245	Berlin	Neue Bahnhofstraße	3	13.46949290	52.50504260	\N	4.00	eur	698900.00
+5401773	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	395000.00
+5401780	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	307125.00
+5401778	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	219600.00
+5401785	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	430625.00
+343453	sell	apartment	10247	Berlin	Silvio-Meier-Straße	2	13.46356407	52.51539810	1910	1.00	eur	126000.00
+5397160	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1908	6.00	eur	1297000.00
+5397205	sell	apartment	10115	Berlin	Strelitzer Straße	58	13.39442267	52.53584560	1895	2.00	eur	482809.00
+5401788	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	344900.00
+5401708	sell	penthouse	10249	Berlin	Wilhelm-Stolze-Straße	32	13.44700300	52.52336870	1910	5.00	eur	825000.00
+5401729	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	459000.00
+5401836	sell	apartment	10247	Berlin	Weidenweg	\N	13.45525640	52.51924660	\N	2.00	eur	395000.00
+5401744	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1965	1.00	eur	105000.00
+5401757	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	848000.00
+5401715	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	209000.00
+5401724	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	1.00	eur	109500.00
+5401720	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1895	2.50	eur	325000.00
+5401733	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2008	1.00	eur	1250000.00
+5401713	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	209000.00
+5401727	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	459000.00
+5401779	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	822401.00
+5401753	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	139600.00
+5401831	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1990	3.00	eur	95000.00
+5401721	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	305000.00
+5401542	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	262500.00
+5401711	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	125000.00
+5401700	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	166396.00
+5401714	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1954	2.00	eur	81000.00
+5401702	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1910	2.00	eur	125000.00
+5401706	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	\N	4.00	eur	479000.00
+5401716	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	125000.00
+5401734	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	1.00	eur	79000.00
+5401827	sell	penthouse	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	405895.00
+5401759	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	265064.00
+5402054	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	817000.00
+5401719	sell	apartment_roof_storey	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	1406000.00
+5401482	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	790000.00
+5402029	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	1256000.00
+5401730	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	3.00	eur	1746075.00
+5402001	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	5.00	eur	1119000.00
+5402045	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	817000.00
+5401973	sell	penthouse	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	1406000.00
+5402005	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	1526000.00
+389644	sell	apartment	10179	Berlin	Michaelkirchstraße	16	13.42208520	52.51071940	2016	2.00	eur	280500.00
+5401825	sell	apartment	10115	Berlin	Schröderstraße	11	13.39353830	52.53066880	1905	2.00	eur	108000.00
+5401772	sell	apartment	10557	Berlin	Lehrter Straße	16-17	13.36409000	52.52998000	1905	3.00	eur	479672.00
+5401837	sell	apartment	10115	Berlin	Schröderstraße	11	13.39353830	52.53066880	1905	6.00	eur	260000.00
+328758	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	579000.00
+5401834	sell	apartment	10115	Berlin	Schröderstraße	11	13.39353830	52.53066880	1905	4.00	eur	195000.00
+5401847	sell	apartment	10115	Berlin	Scharnhorststraße	6-7	13.37171270	52.53354990	\N	3.00	eur	375000.00
+5401800	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	2.00	eur	157617.00
+5401807	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.50	eur	1430000.00
+5423949	sell	apartment	10559	Berlin	\N	\N	13.34681050	52.52446840	1958	0.00	eur	51950.00
+5401803	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	5.00	eur	849000.00
+5401810	sell	apartment_roof_storey	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	723500.00
+5401844	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1870	5.00	eur	1500000.00
+5401747	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1890	2.00	eur	185000.00
+5401832	sell	apartment	10115	Berlin	Schröderstraße	11	13.39353830	52.53066880	1905	2.00	eur	125000.00
+5401802	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	4.00	eur	604655.00
+5401749	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	267700.00
+5401784	sell	apartment	10557	Berlin	Lehrter Straße	16-17	13.36409000	52.52998000	1905	2.00	eur	252000.00
+5401755	sell	apartment	10115	Berlin	Tieckstraße	8	13.38843480	52.52933670	1880	3.00	eur	495000.00
+5401819	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	540000.00
+5401914	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	305500.00
+5401796	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	430625.00
+5401894	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	60000.00
+5402028	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	259000.00
+5401999	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	188370.00
+5486293	sell	multi_family_house	12439	Berlin	\N	\N	13.55066310	52.45067340	1906	9.50	eur	590000.00
+5486525	sell	apartment	12439	Berlin	Hasselwerderstraße	13	13.51827890	52.45643970	1932	2.00	eur	61000.00
+5401794	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	375550.00
+5402023	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	253000.00
+5401965	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	593500.00
+5401933	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	3.00	eur	409800.00
+5401989	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	593537.00
+5401840	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	242413.00
+5401838	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2009	3.00	eur	480000.00
+5401852	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	2.00	eur	179000.00
+5435446	sell	apartment	10715	Berlin	\N	\N	13.33452270	52.48291940	1910	2.00	eur	179000.00
+5401821	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	190900.00
+5401880	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	127000.00
+5401864	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	2.00	eur	179000.00
+5401871	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	7.00	eur	685000.00
+5401841	sell	penthouse	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	253380.00
+5401843	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	258813.00
+5401873	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	5.00	eur	369000.00
+5401824	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	260666.00
+5401846	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	3.00	eur	339000.00
+5401835	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	4.00	eur	223963.00
+5397952	sell	end_terrace_house	10317	Berlin	\N	\N	13.48610820	52.49214840	2005	7.00	eur	700000.00
+5401811	sell	villa	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	174800.00
+5401812	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	154800.00
+5401826	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	147800.00
+5401892	sell	apartment_maisonette	10318	Berlin	Zwieseler Straße	2	13.53898000	52.48597000	\N	4.00	eur	271131.00
+5401813	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	139800.00
+5401905	sell	apartment_maisonette	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	495563.00
+5401851	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	225800.00
+5401818	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	126900.00
+5401815	sell	villa	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	119900.00
+5401875	sell	apartment_maisonette	10318	Berlin	\N	\N	13.54460910	52.49460730	1994	6.00	eur	670000.00
+5401822	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	189900.00
+5401855	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1912	2.00	eur	73000.00
+5401870	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	53000.00
+5401866	sell	apartment	10318	Berlin	Gundelfinger Straße	\N	13.52488920	52.48595160	1930	3.00	eur	53000.00
+5401912	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	212100.00
+5401916	sell	apartment	10249	Berlin	Eckertstraße	2	13.45116170	52.51855970	\N	3.00	eur	431626.00
+5402050	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	442000.00
+5402003	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	1490000.00
+368112	sell	apartment_roof_storey	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	2.00	eur	229000.00
+5402065	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	2.00	eur	229000.00
+309357	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	1490000.00
+5402093	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	459000.00
+5402090	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	209000.00
+5402061	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	289000.00
+5401958	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	477500.00
+5402048	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2008	1.00	eur	1250000.00
+306142	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	553000.00
+5401889	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	3.00	eur	395000.00
+358780	sell	apartment	10247	Berlin	An den Eldenaer Höfen	30	13.46428060	52.52033850	\N	3.00	eur	230000.00
+5401845	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	62000.00
+5401886	sell	apartment	10247	Berlin	Schreinerstraße	32	13.47218570	52.51596750	1900	2.00	eur	130000.00
+5401897	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1887	4.00	eur	165600.00
+5401940	sell	multi_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	20.00	eur	1600000.00
+5401888	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1909	4.00	eur	459000.00
+5401882	sell	multi_family_house	10247	Berlin	Weserstraße	36	13.46830620	52.50912880	1920	75.00	eur	4500000.00
+5401921	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1995	2.00	eur	123000.00
+5401937	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	4.00	eur	381431.00
+5401949	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	4.00	eur	554460.00
+5401885	sell	single_family_house	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	6.00	eur	219000.00
+5401932	sell	apartment	10247	Berlin	Bänschstraße	85	13.47066170	52.51741340	\N	4.00	eur	424440.00
+5401946	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	4.00	eur	452463.00
+5401877	sell	penthouse	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	331534.00
+5401935	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	222755.00
+5401911	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1900	3.00	eur	280000.00
+5401881	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1900	3.00	eur	280000.00
+5401971	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	1900	2.00	eur	130000.00
+5401928	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	1.50	eur	49000.00
+5401938	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1905	3.50	eur	127000.00
+5401930	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1999	3.00	eur	265000.00
+5401920	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	4.00	eur	339000.00
+5401978	sell	apartment	10317	Berlin	Kaskelstraße	\N	13.47895330	52.50438930	1910	3.00	eur	117000.00
+5401945	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	127000.00
+5401884	sell	mid_terrace_house	10317	Berlin	\N	\N	13.48610820	52.49214840	2006	7.00	eur	890000.00
+5401962	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	4.00	eur	295000.00
+334662	sell	apartment	10317	Berlin	Lückstraße	54/55	13.49163240	52.50156570	\N	2.00	eur	113521.00
+5401898	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1908	3.00	eur	102500.00
+5401944	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1997	2.00	eur	187600.00
+5401890	sell	apartment	13189	Berlin	Thulestraße	5	13.41576260	52.55529990	1919	2.50	eur	187815.00
+5401918	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	265000.00
+307602	sell	apartment	10439	Berlin	Schivelbeiner Straße	11	13.40758360	52.55129970	1918	2.00	eur	235424.00
+307698	sell	apartment	10365	Berlin	\N	\N	13.47624830	52.51464890	1998	2.00	eur	120000.00
+429883	sell	apartment	10785	Berlin	Genthiner Straße	40-46	13.35854460	52.50225410	2017	2.00	eur	376310.00
+5402152	sell	apartment	10365	Berlin	Fanningerstraße	9	13.49153570	52.51476080	1998	2.00	eur	69900.00
+5402196	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	0.00
+5402215	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1950	3.00	eur	105000.00
+5402222	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1935	2.00	eur	75000.00
+5401896	sell	apartment	13189	Berlin	Thulestraße	5	13.41576260	52.55529990	1919	2.00	eur	182310.00
+5402201	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	0.00
+5402073	sell	apartment	10365	Berlin	Fanningerstraße	\N	13.49613460	52.51418850	1930	3.00	eur	116500.00
+5401904	sell	apartment	13189	Berlin	Thulestraße	5	13.41576260	52.55529990	1919	2.50	eur	189660.00
+5402210	sell	mid_terrace_house	10365	Berlin	Rüdigerstraße	66	13.50767855	52.51498300	\N	4.00	eur	220300.00
+5401926	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	216200.00
+5401934	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	1997	4.00	eur	426000.00
+5401922	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	3.00	eur	276500.00
+5401953	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	511424.00
+353775	sell	apartment	10115	Berlin	Novalisstraße	4	13.38886200	52.52838650	1900	1.00	eur	165000.00
+5401986	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	3.00	eur	499000.00
+5401929	sell	apartment	10557	Berlin	Lehrter Straße	16-17	13.36409000	52.52998000	1905	3.00	eur	479672.00
+5401910	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	3.00	eur	531429.00
+5401972	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	974000.00
+329690	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	426000.00
+5401923	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	4.00	eur	507400.00
+5401917	sell	apartment	10115	Berlin	Strelitzer Straße	70	13.39604110	52.53419830	1910	1.00	eur	129650.00
+5401907	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	2004	4.00	eur	800000.00
+5402009	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1892	4.50	eur	482591.00
+5401964	sell	apartment	10318	Berlin	Rheinsteinstraße	9	13.52723590	52.48307890	1912	3.00	eur	174000.00
+5401955	sell	mid_terrace_house	10318	Berlin	Fuchsbau	17	13.50946720	52.47585690	\N	5.00	eur	299000.00
+5402100	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1905	3.00	eur	130000.00
+5402030	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	164400.00
+5401987	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1995	2.00	eur	98000.00
+5401951	sell	mid_terrace_house	10318	Berlin	Fuchsbau	16	13.50944670	52.47582460	\N	5.00	eur	282000.00
+5401979	sell	apartment	10318	Berlin	Waldowallee	\N	13.53547560	52.47867940	1995	2.00	eur	59000.00
+5401957	sell	mid_terrace_house	10318	Berlin	Fuchsbau	18	13.50948410	52.47588730	\N	5.00	eur	330000.00
+5402104	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	98000.00
+5401942	sell	apartment	10318	Berlin	\N	\N	13.51864680	52.48103570	1998	2.00	eur	69400.00
+5402089	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1930	9.50	eur	850000.00
+5401992	sell	penthouse	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	3.00	eur	282000.00
+5402018	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	0.00
+351413	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	106000.00
+5402011	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	3.00	eur	329400.00
+5401982	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	180000.00
+5402057	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	1.00	eur	52500.00
+5449238	sell	apartment	10829	Berlin	Leberstraße	65	13.36158660	52.48085780	1895	1.00	eur	92000.00
+5401959	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	5.00	eur	689000.00
+5402022	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	323000.00
+5402008	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	315078.00
+5401954	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	5.00	eur	599000.00
+5401988	sell	apartment	10247	Berlin	Gürtelstraße	32	13.47400920	52.50982180	1996	3.00	eur	250000.00
+5401963	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	323000.00
+5401990	sell	apartment	10247	Berlin	Dolziger Straße	25	13.46939030	52.51846300	\N	4.00	eur	302500.00
+5402020	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1911	5.00	eur	795000.00
+5402049	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	669000.00
+12339537	rent	apartment	12524	Berlin	Köpenicker Straße	32	13.53803517	52.41901235	1903	1.00	eur	310.00
+5402063	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	299900.00
+5402002	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	3.00	eur	117000.00
+5402051	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	248559.00
+5401985	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	130000.00
+5402039	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	410100.00
+5402106	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	425000.00
+5401997	sell	apartment	10317	Berlin	Maximilianstraße	16	13.49136540	52.50356240	1910	1.00	eur	49900.00
+5402010	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1955	2.00	eur	102250.00
+5424014	sell	apartment	10559	Berlin	Wilsnacker Straße	39	13.34967680	52.53144980	1912	1.50	eur	92500.00
+5402091	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1998	2.00	eur	224200.00
+5402019	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1997	2.00	eur	187600.00
+5402036	sell	apartment	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	0.00	eur	484300.00
+5402017	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	187600.00
+5402075	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	467000.00
+5402088	sell	penthouse	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	467000.00
+5402082	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1997	2.00	eur	187600.00
+5402076	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	244500.00
+5402026	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.50	eur	329692.00
+5402115	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	505000.00
+329282	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	2190000.00
+5402117	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	358000.00
+5402112	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	415000.00
+332042	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	4.00	eur	426000.00
+5402123	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	281000.00
+5402062	sell	apartment	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	4.00	eur	535329.00
+5402041	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	2.00	eur	205103.00
+5402105	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	425000.00
+5401998	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	3.00	eur	479672.00
+5402072	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.50	eur	1478400.00
+5402085	sell	apartment_maisonette	10115	Berlin	Kieler Straße	3	13.36961810	52.53384205	1997	4.00	eur	426000.00
+5402182	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	3.00	eur	119500.00
+5402108	sell	apartment	10245	Berlin	Lehmbruckstraße	20	13.45240660	52.50241860	\N	3.00	eur	519000.00
+5402111	sell	apartment	10245	Berlin	Ehrenbergstraße	4	13.45146860	52.50247530	\N	3.00	eur	555000.00
+5402118	sell	apartment	10245	Berlin	Lehmbruckstraße	14	13.45274130	52.50294250	\N	3.00	eur	675000.00
+5402158	sell	apartment	10243	Berlin	Marchlewskistraße	99	13.44867000	52.50918000	1960	2.00	eur	105000.00
+5402058	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	343500.00
+5402099	sell	apartment	10245	Berlin	Ehrenbergstraße	2	13.45127710	52.50220060	\N	3.00	eur	425000.00
+5402133	sell	apartment	10245	Berlin	Dirschauer Straße	6	13.45648690	52.50836450	1900	7.00	eur	432705.00
+5402114	sell	apartment	10245	Berlin	Ehrenbergstraße	4	13.45146860	52.50247530	\N	4.00	eur	565000.00
+5402130	sell	apartment	10245	Berlin	Gärtnerstraße	6	13.46036880	52.50934590	1900	1.00	eur	101842.00
+5402162	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	2.00	eur	176755.00
+5402174	sell	apartment	10245	Berlin	Lehmbruckstraße	14	13.45274130	52.50294250	\N	2.00	eur	265000.00
+5402156	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1890	4.00	eur	1250000.00
+5402228	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	886000.00
+5477197	sell	mid_terrace_house	12247	Berlin	\N	\N	13.34768607	52.43894820	1985	6.50	eur	360000.00
+5477220	sell	semi_detached_house	12305	Berlin	\N	\N	13.38984670	52.39874940	1986	6.00	eur	0.00
+5402180	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	764000.00
+5402213	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	747000.00
+5402190	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	790000.00
+5402211	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	1256000.00
+5402173	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	4.00	eur	1028000.00
+5402194	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	1.00	eur	884000.00
+410251	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	2015	2.00	eur	369000.00
+5402198	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	905000.00
+5402230	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	1932	4.00	eur	789000.00
+401166	sell	apartment	10179	Berlin	Köpenicker Straße	124	13.42254630	52.50926670	2015	2.00	eur	289666.00
+5402141	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	185000.00
+5402107	sell	apartment	10318	Berlin	Drachenfelsstraße	\N	13.52860860	52.48244620	1995	2.00	eur	98000.00
+5402291	sell	penthouse	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	495563.00
+5402202	sell	apartment	10318	Berlin	Wandlitzstraße	7	13.52365716	52.48066675	1900	2.00	eur	150000.00
+5402161	sell	apartment	10318	Berlin	\N	\N	13.51864680	52.48103570	1995	0.00	eur	59000.00
+5402297	sell	apartment	10318	Berlin	Zwieseler Straße	52	13.53952370	52.48980750	\N	3.00	eur	332960.00
+5402172	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1910	1.00	eur	85000.00
+5402175	sell	penthouse	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	495563.00
+5402217	sell	apartment	10318	Berlin	Andernacher Straße	\N	13.53187740	52.48195960	\N	3.00	eur	180000.00
+5402274	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	2.00	eur	205800.00
+5402192	sell	apartment_roof_storey	10318	Berlin	Rödelstraße	8	13.51242420	52.48108230	1910	3.00	eur	205000.00
+5402284	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1996	3.00	eur	164600.00
+5402127	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1910	1.00	eur	85000.00
+5402263	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1996	3.00	eur	164600.00
+338342	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	155750.00
+5402135	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	188950.00
+338861	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	213220.00
+5402119	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	148265.00
+5402124	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	425600.00
+5402279	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	117000.00
+338788	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1930	2.00	eur	114000.00
+5402276	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	106000.00
+5402236	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	152000.00
+5402155	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	280000.00
+5419562	sell	apartment	10551	Berlin	\N	\N	13.33855250	52.53167100	1892	3.00	eur	395000.00
+5402224	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1900	4.00	eur	783403.00
+5402232	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1903	3.00	eur	560000.00
+5402259	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	242060.00
+5402169	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	5.00	eur	444000.00
+5402160	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	269000.00
+5402129	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	159000.00
+5402183	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1920	2.00	eur	240000.00
+5402254	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	2.00	eur	165900.00
+5402187	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1900	3.00	eur	473447.00
+5402317	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2009	4.00	eur	425000.00
+5402449	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	847595.00
+5402148	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	239000.00
+5402150	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	239000.00
+5402441	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	587600.00
+5402205	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	5.00	eur	739000.00
+5402413	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	1.00	eur	264046.00
+5402143	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	366971.00
+5402418	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1905	2.00	eur	196189.00
+5402473	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	4.00	eur	550785.00
+5402101	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	279000.00
+5402465	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	552284.00
+5402435	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	4.00	eur	595784.00
+409574	sell	apartment	10249	Berlin	Höchste Straße	16	13.42729160	52.52592910	1969	3.00	eur	249000.00
+378662	sell	apartment	10719	Berlin	\N	\N	13.32569543	52.49919989	\N	2.00	eur	320000.00
+5402153	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	3.00	eur	275000.00
+5402427	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	281641.00
+367608	sell	apartment	10115	Berlin	Brunnenstraße	160	13.39779030	52.53471290	\N	4.00	eur	310000.00
+344682	sell	penthouse	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	2013	5.00	eur	853521.00
+5402140	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	4.50	eur	1424750.00
+5402219	sell	apartment	13347	Berlin	Neue Hochstraße	54	13.37525000	52.53847000	\N	4.00	eur	328000.00
+5402171	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	1.50	eur	191995.00
+5402208	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	3.00	eur	447038.00
+5402146	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	0.00
+5402163	sell	apartment	10115	Berlin	Anklamer Straße	37	13.39940390	52.53541390	\N	3.00	eur	584512.00
+5402237	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	1910	5.00	eur	429500.00
+5402157	sell	penthouse	10115	Berlin	Scharnhorststraße	30-32	13.37162660	52.53298420	\N	3.00	eur	900298.00
+5402177	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	2.00	eur	197538.00
+5402223	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	768800.00
+5402142	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1910	3.00	eur	251999.00
+5402261	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1920	2.00	eur	291600.00
+5402265	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1885	3.00	eur	182500.00
+5402193	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	705644.00
+5402239	sell	apartment	10245	Berlin	Simon-Dach-Straße 28;	29	13.45577010	52.50863280	1900	2.00	eur	99715.00
+5402269	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	231200.00
+5402354	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	441225.00
+5402286	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	375550.00
+5402332	sell	apartment	10245	Berlin	Fischzug	6	13.46942050	52.49708280	\N	3.00	eur	289670.00
+5402207	sell	apartment	10245	Berlin	Simon-Dach-Straße	9	13.45642630	52.51096690	\N	0.00	eur	205000.00
+5402295	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	219600.00
+5402226	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	289670.00
+5402245	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1910	2.00	eur	125860.00
+5402314	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	149000.00
+5402252	sell	end_terrace_house	10365	Berlin	Philosophenweg	34	13.48724738	52.51984865	2007	5.00	eur	315000.00
+5402289	sell	multi_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	40.00	eur	0.00
+5402319	sell	apartment	10365	Berlin	Siegfriedstraße	\N	13.49983050	52.52721610	1910	2.00	eur	99000.00
+5402255	sell	villa	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	7.00	eur	160000.00
+5402238	sell	multi_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	1904	0.00	eur	1398000.00
+5402271	sell	apartment_maisonette	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	3.00	eur	340000.00
+5402248	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	3.00	eur	69000.00
+5402266	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	0.00	eur	1860000.00
+5402233	sell	apartment_maisonette	10365	Berlin	Guntherstraße	\N	13.50102950	52.51369180	1900	2.50	eur	89000.00
+5402302	sell	apartment	10365	Berlin	Hagenstraße	\N	13.50031820	52.51669830	1900	2.00	eur	105000.00
+5402312	sell	apartment	10365	Berlin	\N	\N	13.49495080	52.51908910	1914	2.00	eur	52000.00
+5402241	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1914	2.00	eur	74000.00
+5402315	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	8.00	eur	212000.00
+5402077	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1905	3.00	eur	234500.00
+5402244	sell	apartment	10365	Berlin	Herzbergstraße	78	13.50479200	52.52614670	1910	2.00	eur	58000.00
+5402253	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	99500.00
+5402309	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1911	4.00	eur	317818.00
+367076	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	455000.00
+5402267	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	1908	8.00	eur	685500.00
+5402509	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	474911.00
+5402576	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	425000.00
+5402514	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	3.00	eur	514020.00
+5402285	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	539000.00
+5402565	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	358000.00
+5402296	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	2.00	eur	235600.00
+5402517	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	3.00	eur	601620.00
+5402520	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	4.00	eur	744280.00
+5402529	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	2013	2.00	eur	330000.00
+366901	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	281000.00
+5402534	sell	apartment_maisonette	10115	Berlin	\N	\N	13.38815072	52.53177508	1997	4.00	eur	426000.00
+5402298	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	637240.00
+5402525	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	426000.00
+5402272	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1900	1.00	eur	144900.00
+400447	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2016	2.00	eur	531531.00
+5402512	sell	apartment	10179	Berlin	Voltairestraße	3	13.41493410	52.51723130	\N	2.00	eur	245000.00
+370262	sell	apartment	10717	Berlin	\N	\N	13.32725859	52.49059557	\N	5.00	eur	395000.00
+373595	sell	apartment	10717	Berlin	Uhlandstraße	79	13.32277750	52.49032140	1909	3.00	eur	208742.00
+5402516	sell	apartment	10179	Berlin	Voltairestraße	3	13.41493410	52.51723130	\N	3.00	eur	330000.00
+400868	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	21	13.41472660	52.50705620	2001	2.00	eur	290000.00
+403150	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	395000.00
+405296	sell	apartment	10179	Berlin	Legiendamm	26	13.41689390	52.50471520	2008	2.00	eur	215000.00
+400543	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	2016	4.00	eur	1742000.00
+400512	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2016	2.00	eur	356812.00
+5402372	sell	apartment	10179	Berlin	Alte Jakobstraße	50	13.40595600	52.50862190	\N	3.50	eur	644000.00
+5451497	sell	apartment	10829	Berlin	Gotenstraße	\N	13.36024690	52.47977230	\N	3.00	eur	74000.00
+5402390	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1955	2.00	eur	71500.00
+5402333	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	5.00	eur	448000.00
+5402318	sell	apartment	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	3.00	eur	178900.00
+5402421	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	240777.00
+5402326	sell	apartment_maisonette	10247	Berlin	Gürtelstraße	18	13.47271210	52.50908980	\N	3.00	eur	367100.00
+5402395	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1955	4.00	eur	165366.00
+5402294	sell	apartment	10247	Berlin	Jessnerstraße	66	13.46952700	52.50920160	1900	3.00	eur	249000.00
+5402047	sell	apartment	10247	Berlin	\N	\N	13.46308490	52.51734490	1913	3.00	eur	298000.00
+5402408	sell	apartment	10247	Berlin	Dossestraße	14	13.47262040	52.50984340	1910	3.00	eur	242000.00
+5402385	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	1.00	eur	62000.00
+5402376	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	140709.00
+5402402	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	153000.00
+5402411	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1913	3.00	eur	279000.00
+5402344	sell	apartment	10318	Berlin	Johannes-Zoschke-Straße	4	13.53036980	52.48906460	2000	2.00	eur	158000.00
+5402389	sell	apartment	10318	Berlin	Zwieseler Straße	\N	13.53917950	52.48892220	\N	4.00	eur	270738.00
+5402409	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1914	2.00	eur	155000.00
+5402337	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	285000.00
+5402321	sell	apartment	10318	Berlin	Fuchsbau	18	13.50948410	52.47588730	\N	5.00	eur	290000.00
+5402330	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	145000.00
+5402324	sell	apartment	10318	Berlin	Fuchsbau	17	13.50946720	52.47585690	\N	5.00	eur	266000.00
+5402393	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1914	3.00	eur	239000.00
+5386823	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	350450.00
+5402316	sell	apartment	10318	Berlin	Fuchsbau	16	13.50944670	52.47582460	\N	5.00	eur	243000.00
+5402412	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1914	1.50	eur	127000.00
+5402358	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1930	2.00	eur	145000.00
+5402328	sell	multi_family_house	10318	Berlin	Godesberger Straße	2	13.52705760	52.48425410	1910	35.00	eur	1444000.00
+5402416	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	155000.00
+5402343	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	117000.00
+5402323	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2000	2.50	eur	195000.00
+5402375	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	106000.00
+5402450	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	3.00	eur	269000.00
+5402444	sell	penthouse	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	2.00	eur	289000.00
+5402378	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	117000.00
+5402350	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	117000.00
+5402335	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1998	3.00	eur	190725.00
+5402338	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1998	3.00	eur	197145.00
+324750	sell	apartment	10317	Berlin	Pfarrstraße	130	13.47587620	52.50399910	\N	4.00	eur	350000.00
+5402327	sell	apartment	10317	Berlin	Lückstraße	43	13.49450790	52.50072410	1959	2.00	eur	47000.00
+5402351	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	184000.00
+5402357	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	345000.00
+5402405	sell	villa	10317	Berlin	\N	\N	13.48610820	52.49214840	2006	6.00	eur	845000.00
+5402341	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	3.00	eur	106000.00
+313400	sell	apartment	10317	Berlin	Pfarrstraße	130	13.47587620	52.50399910	2015	4.00	eur	319900.00
+5402436	sell	apartment	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	2.00	eur	130500.00
+5402391	sell	apartment	10365	Berlin	Frankfurter Allee	\N	13.49100410	52.51193180	1890	2.00	eur	77000.00
+5402447	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	1.00	eur	90182.00
+11784596	sell	penthouse	10117	Berlin	\N	\N	13.38885990	52.51703650	\N	2.00	eur	368000.00
+5402419	sell	single_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	4.00	eur	242900.00
+5402454	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	3.00	eur	145780.00
+5402367	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1925	1.00	eur	164160.00
+5561514	sell	apartment	10623	Berlin	Grolmanstraße	15	13.31994190	52.50845130	1902	2.00	eur	269000.00
+5402459	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	106930.00
+5402431	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	120490.00
+5402365	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	129000.00
+5402363	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1934	1.00	eur	49000.00
+5402397	sell	multi_family_house	10365	Berlin	Fanningerstraße	\N	13.49613460	52.51418850	1910	65.00	eur	1770000.00
+5402383	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	0.00
+5402399	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	3.00	eur	287040.00
+5402345	sell	single_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	2007	5.00	eur	315000.00
+5402370	sell	apartment	10365	Berlin	Frankfurter Allee	\N	13.49100410	52.51193180	\N	3.00	eur	77000.00
+5402373	sell	apartment	10365	Berlin	Herzbergstraße	78	13.50479200	52.52614670	1998	2.00	eur	85000.00
+5402404	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	1.00	eur	82500.00
+5402464	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	441225.00
+5402364	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	386715.00
+5402359	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	302950.00
+5402475	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	441225.00
+5402406	sell	apartment	10245	Berlin	Fischzug	2	13.46895170	52.49723190	\N	2.00	eur	200330.00
+5402368	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	4.00	eur	441225.00
+5402410	sell	apartment	10245	Berlin	Böcklinstraße	6	13.46595350	52.50630610	1900	1.00	eur	72500.00
+5402438	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	1.00	eur	70000.00
+5402458	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	280000.00
+5402552	sell	penthouse	10245	Berlin	Glasbläserallee	16	13.46863450	52.49697590	\N	4.00	eur	543400.00
+5402417	sell	apartment	10245	Berlin	Lenbachstraße	\N	13.46662330	52.50542400	1900	2.00	eur	132000.00
+5402407	sell	apartment	10245	Berlin	Böcklinstraße	6	13.46595350	52.50630610	1900	2.00	eur	145559.00
+5402472	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	386715.00
+5402452	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1904	3.00	eur	239000.00
+5402597	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	3.00	eur	85000.00
+5402366	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1925	9.50	eur	450000.00
+5402523	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	260000.00
+5402519	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1936	4.00	eur	149000.00
+5402445	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	206287.00
+5397211	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	1.00	eur	217100.00
+5427937	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	1968	1.00	eur	49000.00
+5402453	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	154023.00
+5402471	sell	apartment	10318	Berlin	\N	\N	13.51864680	52.48103570	\N	0.00	eur	116000.00
+5397236	sell	apartment	10115	Berlin	Gartenstraße	89/90	13.38866740	52.53242850	\N	2.00	eur	293000.00
+5402429	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1995	3.00	eur	199220.00
+5402624	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	249000.00
+5402499	sell	apartment	10318	Berlin	Ehrenfelsstraße	13	13.53004490	52.48052850	1930	3.00	eur	169000.00
+5402461	sell	apartment	10318	Berlin	Zwieseler Straße	52	13.53952370	52.48980750	\N	4.00	eur	401530.00
+5402528	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	2013	5.00	eur	385000.00
+5402604	sell	penthouse	10318	Berlin	Zwieseler Straße	52	13.53952370	52.48980750	\N	4.00	eur	328380.00
+5402439	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.50	eur	314492.00
+5402455	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	299000.00
+5402440	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	149500.00
+5402463	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	305000.00
+5402460	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	6.00	eur	599000.00
+5402539	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	175000.00
+5402488	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	139000.00
+5402538	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	4.00	eur	379000.00
+5402494	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	3.00	eur	190000.00
+5402535	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	1.00	eur	62000.00
+5402501	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	296340.00
+5402532	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1913	3.00	eur	299672.00
+5402503	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	229000.00
+5402507	sell	apartment	10247	Berlin	Oderstraße	2	13.47266600	52.50963670	\N	3.00	eur	242000.00
+5402446	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	262500.00
+339343	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	1900	12.00	eur	717000.00
+325383	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	\N	4.00	eur	388000.00
+339625	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	291000.00
+339087	sell	apartment	10317	Berlin	Frankfurter Allee	263	13.50214440	52.51133030	1900	4.00	eur	295000.00
+5402480	sell	apartment	10317	Berlin	Tuchollaplatz	2	13.48043040	52.50326920	\N	2.00	eur	356000.00
+5402483	sell	apartment	10317	Berlin	Kernhofer Straße	3	13.47785860	52.50438620	2001	2.00	eur	102000.00
+5402502	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	350000.00
+5402567	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	305500.00
+339362	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	345000.00
+5402548	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	356000.00
+5402511	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	2014	3.00	eur	271000.00
+5402540	sell	apartment	10365	Berlin	Hagenstraße	\N	13.50031820	52.51669830	1900	2.00	eur	159500.00
+5402744	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	8.00	eur	580000.00
+5402484	sell	apartment	10365	Berlin	Herzbergstraße	\N	13.48557340	52.52667740	1910	2.00	eur	85000.00
+5402360	sell	apartment	10365	Berlin	Fanningerstraße	\N	13.49613460	52.51418850	1900	3.50	eur	162500.00
+5402670	sell	multi_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	12.00	eur	588700.00
+5402666	sell	apartment_maisonette	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	400000.00
+5402481	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	3.00	eur	95000.00
+5402570	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1905	3.00	eur	199000.00
+5402563	sell	apartment	10365	Berlin	Guntherstraße	43	13.50081020	52.51354900	1900	2.00	eur	74394.00
+5402574	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1903	3.00	eur	193500.00
+5402551	sell	apartment	10365	Berlin	Fanningerstraße	\N	13.49613460	52.51418850	1900	2.00	eur	110000.00
+5451501	sell	apartment	10829	Berlin	\N	\N	13.36745970	52.48643580	\N	3.00	eur	74000.00
+5402655	sell	apartment	10365	Berlin	Siegfriedstraße	204	13.49730810	52.51530350	1890	1.00	eur	349000.00
+5402477	sell	apartment	10365	Berlin	\N	\N	13.49495080	52.51908910	1903	3.00	eur	214800.00
+5402526	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1960	8.00	eur	199000.00
+383332	sell	penthouse	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	2015	4.00	eur	664844.00
+5402544	sell	apartment_roof_storey	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	489000.00
+5402482	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	221298.00
+5402489	sell	penthouse	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	2.00	eur	270000.00
+5443898	sell	apartment	10717	Berlin	Helmstedter Straße	\N	13.33427010	52.49066590	1900	7.00	eur	707000.00
+5402561	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	2.00	eur	229000.00
+5444008	sell	apartment	10781	Berlin	\N	\N	13.34923480	52.49317070	1890	2.00	eur	275000.00
+384979	sell	apartment_roof_storey	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	3.00	eur	499900.00
+5402571	sell	apartment	10249	Berlin	Barnimstraße	36	13.42275000	52.52554000	1989	2.00	eur	170800.00
+5402555	sell	apartment	10249	Berlin	Ebertystraße	27	13.45484695	52.52192685	\N	2.00	eur	239000.00
+5402524	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	176400.00
+5402537	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	585000.00
+5402656	sell	apartment	10179	Berlin	Wallstraße	84	13.40820520	52.51197010	\N	2.00	eur	831432.00
+516016	rent	apartment	12524	Berlin	Rapunzelstraße	38	13.52995450	52.41827100	1997	2.00	eur	529.00
+409620	sell	apartment_maisonette	10179	Berlin	Wallstraße	85	13.40799560	52.51188770	\N	3.00	eur	1170010.00
+405658	sell	penthouse	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	2017	5.00	eur	1100000.00
+405982	sell	apartment	10179	Berlin	Wallstraße	84	13.40820520	52.51197010	1872	3.00	eur	764100.00
+5402701	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	425000.00
+407136	sell	apartment	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	2017	3.00	eur	735900.00
+5402658	sell	apartment_roof_storey	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	2350000.00
+5402623	sell	apartment	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	\N	4.00	eur	622900.00
+407954	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2017	4.00	eur	660000.00
+5402559	sell	apartment	10179	Berlin	Wallstraße	84	13.40820520	52.51197010	1872	3.00	eur	1059200.00
+5402549	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	2.00	eur	202000.00
+5402622	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	4.00	eur	464000.00
+5402631	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	24	13.52421900	52.50767200	\N	2.00	eur	160938.00
+5402541	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	4.00	eur	379000.00
+5402654	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1914	2.00	eur	160000.00
+5402599	sell	apartment	10247	Berlin	Rigaer Straße	74	13.46590190	52.51649230	1906	1.00	eur	70000.00
+5402568	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	242060.00
+5402671	sell	apartment	10247	Berlin	Samariterstraße	2	13.46481820	52.51524330	1900	1.00	eur	89000.00
+5402677	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	185828.00
+5402663	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	153000.00
+5402693	sell	apartment	10247	Berlin	Voigtstraße	13	13.46924860	52.51803540	1910	1.00	eur	108000.00
+5402608	sell	apartment	10247	Berlin	Gürtelstraße	28	13.47340910	52.50925700	\N	2.00	eur	143000.00
+5402667	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	305000.00
+5402630	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	3.00	eur	459000.00
+5402214	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	3.00	eur	209000.00
+5402626	sell	apartment_maisonette	10245	Berlin	Neue Bahnhofstraße	30	13.46943450	52.50551520	\N	5.00	eur	417500.00
+5402572	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	280000.00
+5402611	sell	apartment	10245	Berlin	Boxhagener Straße	\N	13.47087950	52.50561980	1905	3.00	eur	477500.00
+5402681	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	593537.00
+5402657	sell	apartment	10245	Berlin	Simon-Dach-Straße	9	13.45642630	52.51096690	\N	2.00	eur	169000.00
+5402644	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	259592.00
+5402432	sell	apartment	10245	Berlin	Dora-Benjamin-Park	\N	13.46712820	52.49558180	\N	4.00	eur	350000.00
+5402617	sell	apartment	10317	Berlin	Wönnichstraße	75	13.49693890	52.50399130	\N	2.00	eur	323000.00
+5402594	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	280000.00
+5402732	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1997	2.00	eur	188000.00
+5402625	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	291000.00
+5402718	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	2006	6.00	eur	845000.00
+5402598	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	372500.00
+5402573	sell	penthouse	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	499000.00
+5402596	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	305000.00
+5402603	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	275000.00
+5402642	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	183500.00
+5402612	sell	apartment	10317	Berlin	Münsterlandstraße	53	13.49676830	52.50347520	\N	2.00	eur	181000.00
+5402727	sell	apartment	10317	Berlin	Frankfurter Allee	281	13.50419330	52.51100820	\N	3.00	eur	117000.00
+5402651	sell	apartment_maisonette	10317	Berlin	Pfarrstraße	130	13.47587620	52.50399910	\N	5.00	eur	500000.00
+5402723	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	2014	4.00	eur	328000.00
+5402675	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1997	4.00	eur	426000.00
+5402725	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	306362.00
+5402589	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	3.00	eur	454240.00
+5402595	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	3.00	eur	518400.00
+367360	sell	single_family_house	10115	Berlin	\N	\N	13.37911520	52.53049030	2004	6.00	eur	1150000.00
+5402709	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	306477.00
+328168	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1892	4.00	eur	465728.00
+5402661	sell	apartment	10115	Berlin	Brunnenstraße	157	13.39752450	52.53535730	1958	2.00	eur	195000.00
+5402615	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	5.00	eur	1990000.00
+5402640	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1838	2.00	eur	185000.00
+5402682	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1937	6.00	eur	1198000.00
+5402610	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	1227200.00
+5402699	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	295657.00
+5402717	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	284727.00
+5402590	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	902000.00
+5402619	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1908	1.00	eur	120000.00
+5402650	sell	apartment	10249	Berlin	Thaerstraße	17	13.45409500	52.51963580	1996	3.00	eur	259000.00
+393411	sell	apartment	10249	Berlin	Thaerstraße	17	13.45409500	52.51963580	1997	3.00	eur	240000.00
+5402605	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	139000.00
+5402673	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1895	3.00	eur	299000.00
+5402600	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	100400.00
+5402646	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	150000.00
+5402712	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	240000.00
+378329	sell	apartment	10249	Berlin	Wilhelm-Stolze-Straße	32	13.44700300	52.52336870	1910	3.00	eur	249000.00
+5402581	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	848000.00
+5402585	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	586000.00
+5402633	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	895000.00
+5526472	sell	apartment	13088	Berlin	\N	\N	13.47679690	52.55059560	2017	4.00	eur	468000.00
+5402662	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	\N	2.00	eur	270000.00
+5402792	sell	apartment_roof_storey	10318	Berlin	Waldowallee	\N	13.53547560	52.47867940	\N	3.00	eur	278000.00
+5402653	sell	mid_terrace_house	10318	Berlin	Fuchsbau	16	13.50944670	52.47582460	\N	5.00	eur	268000.00
+5402691	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1910	0.00	eur	9000.00
+5402803	sell	semi_detached_house	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	4.00	eur	316396.00
+5402628	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1925	3.00	eur	170000.00
+5402798	sell	mid_terrace_house	10318	Berlin	\N	\N	13.53920480	52.48620030	\N	5.00	eur	251000.00
+5451547	sell	apartment	10829	Berlin	\N	\N	13.36371630	52.47626730	1900	4.00	eur	455000.00
+5451613	sell	apartment	10829	Berlin	\N	\N	13.36745970	52.48643580	1900	1.00	eur	73000.00
+5451651	sell	apartment	10829	Berlin	Gotenstraße	4	13.36015620	52.48413280	\N	4.00	eur	367410.00
+5402711	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	159000.00
+5402739	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	302950.00
+5402809	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1986	3.00	eur	99500.00
+5402730	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	302950.00
+5477056	sell	end_terrace_house	12249	Berlin	\N	\N	13.35875110	52.42436570	1923	6.00	eur	349000.00
+5402816	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	227520.00
+5402845	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	125860.00
+5402736	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	230160.00
+5402704	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1969	2.00	eur	59000.00
+5402758	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1906	5.00	eur	801800.00
+5402702	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	280000.00
+5402720	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1998	3.00	eur	145000.00
+5402822	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46754730	52.49564520	\N	3.00	eur	253000.00
+5402692	sell	apartment	10245	Berlin	Lenbachstraße	16	13.46766060	52.50580040	1900	2.00	eur	99500.00
+5402821	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	596585.00
+5402751	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	320000.00
+5402764	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1997	3.00	eur	230000.00
+5402813	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1904	1.00	eur	122700.00
+5402754	sell	apartment	10247	Berlin	Rigaer Straße	60	13.47041430	52.51554010	\N	3.00	eur	353500.00
+5561002	sell	single_family_house	14109	Berlin	\N	\N	13.16045520	52.39591510	1936	7.00	eur	375000.00
+5402746	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	124800.00
+5402769	sell	apartment	10247	Berlin	Liebigstraße	6	13.45649020	52.51693350	1985	3.00	eur	145000.00
+5402722	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	3.00	eur	183209.00
+5402853	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	152000.00
+5402726	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1952	2.00	eur	169864.00
+5402772	sell	penthouse	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	6.00	eur	1268000.00
+5402748	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	4.00	eur	269500.00
+5402797	sell	multi_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	30.00	eur	2150000.00
+5533956	sell	apartment	13359	Berlin	Soldiner Straße	19	13.38834500	52.55823980	1900	2.00	eur	81000.00
+5402735	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	147000.00
+5402719	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	3.00	eur	227500.00
+5402802	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	114460.00
+5402724	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	3.00	eur	209500.00
+5402781	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	3.00	eur	227500.00
+5402757	sell	apartment	10365	Berlin	Fanningerstraße	62	13.50069140	52.51359630	1920	2.00	eur	118350.00
+5402776	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	90000.00
+5402566	sell	apartment	10365	Berlin	Fanningerstraße	62	13.50069140	52.51359630	1900	2.00	eur	93940.00
+5402788	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	2.00	eur	147500.00
+5402771	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	110000.00
+5402783	sell	apartment	10365	Berlin	Siegfriedstraße	204	13.49730810	52.51530350	1890	1.00	eur	329000.00
+5402784	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	285000.00
+5402742	sell	apartment	10179	Berlin	Wilhelmine-Gemberg-Weg	9	13.42391890	52.51080320	\N	4.00	eur	265000.00
+5402810	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	3.00	eur	310000.00
+5435602	sell	apartment_roof_storey	10715	Berlin	\N	\N	13.32869531	52.48312430	1910	2.00	eur	108000.00
+5402765	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.00	eur	1799000.00
+5402760	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	1590000.00
+5402774	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	4.00	eur	1590000.00
+5402851	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	185275.00
+5402807	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	\N	2.00	eur	279000.00
+5402782	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1970	2.00	eur	209000.00
+411020	sell	apartment	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	2015	2.00	eur	365000.00
+5402899	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	822401.00
+394541	sell	apartment	10249	Berlin	Heidenfeldstraße	6	13.45021240	52.52564750	2016	4.00	eur	531000.00
+392118	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	2015	3.00	eur	555300.00
+5402762	sell	apartment_maisonette	10249	Berlin	Landsberger Allee	48	13.44163000	52.52399000	\N	3.00	eur	378000.00
+5402775	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	0.00
+5402891	sell	penthouse	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	621690.00
+5402895	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	895000.00
+5402829	sell	apartment	10249	Berlin	Eckertstraße	2	13.45116170	52.51855970	\N	3.00	eur	678376.00
+391895	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	2015	2.00	eur	367000.00
+382508	sell	apartment_maisonette	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	477000.00
+5402900	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	621690.00
+5402833	sell	apartment	10249	Berlin	Eckertstraße	2	13.45116170	52.51855970	\N	3.00	eur	424181.00
+5402928	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	319500.00
+5427978	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	1900	6.00	eur	529000.00
+5402925	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	3.00	eur	309500.00
+332375	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	272100.00
+5402768	sell	apartment	10115	Berlin	Strelitzer Straße	70	13.39604110	52.53419830	\N	2.00	eur	213900.00
+331520	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	2016	4.00	eur	714500.00
+5402793	sell	penthouse	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	749000.00
+5402901	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1905	3.00	eur	488160.00
+5405537	sell	penthouse	10245	Berlin	Fischzug	8	13.46962840	52.49701660	\N	5.00	eur	453750.00
+5402892	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2005	2.00	eur	260000.00
+368498	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	355000.00
+5402898	sell	apartment	10115	Berlin	Anklamer Straße	15	13.39876610	52.53485140	1903	2.00	eur	171600.00
+5402840	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	1.50	eur	164133.00
+5402871	sell	apartment	10115	Berlin	Linienstraße	142	13.39045190	52.52673290	\N	1.00	eur	225000.00
+5402799	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	345000.00
+323520	sell	single_family_house	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	4.00	eur	165539.00
+5402787	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	500000.00
+340693	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1997	2.00	eur	188000.00
+5402883	sell	single_family_house	10317	Berlin	\N	\N	13.48474500	52.49854390	\N	5.00	eur	210000.00
+5402789	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	490000.00
+5402839	sell	mid_terrace_house	10317	Berlin	\N	\N	13.48610820	52.49214840	2009	6.00	eur	1300000.00
+5402929	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1997	4.00	eur	212500.00
+5402849	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	250000.00
+325706	sell	apartment	10317	Berlin	Münsterlandstraße	53	13.49676830	52.50347520	2014	2.00	eur	164000.00
+5402824	sell	apartment	10317	Berlin	Frankfurter Allee	281	13.50419330	52.51100820	1920	3.00	eur	117000.00
+5402414	sell	apartment	10317	Berlin	Archibaldweg	2	13.48174090	52.50254790	\N	1.00	eur	100976.00
+5402905	sell	apartment	10317	Berlin	Pfarrstraße	130	13.47587620	52.50399910	\N	4.00	eur	269500.00
+5486635	sell	apartment	12439	Berlin	\N	\N	13.55066310	52.45067340	\N	2.00	eur	46000.00
+5403082	sell	apartment	10365	Berlin	Hagenstraße	6	13.49967220	52.51333670	1900	2.00	eur	147000.00
+500597	sell	apartment	12435	Berlin	Kiefholzstraße	\N	13.46612370	52.48040670	\N	4.00	eur	250000.00
+5402893	sell	end_terrace_house	10365	Berlin	Rüdigerstraße	66	13.50767855	52.51498300	\N	5.00	eur	335200.00
+5403044	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	125000.00
+5402847	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	3.00	eur	225000.00
+5402852	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	2004	5.00	eur	264000.00
+5402844	sell	apartment	10365	Berlin	Guntherstraße	\N	13.50102950	52.51369180	1920	2.00	eur	112230.00
+5402859	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	4.00	eur	269500.00
+5402873	sell	single_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	1924	3.00	eur	248000.00
+5402951	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	2004	3.00	eur	269000.00
+5402841	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	4.00	eur	269500.00
+5402994	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	2004	4.00	eur	279000.00
+5402794	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	4.00	eur	569300.00
+5403034	sell	single_family_house	10365	Berlin	Frankfurter Allee	195	13.48914310	52.51247250	\N	10.00	eur	330000.00
+5402886	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	2004	4.00	eur	264000.00
+5402831	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1995	3.00	eur	192000.00
+5402908	sell	apartment_maisonette	10318	Berlin	Zwieseler Straße	2	13.53898000	52.48597000	\N	4.00	eur	311939.00
+5402880	sell	apartment	10318	Berlin	\N	\N	13.53920480	52.48620030	1999	2.00	eur	138000.00
+5402912	sell	apartment	10318	Berlin	Waldowallee	1	13.52829721	52.49049215	\N	3.00	eur	160000.00
+5402856	sell	single_family_house	10318	Berlin	Zwieseler Straße	\N	13.53917950	52.48892220	\N	9.00	eur	924250.00
+5402995	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1938	3.00	eur	150000.00
+352649	sell	apartment	10629	Berlin	\N	\N	13.30732968	52.50254175	\N	4.00	eur	710000.00
+5431862	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	1965	2.00	eur	169000.00
+5402854	sell	single_family_house	10318	Berlin	Zwieseler Straße	\N	13.53917950	52.48892220	\N	4.00	eur	390420.00
+5402695	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	9.50	eur	2735640.00
+5402939	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1996	1.00	eur	61000.00
+5402944	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1996	4.00	eur	322000.00
+5402920	sell	apartment	10318	Berlin	Sadowastraße	5	13.51315340	52.47778730	1997	2.00	eur	110000.00
+5402858	sell	single_family_house	10318	Berlin	Zwieseler Straße	\N	13.53917950	52.48892220	\N	6.00	eur	529420.00
+411148	sell	apartment	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	2017	2.00	eur	323900.00
+412805	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	2014	3.00	eur	698924.00
+5396092	sell	apartment	10243	Berlin	Andreasstraße	21	13.43297000	52.51420000	\N	3.00	eur	450500.00
+5402877	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1999	3.00	eur	870000.00
+314673	sell	apartment	10243	Berlin	Warschauer Straße	76	13.45322380	52.51292920	1906	3.00	eur	381000.00
+5402894	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	3.00	eur	698924.00
+5402938	sell	apartment	10179	Berlin	Sebastianstraße	16	13.41116291	52.50596935	\N	4.00	eur	429000.00
+5402966	sell	apartment	10179	Berlin	Voltairestraße	\N	13.41588500	52.51733670	\N	2.00	eur	399500.00
+5402942	sell	apartment	10179	Berlin	Sebastianstraße	16	13.41116291	52.50596935	\N	3.00	eur	384000.00
+5402947	sell	apartment	10179	Berlin	Voltairestraße	\N	13.41588500	52.51733670	\N	2.00	eur	399500.00
+5402986	sell	apartment	10245	Berlin	Döringstraße	5	13.46247570	52.50580260	\N	3.00	eur	580000.00
+5402981	sell	apartment	10245	Berlin	Döringstraße	5	13.46247570	52.50580260	\N	3.00	eur	360000.00
+5403187	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1906	3.00	eur	175698.00
+5402860	sell	apartment	10245	Berlin	Stralauer Allee	5	13.45279565	52.50052465	\N	2.00	eur	235000.00
+5403188	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1930	3.00	eur	172500.00
+5403013	sell	apartment	10245	Berlin	Alt-Stralau	4	13.46730000	52.49566000	\N	3.00	eur	344246.00
+5403007	sell	penthouse	10245	Berlin	Libauer Straße	13	13.45355340	52.50857660	\N	7.00	eur	1178000.00
+5402864	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	185275.00
+5402962	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	3.00	eur	459900.00
+5403005	sell	apartment	10245	Berlin	Simplonstraße	16	13.45811450	52.50872480	1895	4.00	eur	297500.00
+5402958	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	140800.00
+5403183	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1906	2.00	eur	135882.00
+5402930	sell	penthouse	10247	Berlin	Dolziger Straße	31	13.47046280	52.51857610	\N	2.00	eur	199000.00
+5402872	sell	apartment	10247	Berlin	Jessnerstraße	17	13.47289140	52.51192470	1920	2.00	eur	90000.00
+5403021	sell	apartment	10367	Berlin	Bleckmannweg	5	13.48276230	52.51477410	\N	2.00	eur	121000.00
+5402911	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	2.00	eur	135000.00
+5402874	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	235000.00
+5402967	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	139000.00
+5403050	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1908	3.00	eur	139000.00
+5403056	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	1900	1.00	eur	65000.00
+5402876	sell	apartment	10247	Berlin	Weichselstraße	34	13.47069210	52.51334920	1905	6.00	eur	616000.00
+5403059	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1908	3.00	eur	110000.00
+5402974	sell	apartment	10367	Berlin	Dottistraße	12-16	13.48311000	52.51363000	1925	5.00	eur	599000.00
+5402879	sell	apartment	10247	Berlin	Bänschstraße	\N	13.46891360	52.51747260	1905	1.00	eur	129900.00
+5402992	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	110000.00
+5402997	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	1.00	eur	55000.00
+5402983	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	\N	3.00	eur	110000.00
+5402988	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	1.00	eur	69000.00
+5402921	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	588000.00
+5402914	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	602000.00
+5402949	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1908	1.00	eur	122500.00
+5402963	sell	apartment	10249	Berlin	Heidenfeldstraße	20	13.44949300	52.52571430	1900	3.00	eur	225000.00
+5444002	sell	apartment	10777	Berlin	\N	\N	13.34348307	52.49775390	\N	3.50	eur	449000.00
+5402919	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	274000.00
+5402978	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	270000.00
+5402927	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	4.00	eur	585000.00
+5403000	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	710899.00
+5402968	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1962	1.00	eur	95000.00
+5402957	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	621000.00
+5402907	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	4.00	eur	664900.00
+5402998	sell	apartment_maisonette	10115	Berlin	Kleine Hamburger Straße	2	13.39412990	52.52825080	2002	6.00	eur	879000.00
+5402934	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	3.00	eur	279500.00
+368648	sell	apartment	10115	Berlin	Schlegelstraße	26	13.38615000	52.53001620	\N	2.00	eur	170000.00
+356216	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	127000.00
+334087	sell	apartment	10115	Berlin	Schwartzkopffstraße	6	13.38035040	52.53489280	1900	4.00	eur	268731.00
+332534	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	355000.00
+332965	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1900	2.00	eur	178516.00
+5402959	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	1227200.00
+5403011	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	222000.00
+5402955	sell	penthouse	10557	Berlin	Lehrter Straße	16-17	13.36409000	52.52998000	\N	3.00	eur	768800.00
+5403014	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	0.00
+5403126	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	2002	4.00	eur	945000.00
+5402946	sell	apartment	10557	Berlin	Lehrter Straße	16-17	13.36409000	52.52998000	1905	3.00	eur	382550.00
+5403002	sell	apartment	10115	Berlin	Kleine Hamburger Straße	2	13.39412990	52.52825080	2002	3.50	eur	499000.00
+5402937	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	2.00	eur	339500.00
+326730	sell	apartment_maisonette	10317	Berlin	Pfarrstraße	130	13.47587620	52.50399910	\N	5.00	eur	519900.00
+5403043	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	299900.00
+5402952	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1998	2.00	eur	224550.00
+5402989	sell	apartment	10317	Berlin	Irenenstraße	\N	13.49997980	52.50933170	1920	6.00	eur	339000.00
+5403038	sell	mid_terrace_house	10317	Berlin	Vicki-Baum-Straße	60	13.48397230	52.49709540	2009	6.00	eur	1075000.00
+5402987	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	1010000.00
+5402982	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1920	6.00	eur	339000.00
+5403023	sell	apartment	10317	Berlin	Pfarrstraße	130	13.47587620	52.50399910	\N	3.00	eur	339900.00
+5402941	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2008	2.00	eur	135000.00
+5403018	sell	apartment	10317	Berlin	Münsterlandstraße	53	13.49676830	52.50347520	\N	6.00	eur	476000.00
+5419819	sell	apartment	10551	Berlin	\N	\N	13.33855250	52.53167100	1900	2.00	eur	140000.00
+5403009	sell	apartment	10317	Berlin	Schreiberhauer Straße	31	13.47494000	52.50469920	1998	2.00	eur	95000.00
+5402979	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	1.00	eur	89000.00
+5402969	sell	apartment	10317	Berlin	Pfarrstraße	130	13.47587620	52.50399910	\N	3.00	eur	299900.00
+5403061	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	1.00	eur	65000.00
+5403067	sell	apartment	10247	Berlin	Finowstraße	32	13.46851410	52.51236230	1900	2.00	eur	99000.00
+5403125	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.50	eur	209000.00
+5403084	sell	apartment	10249	Berlin	Thaerstraße	35	13.45526380	52.52181740	1900	3.00	eur	170000.00
+5403003	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.00	eur	335458.00
+5403068	sell	apartment	10249	Berlin	Richard-Sorge-Straße	50	13.44419610	52.52437190	\N	3.00	eur	361000.00
+5403055	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	215000.00
+5403045	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	1.00	eur	104900.00
+5403042	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.50	eur	184000.00
+5403031	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	1.00	eur	104900.00
+5403057	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	4.00	eur	215000.00
+5403141	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	215603.00
+5403063	sell	apartment	10249	Berlin	Agnes-Wabnitz-Straße	3	13.45491710	52.52585980	2002	3.00	eur	252000.00
+5403095	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	375000.00
+5403098	sell	apartment_maisonette	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	6.00	eur	549000.00
+5403010	sell	multi_family_house	10318	Berlin	Rheinsteinstraße	89	13.53567950	52.48558240	1923	0.00	eur	0.00
+5403087	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1997	2.00	eur	115000.00
+5403064	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1995	2.00	eur	90000.00
+309837	sell	apartment	10318	Berlin	Waldowallee	1	13.52829721	52.49049215	1995	1.00	eur	48000.00
+5403167	sell	apartment	10318	Berlin	Güntherstraße	\N	13.51348330	52.47878090	1997	3.00	eur	179000.00
+5403051	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	159500.00
+5403226	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	3.50	eur	141900.00
+5403139	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	269450.00
+5403079	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	69900.00
+5403060	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	87500.00
+5403081	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	2000	3.00	eur	170000.00
+5403096	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	261000.00
+381534	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	1958	2.00	eur	171400.00
+5403035	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1954	3.00	eur	369000.00
+5403077	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	189573.00
+5403022	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	302950.00
+5403112	sell	apartment	10245	Berlin	Stralauer Allee	5	13.45279565	52.50052465	\N	3.00	eur	465000.00
+338651	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	349000.00
+5403032	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	596600.00
+5403015	sell	apartment	10245	Berlin	Dora-Benjamin-Park	8-10	13.46706660	52.49528770	\N	2.00	eur	300000.00
+5403086	sell	apartment	10245	Berlin	Simplonstraße	59	13.46467910	52.50541210	\N	3.00	eur	122000.00
+5403019	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	2.00	eur	238680.00
+5403041	sell	apartment	10245	Berlin	Glasbläserallee	14	13.46855680	52.49687480	\N	2.00	eur	250710.00
+5403030	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	369000.00
+5403028	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46754730	52.49564520	\N	3.00	eur	344000.00
+5403039	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	316575.00
+5403107	sell	apartment	10179	Berlin	Rungestraße	3-7	13.41445720	52.51245970	\N	4.00	eur	747000.00
+5403114	sell	apartment	10179	Berlin	Klosterstraße	65	13.41261300	52.51660640	\N	3.00	eur	905000.00
+411736	sell	apartment	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	2017	2.00	eur	329900.00
+5403027	sell	apartment	10179	Berlin	Wallstraße	18-22	13.40671250	52.51139470	\N	3.00	eur	356900.00
+5403111	sell	apartment	10179	Berlin	Voltairestraße	3	13.41493410	52.51723130	\N	3.00	eur	330000.00
+5403124	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1999	3.00	eur	215000.00
+5403342	sell	penthouse	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	745000.00
+5403149	sell	apartment_roof_storey	10179	Berlin	Wilhelmine-Gemberg-Weg	9	13.42391890	52.51080320	\N	4.00	eur	979000.00
+408096	sell	penthouse	10179	Berlin	Heinrich-Heine-Straße	74	13.41205000	52.50565000	2015	2.00	eur	429000.00
+5403433	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	5.00	eur	835000.00
+5403102	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	1971	3.00	eur	216000.00
+5403180	sell	apartment	10317	Berlin	Weitlingstraße	15	13.49819250	52.50936460	\N	3.00	eur	264500.00
+12339574	rent	apartment_maisonette	12487	Berlin	Königsheideweg	275	13.50840332	52.44599720	1900	4.00	eur	1035.00
+5403104	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	380000.00
+5403062	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	165000.00
+5403058	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	264500.00
+5403080	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	309000.00
+5403204	sell	apartment	10317	Berlin	Weitlingstraße	\N	13.49588080	52.50598610	\N	3.00	eur	212000.00
+5403085	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	356500.00
+5403146	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	190500.00
+5403066	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	99000.00
+5403101	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	5.00	eur	385000.00
+5403185	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	2.00	eur	190500.00
+5403166	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	4.00	eur	450172.00
+5403300	sell	penthouse	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	678562.00
+5403083	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	228000.00
+5403294	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	3.00	eur	242580.00
+5403078	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	5.00	eur	529500.00
+5403304	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	175000.00
+5403147	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1908	3.00	eur	139000.00
+5403169	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1999	2.00	eur	195000.00
+604049	sell	apartment	13597	Berlin	\N	\N	13.20837590	52.53912440	1962	1.00	eur	50000.00
+5551585	sell	apartment	13597	Berlin	\N	\N	13.20837590	52.53912440	1910	3.00	eur	89000.00
+5403097	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	4.00	eur	367680.00
+5403115	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1906	2.00	eur	93940.00
+615245	sell	apartment	13407	Berlin	\N	\N	13.34397840	52.58342830	1927	2.00	eur	150000.00
+5403103	sell	multi_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	18.00	eur	778700.00
+5403110	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1906	2.00	eur	112230.00
+316551	sell	apartment	10365	Berlin	Alfredstraße	\N	13.48973200	52.51214720	1920	2.00	eur	203000.00
+5403140	sell	semi_detached_house	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	5.00	eur	234900.00
+5403168	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1906	2.00	eur	93940.00
+5403159	sell	apartment	10365	Berlin	Normannenstraße	\N	13.48748010	52.51562420	1928	3.00	eur	407000.00
+5403164	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1906	1.00	eur	75600.00
+5403088	sell	apartment	10365	Berlin	Hagenstraße	6	13.49967220	52.51333670	1900	4.00	eur	269500.00
+5403156	sell	apartment	10365	Berlin	Normannenstraße	\N	13.48748010	52.51562420	1928	2.00	eur	199000.00
+5403162	sell	apartment	10317	Berlin	Rosenfelder Straße	11	13.50313000	52.50965000	\N	2.00	eur	146000.00
+5403120	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	4.00	eur	279000.00
+5403173	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1906	2.00	eur	112230.00
+5403175	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1906	2.00	eur	114460.00
+320098	sell	apartment	10365	Berlin	Fanningerstraße	42	13.49717560	52.51396330	\N	2.00	eur	120000.00
+5403130	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	596600.00
+5403133	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	667600.00
+5403189	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	135000.00
+5403219	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	667600.00
+5403178	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	124875.00
+5403199	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	352800.00
+5403182	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	223620.00
+5403196	sell	apartment	10245	Berlin	Revaler Straße	23	13.46276703	52.50534135	\N	3.00	eur	395000.00
+5516088	sell	apartment	13088	Berlin	Bizetstraße	71	13.45640000	52.54829000	1900	2.00	eur	137000.00
+5515933	sell	apartment	13086	Berlin	\N	\N	13.46317160	52.55724170	1900	3.00	eur	205000.00
+5403215	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	519135.00
+5403205	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	519135.00
+5403186	sell	apartment	10245	Berlin	Stralauer Allee	5	13.45279565	52.50052465	\N	2.00	eur	329000.00
+5403360	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1999	2.00	eur	202000.00
+5403336	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	2.00	eur	321080.00
+334398	sell	apartment	10115	Berlin	Chausseestraße	37	13.37983460	52.53336290	\N	3.00	eur	279500.00
+5403430	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	1.50	eur	194976.00
+331076	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	637240.00
+5403259	sell	apartment_maisonette	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	474911.00
+5403254	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	3.00	eur	455994.00
+5403427	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	4.00	eur	1430875.00
+365967	sell	apartment	10115	Berlin	Schlegelstraße	4	13.38569850	52.52957900	1999	3.00	eur	325000.00
+5403355	sell	penthouse	10115	Berlin	\N	\N	13.37770350	52.53261400	\N	6.00	eur	1079000.00
+5403420	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	1.50	eur	157617.00
+5403404	sell	apartment	10115	Berlin	Schlegelstraße	28	13.38576270	52.52985470	1900	1.50	eur	157617.00
+5403372	sell	apartment	10115	Berlin	Scharnhorststraße	\N	13.37576910	52.52869110	\N	4.00	eur	605567.00
+5444011	sell	apartment	10777	Berlin	\N	\N	13.34348307	52.49775390	\N	5.00	eur	429000.00
+5443834	sell	apartment	10719	Berlin	\N	\N	13.33115500	52.50311450	2014	3.00	eur	777000.00
+5403192	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	3.50	eur	774500.00
+12339558	rent	apartment	12437	Berlin	Köpenicker Landstraße	\N	13.49293790	52.46811720	\N	2.00	eur	412.00
+388060	sell	apartment	10719	Berlin	\N	\N	13.33115500	52.50311450	1889	4.00	eur	1350000.00
+5403150	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	367981.00
+12339565	rent	apartment	12437	Berlin	Köpenicker Landstraße	264	13.49317440	52.46748840	1961	2.00	eur	406.00
+5403143	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	1910	2.00	eur	349000.00
+5403237	sell	mid_terrace_house	10365	Berlin	Kriemhildstraße	22	13.50646312	52.51629240	\N	5.00	eur	298700.00
+402249	sell	apartment	10249	Berlin	Richard-Sorge-Straße	53	13.44406260	52.52374290	2010	4.00	eur	518000.00
+5403160	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	4.00	eur	537132.00
+5403200	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	1390000.00
+5403234	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	368000.00
+5403179	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	601036.00
+5403229	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	396000.00
+312581	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	2004	4.00	eur	279000.00
+359134	sell	apartment	10365	Berlin	Siegfriedstraße	202	13.49819470	52.51485320	1910	3.00	eur	295000.00
+5403227	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	2.00	eur	60000.00
+5403231	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	1.00	eur	250000.00
+5403239	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	5.00	eur	230000.00
+5403194	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1930	3.00	eur	215000.00
+5403242	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1850	1.00	eur	120000.00
+5403210	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	3.00	eur	148932.00
+5403245	sell	apartment	10365	Berlin	Bürgerheimstraße	5	13.49112150	52.51283970	1908	2.00	eur	198500.00
+318787	sell	apartment	10365	Berlin	Atzpodienstraße	37	13.49314150	52.51481700	1900	2.00	eur	106500.00
+5403258	sell	apartment	10365	Berlin	Hubertusstraße	19	13.49520410	52.51555170	1935	2.00	eur	79900.00
+317645	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1995	2.00	eur	110000.00
+5403253	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.50	eur	363000.00
+5403279	sell	apartment	10318	Berlin	\N	\N	13.51864680	52.48103570	1920	0.00	eur	69000.00
+5403206	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	279850.00
+310123	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1995	2.00	eur	69000.00
+5403292	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	1935	21.00	eur	570000.00
+5403267	sell	apartment	13187	Berlin	Zillertalstraße	55	13.41062420	52.56043610	1905	2.00	eur	189000.00
+5403302	sell	single_family_house	10318	Berlin	Am Carlsgarten	\N	13.53210450	52.47774850	\N	5.00	eur	365000.00
+308812	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	275000.00
+5403285	sell	apartment	10318	Berlin	Liepnitzstraße	46	13.51383400	52.47938590	1900	2.00	eur	135000.00
+316777	sell	apartment_maisonette	10318	Berlin	\N	\N	13.54460910	52.49460730	2013	6.00	eur	549000.00
+5403330	sell	multi_family_house	10318	Berlin	\N	\N	13.51864680	52.48103570	1940	0.00	eur	76000.00
+5403316	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	387000.00
+5403243	sell	apartment_roof_storey	10317	Berlin	\N	\N	13.48610820	52.49214840	2015	5.00	eur	335000.00
+5403216	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	316000.00
+5403251	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1918	3.00	eur	132000.00
+5403272	sell	apartment	10317	Berlin	Frankfurter Allee	281	13.50419330	52.51100820	\N	2.50	eur	110000.00
+321154	sell	apartment	10405	Berlin	Ella-Kay-Straße	24	13.43036110	52.53955410	2013	4.00	eur	359500.00
+5412659	sell	apartment_maisonette	10437	Berlin	\N	\N	13.41995060	52.54600630	\N	4.00	eur	466850.00
+5403274	sell	multi_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	1994	8.00	eur	2140000.00
+5403329	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	3.00	eur	398000.00
+5403263	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	345000.00
+5403264	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	2.00	eur	99000.00
+5403312	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1920	4.00	eur	249000.00
+5403220	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1920	4.00	eur	249000.00
+5403235	sell	multi_family_house	10317	Berlin	Irenenstraße	\N	13.49997980	52.50933170	\N	0.00	eur	1425000.00
+5403255	sell	apartment	10317	Berlin	Heinrichstraße	37	13.50024320	52.50705350	1900	4.00	eur	329000.00
+5403281	sell	apartment	10245	Berlin	Simon-Dach-Straße	30	13.45587910	52.50885990	1900	2.00	eur	210000.00
+5403260	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	85000.00
+5403284	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	3.50	eur	141900.00
+5403308	sell	apartment	10245	Berlin	Kopernikusstraße	8	13.45282160	52.51045210	1904	2.00	eur	258810.00
+5402945	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	2015	3.00	eur	249000.00
+380573	sell	apartment	10245	Berlin	Corinthstraße	57	13.46447370	52.49925600	2004	4.00	eur	350000.00
+380804	sell	apartment	10245	Berlin	Libauer Straße	13	13.45355340	52.50857660	\N	4.00	eur	435000.00
+5403288	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	339000.00
+5403233	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	319925.00
+5403283	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1985	2.00	eur	78000.00
+5403275	sell	apartment	10245	Berlin	Simplonstraße	\N	13.45845610	52.50863980	1910	3.00	eur	135000.00
+5403299	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	119500.00
+5414987	sell	penthouse	10247	Berlin	Müggelstraße	5	13.47130010	52.51311770	1910	3.00	eur	149000.00
+5403295	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	775000.00
+404624	sell	apartment_maisonette	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	2016	2.00	eur	950000.00
+5403305	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1908	2.00	eur	143500.00
+5403297	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	5.00	eur	775000.00
+387010	sell	apartment	10249	Berlin	Straßmannstraße	6	13.44755000	52.52146000	2007	3.00	eur	335000.00
+5403425	sell	apartment_roof_storey	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	477000.00
+5403434	sell	apartment_roof_storey	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	6.00	eur	1485000.00
+5403319	sell	apartment_maisonette	10249	Berlin	Landsberger Allee	48	13.44163000	52.52399000	\N	3.00	eur	366000.00
+5403311	sell	apartment	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	4.00	eur	664900.00
+5403537	sell	apartment	10245	Berlin	Stralauer Allee	5	13.45279565	52.50052465	\N	3.00	eur	499000.00
+5403333	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	2009	3.00	eur	343500.00
+5403377	sell	apartment_roof_storey	10249	Berlin	Richard-Sorge-Straße	68	13.44620790	52.52149470	\N	4.00	eur	596000.00
+5403390	sell	apartment	10365	Berlin	Bürgerheimstraße	17	13.49137190	52.51379060	\N	2.00	eur	115000.00
+5403465	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	2.00	eur	135882.00
+5403438	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1850	2.00	eur	120000.00
+5403321	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	118350.00
+5403475	sell	apartment	10365	Berlin	Bürgerheimstraße	5	13.49112150	52.51283970	2000	2.00	eur	116300.00
+5403463	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	2.00	eur	114460.00
+5403310	sell	apartment	10365	Berlin	Frankfurter Allee	\N	13.49100410	52.51193180	\N	3.00	eur	77000.00
+5403458	sell	apartment	10365	Berlin	Bürgerheimstraße	5	13.49112150	52.51283970	2000	4.00	eur	209500.00
+5403306	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	1.00	eur	75366.00
+5403334	sell	apartment	10365	Berlin	Frankfurter Allee	\N	13.49100410	52.51193180	\N	3.00	eur	77000.00
+5403448	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	2.00	eur	355000.00
+5403444	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	4.00	eur	529500.00
+5403367	sell	single_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	6.00	eur	249000.00
+5403446	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	2009	4.00	eur	529500.00
+5403422	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1910	2.00	eur	114460.00
+5403528	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	1.00	eur	80684.00
+5403327	sell	apartment	10365	Berlin	Roedeliusplatz	\N	13.48982330	52.51526330	\N	1.00	eur	95000.00
+5403441	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1850	0.00	eur	140000.00
+5403362	sell	apartment	10247	Berlin	Pettenkoferstraße	\N	13.47341610	52.51389210	\N	3.00	eur	319430.00
+5403335	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	199000.00
+5403340	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	289000.00
+5403447	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1907	1.00	eur	59000.00
+5403451	sell	apartment_maisonette	10249	Berlin	Walter-Friedländer-Straße	\N	13.45683610	52.52517530	1885	5.00	eur	698800.00
+5403331	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1905	4.00	eur	277500.00
+5403315	sell	apartment	10247	Berlin	Rigaer Straße	60	13.47041430	52.51554010	\N	4.00	eur	699100.00
+5403345	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	389000.00
+5403350	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	489000.00
+5403328	sell	apartment	10247	Berlin	Bänschstraße	83	13.47034020	52.51747200	2003	5.00	eur	725000.00
+5403359	sell	apartment	10249	Berlin	Pufendorfstraße	\N	13.43819460	52.52170100	\N	4.00	eur	502756.00
+5451506	sell	penthouse	10967	Berlin	Böckhstraße	40	13.41957340	52.49366670	1900	1.00	eur	79027.00
+5496639	sell	apartment	12557	Berlin	Gutenbergstraße	\N	13.57042740	52.44639900	1925	4.00	eur	297651.00
+5403332	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	149000.00
+5403411	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	20	13.52319720	52.50673390	\N	4.00	eur	298425.00
+5403426	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	2.00	eur	128500.00
+5403366	sell	apartment	10245	Berlin	Alt-Stralau	52/53	13.47063520	52.49475670	\N	4.00	eur	1475000.00
+5403354	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	369000.00
+5403394	sell	apartment	10245	Berlin	Alt-Stralau	52/53	13.47063520	52.49475670	\N	2.00	eur	498000.00
+5403409	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	115000.00
+5403423	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	128500.00
+5403382	sell	apartment	10245	Berlin	Alt-Stralau	44-44b	13.47283915	52.49365465	\N	3.00	eur	398500.00
+5403407	sell	apartment	10245	Berlin	Alt-Stralau	44-44b	13.47283915	52.49365465	\N	2.00	eur	279500.00
+5403361	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	5.00	eur	290000.00
+5403351	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	312137.00
+5403371	sell	apartment	10245	Berlin	Alt-Stralau	52/53	13.47063520	52.49475670	\N	4.00	eur	1250000.00
+5403379	sell	apartment	10245	Berlin	Alt-Stralau	52/53	13.47063520	52.49475670	\N	2.00	eur	348000.00
+5403405	sell	apartment	10245	Berlin	Alt-Stralau	44-44b	13.47283915	52.49365465	\N	3.00	eur	634500.00
+5403384	sell	apartment	10245	Berlin	Alt-Stralau	44-44b	13.47283915	52.49365465	\N	3.00	eur	584500.00
+5403385	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	\N	4.00	eur	302000.00
+5403396	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1910	3.50	eur	208000.00
+5403387	sell	apartment	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	\N	6.00	eur	476000.00
+5403421	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1900	3.00	eur	198000.00
+5403343	sell	apartment	10317	Berlin	Münsterlandstraße	53	13.49676830	52.50347520	\N	4.00	eur	345000.00
+5403389	sell	apartment_maisonette	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	\N	5.00	eur	616000.00
+5403428	sell	apartment	10317	Berlin	Frankfurter Allee	263	13.50214440	52.51133030	1900	1.00	eur	120000.00
+5403408	sell	apartment	10317	Berlin	Münsterlandstraße	53	13.49676830	52.50347520	\N	4.00	eur	329000.00
+5403391	sell	penthouse	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	\N	3.00	eur	374000.00
+5403393	sell	apartment	10317	Berlin	Münsterlandstraße	53	13.49676830	52.50347520	\N	2.00	eur	164000.00
+5403353	sell	apartment_roof_storey	10317	Berlin	\N	\N	13.48610820	52.49214840	2015	4.00	eur	335000.00
+5403339	sell	apartment	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	\N	4.00	eur	389000.00
+5403381	sell	apartment	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	2014	3.00	eur	302000.00
+5403414	sell	apartment	10317	Berlin	Wönnichstraße	75	13.49693890	52.50399130	\N	2.00	eur	339150.00
+5403378	sell	apartment_maisonette	10318	Berlin	Zwieseler Straße	22-26a	13.54077510	52.48782470	\N	5.00	eur	359053.00
+5403344	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	2005	4.00	eur	359000.00
+5403865	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1920	1.00	eur	73000.00
+5403910	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	249980.00
+5403410	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	3.00	eur	285000.00
+5403891	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	2009	4.00	eur	485000.00
+5403406	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	5.00	eur	259850.00
+5403357	sell	multi_family_house	10318	Berlin	\N	\N	13.51864680	52.48103570	1994	50.00	eur	8000000.00
+5402906	sell	single_family_house	10318	Berlin	Zwieseler Straße	54	13.53953710	52.48987310	\N	6.00	eur	499500.00
+5403884	sell	multi_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	9.00	eur	88000.00
+5403373	sell	apartment_maisonette	10318	Berlin	Zwieseler Straße	2	13.53898000	52.48597000	\N	5.00	eur	395400.00
+5403452	sell	single_family_house	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	4.00	eur	76000.00
+5403861	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	\N	2.00	eur	219000.00
+5403913	sell	multi_family_house	10318	Berlin	Blockdammweg	\N	13.50862490	52.48435800	\N	9.00	eur	88000.00
+5403907	sell	semi_detached_house	10318	Berlin	Wallensteinstraße	\N	13.50580430	52.49138980	\N	5.00	eur	249850.00
+5403380	sell	apartment_maisonette	10318	Berlin	Zwieseler Straße	22-26a	13.54077510	52.48782470	\N	4.00	eur	325086.00
+5403471	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46754730	52.49564520	\N	3.00	eur	300295.00
+5403513	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	2.00	eur	119500.00
+5403476	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46754730	52.49564520	\N	2.00	eur	178162.00
+5403498	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46754730	52.49564520	\N	2.00	eur	387000.00
+5403504	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	1.00	eur	89000.00
+5403431	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46754730	52.49564520	\N	2.00	eur	271143.00
+340164	sell	penthouse	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	0.00
+5403488	sell	apartment	10245	Berlin	Alt-Stralau	4	13.46730000	52.49566000	\N	3.00	eur	394900.00
+5403501	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1905	1.00	eur	89000.00
+5403532	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	620539.00
+5403459	sell	apartment	10245	Berlin	Alt-Stralau	4	13.46730000	52.49566000	\N	3.00	eur	705500.00
+5403453	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46754730	52.49564520	\N	2.00	eur	275000.00
+5403467	sell	apartment	10245	Berlin	Alt-Stralau	6	13.46754730	52.49564520	\N	4.00	eur	593506.00
+5403618	sell	apartment	10179	Berlin	Dresdener Straße	\N	13.41474100	52.50463330	2000	2.00	eur	230000.00
+5403597	sell	apartment	10179	Berlin	Engeldamm	62-64	13.42151340	52.50567540	1898	3.00	eur	479000.00
+5451556	sell	apartment	10967	Berlin	\N	\N	13.41505060	52.49488560	\N	4.00	eur	324968.00
+5403679	sell	apartment_roof_storey	10179	Berlin	Sebastianstraße	16	13.41116291	52.50596935	\N	3.00	eur	365000.00
+5403756	sell	apartment	10179	Berlin	Michaelkirchstraße	16	13.42208520	52.51071940	\N	2.00	eur	305000.00
+5451571	sell	apartment	10967	Berlin	Graefestraße	33	13.41541930	52.49027110	1890	1.00	eur	89700.00
+403787	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	2011	4.00	eur	563000.00
+523795	rent	apartment	12459	Berlin	Zeppelinstraße	70	13.51715940	52.46617250	\N	3.00	eur	424.45
+5403578	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	4.00	eur	1203600.00
+5403478	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	431610.00
+5403506	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	339085.00
+5403457	sell	penthouse	10115	Berlin	Chausseestraße	\N	13.37452820	52.53726420	\N	3.00	eur	299000.00
+5403582	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	2.00	eur	257640.00
+5403466	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	1990000.00
+5403481	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	377169.00
+5403580	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	3.00	eur	454240.00
+5403534	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1949	2.00	eur	127000.00
+365428	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	2.00	eur	183000.00
+5403573	sell	apartment	10557	Berlin	Lehrter Straße	16-17	13.36409000	52.52998000	1905	2.00	eur	235600.00
+5403499	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	399637.00
+5403521	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	4.00	eur	505078.00
+11098285	sell	apartment	12679	Berlin	\N	\N	13.54936270	52.54265850	\N	4.00	eur	360050.00
+354408	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	20	13.52319720	52.50673390	\N	2.00	eur	185938.00
+5403484	sell	apartment	10315	Berlin	Alfred-Kowalke-Straße	20	13.52319720	52.50673390	\N	2.00	eur	160900.00
+5403470	sell	apartment	10247	Berlin	Dolziger Straße	\N	13.46643590	52.51912650	1907	1.00	eur	69000.00
+5403507	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	3.00	eur	335000.00
+5403456	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1886	2.00	eur	228000.00
+5403565	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1905	4.00	eur	249000.00
+5403525	sell	apartment	10247	Berlin	Oderstraße	2	13.47266600	52.50963670	1910	2.00	eur	175500.00
+5403519	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	294464.00
+5403474	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	1.00	eur	69000.00
+5403524	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1910	2.00	eur	192900.00
+5403535	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1910	2.00	eur	194500.00
+5403527	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	165000.00
+5403542	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	160000.00
+5403581	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.50	eur	187500.00
+5403503	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	150000.00
+5403486	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	3.00	eur	349800.00
+5403490	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	3.00	eur	529500.00
+5403480	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	5.00	eur	529500.00
+5403557	sell	mid_terrace_house	10365	Berlin	Bornitzstraße	92	13.49323372	52.52029830	\N	4.00	eur	289900.00
+5403538	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	112230.00
+5403505	sell	apartment	10365	Berlin	Bürgerheimstraße	5	13.49112150	52.51283970	\N	1.00	eur	96100.00
+5403526	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	104040.00
+5403546	sell	apartment	10365	Berlin	Guntherstraße	43	13.50076590	52.51341210	1907	2.00	eur	99999.00
+5403495	sell	apartment	10365	Berlin	Guntherstraße	41	13.50098990	52.51420590	1900	3.00	eur	189000.00
+5403530	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	142676.00
+5403554	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	1.00	eur	38000.00
+5403540	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	108165.00
+5403552	sell	apartment	10365	Berlin	\N	\N	13.49495080	52.51908910	1900	1.00	eur	350000.00
+5403541	sell	apartment_roof_storey	10317	Berlin	\N	\N	13.48474500	52.49854390	1910	3.50	eur	208000.00
+5403564	sell	apartment_roof_storey	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	360000.00
+5403489	sell	single_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	2009	6.00	eur	1050000.00
+5403556	sell	apartment_roof_storey	10317	Berlin	\N	\N	13.48610820	52.49214840	2015	5.00	eur	340000.00
+5403612	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	395000.00
+5403553	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2015	3.00	eur	215000.00
+5403570	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	265000.00
+5403548	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1996	2.00	eur	110000.00
+5403485	sell	apartment	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	\N	5.00	eur	638000.00
+5525704	sell	apartment	13156	Berlin	Friedrich-Engels-Straße	1	13.39709600	52.58017680	\N	3.00	eur	245000.00
+5403491	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	370000.00
+5403591	sell	single_family_house	10317	Berlin	Vicki-Baum-Straße	\N	13.48233280	52.49802730	2009	6.00	eur	995000.00
+5403544	sell	penthouse	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	4.00	eur	728000.00
+5403587	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2009	6.00	eur	995000.00
+11784743	sell	apartment	10585	Berlin	\N	\N	13.30410540	52.51660230	\N	2.00	eur	179000.00
+363708	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	1908	4.00	eur	269000.00
+406686	sell	apartment	10249	Berlin	Friedenstraße	93	13.43558780	52.52205340	1997	2.00	eur	220000.00
+376141	sell	apartment	10627	Berlin	\N	\N	13.30794890	52.50656300	1908	4.00	eur	339000.00
+5403603	sell	apartment_maisonette	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	3.00	eur	477500.00
+5403599	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	178162.00
+5403621	sell	penthouse	10245	Berlin	Alt-Stralau	52/53	13.47063520	52.49475670	\N	4.00	eur	1475000.00
+5403631	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	204000.00
+5403607	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	3.00	eur	378394.00
+5403652	sell	apartment	10245	Berlin	\N	\N	13.45544710	52.50193320	\N	3.00	eur	319925.00
+5403678	sell	apartment	10245	Berlin	Stralauer Allee	5	13.45279565	52.50052465	\N	2.00	eur	167000.00
+5403705	sell	apartment	10245	Berlin	Boxhagener Straße	51	13.46676370	52.50809520	\N	1.00	eur	64869.00
+5403697	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	1.00	eur	89000.00
+5403545	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	4.00	eur	535000.00
+5403744	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1934	2.00	eur	85000.00
+5403690	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	3.00	eur	185000.00
+5403625	sell	apartment	10245	Berlin	Böcklinstraße	6	13.46595350	52.50630610	\N	2.00	eur	147500.00
+5403613	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1930	2.00	eur	45000.00
+5403645	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	120000.00
+5403641	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	4.00	eur	499500.00
+5403611	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1938	3.00	eur	225000.00
+346636	sell	apartment	10365	Berlin	Wotanstraße	4	13.49658830	52.51501450	1910	2.00	eur	195000.00
+5403654	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1964	3.00	eur	80000.00
+5403559	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	1.00	eur	82000.00
+5403630	sell	end_terrace_house	10365	Berlin	Bornitzstraße	92	13.49323372	52.52029830	\N	4.00	eur	354300.00
+5403615	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1930	2.00	eur	45000.00
+5403628	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1992	2.00	eur	48000.00
+5403656	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	120000.00
+5403639	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	4.00	eur	499500.00
+5403562	sell	single_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	4.00	eur	355500.00
+5403662	sell	apartment	10365	Berlin	Gudrunstraße	6	13.50168230	52.51313600	1930	3.00	eur	139000.00
+5403644	sell	apartment	10365	Berlin	Rüdigerstraße	35	13.49540530	52.51587010	\N	3.00	eur	99800.00
+5403590	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1913	3.00	eur	329000.00
+5403605	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	1.00	eur	79000.00
+5403635	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	2.00	eur	195151.00
+5404337	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	398637.00
+355304	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	2.00	eur	202430.00
+325937	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1900	2.00	eur	139900.00
+5403601	sell	apartment	10247	Berlin	Pettenkoferstraße	8-10	13.47231000	52.51692000	\N	3.00	eur	317469.00
+5403608	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	1910	2.00	eur	125000.00
+5403620	sell	apartment	10245	Berlin	Gryphiusstraße	11	13.46409700	52.50875590	1915	3.00	eur	242580.00
+5403588	sell	apartment	10247	Berlin	\N	\N	13.46501361	52.51604144	\N	4.00	eur	510000.00
+5403640	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	4.00	eur	362968.00
+354062	sell	apartment	10247	Berlin	Pettenkoferstraße	4	13.47305000	52.51610000	\N	3.00	eur	344137.00
+5403624	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	3.00	eur	240000.00
+5403606	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	6.00	eur	1225000.00
+369123	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	5.00	eur	649000.00
+5404351	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	338085.00
+5403602	sell	apartment	10115	Berlin	Schwartzkopffstraße	6	13.38035040	52.53489280	1900	3.00	eur	140000.00
+5404329	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	2.00	eur	367784.00
+5404318	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	1910	2.00	eur	129500.00
+5404333	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	394259.00
+5403598	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	1905	2.00	eur	321080.00
+5403592	sell	apartment	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	936200.00
+5441480	sell	apartment	10717	Berlin	Uhlandstraße	79	13.32277750	52.49032140	1909	4.00	eur	921816.00
+5404305	sell	penthouse	10115	Berlin	\N	\N	13.37911520	52.53049030	\N	3.00	eur	749000.00
+5404335	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	416582.00
+5404151	sell	apartment	10115	Berlin	Torstraße	224	13.38844580	52.52686810	\N	3.00	eur	377169.00
+5404319	sell	apartment	10115	Berlin	\N	\N	13.38815072	52.53177508	\N	3.00	eur	404990.00
+327728	sell	apartment	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	\N	6.00	eur	476000.00
+5403730	sell	apartment	10317	Berlin	Münsterlandstraße	53	13.49676830	52.50347520	\N	4.00	eur	287000.00
+5403673	sell	multi_family_house	10317	Berlin	\N	\N	13.48610820	52.49214840	1996	1.00	eur	3550000.00
+5403675	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	\N	4.00	eur	302000.00
+5403724	sell	apartment	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	\N	3.00	eur	374000.00
+5403747	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1936	3.00	eur	112000.00
+345272	sell	multi_family_house	10317	Berlin	\N	\N	13.48474500	52.49854390	1996	1.00	eur	3550000.00
+5403684	sell	apartment	10317	Berlin	Wönnichstraße	75	13.49693890	52.50399130	\N	4.00	eur	339000.00
+306613	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	2015	4.00	eur	315000.00
+5403713	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	\N	4.00	eur	449000.00
+5403732	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	\N	4.00	eur	302000.00
+5403735	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	\N	3.00	eur	299000.00
+5403725	sell	apartment	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	\N	6.00	eur	476000.00
+5403694	sell	apartment	10317	Berlin	Wönnichstraße	77	13.49683920	52.50380340	\N	3.00	eur	375000.00
+5403917	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1938	2.50	eur	110000.00
+5403663	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	2014	6.00	eur	555000.00
+5403921	sell	apartment	10318	Berlin	Treskowallee	116	13.52472640	52.48011720	1905	4.00	eur	249000.00
+5403696	sell	single_family_house	10247	Berlin	\N	\N	13.46543476	52.51637250	2010	5.00	eur	575000.00
+5403661	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	2014	2.00	eur	229000.00
+5403844	sell	apartment	10247	Berlin	Pettenkoferstraße	42	13.47200370	52.51666520	\N	2.00	eur	99950.00
+5403676	sell	penthouse	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	6.00	eur	599000.00
+5403691	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	1900	2.00	eur	192000.00
+5403828	sell	apartment_roof_storey	10247	Berlin	\N	\N	13.46501361	52.51604144	2010	5.00	eur	575000.00
+5403681	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	6.00	eur	635000.00
+5403933	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1995	1.00	eur	56000.00
+5403698	sell	apartment_maisonette	10247	Berlin	\N	\N	13.46501361	52.51604144	2010	5.00	eur	575000.00
+326616	sell	apartment	10247	Berlin	Rigaer Straße	\N	13.47340210	52.51486560	1910	2.00	eur	110000.00
+5403837	sell	apartment	10247	Berlin	\N	\N	13.46543476	52.51637250	\N	4.00	eur	358000.00
+5403649	sell	multi_family_house	10247	Berlin	Voigtstraße	\N	13.46945320	52.51978290	1906	48.00	eur	1500000.00
+5403714	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1936	2.50	eur	112000.00
+5403702	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1938	2.00	eur	95000.00
+5403704	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1935	2.00	eur	82000.00
+5403720	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1938	2.00	eur	95000.00
+5403717	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1937	2.00	eur	101000.00
+5403682	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	6.00	eur	180000.00
+5403715	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1940	2.50	eur	107000.00
+5403665	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	65500.00
+5403708	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1935	2.50	eur	116000.00
+5403723	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1935	2.50	eur	119000.00
+5403666	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	3.00	eur	89000.00
+5403728	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1936	2.00	eur	95000.00
+5403664	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	1.00	eur	35500.00
+5403692	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	2.00	eur	120000.00
+5403731	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1938	2.00	eur	96000.00
+5403721	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1936	3.00	eur	111000.00
+5403689	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	139900.00
+5403707	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	139900.00
+408008	sell	apartment	10249	Berlin	Heidenfeldstraße	17	13.44996490	52.52583440	1905	2.00	eur	117500.00
+5403699	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1910	2.00	eur	113074.00
+5403709	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1997	2.00	eur	230000.00
+5403734	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	2.00	eur	140000.00
+5403738	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	\N	2.00	eur	1500000.00
+5403711	sell	apartment	10249	Berlin	Heidenfeldstraße	17	13.44996490	52.52583440	1905	0.00	eur	117500.00
+5403781	sell	apartment	10249	Berlin	Auerstraße	47	13.44618050	52.52124380	\N	2.00	eur	290000.00
+5403748	sell	apartment	10249	Berlin	\N	\N	13.44735700	52.52649200	1900	1.00	eur	100800.00
+5403727	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1958	1.00	eur	58000.00
+5403733	sell	apartment_maisonette	10245	Berlin	Alt-Stralau	6-6A	13.46754730	52.49564520	\N	4.00	eur	644000.00
+5403710	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	2.00	eur	162000.00
+5403757	sell	mid_terrace_house	10245	Berlin	\N	\N	13.45573850	52.50080650	2007	6.00	eur	630000.00
+5403792	sell	apartment	10245	Berlin	\N	\N	13.45573850	52.50080650	1900	4.00	eur	260000.00
+382825	sell	apartment	10245	Berlin	Tunnelstraße	48-49	13.47888376	52.49214865	\N	4.00	eur	639500.00
+5403716	sell	apartment	10245	Berlin	Dora-Benjamin-Park	7	13.46691700	52.49503120	\N	3.00	eur	593537.00
+5403718	sell	apartment	10245	Berlin	Alt-Stralau	6-6A	13.46754730	52.49564520	\N	3.00	eur	410000.00
+5403749	sell	apartment_maisonette	10245	Berlin	\N	\N	13.45573850	52.50080650	\N	5.00	eur	290000.00
+495002	sell	apartment	10245	Berlin	Tunnelstraße	48	13.47888376	52.49214865	2013	4.00	eur	589500.00
+346590	sell	apartment_maisonette	10317	Berlin	\N	\N	13.48474500	52.49854390	2016	5.00	eur	340000.00
+5403806	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1955	2.00	eur	75000.00
+5403755	sell	apartment	10317	Berlin	Wönnichstraße	79	13.49677110	52.50366610	2014	3.00	eur	291000.00
+341849	sell	penthouse	10317	Berlin	Maximilianstraße	15	13.49108350	52.50369740	\N	2.00	eur	299000.00
+5403754	sell	apartment	10317	Berlin	\N	\N	13.48610820	52.49214840	1955	2.00	eur	75000.00
+5403824	sell	apartment	10317	Berlin	Lückstraße	24-28	13.49246590	52.50096180	\N	2.00	eur	233000.00
+5403814	sell	semi_detached_house	10317	Berlin	\N	\N	13.48610820	52.49214840	2008	6.00	eur	949000.00
+5403826	sell	apartment	10317	Berlin	Lückstraße	24-28	13.49246590	52.50096180	\N	4.00	eur	299000.00
+5403762	sell	penthouse	10317	Berlin	Wönnichstraße	75	13.49693890	52.50399130	\N	6.00	eur	669900.00
+5403244	sell	apartment	10317	Berlin	Einbecker Straße	28/30	13.50226751	52.50990335	\N	4.00	eur	399750.00
+5403827	sell	apartment	10317	Berlin	Lückstraße	24-28	13.49246590	52.50096180	\N	4.00	eur	436000.00
+5403770	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1936	2.00	eur	95000.00
+5403777	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1938	2.50	eur	120000.00
+321687	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	112230.00
+5403752	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1940	3.00	eur	109000.00
+5403760	sell	apartment	10365	Berlin	Fanningerstraße	42	13.49717560	52.51396330	1900	2.00	eur	120000.00
+5403767	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1937	2.00	eur	101000.00
+5403819	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1900	3.00	eur	196900.00
+5403788	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	\N	2.00	eur	117846.00
+5403782	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1935	2.00	eur	90000.00
+315402	sell	apartment	10365	Berlin	\N	\N	13.51033370	52.53400550	1938	2.00	eur	95000.00
+5403852	sell	single_family_house	10365	Berlin	\N	\N	13.51033370	52.53400550	2009	4.00	eur	289000.00
+504344	sell	single_family_house	12526	Berlin	Sandbacher Weg	\N	13.58654190	52.39376500	1932	5.00	eur	186500.00
+417575	sell	apartment	10179	Berlin	\N	\N	13.40743300	52.51442610	\N	2.50	eur	750000.00
+5403936	sell	apartment	10318	Berlin	\N	\N	13.54460910	52.49460730	1908	2.00	eur	118000.00
+\.
+
+
+--
+-- Name: properties_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('properties_id_seq', 1, false);
+
+
+--
+-- Name: properties properties_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY properties
+    ADD CONSTRAINT properties_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

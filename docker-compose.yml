@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    command: bash -c "rm -f tmp/pids/server.pid && bash startup.sh && rake db:migrate && rake db:seed && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      RAILS_ENV: production
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USERNAME: ${DB_USERNAME}
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data:z
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
