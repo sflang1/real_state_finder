@@ -10,11 +10,49 @@ The most difficult part of it was to preload the values given in the file proper
 2. `bundle install`
 3. `rake db:create`
 4. `psql -d real_state_finder_development < properties.sql`
-5. `rails server`
-6. Browse to `localhost:3000`
+5. `psql -d real_state_finder_development < add_earth_distance_extension.sql`
+6. `rails server`
+7. Browse to `localhost:3000`
 
 ### Production
 1. `cp .env.production.example .env.production` and replace in the `.env.production` only the value for DB_PASSWORD and set it to whatever value you want your password to be.
 2. `docker-compose --env-file=.env.production up`
 3. Browse to `localhost:3000`
 
+## Testing
+Following a TDD approach, I created first the tests before doing the development. I had to create a migration for creating the properties table, because the table structure was loaded in the development and production databases through the SQL script, but not in the test database. I used the `if_not_exists` flag for not creating the table if it was already created (with the SQL scripts, for example). The gems I used for the testing process are `rspec_rails` as the test framework, `factory_bot` and `faker` for creating the factories. I created some tests that check what should happen if the input is invalid and some others that check that the response is properly sent if the parameters are sent right. I decided to create a standard response structure like this:
+
+* In case of error:
+```
+{
+  data: [],
+  message: ['Cause(s) of error'],
+  status: Status error code
+}
+```
+
+I used two HTTP error codes. In the case any of the inputs is invalid, it will return a 400 Bad Request error. In case no properties around are found, it will render a 404 Not Found error
+
+* In case of success:
+```
+{
+  data: [... retrieved information ...],
+  message: '',
+  status: 200
+}
+```
+
+The tests can be run through the command `rspec`
+
+
+## Development
+First of all, I added a new SQL file called `add_earth_distance_extension.sql`. This way, the functions `earth_distance` y `ll_to_earth` are available to calculate via Postgres the distance between two points. For the development and test environments, you can run the following commands:
+
+```
+psql -d real_state_finder_development < add_earth_distance_extension.sql
+psql -d real_state_finder_test < add_earth_distance_extension.sql
+```
+
+And the extension will be ready to go. For production, this script will be called in the startup script.
+
+Additionaly, I created a presenter class for defining the fields that will be shown in the API for each property. Then, the search endpoint code is created to match the tests. I created also an utility input class with which I can use the ActiveModel validations for quickly and readably perform the input validations and show the errors. The next task will be to page the results, because as the database includes so many records and most likely the amount will increase a lot when the system scales, it is better to page the results.

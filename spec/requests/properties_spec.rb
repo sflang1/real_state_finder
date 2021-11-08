@@ -8,7 +8,7 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       400
-        expect(body.message).to eq          'Latitude is a required field'
+        expect(body['message']).to include  'Lat is a required field'
       end
 
       it 'should render bad_request if longitude is null' do
@@ -16,7 +16,7 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       400
-        expect(body.message).to eq          'Longitude is a required field'
+        expect(body['message']).to include  'Lng is a required field'
       end
 
       it 'should render bad_request if property_type is null' do
@@ -24,7 +24,7 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       400
-        expect(body.message).to eq          'Property type is a required field'
+        expect(body['message']).to include  'Property type is a required field'
       end
 
       it 'should render bad_request if marketing_type is null' do
@@ -32,7 +32,7 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       400
-        expect(body.message).to eq          'Marketing type is a required field'
+        expect(body['message']).to include  'Marketing type is a required field'
       end
 
       it 'should render bad_request if latitude is not a numeric value' do
@@ -40,7 +40,7 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       400
-        expect(body.message).to eq          'Latitude is not a numeric value'
+        expect(body['message']).to include  'Lat should be a numeric value'
       end
 
       it 'should render bad_request if longitude is not a numeric value' do
@@ -48,7 +48,7 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       400
-        expect(body.message).to eq          'Longitude is not a numeric value'
+        expect(body['message']).to include  'Lng should be a numeric value'
       end
 
       it 'should render bad_request if property type is not apartment or single_family_house' do
@@ -56,7 +56,7 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       400
-        expect(body.message).to eq          'Property type should be apartment or single_family_house'
+        expect(body['message']).to include  'Property type should be apartment or single_family_house'
       end
 
       it 'should render bad_request if marketing type is not rent or sell' do
@@ -64,7 +64,7 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       400
-        expect(body.message).to eq          'Marketing type should be rent or sell'
+        expect(body['message']).to include  'Marketing type should be rent or sell'
       end
     end
 
@@ -77,17 +77,43 @@ RSpec.describe 'Property search', type: :request do
       end
 
       it 'should return not found response if no properties were found for the given latitude/longitude' do
+        # this property would be located in the Frauenkirche, Munich. No Berlin properties should be shown.
         get '/api/properties/search', params: { lat: 48.138847209368876, lng: 11.573591456157596 , property_type: 'apartment', marketing_type: 'sell' }
 
         body = JSON.parse(response.body)
         expect(response.status).to eq       404
-        expect(body.message).to eq          'No properties found for your search'
+        expect(body['message']).to include  'No properties found for your search'
       end
     end
   end
 
   context 'valid input' do
     describe 'proper rendering of response if input is valid' do
+      before do
+        @property = FactoryBot.create(:property, :in_berlin, distance_to_center: 4)
+      end
+
+      it 'should render properly a property' do
+        get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'sell' }
+
+        body = JSON.parse(response.body)
+        expect(response.status).to eq                           200
+        expect(body['data'].count).to eq                        1
+
+        item = body['data'].first
+        expect(item.count).to eq                                8    # the item should have 8 keys
+        expect(item['id']).to eq                                @property.id
+        expect(item['house_number']).to eq                      @property.house_number
+        expect(item['street']).to eq                            @property.street
+        expect(item['city']).to eq                              @property.city
+        expect(item['zip_code']).to eq                          @property.zip_code
+        expect(item['lat']).to eq                               @property.lat.to_s
+        expect(item['lng']).to eq                               @property.lng.to_s
+        expect(item['price']).to eq                             @property.price.to_s
+      end
+    end
+
+    describe 'renders the proper records according to the input' do
       before do
         @berlin_sell_apartments = FactoryBot.create_list(:property, 4, :in_berlin, distance_to_center: 4)
         @berlin_sell_single_family_houses = FactoryBot.create_list(:property, 2, :in_berlin, distance_to_center: 4, property_type: 'single_family_house')
@@ -101,40 +127,44 @@ RSpec.describe 'Property search', type: :request do
         FactoryBot.create_list(:property, 4, :in_munich, distance_to_center: 4, property_type: 'single_family_house', offer_type: 'rent')
       end
 
-      it 'should show the proper results when looking for sell and apartment' do
+      it 'should show just the corresponding records when looking for sell and apartment' do
         get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'sell' }
 
         body = JSON.parse(response.body)
+        data = body['data']
         expect(response.status).to eq                           200
-        expect(response.data.count).to eq                       4
-        expect(@berlin_sell_apartments.pluck(:id)).to eq        response.data.map { |el| el[:id] }
+        expect(data.count).to eq                                4
+        expect(@berlin_sell_apartments.pluck(:id)).to eq        data.map { |el| el['id'] }
       end
 
-      it 'should show the proper results when looking for sell and single family houses' do
+      it 'should show just the corresponding records when looking for sell and single family houses' do
         get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'single_family_house', marketing_type: 'sell' }
 
         body = JSON.parse(response.body)
+        data = body['data']
         expect(response.status).to eq                                     200
-        expect(response.data.count).to eq                                 2
-        expect(@berlin_sell_single_family_houses.pluck(:id)).to eq        response.data.map { |el| el[:id] }
+        expect(data.count).to eq                                          2
+        expect(@berlin_sell_single_family_houses.pluck(:id)).to eq        data.map { |el| el['id'] }
       end
 
-      it 'should show the proper results when looking for rent and apartment' do
+      it 'should show just the corresponding records when looking for rent and apartment' do
         get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'rent' }
 
         body = JSON.parse(response.body)
+        data = body['data']
         expect(response.status).to eq                           200
-        expect(response.data.count).to eq                       2
-        expect(@berlin_rent_apartments.pluck(:id)).to eq        response.data.map { |el| el[:id] }
+        expect(data.count).to eq                                2
+        expect(@berlin_rent_apartments.pluck(:id)).to eq        data.map { |el| el['id'] }
       end
 
-      it 'should show the proper results when looking for rent and single family houses' do
+      it 'should show just the corresponding records when looking for rent and single family houses' do
         get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'single_family_house', marketing_type: 'rent' }
 
         body = JSON.parse(response.body)
+        data = body['data']
         expect(response.status).to eq                                     200
-        expect(response.data.count).to eq                                 4
-        expect(@berlin_rent_single_family_houses.pluck(:id)).to eq        response.data.map { |el| el[:id] }
+        expect(data.count).to eq                                          4
+        expect(@berlin_rent_single_family_houses.pluck(:id)).to eq        data.map { |el| el['id'] }
       end
     end
   end
