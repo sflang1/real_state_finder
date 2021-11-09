@@ -10,7 +10,9 @@ psql postgresql://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@db < create-database.sql
 
 if ! [[ $? == 0 ]] ; then
   # The database doesn't exist!
-  echo "Database doesn't exist"
-  psql postgresql://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@db < properties.sql
-  psql postgresql://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@db < add_earth_distance_extension.sql
+  echo "Creating the extensions..."
+  psql postgresql://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@db/real_state_finder_production < add_earth_distance_extension.sql
+
+  echo "Filling the database with script data..."
+  psql postgresql://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@db/real_state_finder_production < properties.sql
 fi

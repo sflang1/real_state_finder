@@ -71,4 +71,6 @@ For paging, I used the library `pagy`. I'm used to `will_paginate` but according
 }
 ```
 
-Consequently, I had to alter the tests for adjusting to this new behavior and I also added some tests for the paging
+Consequently, I had to alter the tests for adjusting to this new behavior and I also added some tests for the paging.
+
+Finally, I fixed some errors in the `startup.sh` script for deploying successfully the production application
