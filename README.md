@@ -16,8 +16,9 @@ The most difficult part of it was to preload the values given in the file proper
 
 ### Production
 1. `cp .env.production.example .env.production` and replace in the `.env.production` only the value for DB_PASSWORD and set it to whatever value you want your password to be.
-2. `docker-compose --env-file=.env.production up`
-3. Browse to `localhost:3000`
+2. Place the `master.key` file sent in the folder config/
+3. `docker-compose --env-file=.env.production up`
+4. Browse to `localhost:3000`
 
 ## Testing
 Following a TDD approach, I created first the tests before doing the development. I had to create a migration for creating the properties table, because the table structure was loaded in the development and production databases through the SQL script, but not in the test database. I used the `if_not_exists` flag for not creating the table if it was already created (with the SQL scripts, for example). The gems I used for the testing process are `rspec_rails` as the test framework, `factory_bot` and `faker` for creating the factories. I created some tests that check what should happen if the input is invalid and some others that check that the response is properly sent if the parameters are sent right. I decided to create a standard response structure like this:
