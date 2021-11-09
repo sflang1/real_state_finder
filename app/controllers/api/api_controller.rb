@@ -1,5 +1,8 @@
 module Api
   class ApiController < ApplicationController
+    # pagy for pagination
+    include Pagy::Backend
+
     class BadRequest < StandardError; end
     class NotFound < StandardError; end
 

@@ -98,9 +98,9 @@ RSpec.describe 'Property search', type: :request do
 
         body = JSON.parse(response.body)
         expect(response.status).to eq                           200
-        expect(body['data'].count).to eq                        1
+        expect(body['data']['data'].count).to eq                1
 
-        item = body['data'].first
+        item = body['data']['data'].first
         expect(item.count).to eq                                8    # the item should have 8 keys
         expect(item['id']).to eq                                @property.id
         expect(item['house_number']).to eq                      @property.house_number
@@ -131,7 +131,7 @@ RSpec.describe 'Property search', type: :request do
         get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'sell' }
 
         body = JSON.parse(response.body)
-        data = body['data']
+        data = body['data']['data']
         expect(response.status).to eq                           200
         expect(data.count).to eq                                4
         expect(@berlin_sell_apartments.pluck(:id)).to eq        data.map { |el| el['id'] }
@@ -141,7 +141,7 @@ RSpec.describe 'Property search', type: :request do
         get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'single_family_house', marketing_type: 'sell' }
 
         body = JSON.parse(response.body)
-        data = body['data']
+        data = body['data']['data']
         expect(response.status).to eq                                     200
         expect(data.count).to eq                                          2
         expect(@berlin_sell_single_family_houses.pluck(:id)).to eq        data.map { |el| el['id'] }
@@ -151,7 +151,7 @@ RSpec.describe 'Property search', type: :request do
         get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'rent' }
 
         body = JSON.parse(response.body)
-        data = body['data']
+        data = body['data']['data']
         expect(response.status).to eq                           200
         expect(data.count).to eq                                2
         expect(@berlin_rent_apartments.pluck(:id)).to eq        data.map { |el| el['id'] }
@@ -161,10 +161,90 @@ RSpec.describe 'Property search', type: :request do
         get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'single_family_house', marketing_type: 'rent' }
 
         body = JSON.parse(response.body)
-        data = body['data']
+        data = body['data']['data']
         expect(response.status).to eq                                     200
         expect(data.count).to eq                                          4
         expect(@berlin_rent_single_family_houses.pluck(:id)).to eq        data.map { |el| el['id'] }
+      end
+    end
+
+    describe 'pagination works properly' do
+      before do
+        FactoryBot.create_list(:property, 50, :in_berlin, distance_to_center: 4)
+      end
+
+      it 'should render by default page 1 composed by 20 items' do
+        get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'sell' }
+
+        body = JSON.parse(response.body)
+        pagination = body['data']['pagination']
+        data = body['data']['data']
+
+        expect(response.status).to eq                 200
+        expect(body['success']).to eq                 true
+        expect(data.count).to eq                      20
+        expect(pagination['vars']['page']).to eq      1
+        expect(pagination['vars']['items']).to eq     20
+      end
+
+      it 'should render the proper number of results when per_page param is sent' do
+        per_page = 10
+        get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'sell', per_page: per_page }
+
+        body = JSON.parse(response.body)
+        pagination = body['data']['pagination']
+        data = body['data']['data']
+
+        expect(response.status).to eq                       200
+        expect(body['success']).to eq                       true
+        expect(data.count).to eq                            per_page
+        expect(pagination['vars']['page']).to eq            1
+        expect(pagination['vars']['items'].to_i).to eq      per_page
+
+        per_page = 30
+        get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'sell', per_page: per_page }
+
+        body = JSON.parse(response.body)
+        pagination = body['data']['pagination']
+        data = body['data']['data']
+
+        expect(response.status).to eq                       200
+        expect(body['success']).to eq                       true
+        expect(data.count).to eq                            per_page
+        expect(pagination['vars']['page']).to eq            1
+        expect(pagination['vars']['items'].to_i).to eq      per_page
+      end
+
+      it 'should render the proper page when page param is sent' do
+        get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'sell'}
+
+        body = JSON.parse(response.body)
+        pagination = body['data']['pagination']
+        data = body['data']['data']
+        first_page_ids = data.map{|el| el['id']}
+
+        expect(response.status).to eq                       200
+        expect(body['success']).to eq                       true
+        expect(data.count).to eq                            20
+        expect(pagination['vars']['page']).to eq            1
+        expect(pagination['vars']['items'].to_i).to eq      20
+
+        get '/api/properties/search', params: { lat: 52.51628808111019, lng: 13.377883625254055 , property_type: 'apartment', marketing_type: 'sell', page: 2 }
+
+        body = JSON.parse(response.body)
+        pagination = body['data']['pagination']
+        data = body['data']['data']
+
+        second_page_ids = data.map {|el| el['id']}
+
+        expect(response.status).to eq                       200
+        expect(body['success']).to eq                       true
+        expect(data.count).to eq                            20
+        expect(pagination['vars']['page'].to_i).to eq       2
+        expect(pagination['vars']['items'].to_i).to eq      20
+
+        # The intersection of records in both pages should be empty, as no record should be repeated in the next page
+        expect(first_page_ids & second_page_ids).to eq      []
       end
     end
   end

@@ -56,3 +56,19 @@ psql -d real_state_finder_test < add_earth_distance_extension.sql
 And the extension will be ready to go. For production, this script will be called in the startup script.
 
 Additionaly, I created a presenter class for defining the fields that will be shown in the API for each property. Then, the search endpoint code is created to match the tests. I created also an utility input class with which I can use the ActiveModel validations for quickly and readably perform the input validations and show the errors. The next task will be to page the results, because as the database includes so many records and most likely the amount will increase a lot when the system scales, it is better to page the results.
+
+For paging, I used the library `pagy`. I'm used to `will_paginate` but according to [Pagy Github](https://github.com/ddnexus/pagy), Pagy is a lot faster and lighter. For doing this, I started receiving two optional parameters in the search endpoint: `page` and `per_page`, that if not sent, take the default value of 1 and 20, respectively. I also had to change a little bit the structure of the response of the endpoint, that will be like this:
+
+```
+{
+  "success": true,
+  "data": {
+    "data": [..the results...],
+    "pagination": {
+      ... some information about the pagination provided by Pagy, such as total count, items count, next and last pages
+    }
+  }
+}
+```
+
+Consequently, I had to alter the tests for adjusting to this new behavior and I also added some tests for the paging

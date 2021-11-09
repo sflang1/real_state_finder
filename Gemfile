@@ -27,12 +27,14 @@ gem 'dotenv-rails', '~> 2.7.6'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+gem 'pagy', '~> 5.2.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails', '~> 5.0.0'
-  gem 'faker'
+  gem 'faker', '~> 2.19.0'
 end
 
 group :development do
@@ -42,7 +44,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '~> 6.2.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
